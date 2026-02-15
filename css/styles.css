@@ -1448,7 +1448,7 @@ img {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 1001;
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition), visibility var(--transition);
@@ -1530,7 +1530,7 @@ img {
         transition: right var(--transition);
         gap: 0.25rem;
         overflow-y: auto;
-        z-index: 1001;
+        z-index: 1002;
     }
 
     .nav__menu.open {

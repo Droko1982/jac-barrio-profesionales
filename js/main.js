@@ -299,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var msgEl = document.createElement('div');
         msgEl.className = 'form__message';
+        msgEl.setAttribute('role', 'alert');
         msgEl.style.cssText = 'padding:0.85rem 1rem;margin-bottom:1.25rem;border-radius:10px;font-size:0.9rem;font-weight:500;text-align:center;';
 
         if (type === 'success') {
