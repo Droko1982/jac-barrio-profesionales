@@ -26,26 +26,43 @@ document.addEventListener('DOMContentLoaded', function () {
     // === Mobile Navigation Toggle ===
     var navToggle = document.getElementById('nav-toggle');
     var navMenu = document.getElementById('nav-menu');
+    var navOverlay = document.getElementById('nav-overlay');
+
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('open');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function openMenu() {
+        navToggle.classList.add('active');
+        navMenu.classList.add('open');
+        navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
     navToggle.addEventListener('click', function () {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('open');
+        if (navMenu.classList.contains('open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
+
+    // Close menu when overlay is clicked
+    navOverlay.addEventListener('click', closeMenu);
 
     // Close menu when a nav link is clicked
     var navLinks = document.querySelectorAll('.nav__link');
     navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('open');
-        });
+        link.addEventListener('click', closeMenu);
     });
 
     // Close mobile menu on outside click
     document.addEventListener('click', function (e) {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('open');
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && !navOverlay.contains(e.target)) {
+            closeMenu();
         }
     });
 

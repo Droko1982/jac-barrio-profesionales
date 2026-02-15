@@ -218,6 +218,10 @@ img {
     transform: translateY(0);
 }
 
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.25s; }
+.fade-in-delay-3 { transition-delay: 0.4s; }
+
 /* === Buttons === */
 .btn {
     display: inline-block;
@@ -1217,24 +1221,22 @@ img {
     line-height: 1.5;
 }
 
-.contact__map-placeholder {
+.contact__link {
+    color: var(--color-secondary);
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.contact__link:hover {
+    color: var(--color-primary);
+}
+
+.contact__map {
     margin-top: 1rem;
-    padding: 2rem;
-    background: var(--color-bg-card);
-    border: 2px dashed var(--color-border);
     border-radius: var(--radius-lg);
-    text-align: center;
-    color: var(--color-text-secondary);
-}
-
-.contact__map-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.contact__map-placeholder p {
-    font-size: 0.85rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-light);
 }
 
 .contact__form {
@@ -1410,6 +1412,52 @@ img {
     background-color: var(--color-primary-dark);
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
+}
+
+/* === WhatsApp Floating Button === */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 56px;
+    height: 56px;
+    background-color: #25D366;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all var(--transition);
+    animation: whatsapp-pulse 2s infinite;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1EBE57;
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes whatsapp-pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.6), 0 0 0 8px rgba(37, 211, 102, 0.1); }
+}
+
+/* === Mobile Navigation Overlay === */
+.nav__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition), visibility var(--transition);
+    backdrop-filter: blur(2px);
+}
+
+.nav__overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ========================================
