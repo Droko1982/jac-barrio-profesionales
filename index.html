@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junta de Accion Comunal Barrio Profesionales - Portal oficial de informacion comunitaria, transparencia, noticias, proyectos, servicios e inventario.">
+    <meta name="theme-color" content="#2E7D32">
+    <title>JAC Barrio Profesionales - Portal Comunitario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ========== HEADER / NAVIGATION ========== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#inicio" class="nav__logo">
+                <span class="nav__logo-icon">&#127969;</span>
+                <span class="nav__logo-text">JAC <span class="nav__logo-accent">Profesionales</span></span>
+            </a>
+
+            <div class="nav__right">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                    <span class="theme-toggle__icon theme-toggle__icon--light">&#9788;</span>
+                    <span class="theme-toggle__icon theme-toggle__icon--dark">&#9790;</span>
+                </button>
+                <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menu">
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                </button>
+            </div>
+
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item"><a href="#inicio" class="nav__link active">Inicio</a></li>
+                <li class="nav__item"><a href="#quienes-somos" class="nav__link">Nosotros</a></li>
+                <li class="nav__item"><a href="#servicios" class="nav__link">Servicios</a></li>
+                <li class="nav__item"><a href="#transparencia" class="nav__link">Transparencia</a></li>
+                <li class="nav__item"><a href="#noticias" class="nav__link">Noticias</a></li>
+                <li class="nav__item"><a href="#proyectos" class="nav__link">Proyectos</a></li>
+                <li class="nav__item"><a href="#inventario" class="nav__link">Inventario</a></li>
+                <li class="nav__item"><a href="#faq" class="nav__link">Preguntas</a></li>
+                <li class="nav__item"><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ========== HERO / INICIO ========== -->
+        <section class="hero" id="inicio">
+            <div class="hero__particles" id="hero-particles"></div>
+            <div class="hero__overlay"></div>
+            <div class="hero__content container">
+                <span class="hero__badge">Portal Oficial de la Comunidad</span>
+                <h1 class="hero__title">Junta de Acci&oacute;n Comunal</h1>
+                <p class="hero__subtitle">Barrio Profesionales</p>
+                <p class="hero__description">Trabajando juntos por el bienestar y desarrollo de nuestra comunidad. Aqu&iacute; encontrar&aacute;s toda la informaci&oacute;n sobre nuestra gesti&oacute;n, proyectos, servicios y actividades comunitarias.</p>
+                <div class="hero__buttons">
+                    <a href="#transparencia" class="btn btn--primary btn--lg">Ver Transparencia</a>
+                    <a href="#contacto" class="btn btn--secondary btn--lg">Cont&aacute;ctanos</a>
+                </div>
+            </div>
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="15">0</span>
+                    <span class="hero__stat-label">A&ntilde;os sirviendo</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="500">0</span>
+                    <span class="hero__stat-label">Familias beneficiadas</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="25">0</span>
+                    <span class="hero__stat-label">Proyectos realizados</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="12">0</span>
+                    <span class="hero__stat-label">Alianzas activas</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== QUIENES SOMOS ========== -->
+        <section class="section" id="quienes-somos">
+            <div class="container">
+                <span class="section__badge fade-in">Nuestra Organizaci&oacute;n</span>
+                <h2 class="section__title fade-in">Qui&eacute;nes Somos</h2>
+                <p class="section__subtitle fade-in">Somos una organizaci&oacute;n c&iacute;vica, social y comunitaria de gesti&oacute;n social, sin &aacute;nimo de lucro, integrada voluntariamente por los residentes del Barrio Profesionales</p>
+
+                <div class="about__grid">
+                    <div class="about__card fade-in">
+                        <div class="about__card-icon-wrap">
+                            <span class="about__card-icon">&#127919;</span>
+                        </div>
+                        <h3>Misi&oacute;n</h3>
+                        <p>Promover el desarrollo integral del Barrio Profesionales mediante la participaci&oacute;n activa de sus habitantes, gestionando recursos y proyectos que mejoren la calidad de vida de nuestra comunidad, fortaleciendo los lazos de solidaridad y cooperaci&oacute;n vecinal.</p>
+                    </div>
+                    <div class="about__card fade-in">
+                        <div class="about__card-icon-wrap">
+                            <span class="about__card-icon">&#128065;</span>
+                        </div>
+                        <h3>Visi&oacute;n</h3>
+                        <p>Ser reconocidos como una Junta de Acci&oacute;n Comunal l&iacute;der en transparencia, eficiencia y compromiso social, donde cada habitante participe activamente en la construcci&oacute;n de un barrio seguro, limpio y pr&oacute;spero para las generaciones actuales y futuras.</p>
+                    </div>
+                    <div class="about__card fade-in">
+                        <div class="about__card-icon-wrap">
+                            <span class="about__card-icon">&#129309;</span>
+                        </div>
+                        <h3>Valores</h3>
+                        <p>Transparencia en cada acci&oacute;n, participaci&oacute;n ciudadana activa, honestidad en el manejo de recursos, trabajo en equipo, responsabilidad social, respeto por la diversidad y compromiso permanente con el desarrollo comunitario.</p>
+                    </div>
+                </div>
+
+                <h3 class="section__subtitle-small fade-in">Nuestra Directiva</h3>
+                <p class="section__text-center fade-in">Equipo elegido democr&aacute;ticamente por la asamblea general de afiliados para el periodo vigente</p>
+                <div class="team__grid">
+                    <div class="team__card fade-in">
+                        <div class="team__avatar">P</div>
+                        <h4>Nombre del Presidente</h4>
+                        <span class="team__role">Presidente</span>
+                        <p class="team__desc">Representante legal y l&iacute;der de la JAC</p>
+                    </div>
+                    <div class="team__card fade-in">
+                        <div class="team__avatar">V</div>
+                        <h4>Nombre del Vicepresidente</h4>
+                        <span class="team__role">Vicepresidente</span>
+                        <p class="team__desc">Apoyo en la gesti&oacute;n y reemplazo del presidente</p>
+                    </div>
+                    <div class="team__card fade-in">
+                        <div class="team__avatar">S</div>
+                        <h4>Nombre del Secretario(a)</h4>
+                        <span class="team__role">Secretario(a)</span>
+                        <p class="team__desc">Gesti&oacute;n documental y comunicaciones</p>
+                    </div>
+                    <div class="team__card fade-in">
+                        <div class="team__avatar">T</div>
+                        <h4>Nombre del Tesorero(a)</h4>
+                        <span class="team__role">Tesorero(a)</span>
+                        <p class="team__desc">Administraci&oacute;n de recursos y finanzas</p>
+                    </div>
+                    <div class="team__card fade-in">
+                        <div class="team__avatar">F</div>
+                        <h4>Nombre del Fiscal</h4>
+                        <span class="team__role">Fiscal</span>
+                        <p class="team__desc">Vigilancia y control de la gesti&oacute;n</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SERVICIOS ========== -->
+        <section class="section section--alt" id="servicios">
+            <div class="container">
+                <span class="section__badge fade-in">Lo que hacemos por ti</span>
+                <h2 class="section__title fade-in">Servicios a la Comunidad</h2>
+                <p class="section__subtitle fade-in">Conoce los tr&aacute;mites y servicios que ofrecemos a los habitantes del Barrio Profesionales</p>
+
+                <div class="services__grid">
+                    <div class="service__card fade-in">
+                        <div class="service__icon">&#128221;</div>
+                        <h3>Certificados y Constancias</h3>
+                        <p>Expedici&oacute;n de certificados de residencia, constancias de afiliaci&oacute;n y cartas de convivencia para tr&aacute;mites oficiales.</p>
+                    </div>
+                    <div class="service__card fade-in">
+                        <div class="service__icon">&#127963;</div>
+                        <h3>Gesti&oacute;n ante Entidades</h3>
+                        <p>Representaci&oacute;n de la comunidad ante la Alcald&iacute;a, empresas de servicios p&uacute;blicos y entidades gubernamentales.</p>
+                    </div>
+                    <div class="service__card fade-in">
+                        <div class="service__icon">&#128106;</div>
+                        <h3>Mediaci&oacute;n Comunitaria</h3>
+                        <p>Facilitamos la resoluci&oacute;n pac&iacute;fica de conflictos vecinales y promovemos la sana convivencia en el barrio.</p>
+                    </div>
+                    <div class="service__card fade-in">
+                        <div class="service__icon">&#127970;</div>
+                        <h3>Sal&oacute;n Comunal</h3>
+                        <p>Pr&eacute;stamo del sal&oacute;n comunal para reuniones, eventos sociales, capacitaciones y actividades comunitarias.</p>
+                    </div>
+                    <div class="service__card fade-in">
+                        <div class="service__icon">&#128218;</div>
+                        <h3>Capacitaciones</h3>
+                        <p>Organizamos talleres y capacitaciones en temas de inter&eacute;s: emprendimiento, derechos ciudadanos, medio ambiente y m&aacute;s.</p>
+                    </div>
+                    <div class="service__card fade-in">
+                        <div class="service__icon">&#128230;</div>
+                        <h3>Programas Sociales</h3>
+                        <p>Canalizamos programas y subsidios del gobierno local y nacional para los habitantes del barrio que los necesiten.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TRANSPARENCIA ========== -->
+        <section class="section" id="transparencia">
+            <div class="container">
+                <span class="section__badge fade-in">Cuentas claras</span>
+                <h2 class="section__title fade-in">Transparencia</h2>
+                <p class="section__subtitle fade-in">Rendici&oacute;n de cuentas y documentos p&uacute;blicos de nuestra gesti&oacute;n. Creemos en la transparencia total como pilar de confianza con la comunidad.</p>
+
+                <div class="transparency__intro fade-in">
+                    <div class="transparency__stat">
+                        <span class="transparency__stat-number">100%</span>
+                        <span class="transparency__stat-label">Recursos auditados</span>
+                    </div>
+                    <div class="transparency__stat">
+                        <span class="transparency__stat-number">12</span>
+                        <span class="transparency__stat-label">Reuniones al a&ntilde;o</span>
+                    </div>
+                    <div class="transparency__stat">
+                        <span class="transparency__stat-number">4</span>
+                        <span class="transparency__stat-label">Informes trimestrales</span>
+                    </div>
+                </div>
+
+                <div class="accordion fade-in">
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__icon">&#128200;</span>
+                            <span class="accordion__title">Informes Financieros</span>
+                            <span class="accordion__count">3 documentos</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <ul class="document-list">
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Informe Financiero - Enero 2026</span>
+                                        <span class="document-list__meta">Publicado: 05 Feb 2026</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Informe Financiero - Diciembre 2025</span>
+                                        <span class="document-list__meta">Publicado: 10 Ene 2026</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Informe Financiero - Noviembre 2025</span>
+                                        <span class="document-list__meta">Publicado: 08 Dic 2025</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__icon">&#128221;</span>
+                            <span class="accordion__title">Actas de Reuni&oacute;n</span>
+                            <span class="accordion__count">3 documentos</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <ul class="document-list">
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Acta de Reuni&oacute;n Ordinaria - Febrero 2026</span>
+                                        <span class="document-list__meta">Publicado: 12 Feb 2026</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Acta de Reuni&oacute;n Ordinaria - Enero 2026</span>
+                                        <span class="document-list__meta">Publicado: 15 Ene 2026</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Acta de Asamblea General - Diciembre 2025</span>
+                                        <span class="document-list__meta">Publicado: 20 Dic 2025</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__icon">&#128176;</span>
+                            <span class="accordion__title">Presupuesto</span>
+                            <span class="accordion__count">2 documentos</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <ul class="document-list">
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Presupuesto Anual 2026</span>
+                                        <span class="document-list__meta">Aprobado en asamblea: Dic 2025</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Ejecuci&oacute;n Presupuestal 2025</span>
+                                        <span class="document-list__meta">Publicado: Ene 2026</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__icon">&#9989;</span>
+                            <span class="accordion__title">Rendici&oacute;n de Cuentas</span>
+                            <span class="accordion__count">2 documentos</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <ul class="document-list">
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Informe de Gesti&oacute;n 2025</span>
+                                        <span class="document-list__meta">Presentado en asamblea: Dic 2025</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                                <li class="document-list__item">
+                                    <span class="document-list__icon">&#128196;</span>
+                                    <div class="document-list__info">
+                                        <span class="document-list__name">Plan de Acci&oacute;n 2026</span>
+                                        <span class="document-list__meta">Aprobado en asamblea: Dic 2025</span>
+                                    </div>
+                                    <a href="#" class="document-list__link">Descargar PDF</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== NOTICIAS Y EVENTOS ========== -->
+        <section class="section section--alt" id="noticias">
+            <div class="container">
+                <span class="section__badge fade-in">Mantente informado</span>
+                <h2 class="section__title fade-in">Noticias y Eventos</h2>
+                <p class="section__subtitle fade-in">Las &uacute;ltimas novedades y pr&oacute;ximos eventos de nuestra comunidad</p>
+
+                <div class="news__grid">
+                    <article class="news__card fade-in">
+                        <div class="news__date">
+                            <span class="news__day">15</span>
+                            <span class="news__month">Feb</span>
+                            <span class="news__year">2026</span>
+                        </div>
+                        <div class="news__content">
+                            <span class="news__tag news__tag--evento">Evento</span>
+                            <h3>Asamblea General de Socios</h3>
+                            <p>Se convoca a todos los afiliados a la asamblea general ordinaria para la presentaci&oacute;n del informe de gesti&oacute;n y aprobaci&oacute;n del plan de acci&oacute;n 2026. Su asistencia es importante.</p>
+                        </div>
+                    </article>
+
+                    <article class="news__card fade-in">
+                        <div class="news__date">
+                            <span class="news__day">10</span>
+                            <span class="news__month">Feb</span>
+                            <span class="news__year">2026</span>
+                        </div>
+                        <div class="news__content">
+                            <span class="news__tag news__tag--noticia">Noticia</span>
+                            <h3>Avance en Obras de Mejoramiento Vial</h3>
+                            <p>Informamos a la comunidad sobre el avance del 60% en las obras de pavimentaci&oacute;n de la calle principal del barrio. Se espera culminar en marzo 2026.</p>
+                        </div>
+                    </article>
+
+                    <article class="news__card fade-in">
+                        <div class="news__date">
+                            <span class="news__day">01</span>
+                            <span class="news__month">Feb</span>
+                            <span class="news__year">2026</span>
+                        </div>
+                        <div class="news__content">
+                            <span class="news__tag news__tag--aviso">Aviso</span>
+                            <h3>Jornada de Limpieza Comunitaria</h3>
+                            <p>Invitamos a todos los vecinos a participar en la jornada de limpieza y embellecimiento de las zonas comunes. Punto de encuentro: Sal&oacute;n Comunal a las 7:00 AM.</p>
+                        </div>
+                    </article>
+
+                    <article class="news__card fade-in">
+                        <div class="news__date">
+                            <span class="news__day">25</span>
+                            <span class="news__month">Ene</span>
+                            <span class="news__year">2026</span>
+                        </div>
+                        <div class="news__content">
+                            <span class="news__tag news__tag--noticia">Noticia</span>
+                            <h3>Nuevos Convenios con la Alcald&iacute;a</h3>
+                            <p>La JAC firm&oacute; nuevos convenios de cooperaci&oacute;n con la Alcald&iacute;a Municipal para el desarrollo de proyectos de infraestructura y bienestar social en nuestro barrio.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROYECTOS ========== -->
+        <section class="section" id="proyectos">
+            <div class="container">
+                <span class="section__badge fade-in">Construyendo futuro</span>
+                <h2 class="section__title fade-in">Proyectos</h2>
+                <p class="section__subtitle fade-in">Obras y proyectos para el desarrollo de nuestro barrio. Cada proyecto busca mejorar la calidad de vida de todos los habitantes.</p>
+
+                <div class="projects__grid">
+                    <div class="project__card fade-in">
+                        <div class="project__header">
+                            <span class="project__status project__status--active">En Curso</span>
+                        </div>
+                        <h3>Mejoramiento Vial Calle Principal</h3>
+                        <p>Pavimentaci&oacute;n y mejoramiento de la calle principal del barrio, incluyendo andenes, cunetas y se&ntilde;alizaci&oacute;n vial para peatones y veh&iacute;culos.</p>
+                        <div class="project__meta">
+                            <span>Inicio: Sep 2025</span>
+                            <span>Fin estimado: Mar 2026</span>
+                        </div>
+                        <div class="project__progress">
+                            <div class="project__progress-bar" style="width: 60%"></div>
+                        </div>
+                        <span class="project__progress-text">60% completado</span>
+                    </div>
+
+                    <div class="project__card fade-in">
+                        <div class="project__header">
+                            <span class="project__status project__status--completed">Completado</span>
+                        </div>
+                        <h3>Iluminaci&oacute;n LED Zonas Comunes</h3>
+                        <p>Instalaci&oacute;n de 45 luminarias LED en parques, senderos peatonales y zonas comunes del barrio para mayor seguridad y ahorro energ&eacute;tico.</p>
+                        <div class="project__meta">
+                            <span>Inicio: Jun 2025</span>
+                            <span>Finalizado: Ago 2025</span>
+                        </div>
+                        <div class="project__progress">
+                            <div class="project__progress-bar project__progress-bar--completed" style="width: 100%"></div>
+                        </div>
+                        <span class="project__progress-text">100% completado</span>
+                    </div>
+
+                    <div class="project__card fade-in">
+                        <div class="project__header">
+                            <span class="project__status project__status--planned">Planeado</span>
+                        </div>
+                        <h3>Parque Recreativo Infantil</h3>
+                        <p>Construcci&oacute;n de un parque recreativo con juegos infantiles, zonas verdes, bancas y mobiliario urbano para el disfrute de las familias.</p>
+                        <div class="project__meta">
+                            <span>Inicio estimado: Abr 2026</span>
+                            <span>Duraci&oacute;n: 4 meses</span>
+                        </div>
+                        <div class="project__progress">
+                            <div class="project__progress-bar project__progress-bar--planned" style="width: 10%"></div>
+                        </div>
+                        <span class="project__progress-text">En fase de planeaci&oacute;n</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== INVENTARIO ========== -->
+        <section class="section section--alt" id="inventario">
+            <div class="container">
+                <span class="section__badge fade-in">Recursos comunitarios</span>
+                <h2 class="section__title fade-in">Inventario</h2>
+                <p class="section__subtitle fade-in">Bienes y recursos que pertenecen a la comunidad. Todos los elementos est&aacute;n disponibles para uso comunitario previa solicitud.</p>
+
+                <div class="inventory__controls fade-in">
+                    <div class="inventory__search-wrap">
+                        <span class="inventory__search-icon">&#128269;</span>
+                        <input type="text" id="inventory-search" class="inventory__search" placeholder="Buscar por nombre, ubicaci&oacute;n o responsable...">
+                    </div>
+                    <span class="inventory__count" id="inventory-count">Mostrando 8 de 8 items</span>
+                </div>
+
+                <div class="table-responsive fade-in">
+                    <table class="inventory__table" id="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Cantidad</th>
+                                <th>Estado</th>
+                                <th>Ubicaci&oacute;n</th>
+                                <th>Responsable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Item">Sillas pl&aacute;sticas</td>
+                                <td data-label="Cantidad">50</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                <td data-label="Ubicaci&oacute;n">Sal&oacute;n comunal</td>
+                                <td data-label="Responsable">Presidente</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Mesas plegables</td>
+                                <td data-label="Cantidad">10</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                <td data-label="Ubicaci&oacute;n">Sal&oacute;n comunal</td>
+                                <td data-label="Responsable">Presidente</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Equipo de sonido</td>
+                                <td data-label="Cantidad">1</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                <td data-label="Ubicaci&oacute;n">Oficina JAC</td>
+                                <td data-label="Responsable">Secretario(a)</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Computador port&aacute;til</td>
+                                <td data-label="Cantidad">1</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span></td>
+                                <td data-label="Ubicaci&oacute;n">Oficina JAC</td>
+                                <td data-label="Responsable">Secretario(a)</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Impresora multifuncional</td>
+                                <td data-label="Cantidad">1</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                <td data-label="Ubicaci&oacute;n">Oficina JAC</td>
+                                <td data-label="Responsable">Secretario(a)</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Herramientas de jardiner&iacute;a</td>
+                                <td data-label="Cantidad">15</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span></td>
+                                <td data-label="Ubicaci&oacute;n">Bodega</td>
+                                <td data-label="Responsable">Tesorero(a)</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Carpa para eventos (3x3m)</td>
+                                <td data-label="Cantidad">2</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                <td data-label="Ubicaci&oacute;n">Bodega</td>
+                                <td data-label="Responsable">Tesorero(a)</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Item">Botiqu&iacute;n de primeros auxilios</td>
+                                <td data-label="Cantidad">2</td>
+                                <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                <td data-label="Ubicaci&oacute;n">Sal&oacute;n comunal / Oficina</td>
+                                <td data-label="Responsable">Fiscal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PREGUNTAS FRECUENTES ========== -->
+        <section class="section" id="faq">
+            <div class="container">
+                <span class="section__badge fade-in">Resolvemos tus dudas</span>
+                <h2 class="section__title fade-in">Preguntas Frecuentes</h2>
+                <p class="section__subtitle fade-in">Respuestas a las consultas m&aacute;s comunes de los habitantes del barrio</p>
+
+                <div class="accordion accordion--faq fade-in">
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">&iquest;C&oacute;mo me afilio a la Junta de Acci&oacute;n Comunal?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Para afiliarte debes ser mayor de 14 a&ntilde;os y residir en el Barrio Profesionales. Acude a la oficina de la JAC con tu documento de identidad y un recibo de servicio p&uacute;blico. El proceso es gratuito y te permite participar en asambleas, votar y ser elegido como directivo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">&iquest;Cu&aacute;ndo se realizan las reuniones de la JAC?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Las reuniones ordinarias de la directiva se realizan el primer s&aacute;bado de cada mes a las 9:00 AM en el Sal&oacute;n Comunal. Las asambleas generales se convocan seg&uacute;n los estatutos, m&iacute;nimo dos veces al a&ntilde;o. Todas las reuniones son abiertas a los afiliados.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">&iquest;C&oacute;mo solicito el pr&eacute;stamo del Sal&oacute;n Comunal?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Debes presentar una solicitud por escrito al Presidente de la JAC con m&iacute;nimo 8 d&iacute;as de anticipaci&oacute;n, indicando la fecha, horario, tipo de evento y n&uacute;mero de asistentes. Se requiere ser afiliado o residente del barrio. Aplican t&eacute;rminos y condiciones de uso.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">&iquest;C&oacute;mo puedo obtener un certificado de residencia?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Acude a la oficina de la JAC en horario de atenci&oacute;n con tu documento de identidad y un recibo de servicio p&uacute;blico a tu nombre o del titular de la vivienda. El certificado se expide en el momento. Tambi&eacute;n puedes solicitarlo a trav&eacute;s del formulario de contacto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">&iquest;C&oacute;mo puedo reportar un problema en el barrio?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Puedes reportar problemas de infraestructura, convivencia, seguridad o servicios p&uacute;blicos directamente en la oficina de la JAC, a trav&eacute;s de nuestro formulario de contacto, o en las reuniones mensuales. Todos los reportes son atendidos y se busca la soluci&oacute;n adecuada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONTACTO ========== -->
+        <section class="section section--alt" id="contacto">
+            <div class="container">
+                <span class="section__badge fade-in">Estamos para ti</span>
+                <h2 class="section__title fade-in">Contacto</h2>
+                <p class="section__subtitle fade-in">Estamos aqu&iacute; para escucharte. Env&iacute;anos tus inquietudes, sugerencias, solicitudes o felicitaciones</p>
+
+                <div class="contact__grid">
+                    <div class="contact__info fade-in">
+                        <div class="contact__info-item">
+                            <span class="contact__info-icon">&#128205;</span>
+                            <div>
+                                <h4>Direcci&oacute;n</h4>
+                                <p>Barrio Profesionales, Sal&oacute;n Comunal<br>[Ciudad, Departamento]</p>
+                            </div>
+                        </div>
+                        <div class="contact__info-item">
+                            <span class="contact__info-icon">&#128222;</span>
+                            <div>
+                                <h4>Tel&eacute;fono</h4>
+                                <p>[N&uacute;mero de contacto]</p>
+                            </div>
+                        </div>
+                        <div class="contact__info-item">
+                            <span class="contact__info-icon">&#128231;</span>
+                            <div>
+                                <h4>Correo Electr&oacute;nico</h4>
+                                <p>morisee@hotmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact__info-item">
+                            <span class="contact__info-icon">&#128337;</span>
+                            <div>
+                                <h4>Horario de Atenci&oacute;n</h4>
+                                <p>Lunes a Viernes: 8:00 AM - 12:00 PM<br>S&aacute;bados: 9:00 AM - 11:00 AM</p>
+                            </div>
+                        </div>
+
+                        <div class="contact__map-placeholder">
+                            <span class="contact__map-icon">&#128506;</span>
+                            <p>Mapa interactivo disponible pr&oacute;ximamente</p>
+                        </div>
+                    </div>
+
+                    <form class="contact__form fade-in" id="contact-form" action="https://formspree.io/morisee@hotmail.com" method="POST">
+                        <h3 class="contact__form-title">Env&iacute;anos tu mensaje</h3>
+                        <div class="form__group">
+                            <label for="nombre" class="form__label">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="email" class="form__label">Correo electr&oacute;nico *</label>
+                                <input type="email" id="email" name="email" class="form__input" placeholder="tu@correo.com" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="telefono" class="form__label">Tel&eacute;fono</label>
+                                <input type="tel" id="telefono" name="telefono" class="form__input" placeholder="300 000 0000">
+                            </div>
+                        </div>
+                        <div class="form__group">
+                            <label for="asunto" class="form__label">Asunto *</label>
+                            <select id="asunto" name="asunto" class="form__input" required>
+                                <option value="">Seleccione un asunto</option>
+                                <option value="consulta">Consulta general</option>
+                                <option value="sugerencia">Sugerencia</option>
+                                <option value="queja">Queja o reclamo</option>
+                                <option value="solicitud">Solicitud de documentos</option>
+                                <option value="afiliacion">Afiliaci&oacute;n a la JAC</option>
+                                <option value="salon">Pr&eacute;stamo del Sal&oacute;n Comunal</option>
+                                <option value="felicitacion">Felicitaci&oacute;n</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form__group">
+                            <label for="mensaje" class="form__label">Mensaje *</label>
+                            <textarea id="mensaje" name="mensaje" class="form__input form__textarea" rows="5" placeholder="Escribe tu mensaje aqu&iacute;..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full btn--lg" id="submit-btn">Enviar Mensaje</button>
+                        <p class="form__note">* Campos obligatorios. Su informaci&oacute;n ser&aacute; tratada de manera confidencial seg&uacute;n la Ley de Protecci&oacute;n de Datos.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <div class="footer__logo">
+                        <span>&#127969;</span>
+                        <h4>JAC Barrio Profesionales</h4>
+                    </div>
+                    <p>Trabajando por el bienestar y desarrollo de nuestra comunidad. Unidos somos m&aacute;s fuertes. Organizaci&oacute;n comunal sin &aacute;nimo de lucro, al servicio de todos los habitantes.</p>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Navegaci&oacute;n</h4>
+                    <ul class="footer__links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#quienes-somos">Qui&eacute;nes Somos</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#transparencia">Transparencia</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Recursos</h4>
+                    <ul class="footer__links">
+                        <li><a href="#noticias">Noticias</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#inventario">Inventario</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Legal</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Ley 743 de 2002</a></li>
+                        <li><a href="#">Estatutos JAC</a></li>
+                        <li><a href="#">Pol&iacute;tica de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Junta de Acci&oacute;n Comunal - Barrio Profesionales. Todos los derechos reservados.</p>
+                <p class="footer__legal">Organizaci&oacute;n de primer grado, constituida conforme a la Ley 743 de 2002.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">&#9650;</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
