@@ -1,5 +1,5 @@
 /* ========================================
-   JAC Barrio Profesionales - Main JS v3
+   JAC Barrio Los Profesionales - Main JS v3
    Dark Mode + Scroll Animations + A11y
    ======================================== */
 
