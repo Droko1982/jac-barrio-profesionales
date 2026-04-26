@@ -1,22 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Junta de Accion Comunal Barrio Profesionales - Portal oficial de informacion comunitaria, transparencia, noticias, proyectos, servicios e inventario. Armenia, Quindio.">
-    <meta name="theme-color" content="#2E7D32">
+    <meta name="description" content="Junta de Acción Comunal Barrio Profesionales - Portal oficial de información comunitaria, transparencia, noticias, proyectos, servicios e inventario. Armenia, Quindío.">
+    <meta name="author" content="Junta de Acción Comunal Barrio Profesionales">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2E7D32" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F1A" media="(prefers-color-scheme: dark)">
+
     <meta property="og:title" content="JAC Barrio Profesionales - Portal Comunitario">
-    <meta property="og:description" content="Portal oficial de la Junta de Accion Comunal del Barrio Profesionales. Transparencia, noticias, proyectos, servicios y contacto. Armenia, Quindio.">
+    <meta property="og:description" content="Portal oficial de la Junta de Acción Comunal del Barrio Profesionales. Transparencia, noticias, proyectos, servicios y contacto. Armenia, Quindío.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CO">
+    <meta property="og:site_name" content="JAC Barrio Profesionales">
+    <meta property="og:url" content="https://jacbarrioprofesionales.org/">
+    <meta property="og:image" content="https://jacbarrioprofesionales.org/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JAC Barrio Profesionales - Portal Comunitario">
+    <meta name="twitter:description" content="Portal oficial de la Junta de Acción Comunal del Barrio Profesionales. Armenia, Quindío.">
+    <meta name="twitter:image" content="https://jacbarrioprofesionales.org/og-image.png">
+
+    <link rel="canonical" href="https://jacbarrioprofesionales.org/">
+
     <title>JAC Barrio Profesionales - Portal Comunitario</title>
+
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232E7D32'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='16' fill='white'%3EJAC%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='32' fill='%232E7D32'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='80' fill='white'%3EJAC%3C/text%3E%3C/svg%3E">
+    <link rel="manifest" href="site.webmanifest">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Junta de Acción Comunal Barrio Profesionales",
+      "alternateName": "JAC Barrio Profesionales",
+      "url": "https://jacbarrioprofesionales.org/",
+      "logo": "https://jacbarrioprofesionales.org/og-image.png",
+      "description": "Junta de Acción Comunal del Barrio Profesionales en Armenia, Quindío. Organización comunal sin ánimo de lucro constituida conforme a la Ley 2166 de 2021.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Barrio Profesionales, Salón Comunal",
+        "addressLocality": "Armenia",
+        "addressRegion": "Quindío",
+        "addressCountry": "CO"
+      },
+      "telephone": "+57-318-838-3917",
+      "email": "morisee@hotmail.com",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Barrio Profesionales, Armenia, Quindío"
+      },
+      "sameAs": []
+    }
+    </script>
 </head>
 <body>
+
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
 
     <!-- ========== HEADER / NAVIGATION ========== -->
     <header class="header" id="header">
@@ -52,7 +99,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- ========== HERO / INICIO ========== -->
         <section class="hero" id="inicio">
@@ -680,20 +727,26 @@
                         </div>
                     </div>
 
-                    <form class="contact__form fade-in" id="contact-form" action="https://formspree.io/morisee@hotmail.com" method="POST">
+                    <form class="contact__form fade-in" id="contact-form" action="https://formsubmit.co/ajax/morisee@hotmail.com" method="POST">
                         <h3 class="contact__form-title">Env&iacute;anos tu mensaje</h3>
+
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web JAC Barrio Profesionales">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form__honeypot">
+
                         <div class="form__group">
                             <label for="nombre" class="form__label">Nombre completo *</label>
-                            <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre completo" required>
+                            <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre completo" autocomplete="name" required>
                         </div>
                         <div class="form__row">
                             <div class="form__group">
                                 <label for="email" class="form__label">Correo electr&oacute;nico *</label>
-                                <input type="email" id="email" name="email" class="form__input" placeholder="tu@correo.com" required>
+                                <input type="email" id="email" name="email" class="form__input" placeholder="tu@correo.com" autocomplete="email" required>
                             </div>
                             <div class="form__group">
                                 <label for="telefono" class="form__label">Tel&eacute;fono</label>
-                                <input type="tel" id="telefono" name="telefono" class="form__input" placeholder="300 000 0000">
+                                <input type="tel" id="telefono" name="telefono" class="form__input" placeholder="300 000 0000" autocomplete="tel" inputmode="tel">
                             </div>
                         </div>
                         <div class="form__group">
@@ -714,8 +767,14 @@
                             <label for="mensaje" class="form__label">Mensaje *</label>
                             <textarea id="mensaje" name="mensaje" class="form__input form__textarea" rows="5" placeholder="Escribe tu mensaje aqu&iacute;..." required></textarea>
                         </div>
+                        <div class="form__group form__group--checkbox">
+                            <label class="form__checkbox-label">
+                                <input type="checkbox" id="acepta-politica" name="acepta_politica" class="form__checkbox" required>
+                                <span>He le&iacute;do y acepto la <a href="privacidad.html" target="_blank" rel="noopener" class="contact__link">Pol&iacute;tica de Tratamiento de Datos Personales</a> conforme a la Ley 1581 de 2012. *</span>
+                            </label>
+                        </div>
                         <button type="submit" class="btn btn--primary btn--full btn--lg" id="submit-btn">Enviar Mensaje</button>
-                        <p class="form__note">* Campos obligatorios. Su informaci&oacute;n ser&aacute; tratada de manera confidencial seg&uacute;n la Ley de Protecci&oacute;n de Datos.</p>
+                        <p class="form__note">* Campos obligatorios. Sus datos ser&aacute;n tratados conforme a la Ley 1581 de 2012 y solo para responder su solicitud.</p>
                     </form>
                 </div>
             </div>
@@ -756,6 +815,7 @@
                 <div class="footer__col">
                     <h4 class="footer__title">Legal</h4>
                     <ul class="footer__links">
+                        <li><a href="privacidad.html">Pol&iacute;tica de Tratamiento de Datos</a></li>
                         <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=5301" target="_blank" rel="noopener noreferrer">Ley 743 de 2002</a></li>
                         <li><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=184758" target="_blank" rel="noopener noreferrer">Ley 2166 de 2021</a></li>
                         <li><a href="#contacto">Contacto y PQRS</a></li>
@@ -780,6 +840,6 @@
     <!-- Back to Top Button -->
     <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">&#9650;</button>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
