@@ -1,6 +1,6 @@
 /* ========================================
-   JAC Barrio Profesionales - Styles v2
-   Dark Mode + Improved UX
+   JAC Barrio Los Profesionales - Styles v3
+   Dark Mode + Accessibility + Legal Pages
    ======================================== */
 
 /* === CSS Custom Properties - Light Theme === */
@@ -1653,6 +1653,31 @@ img {
         grid-template-columns: 1fr;
     }
 
+    .legal-data {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .legal-data__grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .legal-data__title {
+        font-size: 1.2rem;
+    }
+
+    .featured-doc {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .featured-doc__cta {
+        width: 100%;
+        text-align: center;
+    }
+
     .project__meta {
         flex-direction: column;
         gap: 0.2rem;
@@ -1708,6 +1733,186 @@ img {
         text-align: center;
         display: block;
     }
+}
+
+/* === Legal Data Block (Quiénes Somos) === */
+.legal-data {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--color-primary-alpha), var(--color-secondary-alpha));
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.legal-data__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.legal-data__icon {
+    font-size: 2.4rem;
+    flex-shrink: 0;
+}
+
+.legal-data__badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+}
+
+.legal-data__title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+.legal-data__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 2rem;
+    margin: 0 0 1.75rem;
+}
+
+.legal-data__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.legal-data__item--full {
+    grid-column: 1 / -1;
+}
+
+.legal-data__item dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--color-text-secondary);
+}
+
+.legal-data__item dd {
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.legal-data__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn--ghost:hover {
+    background-color: var(--color-primary-alpha);
+}
+
+/* === Featured Document (Transparency) === */
+.featured-doc {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2rem;
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 16px rgba(46, 125, 50, 0.12);
+    color: var(--color-text);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-doc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+}
+
+.featured-doc:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(46, 125, 50, 0.2);
+    border-color: var(--color-primary-dark);
+}
+
+.featured-doc__icon {
+    font-size: 2.4rem;
+    flex-shrink: 0;
+}
+
+.featured-doc__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.featured-doc__tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: var(--color-primary-alpha);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+}
+
+.featured-doc__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.4rem;
+    line-height: 1.3;
+}
+
+.featured-doc__desc {
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.featured-doc__cta {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-alpha);
+    transition: all var(--transition);
+}
+
+.featured-doc:hover .featured-doc__cta {
+    background: var(--color-primary);
+    color: var(--color-text-white);
 }
 
 /* === Skip Link (accessibility) === */

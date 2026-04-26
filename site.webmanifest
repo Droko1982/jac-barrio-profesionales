@@ -1,7 +1,7 @@
 {
-    "name": "JAC Barrio Profesionales",
-    "short_name": "JAC Profesionales",
-    "description": "Portal oficial de la Junta de Acción Comunal del Barrio Profesionales, Armenia, Quindío.",
+    "name": "JAC Barrio Los Profesionales",
+    "short_name": "JAC Los Profesionales",
+    "description": "Portal oficial de la Junta de Acción Comunal del Barrio Los Profesionales, Armenia, Quindío.",
     "start_url": "/jac-barrio-profesionales/",
     "scope": "/jac-barrio-profesionales/",
     "display": "standalone",
