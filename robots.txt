@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jacbarrioprofesionales.org/sitemap.xml
+Sitemap: https://droko1982.github.io/jac-barrio-profesionales/sitemap.xml
