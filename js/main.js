@@ -19,6 +19,23 @@
 
     ready(function () {
 
+        // === Announcement Banner ===
+        const announcement = document.getElementById('announcement');
+        const announcementClose = document.getElementById('announcement-close');
+        const ANNOUNCEMENT_KEY = 'jac-announcement-estatutos-2026';
+
+        if (announcement) {
+            if (!localStorage.getItem(ANNOUNCEMENT_KEY)) {
+                announcement.hidden = false;
+            }
+            if (announcementClose) {
+                announcementClose.addEventListener('click', function () {
+                    announcement.hidden = true;
+                    try { localStorage.setItem(ANNOUNCEMENT_KEY, '1'); } catch (e) { /* ignore */ }
+                });
+            }
+        }
+
         // === Dark Mode Toggle ===
         const themeToggle = document.getElementById('theme-toggle');
         const savedTheme = localStorage.getItem('jac-theme');
