@@ -322,10 +322,92 @@
             });
         }
 
+        // === Gestion / Seguimiento de Solicitudes ===
+        const gestionSearch = document.getElementById('gestion-search');
+        const gestionTable = document.getElementById('gestion-table');
+        const gestionCount = document.getElementById('gestion-count');
+        const gestionFilters = document.querySelectorAll('.seguimiento__filter');
+
+        if (gestionTable) {
+            const gRows = Array.prototype.slice.call(gestionTable.querySelectorAll('tbody tr'));
+            const gTotal = gRows.length;
+            let currentEstado = 'todas';
+
+            // Live status counters in the intro block
+            const elTotal = document.getElementById('gestion-total');
+            const elTramite = document.getElementById('gestion-tramite');
+            const elResueltas = document.getElementById('gestion-resueltas');
+
+            function countBy(estado) {
+                return gRows.filter(function (r) {
+                    return r.getAttribute('data-estado') === estado;
+                }).length;
+            }
+            if (elTotal) elTotal.textContent = gTotal;
+            if (elTramite) elTramite.textContent = countBy('tramite');
+            if (elResueltas) elResueltas.textContent = countBy('resuelta');
+
+            // Keep the hero "Gestiones ante entidades" counter in sync with the real table
+            const heroGestiones = document.getElementById('hero-gestiones');
+            if (heroGestiones) heroGestiones.setAttribute('data-count', gTotal);
+
+            if (gestionCount) {
+                gestionCount.setAttribute('aria-live', 'polite');
+                gestionCount.setAttribute('role', 'status');
+            }
+
+            function applyGestionFilter() {
+                const text = gestionSearch ? gestionSearch.value.toLowerCase().trim() : '';
+                let visible = 0;
+
+                gRows.forEach(function (row) {
+                    const matchesEstado = currentEstado === 'todas' ||
+                        row.getAttribute('data-estado') === currentEstado;
+                    const matchesText = row.textContent.toLowerCase().indexOf(text) !== -1;
+
+                    if (matchesEstado && matchesText) {
+                        row.classList.remove('hidden');
+                        visible++;
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                });
+
+                if (gestionCount) {
+                    if (visible === gTotal) {
+                        gestionCount.textContent = 'Mostrando las ' + gTotal + ' gestiones';
+                    } else if (visible === 0) {
+                        gestionCount.textContent = 'No hay gestiones que coincidan con la búsqueda';
+                    } else {
+                        gestionCount.textContent = 'Mostrando ' + visible + ' de ' + gTotal + ' gestiones';
+                    }
+                }
+            }
+
+            if (gestionSearch) {
+                gestionSearch.addEventListener('input', applyGestionFilter);
+            }
+
+            gestionFilters.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    gestionFilters.forEach(function (b) {
+                        b.classList.remove('is-active');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
+                    this.classList.add('is-active');
+                    this.setAttribute('aria-pressed', 'true');
+                    currentEstado = this.getAttribute('data-filter') || 'todas';
+                    applyGestionFilter();
+                });
+            });
+
+            applyGestionFilter();
+        }
+
         // === Contact Form Handling ===
         const contactForm = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
-        const FALLBACK_EMAIL = 'morisee@hotmail.com';
+        const FALLBACK_EMAIL = 'jaclosprofesionales@gmail.com';
 
         if (contactForm) {
             contactForm.addEventListener('submit', function (e) {
