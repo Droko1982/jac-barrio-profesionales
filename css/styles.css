@@ -721,6 +721,57 @@ img {
     line-height: 1.4;
 }
 
+/* === Organigrama: comites, convivencia, delegados === */
+.org__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.org__card {
+    background: var(--color-bg-card);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-light);
+}
+
+.org__card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.org__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.org__list li {
+    display: flex;
+    flex-direction: column;
+}
+
+.org__name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.org__role {
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+}
+
 /* === Services / Servicios === */
 .services__grid {
     display: grid;
@@ -1031,6 +1082,20 @@ img {
     line-height: 1.6;
 }
 
+.news__link {
+    display: inline-block;
+    margin-top: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    transition: color var(--transition);
+}
+
+.news__link:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
 .news__tag {
     display: inline-block;
     padding: 0.15rem 0.55rem;
@@ -1276,6 +1341,112 @@ img {
 .status-badge--bad {
     background-color: rgba(211, 47, 47, 0.1);
     color: var(--color-error);
+}
+
+.status-badge--info {
+    background-color: var(--color-secondary-alpha);
+    color: var(--color-secondary);
+}
+
+.status-badge--neutral {
+    background-color: rgba(120, 120, 140, 0.14);
+    color: var(--color-text-secondary);
+}
+
+/* === Gestion / Seguimiento de solicitudes === */
+.seguimiento__legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0 auto 1.75rem;
+    max-width: 720px;
+}
+
+.seguimiento__legend-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-right: 0.25rem;
+}
+
+.seguimiento__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.seguimiento__search-wrap {
+    position: relative;
+    flex: 1 1 260px;
+    min-width: 220px;
+}
+
+.seguimiento__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.seguimiento__filter {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+}
+
+.seguimiento__filter:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.seguimiento__filter:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.seguimiento__filter.is-active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-white);
+}
+
+.seguimiento__note {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.seguimiento__empty {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.transparency__note {
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    padding: 1rem 1.25rem;
+    background-color: var(--color-accent-alpha);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    line-height: 1.6;
+}
+
+.transparency__note strong {
+    color: var(--color-accent-dark);
 }
 
 /* === Contact / Contacto === */
@@ -1696,6 +1867,19 @@ img {
         --header-height: 60px;
     }
 
+    .seguimiento__toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .seguimiento__search-wrap {
+        flex: 1 1 auto;
+    }
+
+    .seguimiento__filters {
+        justify-content: center;
+    }
+
     .nav__toggle {
         display: flex;
     }
@@ -1780,6 +1964,12 @@ img {
 
     .team__grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .org__grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: 1.5rem auto 0;
     }
 
     .transparency__intro {
