@@ -2,53 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://droko1982.github.io/jac-barrio-profesionales/</loc>
-        <lastmod>2026-07-02</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2026-10-08</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#quienes-somos</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#servicios</loc>
+        <loc>https://droko1982.github.io/jac-barrio-profesionales/estatutos.html</loc>
+        <lastmod>2026-10-08</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#transparencia</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#gestion</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#noticias</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#proyectos</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#inventario</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#faq</loc>
-        <changefreq>yearly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/#contacto</loc>
-        <changefreq>yearly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
@@ -56,11 +17,5 @@
         <lastmod>2026-04-26</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://droko1982.github.io/jac-barrio-profesionales/estatutos.html</loc>
-        <lastmod>2026-04-26</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.9</priority>
     </url>
 </urlset>
