@@ -22,7 +22,7 @@
         // === Announcement Banner ===
         const announcement = document.getElementById('announcement');
         const announcementClose = document.getElementById('announcement-close');
-        const ANNOUNCEMENT_KEY = 'jac-announcement-estatutos-2026';
+        const ANNOUNCEMENT_KEY = 'jac-announcement-asamblea-2026-11';
 
         if (announcement) {
             if (!localStorage.getItem(ANNOUNCEMENT_KEY)) {
@@ -34,6 +34,23 @@
                     try { localStorage.setItem(ANNOUNCEMENT_KEY, '1'); } catch (e) { /* ignore */ }
                 });
             }
+        }
+
+        // === Letra grande (accesibilidad) ===
+        const textSizeToggle = document.getElementById('text-size-toggle');
+        if (textSizeToggle) {
+            const syncTextSize = function () {
+                const isLarge = document.documentElement.classList.contains('text-lg');
+                textSizeToggle.setAttribute('aria-pressed', isLarge ? 'true' : 'false');
+                textSizeToggle.setAttribute('aria-label', isLarge ? 'Volver al tamaño de letra normal' : 'Agrandar la letra');
+                textSizeToggle.title = isLarge ? 'Letra normal' : 'Agrandar la letra';
+            };
+            syncTextSize();
+            textSizeToggle.addEventListener('click', function () {
+                const isLarge = document.documentElement.classList.toggle('text-lg');
+                try { localStorage.setItem('jac-text-lg', isLarge ? '1' : '0'); } catch (e) { /* ignore */ }
+                syncTextSize();
+            });
         }
 
         // === Dark Mode Toggle ===
@@ -210,6 +227,17 @@
             });
         }
 
+        // === Dias de gestion (desde la Resolucion 282 del 23 jun 2026) ===
+        const gestionStart = new Date(2026, 5, 23);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const diasGestion = Math.max(0, Math.round((today - gestionStart) / 86400000));
+        document.querySelectorAll('[data-dias-gestion]').forEach(function (el) {
+            el.textContent = diasGestion.toLocaleString('es-CO');
+        });
+        const heroDias = document.getElementById('hero-dias');
+        if (heroDias) heroDias.setAttribute('data-count', diasGestion);
+
         // === Hero Stats Counter Animation ===
         const statNumbers = document.querySelectorAll('.hero__stat-number[data-count]');
         let statsAnimated = false;
@@ -329,7 +357,7 @@
         const gestionFilters = document.querySelectorAll('.seguimiento__filter');
 
         if (gestionTable) {
-            const gRows = Array.prototype.slice.call(gestionTable.querySelectorAll('tbody tr'));
+            const gRows = Array.prototype.slice.call(gestionTable.querySelectorAll('tbody tr[data-estado]'));
             const gTotal = gRows.length;
             let currentEstado = 'todas';
 
@@ -346,10 +374,6 @@
             if (elTotal) elTotal.textContent = gTotal;
             if (elTramite) elTramite.textContent = countBy('tramite');
             if (elResueltas) elResueltas.textContent = countBy('resuelta');
-
-            // Keep the hero "Gestiones ante entidades" counter in sync with the real table
-            const heroGestiones = document.getElementById('hero-gestiones');
-            if (heroGestiones) heroGestiones.setAttribute('data-count', gTotal);
 
             if (gestionCount) {
                 gestionCount.setAttribute('aria-live', 'polite');
@@ -374,7 +398,9 @@
                 });
 
                 if (gestionCount) {
-                    if (visible === gTotal) {
+                    if (gTotal === 0) {
+                        gestionCount.textContent = 'Sin gestiones publicadas todavía';
+                    } else if (visible === gTotal) {
                         gestionCount.textContent = 'Mostrando las ' + gTotal + ' gestiones';
                     } else if (visible === 0) {
                         gestionCount.textContent = 'No hay gestiones que coincidan con la búsqueda';
@@ -404,10 +430,64 @@
             applyGestionFilter();
         }
 
+        // === Imprimir solo el Informe General ===
+        const reportPrint = document.getElementById('report-print');
+        if (reportPrint) {
+            reportPrint.addEventListener('click', function () {
+                document.body.classList.add('print-report');
+                window.print();
+            });
+            window.addEventListener('afterprint', function () {
+                document.body.classList.remove('print-report');
+            });
+        }
+
         // === Contact Form Handling ===
         const contactForm = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
         const FALLBACK_EMAIL = 'jaclosprofesionales@gmail.com';
+        const asuntoSelect = document.getElementById('asunto');
+        const mensajeInput = document.getElementById('mensaje');
+        const subjectInput = document.getElementById('form-subject');
+
+        // Texto de ayuda del mensaje según lo que necesita el vecino
+        const MENSAJE_AYUDA = {
+            certificado: 'Escribe tu dirección en el barrio y para qué trámite necesitas el certificado.',
+            afiliacion: 'Escribe tu dirección en el barrio. Te diremos si ya estás afiliado o cómo afiliarte.',
+            problema: 'Cuéntanos qué pasa y dónde (calle, carrera o punto de referencia).',
+            sismo: 'Describe los daños de tu vivienda, la dirección y si ya los reportaste a la Alcaldía.',
+            documentos: 'Indica qué documento o libro quieres consultar y de qué periodo.'
+        };
+
+        function asuntoLabel() {
+            if (!asuntoSelect || asuntoSelect.selectedIndex < 1) return 'Nueva solicitud';
+            return asuntoSelect.options[asuntoSelect.selectedIndex].text;
+        }
+
+        function applyAsunto(value) {
+            if (!asuntoSelect) return;
+            asuntoSelect.value = value;
+            if (mensajeInput) {
+                mensajeInput.placeholder = MENSAJE_AYUDA[value] || 'Escribe tu mensaje aquí...';
+            }
+        }
+
+        if (asuntoSelect) {
+            asuntoSelect.addEventListener('change', function () {
+                applyAsunto(this.value);
+            });
+        }
+
+        // Botones de trámites: preseleccionan el asunto del formulario
+        document.querySelectorAll('[data-asunto]').forEach(function (link) {
+            link.addEventListener('click', function () {
+                applyAsunto(this.getAttribute('data-asunto'));
+                const nombreInput = document.getElementById('nombre');
+                if (nombreInput) {
+                    setTimeout(function () { nombreInput.focus({ preventScroll: true }); }, 600);
+                }
+            });
+        });
 
         if (contactForm) {
             contactForm.addEventListener('submit', function (e) {
@@ -442,6 +522,9 @@
                 }
                 contactForm.setAttribute('aria-busy', 'true');
 
+                if (subjectInput) {
+                    subjectInput.value = '[Web JAC] ' + asuntoLabel() + ' — ' + nombre.trim();
+                }
                 const formData = new FormData(contactForm);
 
                 fetch(contactForm.action, {
@@ -450,9 +533,16 @@
                     headers: { 'Accept': 'application/json' }
                 })
                 .then(function (response) {
-                    if (response.ok) {
-                        showFormMessage('Mensaje enviado exitosamente. Nos pondremos en contacto pronto.', 'success');
+                    // FormSubmit responde 200 aunque el correo aún no esté activado: hay que leer "success"
+                    return response.json().catch(function () { return {}; }).then(function (body) {
+                        return { ok: response.ok && String(body.success) === 'true' };
+                    });
+                })
+                .then(function (result) {
+                    if (result.ok) {
+                        showFormMessage('¡Listo! Tu solicitud llegó al correo de la Junta. Te responderemos a ' + email.trim() + '.', 'success');
                         contactForm.reset();
+                        applyAsunto('');
                     } else {
                         showFormFallback('Hubo un error al enviar el mensaje.', { nombre: nombre, email: email, asunto: asunto, mensaje: mensaje, telefono: telefono });
                     }
@@ -466,7 +556,7 @@
                 .finally(function () {
                     if (submitBtn) {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = 'Enviar Mensaje';
+                        submitBtn.textContent = 'Enviar solicitud';
                     }
                     contactForm.removeAttribute('aria-busy');
                 });
@@ -474,12 +564,12 @@
         }
 
         function showFormFallback(prefix, data) {
-            const subject = encodeURIComponent('[Web JAC] ' + (data.asunto || 'Mensaje'));
+            const subject = encodeURIComponent('[Web JAC] ' + asuntoLabel() + ' — ' + data.nombre);
             const body = encodeURIComponent(
                 'Nombre: ' + data.nombre + '\n' +
                 'Email: ' + data.email + '\n' +
                 'Teléfono: ' + (data.telefono || 'No indicado') + '\n' +
-                'Asunto: ' + data.asunto + '\n\n' +
+                'Asunto: ' + asuntoLabel() + '\n\n' +
                 'Mensaje:\n' + data.mensaje
             );
             const mailtoUrl = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
@@ -526,7 +616,7 @@
                 contactForm.insertBefore(msgEl, contactForm.firstChild);
             }
 
-            const dismissDelay = type === 'success' ? 5000 : 12000;
+            const dismissDelay = type === 'success' ? 10000 : 15000;
             setTimeout(function () {
                 if (msgEl.parentNode) {
                     msgEl.style.transition = 'opacity 0.3s ease';
