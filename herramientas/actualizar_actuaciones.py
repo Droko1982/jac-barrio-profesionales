@@ -19,7 +19,15 @@ Columnas de la hoja (fila 1):
                 (también vale: hecho, tramite, espera)
     fecha       AAAA-MM-DD  (también acepta D/M/AAAA)
     plazo_dias  15 en general, 10 si se pidieron documentos o información, 0 si no aplica
-    novedades   una por línea dentro de la celda:  AAAA-MM-DD: texto
+    novedades   una por línea dentro de la celda:  AAAA-MM-DD [tipo]: texto
+                tipo (opcional, alimenta «La gestión mes a mes»):
+                  enviado      la Junta envió un oficio, petición o escrito
+                               («enviado x2» si en ese paso salieron dos)
+                  respuesta    una entidad respondió o actuó
+                  visita       visita técnica, reunión o asamblea
+                  avance       otro avance (publicación, resultado)
+                  antecedente  pasó antes de que existiera esta Junta
+                Si una línea no trae tipo, se conserva el que ya estaba publicado.
     pendiente   lo que falta (puede quedar vacío)
     enviados    opcional. Cuántos oficios, peticiones o escritos envió la Junta en esta
                 actuación (el portal los suma). Si la hoja no tiene la columna, se conservan.
@@ -62,6 +70,26 @@ ESTADOS = {
     "espera": "espera", "esperando respuesta": "espera", "en espera": "espera", "radicada": "espera",
 }
 ESTADO_HOJA = {"hecho": "Ya se hizo", "tramite": "En trámite", "espera": "Esperando respuesta"}
+
+# Tipo de cada paso (novedad): [fecha, texto, tipo] o [fecha, texto, "enviado", n] si salieron n escritos
+TIPOS = {
+    "enviado": "enviado", "enviada": "enviado", "envio": "enviado", "envío": "enviado",
+    "respuesta": "respuesta", "respondio": "respuesta", "respondió": "respuesta",
+    "visita": "visita", "reunion": "visita", "reunión": "visita", "asamblea": "visita",
+    "avance": "avance", "novedad": "avance", "logro": "avance",
+    "antecedente": "antecedente",
+}
+RE_NOVEDAD = re.compile(r"^\s*([\d/-]+)\s*(?:\[\s*([^\]x\d]+?)(?:\s*x\s*(\d+))?\s*\])?\s*[:|–-]\s*(.+)$", re.IGNORECASE)
+
+
+def leer_tipo(tipo, cantidad, donde):
+    if not tipo:
+        return []
+    t = TIPOS.get(str(tipo).strip().lower())
+    if not t:
+        raise ErrorDatos(f"{donde}: el tipo «{tipo}» no existe (usa enviado, respuesta, visita, avance o antecedente)")
+    n = int(cantidad or 1)
+    return [t, n] if t == "enviado" and n > 1 else [t]
 
 # Patrones de datos personales que nunca deben publicarse
 PRIVADOS = [
@@ -129,14 +157,15 @@ def normalizar(item, donde):
     novedades = item.get("novedades") or []
     if isinstance(novedades, str):
         lista = []
-        for n, linea in enumerate(l for l in novedades.splitlines() if l.strip()):
-            m = re.match(r"^\s*([\d/-]+)\s*[:|–-]\s*(.+)$", linea)
+        for linea in (l for l in novedades.splitlines() if l.strip()):
+            m = RE_NOVEDAD.match(linea)
             if not m:
                 raise ErrorDatos(f"{donde}: la novedad «{linea.strip()}» debe ir como AAAA-MM-DD: texto")
-            lista.append([leer_fecha(m.group(1), donde), m.group(2).strip()])
+            lista.append([leer_fecha(m.group(1), donde), m.group(4).strip()] + leer_tipo(m.group(2), m.group(3), donde))
         novedades = lista
     else:
-        novedades = [[leer_fecha(f, donde), str(t).strip()] for f, t in novedades]
+        novedades = [[leer_fecha(n[0], donde), str(n[1]).strip()] +
+                     leer_tipo(n[2] if len(n) > 2 else "", n[3] if len(n) > 3 else 1, donde) for n in novedades]
     novedades.sort(key=lambda n: n[0])
 
     fotos = lista_archivos(item.get("fotos"))
@@ -175,9 +204,26 @@ def normalizar(item, donde):
     }
     for campo in ("numero", "titulo", "entidad", "pendiente"):
         revisar_privacidad(limpio[campo], f"{donde} ({campo})")
-    for _, texto in limpio["novedades"]:
-        revisar_privacidad(texto, f"{donde} (novedades)")
+    for nov in limpio["novedades"]:
+        revisar_privacidad(nov[1], f"{donde} (novedades)")
     return limpio
+
+
+def revisar_enviados(items):
+    """Avisa si los pasos «enviado» no suman lo mismo que la columna enviados."""
+    for it in items:
+        if not any(len(n) > 2 for n in it["novedades"]):
+            continue
+        suma = sum((n[3] if len(n) > 3 else 1) for n in it["novedades"] if len(n) > 2 and n[2] == "enviado")
+        if suma != it["enviados"]:
+            print(f"AVISO: «{it['titulo'][:60]}»: enviados = {it['enviados']}, "
+                  f"pero los pasos marcados [enviado] suman {suma}. Revisa la hoja.")
+
+
+def conservar_tipos(it, previa):
+    """Si la hoja no trae el tipo de un paso, se deja el que ya estaba publicado (misma fecha y texto)."""
+    tipos = {(n[0], n[1]): n[2:] for n in (previa or {}).get("novedades", []) if len(n) > 2}
+    it["novedades"] = [n if len(n) > 2 else n + tipos.get((n[0], n[1]), []) for n in it["novedades"]]
 
 
 def formatear(items):
@@ -235,21 +281,30 @@ def importar_csv(ruta):
         raise ErrorDatos(f"Faltan columnas en el CSV: {', '.join(faltan)}")
     # Si la hoja no trae «fotos» o «documentos», se conservan los ya publicados (misma fecha y título).
     sin_columna = [c for c in OPCIONALES if c not in filas[0]]
-    previas = {}
-    if sin_columna:
-        try:
-            previas = {(i["fecha"], i["titulo"]): i for i in leer_js()}
-        except ErrorDatos:
-            previas = {}
+    try:
+        previas = {(i["fecha"], i["titulo"]): i for i in leer_js()}
+    except ErrorDatos:
+        previas = {}
     items = []
     for n, fila in enumerate(filas, start=2):
         if not any((v or "").strip() for v in fila.values()):
             continue
         it = normalizar(fila, f"Fila {n}")
+        previa = previas.get((it["fecha"], it["titulo"]), {})
         for c in sin_columna:
-            it[c] = previas.get((it["fecha"], it["titulo"]), {}).get(c, 0 if c == COLUMNA_ENVIADOS else [])
+            it[c] = previa.get(c, 0 if c == COLUMNA_ENVIADOS else [])
+        conservar_tipos(it, previa)
         items.append(it)
+    revisar_enviados(items)
     escribir_js(items)
+
+
+def linea_novedad(n):
+    """[fecha, texto, tipo, cantidad] → «AAAA-MM-DD [tipo xN]: texto» (como se escribe en la hoja)."""
+    tipo = ""
+    if len(n) > 2:
+        tipo = f" [{n[2]}" + (f" x{n[3]}" if len(n) > 3 and n[3] > 1 else "") + "]"
+    return f"{n[0]}{tipo}: {n[1]}"
 
 
 def exportar_csv(ruta):
@@ -260,7 +315,7 @@ def exportar_csv(ruta):
         for it in items:
             w.writerow([
                 ESTADO_HOJA[it["estado"]], it["fecha"], it["numero"], it["titulo"], it["entidad"],
-                it["plazo"], "\n".join(f"{fe}: {t}" for fe, t in it["novedades"]), it["pendiente"],
+                it["plazo"], "\n".join(linea_novedad(n) for n in it["novedades"]), it["pendiente"],
                 it.get(COLUMNA_ENVIADOS, 0),
             ] + ["\n".join(f"{a} | {d}" for a, d in it.get(c, [])) for c in LISTAS])
     print(f"OK: {len(items)} actuaciones exportadas a {ruta}")

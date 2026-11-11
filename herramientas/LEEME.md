@@ -18,7 +18,7 @@ Una fila por actuación. Columnas:
 | `titulo` | Qué se pidió o qué se hizo, en palabras sencillas |
 | `entidad` | A quién se dirigió |
 | `plazo_dias` | 15 en general · 10 si se pidieron documentos o información · 0 si no aplica |
-| `novedades` | Una por línea dentro de la celda (Alt+Enter): `2026-11-20: Respondió Planeación (oficio 2026EE-1234).` |
+| `novedades` | Una por línea dentro de la celda (Alt+Enter), con su tipo entre corchetes: `2026-11-20 [respuesta]: Respondió Planeación (oficio 2026EE-1234).` Tipos: `enviado` (la Junta envió un oficio, petición o escrito; `enviado x2` si salieron dos), `respuesta` (una entidad respondió o actuó), `visita` (visita técnica, reunión o asamblea), `avance` (publicación o resultado), `antecedente` (antes de esta Junta). Con esto se arman las cifras y la tabla de «La gestión mes a mes». Si una línea no trae tipo, se conserva el que ya estaba publicado. Los pasos `enviado` deben sumar lo mismo que la columna `enviados` (el script avisa si no). |
 | `pendiente` | Lo que falta. Puede quedar vacío |
 | `fotos` | Opcional. Una por línea: `nombre.jpg \| descripción` (ver «Fotos») |
 | `documentos` | Opcional. Uno por línea: `nombre.pdf \| descripción` (ver «Documentos») |

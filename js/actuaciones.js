@@ -61,7 +61,7 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-05-22", "Derecho de petición radicado."]
+            ["2026-05-22", "Derecho de petición radicado.", "enviado"]
         ],
         "pendiente": "Respuesta y medidas de las autoridades.",
         "fotos": [
@@ -83,7 +83,7 @@ window.JAC_DATOS = {
         "plazo": 10,
         "enviados": 1,
         "novedades": [
-            ["2026-07-02", "Petición radicada."]
+            ["2026-07-02", "Petición radicada.", "enviado"]
         ],
         "pendiente": "Respuesta de la Alcaldía.",
         "fotos": [],
@@ -100,7 +100,7 @@ window.JAC_DATOS = {
         "plazo": 10,
         "enviados": 1,
         "novedades": [
-            ["2026-07-02", "Petición radicada."]
+            ["2026-07-02", "Petición radicada.", "enviado"]
         ],
         "pendiente": "Respuesta de la Alcaldía.",
         "fotos": [],
@@ -117,7 +117,7 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-10-02", "Oficio radicado."]
+            ["2026-10-02", "Oficio radicado.", "enviado"]
         ],
         "pendiente": "Confirmación de la Unidad de Participación Ciudadana.",
         "fotos": [],
@@ -134,13 +134,13 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 6,
         "novedades": [
-            ["2026-07-22", "La Junta pidió a la Unidad de Participación Ciudadana intervenir en el proceso electoral de ASOCOMUNAL Comuna 10 antes de la elección, por posibles irregularidades."],
-            ["2026-07-25", "La Junta pidió información y copias a ASOCOMUNAL y a su Tribunal de Garantías (JAC-007-2026) y acompañamiento urgente a la Unidad (JAC-008-2026)."],
-            ["2026-07-26", "ASOCOMUNAL Comuna 10 realizó la elección de sus dignatarios 2026–2030."],
-            ["2026-08-10", "La Junta presentó una demanda de impugnación contra esa elección."],
-            ["2026-08-26", "La Unidad respondió que aún no encontraba elementos suficientes para declarar viciado el proceso y que seguía verificando ocho puntos (oficio SO-PSP-3919)."],
-            ["2026-09-07", "La Unidad envió la demanda a la Federación Comunal del Quindío y anunció que no inscribirá a los dignatarios mientras haya vicios sin subsanar (oficio SO-PSP-4029)."],
-            ["2026-10-02", "La Junta pidió a las federaciones el estado de la demanda (JAC-012-2026) y a la Unidad, el resultado de su verificación (JAC-013-2026)."]
+            ["2026-07-22", "La Junta pidió a la Unidad de Participación Ciudadana intervenir en el proceso electoral de ASOCOMUNAL Comuna 10 antes de la elección, por posibles irregularidades.", "enviado"],
+            ["2026-07-25", "La Junta pidió información y copias a ASOCOMUNAL y a su Tribunal de Garantías (JAC-007-2026) y acompañamiento urgente a la Unidad (JAC-008-2026).", "enviado", 2],
+            ["2026-07-26", "ASOCOMUNAL Comuna 10 realizó la elección de sus dignatarios 2026–2030.", "avance"],
+            ["2026-08-10", "La Junta presentó una demanda de impugnación contra esa elección.", "enviado"],
+            ["2026-08-26", "La Unidad respondió que aún no encontraba elementos suficientes para declarar viciado el proceso y que seguía verificando ocho puntos (oficio SO-PSP-3919).", "respuesta"],
+            ["2026-09-07", "La Unidad envió la demanda a la Federación Comunal del Quindío y anunció que no inscribirá a los dignatarios mientras haya vicios sin subsanar (oficio SO-PSP-4029).", "respuesta"],
+            ["2026-10-02", "La Junta pidió a las federaciones el estado de la demanda (JAC-012-2026) y a la Unidad, el resultado de su verificación (JAC-013-2026).", "enviado", 2]
         ],
         "pendiente": "Que la federación competente decida la demanda (la ley le da hasta 4 meses) y que la Unidad entregue el resultado de su verificación.",
         "fotos": [],
@@ -161,11 +161,11 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-05-22", "Petición radicada ante la Alcaldía y EDEQ."],
-            ["2026-06-09", "EDEQ inspeccionó: los cables son de empresas de telecomunicaciones, no de EDEQ."],
-            ["2026-06-11", "La Personería le pidió a EDEQ una respuesta de fondo (oficio 2026EE-2526)."],
-            ["2026-06-12", "Planeación visitó los dos puntos y trasladó el caso a EDEQ (oficio 2026EE-9290)."],
-            ["2026-06-16", "Planeación informó el traslado a la Junta (oficio 2026EE-9360)."]
+            ["2026-05-22", "Petición radicada ante la Alcaldía y EDEQ.", "enviado"],
+            ["2026-06-09", "EDEQ inspeccionó: los cables son de empresas de telecomunicaciones, no de EDEQ.", "visita"],
+            ["2026-06-11", "La Personería le pidió a EDEQ una respuesta de fondo (oficio 2026EE-2526).", "respuesta"],
+            ["2026-06-12", "Planeación visitó los dos puntos y trasladó el caso a EDEQ (oficio 2026EE-9290).", "visita"],
+            ["2026-06-16", "Planeación informó el traslado a la Junta (oficio 2026EE-9360).", "respuesta"]
         ],
         "pendiente": "Confirmar que las empresas dueñas de los cables los retiren o ajusten.",
         "fotos": [
@@ -189,12 +189,12 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-05-22", "Petición radicada."],
-            ["2026-06-09", "Desarrollo Social repartió la petición entre las dependencias competentes (oficio SO-PSP-2491)."],
-            ["2026-06-12", "La Personería hizo seguimiento a la petición (oficio 2026EE-2535)."],
-            ["2026-06-16", "EPA: la limpieza no procede porque el predio está cerrado; trasladó el caso a Planeación e Infraestructura (oficio GA-939)."],
-            ["2026-06-17", "La Personería informó a la Junta el seguimiento que hizo (oficio 2026EE-2600)."],
-            ["2026-06-19", "Planeación: el predio no es del Municipio; es de propiedad privada (oficio 2026EE-9573)."]
+            ["2026-05-22", "Petición radicada.", "enviado"],
+            ["2026-06-09", "Desarrollo Social repartió la petición entre las dependencias competentes (oficio SO-PSP-2491).", "respuesta"],
+            ["2026-06-12", "La Personería hizo seguimiento a la petición (oficio 2026EE-2535).", "respuesta"],
+            ["2026-06-16", "EPA: la limpieza no procede porque el predio está cerrado; trasladó el caso a Planeación e Infraestructura (oficio GA-939).", "respuesta"],
+            ["2026-06-17", "La Personería informó a la Junta el seguimiento que hizo (oficio 2026EE-2600).", "respuesta"],
+            ["2026-06-19", "Planeación: el predio no es del Municipio; es de propiedad privada (oficio 2026EE-9573).", "respuesta"]
         ],
         "pendiente": "La mesa de trabajo que Desarrollo Social quedó de programar (aún sin fecha).",
         "fotos": [
@@ -221,9 +221,9 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-03-09", "Planeación visitó el sitio y su informe técnico recomendó la tala controlada. La comunidad lo venía pidiendo desde 2022."],
-            ["2026-06-11", "La Junta pidió ejecutar la tala y el manejo del guadual (oficio JAC-002-2026)."],
-            ["2026-07-08", "Planeación respondió y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728)."]
+            ["2026-03-09", "Planeación visitó el sitio y su informe técnico recomendó la tala controlada. La comunidad lo venía pidiendo desde 2022.", "visita"],
+            ["2026-06-11", "La Junta pidió ejecutar la tala y el manejo del guadual (oficio JAC-002-2026).", "enviado"],
+            ["2026-07-08", "Planeación respondió y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728).", "respuesta"]
         ],
         "pendiente": "Que se ejecute la intervención.",
         "fotos": [],
@@ -241,13 +241,13 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 2,
         "novedades": [
-            ["2025-11-13", "Antecedente: un residente del sector, hoy presidente de la Junta, pidió a Infraestructura y a EPA visita técnica y reparación de la vía."],
-            ["2026-02-11", "Un juez de tutela (Juzgado 3.º Penal del Circuito) ordenó a Infraestructura y a EPA responder de fondo esa solicitud."],
-            ["2026-02-13", "EPA e Infraestructura visitaron el tramo y reportaron deterioro significativo del pavimento (informe GRTAR-135)."],
-            ["2026-07-03", "Infraestructura y EPA hicieron una nueva visita técnica conjunta al tramo."],
-            ["2026-07-07", "La Junta y el residente presentaron una acción popular ante el Juzgado 3.º Administrativo de Armenia."],
-            ["2026-07-31", "El juzgado decretó una medida cautelar sobre el tramo mientras decide el caso."],
-            ["2026-09-18", "La Junta informó al juzgado que la medida cautelar se cumplió solo en parte y pidió fijar la audiencia de pacto de cumplimiento."]
+            ["2025-11-13", "Antecedente: un residente del sector, hoy presidente de la Junta, pidió a Infraestructura y a EPA visita técnica y reparación de la vía.", "antecedente"],
+            ["2026-02-11", "Un juez de tutela (Juzgado 3.º Penal del Circuito) ordenó a Infraestructura y a EPA responder de fondo esa solicitud.", "antecedente"],
+            ["2026-02-13", "EPA e Infraestructura visitaron el tramo y reportaron deterioro significativo del pavimento (informe GRTAR-135).", "antecedente"],
+            ["2026-07-03", "Infraestructura y EPA hicieron una nueva visita técnica conjunta al tramo.", "visita"],
+            ["2026-07-07", "La Junta y el residente presentaron una acción popular ante el Juzgado 3.º Administrativo de Armenia.", "enviado"],
+            ["2026-07-31", "El juzgado decretó una medida cautelar sobre el tramo mientras decide el caso.", "respuesta"],
+            ["2026-09-18", "La Junta informó al juzgado que la medida cautelar se cumplió solo en parte y pidió fijar la audiencia de pacto de cumplimiento.", "enviado"]
         ],
         "pendiente": "Que el juzgado fije la audiencia de pacto de cumplimiento y se acuerde la reparación completa, con fechas.",
         "fotos": [
@@ -275,8 +275,8 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 0,
         "novedades": [
-            ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum. Se adelantó la depuración del libro de afiliados."],
-            ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados."]
+            ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum. Se adelantó la depuración del libro de afiliados.", "visita"],
+            ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados.", "avance"]
         ],
         "pendiente": "Terminar la depuración del libro de afiliados (en espera) y convocar de nuevo la Asamblea (fecha por definir).",
         "fotos": [],
@@ -293,10 +293,10 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 1,
         "novedades": [
-            ["2026-02-13", "La Unidad de Participación Ciudadana certificó la renuncia de los dignatarios anteriores y la vacancia de la Junta (oficio SO-PSP-741)."],
-            ["2026-02-20", "Vecinos del barrio radicaron un derecho de petición colectivo para reorganizar la Junta (radicado SO-PSP-1038)."],
-            ["2026-03-16", "Asamblea organizativa, con acompañamiento de la Unidad: se conformó el Tribunal de Garantías."],
-            ["2026-04-26", "Jornada de elección de los dignatarios para el periodo 2026–2030."]
+            ["2026-02-13", "La Unidad de Participación Ciudadana certificó la renuncia de los dignatarios anteriores y la vacancia de la Junta (oficio SO-PSP-741).", "respuesta"],
+            ["2026-02-20", "Vecinos del barrio radicaron un derecho de petición colectivo para reorganizar la Junta (radicado SO-PSP-1038).", "enviado"],
+            ["2026-03-16", "Asamblea organizativa, con acompañamiento de la Unidad: se conformó el Tribunal de Garantías.", "visita"],
+            ["2026-04-26", "Jornada de elección de los dignatarios para el periodo 2026–2030.", "visita"]
         ],
         "pendiente": "",
         "fotos": [],
@@ -313,8 +313,8 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 0,
         "novedades": [
-            ["2026-06-23", "La Secretaría reconoció e inscribió a los dignatarios elegidos."],
-            ["2026-07-01", "Empezó el periodo 2026–2030."]
+            ["2026-06-23", "La Secretaría reconoció e inscribió a los dignatarios elegidos.", "respuesta"],
+            ["2026-07-01", "Empezó el periodo 2026–2030.", "avance"]
         ],
         "pendiente": "",
         "fotos": [],
@@ -329,8 +329,8 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 1,
         "novedades": [
-            ["2026-06-30", "Se pidió por escrito la entrega de libros, bienes, recursos y documentos de la Junta."],
-            ["2026-10-07", "El Informe de Gestión reportó el empalme como realizado; la Junta depura los libros recibidos."]
+            ["2026-06-30", "Se pidió por escrito la entrega de libros, bienes, recursos y documentos de la Junta.", "enviado"],
+            ["2026-10-07", "El Informe de Gestión reportó el empalme como realizado; la Junta depura los libros recibidos.", "avance"]
         ],
         "pendiente": "Presentar a la Asamblea el detalle de lo recibido.",
         "fotos": [],
@@ -345,8 +345,8 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 0,
         "novedades": [
-            ["2026-09-20", "Se consolidó la versión 4.0: 93 artículos en 23 capítulos."],
-            ["2026-10-07", "Publicada en este portal, con un botón para opinar en cada artículo."]
+            ["2026-09-20", "Se consolidó la versión 4.0: 93 artículos en 23 capítulos.", "avance"],
+            ["2026-10-07", "Publicada en este portal, con un botón para opinar en cada artículo.", "avance"]
         ],
         "pendiente": "Votarla en la Asamblea General.",
         "fotos": [],
@@ -361,8 +361,8 @@ window.JAC_DATOS = {
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-09-21", "Oficio radicado, con registro fotográfico."],
-            ["2026-11-11", "Los escombros ya fueron retirados (verificado por la Junta)."]
+            ["2026-09-21", "Oficio radicado, con registro fotográfico.", "enviado"],
+            ["2026-11-11", "Los escombros ya fueron retirados (verificado por la Junta).", "avance"]
         ],
         "pendiente": "",
         "fotos": [
@@ -387,7 +387,7 @@ window.JAC_DATOS = {
         "plazo": 0,
         "enviados": 0,
         "novedades": [
-            ["2026-10-07", "Publicado: lo cumplido, lo que sigue en curso y los próximos pasos."]
+            ["2026-10-07", "Publicado: lo cumplido, lo que sigue en curso y los próximos pasos.", "avance"]
         ],
         "pendiente": "",
         "fotos": [],

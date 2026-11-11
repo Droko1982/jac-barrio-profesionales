@@ -5116,19 +5116,44 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 /* ==========================================================
    Portada con foto real del barrio (Calle 6 Norte), archivo de la Junta (nov 2026)
    ========================================================== */
-.hero {
+.hero,
+[data-theme="dark"] .hero {
     background:
         linear-gradient(180deg, rgba(6, 26, 14, 0.72) 0%, rgba(10, 45, 22, 0.52) 45%, rgba(6, 30, 16, 0.82) 100%),
         url("../img/portada-barrio.jpg") center 30% / cover no-repeat,
         #1B5E20;
 }
 
+/* WebP (unos 35 % más liviana) para los navegadores que la soportan */
+@supports (background-image: image-set(url("x.webp") type("image/webp"))) {
+    .hero,
+    [data-theme="dark"] .hero {
+        background:
+            linear-gradient(180deg, rgba(6, 26, 14, 0.72) 0%, rgba(10, 45, 22, 0.52) 45%, rgba(6, 30, 16, 0.82) 100%),
+            image-set(url("../img/portada-barrio.webp") type("image/webp"), url("../img/portada-barrio.jpg") type("image/jpeg")) center 30% / cover no-repeat,
+            #1B5E20;
+    }
+}
+
 @media (max-width: 768px) {
-    .hero {
+    .hero,
+    [data-theme="dark"] .hero {
         background:
             linear-gradient(180deg, rgba(6, 26, 14, 0.76) 0%, rgba(10, 45, 22, 0.60) 45%, rgba(6, 30, 16, 0.86) 100%),
             url("../img/portada-barrio-sm.jpg") center top / cover no-repeat,
             #1B5E20;
+    }
+}
+
+@supports (background-image: image-set(url("x.webp") type("image/webp"))) {
+    @media (max-width: 768px) {
+        .hero,
+        [data-theme="dark"] .hero {
+            background:
+                linear-gradient(180deg, rgba(6, 26, 14, 0.76) 0%, rgba(10, 45, 22, 0.60) 45%, rgba(6, 30, 16, 0.86) 100%),
+                image-set(url("../img/portada-barrio-sm.webp") type("image/webp"), url("../img/portada-barrio-sm.jpg") type("image/jpeg")) center top / cover no-repeat,
+                #1B5E20;
+        }
     }
 }
 
@@ -5159,3 +5184,236 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 @media (max-width: 768px) { .hero__logo { width: 120px; height: 120px; } }
 
 #telefonos-seccion .tel { margin-top: 0; }
+
+/* ==========================================================================
+   La gestión mes a mes (#gestion)
+   ========================================================================== */
+.act-mesames { margin-top: 2.5rem; text-align: center; }
+
+.gestion__cifras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto 1.5rem;
+}
+
+.gcifra {
+    display: grid;
+    gap: 0.3rem;
+    justify-items: center;
+    align-content: start;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-top: 6px solid var(--g-color, var(--color-primary));
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xs);
+}
+
+.gcifra--enviado { --g-color: var(--color-secondary); }
+.gcifra--respuesta { --g-color: var(--color-primary); }
+.gcifra--visita { --g-color: var(--color-accent); }
+.gcifra--avance { --g-color: #8E24AA; }
+
+.gcifra__icono { font-size: 1.8rem; line-height: 1; }
+.gcifra__num { font-size: 2.6rem; font-weight: 800; line-height: 1.05; color: var(--color-text); }
+.gcifra__label { font-size: 0.95rem; line-height: 1.35; color: var(--color-text-secondary); }
+
+.gestion__resumen {
+    max-width: 780px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.gestion__acciones { margin: 0.9rem 0 2.25rem; text-align: center; }
+.gestion__acciones [hidden] { display: none; }
+
+.gestion__tabla-wrap {
+    max-width: 860px;
+    margin: 0 auto 2.75rem;
+    overflow-x: auto;
+}
+
+.gestion__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background: var(--color-bg-card);
+}
+
+.gestion__tabla caption {
+    padding: 0 0 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: left;
+    color: var(--color-text);
+}
+
+.gestion__tabla caption span { font-size: 0.9rem; font-weight: 400; color: var(--color-text-secondary); }
+
+.gestion__tabla th,
+.gestion__tabla td {
+    padding: 0.6rem 0.55rem;
+    text-align: center;
+    border: 1px solid var(--color-border);
+}
+
+.gestion__tabla thead th {
+    font-size: 1.05rem;
+    line-height: 1.2;
+    vertical-align: bottom;
+    background: var(--color-bg-alt);
+}
+
+.gestion__th { display: block; margin-top: 0.2rem; font-size: 0.75rem; font-weight: 700; color: var(--color-text-secondary); }
+
+.gestion__tabla tbody th,
+.gestion__tabla tfoot th { text-align: left; font-weight: 700; }
+
+.gestion__tabla tfoot th,
+.gestion__tabla tfoot td { font-weight: 800; background: var(--color-bg-alt); }
+
+.gestion__mes-link { color: var(--color-primary); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.gestion__mes-corto { display: none; text-transform: capitalize; }
+[data-theme="dark"] .gestion__mes-link,
+[data-theme="dark"] .gestion__orden-btn[aria-pressed="false"] { color: var(--color-primary-light); }
+[data-theme="dark"] .gestion__orden { border-color: var(--color-primary-light); }
+
+.gestion__n { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--color-text); }
+.gestion__n--cero { font-weight: 400; color: var(--color-text-secondary); opacity: 0.55; }
+.gestion__n--total { font-weight: 800; }
+
+.gestion__barra {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    max-width: 860px;
+    margin: 0 auto 1rem;
+}
+
+.gestion__barra .block__title { margin: 0 auto 0 0; }
+
+.gestion__orden {
+    display: inline-flex;
+    overflow: hidden;
+    border: 2px solid var(--color-primary);
+    border-radius: 999px;
+}
+
+.gestion__orden-btn {
+    min-height: 44px;
+    padding: 0.45rem 0.95rem;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.gestion__orden-btn[aria-pressed="true"] { color: #fff; background: var(--color-primary); }
+.gestion__orden-btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: -3px; }
+
+.gestion__meses {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.gmes {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.gmes__cab {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    min-height: 52px;
+    padding: 0.8rem 1rem;
+    list-style: none;
+    cursor: pointer;
+}
+
+.gmes__cab::-webkit-details-marker { display: none; }
+
+.gmes__cab::before {
+    content: "▸";
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    transition: transform 0.2s ease;
+}
+
+.gmes[open] > .gmes__cab::before { transform: rotate(90deg); }
+.gmes__cab:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; border-radius: var(--radius-md); }
+
+.gmes__nombre { font-size: 1.05rem; font-weight: 800; color: var(--color-text); }
+
+.gmes__chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-left: auto; }
+
+.gmes__chip {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+}
+
+.gmes__lista { margin: 0 1rem 1rem 1.9rem; }
+
+.gpaso--enviado { --tl-color: var(--color-secondary); }
+.gpaso--respuesta { --tl-color: var(--color-primary); }
+.gpaso--visita { --tl-color: var(--color-accent); }
+.gpaso--avance { --tl-color: #8E24AA; }
+.gpaso--antecedente { --tl-color: #9E9E9E; }
+.gmes .act-tl__item::before { box-shadow: 0 0 0 3px var(--color-bg-card); }
+
+.gpaso__tipo {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 560px) {
+    .gestion__th { display: none; }
+    .gestion__mes-largo { display: none; }
+    .gestion__mes-corto { display: inline; }
+    .gestion__orden { width: 100%; }
+    .gestion__orden-btn { flex: 1; font-size: 0.85rem; padding: 0.4rem 0.5rem; }
+    .gestion__abrir { width: 100%; }
+    .gestion__tabla { font-size: 0.9rem; }
+    .gestion__tabla th,
+    .gestion__tabla td { padding: 0.5rem 0.3rem; }
+    .gestion__barra .block__title { width: 100%; }
+    .gmes__chips { margin-left: 0; }
+    .gmes__lista { margin: 0 0.75rem 0.75rem 1.6rem; }
+}
+
+@media (max-width: 420px) {
+    .gestion__tabla th:last-child,
+    .gestion__tabla td:last-child { display: none; }
+    .gestion__tabla th,
+    .gestion__tabla td { padding: 0.45rem 0.25rem; }
+}
+
+@media print {
+    .gestion__orden, .gestion__abrir { display: none !important; }
+    .gmes > .gmes__lista { display: block !important; }
+}
+
+/* El aviso superior va debajo del encabezado fijo (antes quedaba tapado) */
+.announcement { margin-top: var(--header-height); }

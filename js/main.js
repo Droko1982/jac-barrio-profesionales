@@ -779,3 +779,25 @@
         handleBackToTopVisibility();
     });
 })();
+
+/* Preguntas frecuentes como datos estructurados (schema.org FAQPage) para los buscadores.
+   Se arman desde el acordeón de #faq, así no hay una segunda copia que mantener. */
+(function () {
+    try {
+        var items = document.querySelectorAll('#faq .accordion__item');
+        if (!items.length) return;
+        var preguntas = [];
+        Array.prototype.forEach.call(items, function (it) {
+            var q = it.querySelector('.accordion__title');
+            var a = it.querySelector('.accordion__body-content');
+            if (!q || !a) return;
+            var texto = (a.textContent || '').replace(/\s+/g, ' ').trim();
+            if (texto) preguntas.push({ '@type': 'Question', name: q.textContent.trim(), acceptedAnswer: { '@type': 'Answer', text: texto } });
+        });
+        if (!preguntas.length) return;
+        var s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: 'es-CO', mainEntity: preguntas });
+        document.head.appendChild(s);
+    } catch (e) { /* no afecta a la página */ }
+})();
