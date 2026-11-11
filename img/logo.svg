@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="logo-t">
+  <title id="logo-t">Junta de Acción Comunal Barrio Los Profesionales</title>
+  <defs>
+    <clipPath id="logo-c"><circle cx="60" cy="60" r="50"/></clipPath>
+  </defs>
+  <!-- aro -->
+  <circle cx="60" cy="60" r="58" fill="#1B5E20"/>
+  <circle cx="60" cy="60" r="52" fill="#F9A825"/>
+  <g clip-path="url(#logo-c)">
+    <!-- cielo -->
+    <rect width="120" height="120" fill="#E3F2FD"/>
+    <!-- sol -->
+    <circle cx="84" cy="36" r="10" fill="#F9A825"/>
+    <!-- cordillera del Quindío -->
+    <path d="M0 74 L26 46 L42 62 L62 38 L86 60 L100 48 L120 70 V120 H0 Z" fill="#81C784"/>
+    <path d="M0 84 L30 64 L52 78 L76 60 L120 84 V120 H0 Z" fill="#4CAF50"/>
+    <!-- suelo -->
+    <rect y="92" width="120" height="28" fill="#2E7D32"/>
+    <!-- casa comunal -->
+    <path d="M38 94 V68 L60 52 L82 68 V94 Z" fill="#FFFFFF" stroke="#1B5E20" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M33 70 L60 50 L87 70" fill="none" stroke="#C62828" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="54" y="76" width="12" height="18" rx="1.5" fill="#1B5E20"/>
+    <rect x="43" y="73" width="8" height="8" rx="1" fill="#1565C0"/>
+    <rect x="69" y="73" width="8" height="8" rx="1" fill="#1565C0"/>
+  </g>
+</svg>

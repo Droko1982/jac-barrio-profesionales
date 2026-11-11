@@ -43,6 +43,16 @@ teléfono o una cédula.
   nombres de particulares (por ejemplo, dueños de predios).
 - Los litigios y trámites personales no van en el portal.
 
+### Fotos de las actuaciones
+
+Las fotos van en `img/actuaciones/` en dos tamaños: `nombre.jpg` (1280 px) y
+`nombre-sm.jpg` (640 px), sin metadatos (se quitan la fecha, el celular y el GPS).
+En la hoja, la columna opcional `fotos` lleva una por línea: `nombre.jpg | descripción`.
+Si la hoja no tiene esa columna, el script conserva las fotos ya publicadas.
+
+Antes de publicar una foto: que no se vean caras, placas legibles, números de casa
+ni letreros con teléfonos. Si aparecen, se difuminan o se escoge otra.
+
 ## 2. Próxima Asamblea
 
 En `js/actuaciones.js`, bloque `asamblea`:

@@ -16,6 +16,9 @@
     <meta property="og:site_name" content="JAC Barrio Los Profesionales">
     <meta property="og:url" content="https://droko1982.github.io/jac-barrio-profesionales/">
     <meta property="og:image" content="https://droko1982.github.io/jac-barrio-profesionales/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Logo de la Junta de Acción Comunal del Barrio Los Profesionales">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JAC Barrio Los Profesionales · Comuna 10 · Armenia">
@@ -26,8 +29,9 @@
 
     <title>JAC Barrio Los Profesionales · Comuna 10 · Armenia</title>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232E7D32'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='16' fill='white'%3EJAC%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='32' fill='%232E7D32'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='80' fill='white'%3EJAC%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,12 +104,12 @@
     <header class="header" id="header">
         <nav class="nav container" aria-label="Principal">
             <a href="#inicio" class="nav__logo">
-                <span class="nav__logo-icon">🏡</span>
+                <img src="img/logo.svg" alt="" class="nav__logo-img" width="42" height="42">
                 <span class="nav__logo-text">JAC <span class="nav__logo-accent">Profesionales</span></span>
             </a>
 
             <div class="nav__right">
-                <button class="text-size-toggle" id="text-size-toggle" type="button" aria-pressed="false" aria-label="Agrandar la letra" title="Agrandar la letra">A<span aria-hidden="true">+</span></button>
+                <button class="text-size-toggle" id="text-size-toggle" type="button" aria-pressed="false" aria-label="Agrandar la letra" title="Agrandar la letra"><span aria-hidden="true">A+</span><span class="text-size-toggle__label">Letra grande</span></button>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema claro u oscuro">
                     <span class="theme-toggle__icon theme-toggle__icon--light">&#9788;</span>
                     <span class="theme-toggle__icon theme-toggle__icon--dark">&#9790;</span>
@@ -140,6 +144,7 @@
             </svg>
             <div class="hero__flag-stripe" aria-hidden="true"></div>
             <div class="hero__content container">
+                <img src="img/logo.svg" alt="Logo de la Junta de Acción Comunal Barrio Los Profesionales" class="hero__logo" width="112" height="112">
                 <span class="hero__badge">Portal oficial · Comuna 10 · Armenia, Quindío</span>
                 <h1 class="hero__title">Junta de Acción Comunal</h1>
                 <p class="hero__subtitle">Barrio Los Profesionales</p>
@@ -149,6 +154,11 @@
                     <a href="#tramites" class="btn btn--secondary btn--lg">✉️ Haz una solicitud</a>
                     <a href="#asamblea" class="btn btn--secondary btn--lg">📅 Próxima Asamblea</a>
                 </div>
+                <ul class="hero__help" aria-label="Cómo usar esta página">
+                    <li><span aria-hidden="true">👆</span> Toca un botón grande para empezar</li>
+                    <li><span aria-hidden="true">🔍</span> Usa <strong>A+ Letra grande</strong>, arriba, para ver mejor</li>
+                    <li><span aria-hidden="true">🔊</span> Pulsa <strong>Escuchar</strong> para oír los resúmenes</li>
+                </ul>
             </div>
             <div class="hero__stats">
                 <div class="hero__stat">
@@ -264,6 +274,7 @@
                     <div class="act-toolbar__actions">
                         <button type="button" class="act-btn" id="act-listen" aria-pressed="false" hidden><span aria-hidden="true">🔊</span> Escuchar resumen</button>
                         <button type="button" class="act-btn" data-share="#actuaciones" data-share-title="Así vamos · JAC Barrio Los Profesionales" data-share-text="Lo que ya hizo la Junta, lo solicitado y lo que espera respuesta, con fechas."><span aria-hidden="true">📤</span> Compartir</button>
+                        <a class="act-btn act-btn--wa" href="https://wa.me/?text=As%C3%AD%20va%20la%20Junta%20de%20Acci%C3%B3n%20Comunal%20del%20Barrio%20Los%20Profesionales%3A%20lo%20que%20ya%20se%20hizo%2C%20lo%20solicitado%20y%20lo%20que%20espera%20respuesta%2C%20con%20fechas%20%F0%9F%91%89%20https%3A//droko1982.github.io/jac-barrio-profesionales/%23actuaciones" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> Enviar por WhatsApp</a>
                         <a class="act-btn" href="cartelera.html"><span aria-hidden="true">🖨️</span> Cartelera para imprimir</a>
                     </div>
                 </div>
@@ -291,6 +302,19 @@
                 </noscript>
 
                 <p class="act-legal fade-in"><strong>¿Qué es el plazo legal?</strong> Según la Ley 1755 de 2015, las entidades deben responder un derecho de petición en <strong>15 días hábiles</strong>, o en <strong>10</strong> si se piden documentos o información. Aquí se cuentan solo días hábiles: sin sábados, domingos ni festivos. Cuando el plazo vence, la Junta puede insistir o pedir el apoyo de la Personería.</p>
+
+                <details class="glossary act-glossary fade-in">
+                    <summary>📘 ¿Qué significan estas palabras?</summary>
+                    <dl class="glossary__list">
+                        <div><dt>Los íconos</dt><dd>🏛️ Alcaldía · ⚡ EDEQ (energía) · 🗑️ EPA (aseo) · ⚖️ Personería · 👮 Policía · 🏢 EDUA · 🏡 la Junta.</dd></div>
+                        <div><dt>Oficio</dt><dd>Carta formal que la Junta envía a una entidad. Las de la Junta se numeran así: JAC-010-2026.</dd></div>
+                        <div><dt>Radicado</dt><dd>Número que la entidad le pone a la carta cuando la recibe. Sirve para preguntar por ella (por ejemplo, 2026PQR22891).</dd></div>
+                        <div><dt>Derecho de petición</dt><dd>Derecho de toda persona a pedir algo a una entidad y recibir respuesta de fondo dentro del plazo legal.</dd></div>
+                        <div><dt>PQR</dt><dd>Peticiones, quejas y reclamos: así llama la Alcaldía a las solicitudes que recibe.</dd></div>
+                        <div><dt>Traslado</dt><dd>Cuando una entidad envía la solicitud a otra que es la encargada del tema.</dd></div>
+                        <div><dt>Comodato</dt><dd>Préstamo gratuito de un bien, por ejemplo un lote, para que la comunidad lo use.</dd></div>
+                    </dl>
+                </details>
 
                 <div class="act-timeline fade-in">
                     <h3 class="block__title">Línea de tiempo</h3>
@@ -346,7 +370,7 @@
                 (estado 'convocada', fecha, hora, lugar). La fecha, la cuenta regresiva y el
                 botón de calendario se actualizan solos. Revisa aquí el orden del día oficial.
                 -->
-                <article class="asamblea fade-in" aria-labelledby="asamblea-title">
+                <article class="asamblea fade-in" id="asamblea-ficha" aria-labelledby="asamblea-title">
                     <div class="asamblea__when">
                         <span class="status-badge status-badge--regular" data-asamblea-badge>Por convocar</span>
                         <h3 id="asamblea-title" class="asamblea__heading">Próxima Asamblea General</h3>
@@ -354,6 +378,7 @@
                         <p class="asamblea__countdown" data-asamblea-cuenta hidden></p>
                         <p class="asamblea__detail" data-asamblea-detalle>La Asamblea convocada para el 18 de septiembre de 2026 no alcanzó el quórum. La volveremos a convocar en cuanto terminemos de depurar el libro de afiliados, y la publicaremos aquí y en cartelera con anticipación. Si quieres que te avisemos por correo, <a href="#avisos-correo" class="contact__link">inscríbete aquí</a>.</p>
                         <button type="button" class="btn btn--ghost asamblea__ics" data-asamblea-ics hidden>📅 Agregar a mi calendario</button>
+                        <button type="button" class="act-btn asamblea__listen" data-listen="#asamblea-ficha" hidden><span aria-hidden="true">🔊</span> Escuchar</button>
                     </div>
                     <div class="asamblea__topics">
                         <h4 class="asamblea__subheading">Temas previstos</h4>
@@ -395,6 +420,8 @@
                     <div class="retiro__actions">
                         <a href="mailto:jaclosprofesionales@gmail.com?subject=Retiro%20voluntario%20del%20libro%20de%20afiliados&amp;body=Se%C3%B1ores%0AJunta%20Directiva%0AJunta%20de%20Acci%C3%B3n%20Comunal%20del%20Barrio%20Los%20Profesionales%0A%0ADe%20manera%20libre%20y%20voluntaria%2C%20renuncio%20a%20mi%20calidad%20de%20afiliado%28a%29%20a%20la%20Junta%20de%20Acci%C3%B3n%20Comunal%20del%20Barrio%20Los%20Profesionales%2C%20conforme%20al%20art%C3%ADculo%2028%2C%20literal%20d%2C%20de%20la%20Ley%202166%20de%202021%2C%20y%20solicito%20que%20se%20anote%20mi%20retiro%20en%20el%20Libro%20de%20Registro%20de%20Afiliados.%0A%0ANombre%20completo%3A%20%0AN%C3%BAmero%20de%20documento%20de%20identidad%3A%20%0ADirecci%C3%B3n%20en%20el%20barrio%3A%20%0A%0AAdjunto%20una%20foto%20de%20mi%20documento%20de%20identidad%20para%20verificar%20que%20esta%20solicitud%20es%20m%C3%ADa.%0A%0AAtentamente%2C%0A" class="btn btn--primary">✉️ Pedir mi retiro por correo</a>
                         <a href="retiro.html" class="btn btn--ghost">🖨️ Carta de retiro para imprimir</a>
+                        <a href="https://wa.me/?text=La%20Junta%20de%20Acci%C3%B3n%20Comunal%20del%20Barrio%20Los%20Profesionales%20pide%20un%20favor%3A%20si%20ya%20no%20puedes%20participar%20en%20la%20Junta%2C%20pide%20tu%20retiro%20del%20libro%20de%20afiliados.%20As%C3%AD%20se%20podr%C3%A1%20reunir%20el%20qu%C3%B3rum%20de%20la%20pr%C3%B3xima%20Asamblea.%20Aqu%C3%AD%20explican%20c%C3%B3mo%20hacerlo%20%F0%9F%91%89%20https%3A//droko1982.github.io/jac-barrio-profesionales/%23retiro" class="btn btn--wa" target="_blank" rel="noopener">💬 Avisar a un vecino por WhatsApp</a>
+                        <button type="button" class="act-btn" data-listen="#retiro" hidden><span aria-hidden="true">🔊</span> Escuchar</button>
                     </div>
                     <p class="retiro__note">La copia de tu documento solo se usa para verificar que la solicitud es tuya, se archiva con la carta y no se publica, según la <a href="privacidad.html" class="contact__link">Política de Tratamiento de Datos</a>. La Secretaría anotará tu retiro en el Libro de Registro de Afiliados.</p>
                 </div>
@@ -1165,6 +1192,14 @@
                             </div>
                         </div>
 
+                        <div class="contact__info-item contact__info-item--help">
+                            <span class="contact__info-icon">🙋</span>
+                            <div>
+                                <h4>¿No usas correo electrónico?</h4>
+                                <p>Pide a un familiar o a un vecino que te ayude con el formulario, o entrega tu solicitud por escrito a la Secretaria de la Junta.</p>
+                            </div>
+                        </div>
+
                         <div class="mis-solicitudes" id="mis-solicitudes" hidden>
                             <h4 class="mis-solicitudes__title">📁 Tus solicitudes enviadas desde este equipo</h4>
                             <ul class="mis-solicitudes__list" id="mis-solicitudes-list"></ul>
@@ -1241,7 +1276,7 @@
             <div class="footer__grid">
                 <div class="footer__col">
                     <div class="footer__logo">
-                        <span>🏡</span>
+                        <img src="img/logo.svg" alt="" width="44" height="44">
                         <h4>JAC Barrio Los Profesionales</h4>
                     </div>
                     <p>Comuna 10 · Armenia, Quindío. Organización comunal sin ánimo de lucro, al servicio de todos los habitantes del barrio.</p>
@@ -1288,6 +1323,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Accesos rápidos en celulares -->
+    <nav class="bottom-bar" aria-label="Accesos rápidos">
+        <a href="#inicio" class="bottom-bar__item"><span aria-hidden="true">🏠</span>Inicio</a>
+        <a href="#actuaciones" class="bottom-bar__item"><span aria-hidden="true">📋</span>Así vamos</a>
+        <a href="#tramites" class="bottom-bar__item"><span aria-hidden="true">✉️</span>Solicitudes</a>
+        <a href="#asamblea" class="bottom-bar__item"><span aria-hidden="true">📅</span>Asamblea</a>
+    </nav>
 
     <!-- Fondo del menú móvil -->
     <div class="nav__overlay" id="nav-overlay"></div>

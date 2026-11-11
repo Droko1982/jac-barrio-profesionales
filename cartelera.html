@@ -77,7 +77,9 @@
             padding-bottom: 2mm;
             border-bottom: 4px solid var(--verde);
         }
-        .cab__org { font-size: 9.5pt; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: var(--verde-osc); }
+        .cab__izq { display: flex; align-items: center; gap: 4mm; }
+        .cab__logo { width: 15mm; height: 15mm; flex: none; }
+        .cab__org { white-space: nowrap; font-size: 9pt; font-weight: 800; letter-spacing: 0.2px; text-transform: uppercase; color: var(--verde-osc); }
         .cab__sub { font-size: 9pt; color: var(--suave); }
         .cab__titulo { font-size: 26pt; font-weight: 900; line-height: 1; letter-spacing: -0.5px; margin-top: 1.5mm; }
         .cab__fecha { text-align: right; font-size: 9pt; color: var(--suave); }
@@ -180,10 +182,13 @@
 
     <main class="hoja" aria-label="Cartelera imprimible">
         <header class="cab">
-            <div>
+            <div class="cab__izq">
+                <img src="img/logo.svg" alt="Logo de la Junta" class="cab__logo" width="76" height="76">
+                <div>
                 <p class="cab__org">Junta de Acción Comunal · Barrio Los Profesionales</p>
                 <p class="cab__sub">Comuna 10 · Armenia, Quindío</p>
                 <h1 class="cab__titulo">Así vamos</h1>
+                </div>
             </div>
             <p class="cab__fecha">Actualizado al<strong data-act-updated>11 de noviembre de 2026</strong>Cada punto tiene su oficio o radicado.</p>
         </header>

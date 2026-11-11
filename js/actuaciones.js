@@ -57,7 +57,8 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-05-22", "Derecho de petición radicado."]
         ],
-        "pendiente": "Respuesta y medidas de las autoridades."
+        "pendiente": "Respuesta y medidas de las autoridades.",
+        "fotos": []
     },
     {
         "estado": "espera",
@@ -69,7 +70,8 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-07-02", "Petición radicada."]
         ],
-        "pendiente": "Respuesta de la Alcaldía."
+        "pendiente": "Respuesta de la Alcaldía.",
+        "fotos": []
     },
     {
         "estado": "espera",
@@ -81,7 +83,8 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-07-02", "Petición radicada."]
         ],
-        "pendiente": "Respuesta de la Alcaldía."
+        "pendiente": "Respuesta de la Alcaldía.",
+        "fotos": []
     },
     {
         "estado": "espera",
@@ -93,7 +96,12 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-09-21", "Oficio radicado, con registro fotográfico."]
         ],
-        "pendiente": "Respuesta y retiro de los escombros y basuras."
+        "pendiente": "Respuesta y retiro de los escombros y basuras.",
+        "fotos": [
+            ["jac010-basuras-1.jpg", "Basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
+            ["jac010-basuras-2.jpg", "Basuras y escombros junto a un lote del barrio (21 sep 2026)"],
+            ["jac010-escombros.jpg", "Escombros entre los árboles de un separador (21 sep 2026)"]
+        ]
     },
     {
         "estado": "espera",
@@ -105,7 +113,8 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-10-02", "Oficio radicado."]
         ],
-        "pendiente": "Confirmación de la Unidad de Participación Ciudadana."
+        "pendiente": "Confirmación de la Unidad de Participación Ciudadana.",
+        "fotos": []
     },
     {
         "estado": "tramite",
@@ -121,7 +130,10 @@ window.JAC_DATOS = {
             ["2026-06-12", "Planeación visitó los dos puntos y trasladó el caso a EDEQ (oficio 2026EE-9290)."],
             ["2026-06-16", "Planeación informó el traslado a la Junta (oficio 2026EE-9360)."]
         ],
-        "pendiente": "Confirmar que las empresas dueñas de los cables los retiren o ajusten."
+        "pendiente": "Confirmar que las empresas dueñas de los cables los retiren o ajusten.",
+        "fotos": [
+            ["cables-poste.jpg", "Cables sueltos y enredados en un poste del barrio (22 may 2026)"]
+        ]
     },
     {
         "estado": "tramite",
@@ -137,7 +149,10 @@ window.JAC_DATOS = {
             ["2026-06-16", "EPA: la limpieza no procede porque el predio está cerrado; trasladó el caso a Planeación e Infraestructura (oficio GA-939)."],
             ["2026-06-19", "Planeación: el predio no es del Municipio; es de propiedad privada (oficio 2026EE-9573)."]
         ],
-        "pendiente": "La mesa de trabajo que Desarrollo Social quedó de programar (aún sin fecha)."
+        "pendiente": "La mesa de trabajo que Desarrollo Social quedó de programar (aún sin fecha).",
+        "fotos": [
+            ["cancha-malla.jpg", "Malla dañada del predio de la cancha (enero de 2026)"]
+        ]
     },
     {
         "estado": "tramite",
@@ -150,7 +165,8 @@ window.JAC_DATOS = {
             ["2026-06-11", "Solicitud radicada."],
             ["2026-07-08", "Planeación visitó el sitio y recomendó la tala del árbol (oficio 2026EE-10728)."]
         ],
-        "pendiente": "Que se ejecute la intervención."
+        "pendiente": "Que se ejecute la intervención.",
+        "fotos": []
     },
     {
         "estado": "tramite",
@@ -163,7 +179,8 @@ window.JAC_DATOS = {
             ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum."],
             ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados."]
         ],
-        "pendiente": "Depurar el libro de afiliados y convocar de nuevo la Asamblea (fecha por definir)."
+        "pendiente": "Depurar el libro de afiliados y convocar de nuevo la Asamblea (fecha por definir).",
+        "fotos": []
     },
     {
         "estado": "hecho",
@@ -176,7 +193,8 @@ window.JAC_DATOS = {
             ["2026-06-23", "La Secretaría reconoció e inscribió a los dignatarios elegidos."],
             ["2026-07-01", "Empezó el periodo 2026–2030."]
         ],
-        "pendiente": ""
+        "pendiente": "",
+        "fotos": []
     },
     {
         "estado": "hecho",
@@ -189,7 +207,8 @@ window.JAC_DATOS = {
             ["2026-06-30", "Se pidió por escrito la entrega de libros, bienes, recursos y documentos de la Junta."],
             ["2026-10-07", "El Informe de Gestión reportó el empalme como realizado; la Junta depura los libros recibidos."]
         ],
-        "pendiente": "Presentar a la Asamblea el detalle de lo recibido."
+        "pendiente": "Presentar a la Asamblea el detalle de lo recibido.",
+        "fotos": []
     },
     {
         "estado": "hecho",
@@ -202,7 +221,8 @@ window.JAC_DATOS = {
             ["2026-09-20", "Se consolidó la versión 4.0: 93 artículos en 23 capítulos."],
             ["2026-10-07", "Publicada en este portal, con un botón para opinar en cada artículo."]
         ],
-        "pendiente": "Votarla en la Asamblea General."
+        "pendiente": "Votarla en la Asamblea General.",
+        "fotos": []
     },
     {
         "estado": "hecho",
@@ -214,7 +234,8 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-10-07", "Publicado: lo cumplido, lo que sigue en curso y los próximos pasos."]
         ],
-        "pendiente": ""
+        "pendiente": "",
+        "fotos": []
     }
 ]
 /* FIN-ACTUACIONES */
