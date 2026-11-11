@@ -83,6 +83,11 @@ empiezan por `[Web JAC]`:
 
 La primera vez, FormSubmit envía un correo de **activación** a la cuenta de la Junta:
 hay que abrirlo y confirmar. Sin eso, los formularios no entregan mensajes.
+(El correo de la Junta quedó activado el 11 de noviembre de 2026.)
+
+Nota técnica: los formularios envían los datos en formato JSON. FormSubmit responde
+«Server Error» si se le envían como formulario multipart (FormData), así que no cambie
+esa parte de `js/main.js` ni de `estatutos.html`.
 
 Para enviar avisos a la lista, escriba desde la cuenta de la Junta poniendo a los
 suscriptores en **CCO** (copia oculta), para no exponer los correos de los vecinos.
