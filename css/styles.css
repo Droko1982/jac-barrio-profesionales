@@ -5079,13 +5079,12 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 .tramite.tramite--wa { border-color: #1FAF55; box-shadow: inset 0 -4px 0 #1FAF55; }
 
 /* ==========================================================
-   Portada con foto real de Armenia y la cordillera (nov 2026)
-   Foto: Alejandro Bayer Tamayo, CC BY-SA 2.0, Wikimedia Commons
+   Portada con foto real del barrio (Calle 6 Norte), archivo de la Junta (nov 2026)
    ========================================================== */
 .hero {
     background:
         linear-gradient(180deg, rgba(6, 26, 14, 0.72) 0%, rgba(10, 45, 22, 0.52) 45%, rgba(6, 30, 16, 0.82) 100%),
-        url("../img/portada-armenia.jpg") center 35% / cover no-repeat,
+        url("../img/portada-barrio.jpg") center 30% / cover no-repeat,
         #1B5E20;
 }
 
@@ -5093,7 +5092,7 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
     .hero {
         background:
             linear-gradient(180deg, rgba(6, 26, 14, 0.76) 0%, rgba(10, 45, 22, 0.60) 45%, rgba(6, 30, 16, 0.86) 100%),
-            url("../img/portada-armenia-sm.jpg") center 35% / cover no-repeat,
+            url("../img/portada-barrio-sm.jpg") center top / cover no-repeat,
             #1B5E20;
     }
 }
