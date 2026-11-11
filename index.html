@@ -90,8 +90,8 @@
     <div class="announcement" id="announcement" hidden>
         <div class="container announcement__inner">
             <span class="announcement__icon" aria-hidden="true">📋</span>
-            <span class="announcement__text"><strong>Nuevo: «Así vamos».</strong> Lo que ya se hizo, lo solicitado y lo que espera respuesta, con fechas · Asamblea General a finales de noviembre.</span>
-            <a href="#actuaciones" class="announcement__link">Ver →</a>
+            <span class="announcement__text"><strong>¿Ya no puedes participar en la Junta?</strong> Pide tu retiro del libro de afiliados: nos ayuda a reunir el quórum de la próxima Asamblea.</span>
+            <a href="#retiro" class="announcement__link">Cómo hacerlo →</a>
             <button type="button" class="announcement__close" id="announcement-close" aria-label="Cerrar aviso">&times;</button>
         </div>
     </div>
@@ -147,7 +147,7 @@
                 <div class="hero__buttons">
                     <a href="#actuaciones" class="btn btn--primary btn--lg">📋 Así vamos</a>
                     <a href="#tramites" class="btn btn--secondary btn--lg">✉️ Haz una solicitud</a>
-                    <a href="#asamblea" class="btn btn--secondary btn--lg">📅 Asamblea de noviembre</a>
+                    <a href="#asamblea" class="btn btn--secondary btn--lg">📅 Próxima Asamblea</a>
                 </div>
             </div>
             <div class="hero__stats">
@@ -213,6 +213,11 @@
                         <span class="tramite__title">Otra consulta</span>
                         <span class="tramite__desc">Preguntas, sugerencias o felicitaciones.</span>
                     </a>
+                    <a href="#retiro" class="tramite fade-in">
+                        <span class="tramite__icon" aria-hidden="true">📒</span>
+                        <span class="tramite__title">Retirarme del libro de afiliados</span>
+                        <span class="tramite__desc">Si ya no puedes participar en la Junta.</span>
+                    </a>
                     <a href="#avisos-correo" class="tramite fade-in">
                         <span class="tramite__icon" aria-hidden="true">📬</span>
                         <span class="tramite__title">Recibir los avisos</span>
@@ -244,7 +249,7 @@
                     <a href="#act-col-tramite" class="act-chip act-chip--tramite">
                         <span class="act-chip__icon" aria-hidden="true">🔄</span>
                         <span class="act-chip__num" data-act-count="tramite">3</span>
-                        <span class="act-chip__label">Solicitado, en trámite</span>
+                        <span class="act-chip__label">En trámite</span>
                     </a>
                     <a href="#act-col-espera" class="act-chip act-chip--espera">
                         <span class="act-chip__icon" aria-hidden="true">⏳</span>
@@ -255,7 +260,7 @@
                 </nav>
 
                 <div class="act-toolbar fade-in">
-                    <p class="act-toolbar__updated">Actualizado al <time data-act-updated datetime="2026-11-10">10 de noviembre de 2026</time></p>
+                    <p class="act-toolbar__updated">Actualizado al <time data-act-updated datetime="2026-11-11">11 de noviembre de 2026</time></p>
                     <div class="act-toolbar__actions">
                         <button type="button" class="act-btn" id="act-listen" aria-pressed="false" hidden><span aria-hidden="true">🔊</span> Escuchar resumen</button>
                         <button type="button" class="act-btn" data-share="#actuaciones" data-share-title="Así vamos · JAC Barrio Los Profesionales" data-share-text="Lo que ya hizo la Junta, lo solicitado y lo que espera respuesta, con fechas."><span aria-hidden="true">📤</span> Compartir</button>
@@ -270,8 +275,8 @@
                         <ol class="act-list" data-act-list="hecho"></ol>
                     </div>
                     <div class="act-col act-col--tramite" id="act-col-tramite">
-                        <h3 class="act-col__title"><span aria-hidden="true">🔄</span> Solicitado, en trámite</h3>
-                        <p class="act-col__hint">La entidad respondió en parte o el caso avanza.</p>
+                        <h3 class="act-col__title"><span aria-hidden="true">🔄</span> En trámite</h3>
+                        <p class="act-col__hint">Solicitado o en curso: ya hay avances, pero no ha terminado.</p>
                         <ol class="act-list" data-act-list="tramite"></ol>
                     </div>
                     <div class="act-col act-col--espera" id="act-col-espera">
@@ -345,9 +350,9 @@
                     <div class="asamblea__when">
                         <span class="status-badge status-badge--regular" data-asamblea-badge>Por convocar</span>
                         <h3 id="asamblea-title" class="asamblea__heading">Próxima Asamblea General</h3>
-                        <p class="asamblea__date" data-asamblea-fecha>Finales de noviembre de 2026</p>
+                        <p class="asamblea__date" data-asamblea-fecha>Fecha por definir</p>
                         <p class="asamblea__countdown" data-asamblea-cuenta hidden></p>
-                        <p class="asamblea__detail" data-asamblea-detalle>Fecha exacta, hora y lugar por confirmar. La convocaremos en cuanto terminemos de depurar los libros de la Junta, y la publicaremos aquí y en cartelera con anticipación. Si quieres que te avisemos por correo, <a href="#avisos-correo" class="contact__link">inscríbete aquí</a>.</p>
+                        <p class="asamblea__detail" data-asamblea-detalle>La Asamblea convocada para el 18 de septiembre de 2026 no alcanzó el quórum. La volveremos a convocar en cuanto terminemos de depurar el libro de afiliados, y la publicaremos aquí y en cartelera con anticipación. Si quieres que te avisemos por correo, <a href="#avisos-correo" class="contact__link">inscríbete aquí</a>.</p>
                         <button type="button" class="btn btn--ghost asamblea__ics" data-asamblea-ics hidden>📅 Agregar a mi calendario</button>
                     </div>
                     <div class="asamblea__topics">
@@ -362,6 +367,37 @@
                         <p class="asamblea__fine">El orden del día oficial será el que se publique en la convocatoria.</p>
                     </div>
                 </article>
+
+                <!-- ===== Retiro voluntario del libro de afiliados (Ley 2166 de 2021, art. 28, lit. d) ===== -->
+                <div class="retiro fade-in" id="retiro">
+                    <div class="retiro__head">
+                        <span class="retiro__icon" aria-hidden="true">📒</span>
+                        <div>
+                            <h3 class="retiro__title">¿Ya no puedes participar en la Junta? Te pedimos retirarte del libro de afiliados</h3>
+                            <p class="retiro__lead">Es un favor importante para todo el barrio. Si ya no vives aquí, no tienes tiempo o simplemente no quieres seguir en la Junta, acércate a la Secretaría o escríbenos para pedir tu retiro.</p>
+                        </div>
+                    </div>
+                    <div class="retiro__grid">
+                        <div class="retiro__card">
+                            <h4>¿Por qué importa?</h4>
+                            <p>Para reformar los estatutos, la ley exige que la Asamblea se instale con <strong>la mitad más uno de los afiliados inscritos</strong> y que voten a favor dos tercios de ellos (Ley 2166 de 2021, art. 32, lit. e). Cada persona inscrita que ya no participa cuenta para ese cálculo. La Asamblea del 18 de septiembre no alcanzó el quórum.</p>
+                        </div>
+                        <div class="retiro__card">
+                            <h4>Es tu derecho y es sencillo</h4>
+                            <p>La renuncia es una de las formas de dejar de ser afiliado y no requiere proceso ante la Comisión de Convivencia (Ley 2166 de 2021, art. 28, lit. d, y parágrafo 1). Si más adelante quieres volver, puedes afiliarte de nuevo.</p>
+                        </div>
+                    </div>
+                    <h4 class="retiro__subtitle">Cómo pedir tu retiro</h4>
+                    <ol class="retiro__steps">
+                        <li><strong>En persona:</strong> acércate a la Secretaria de la Junta, Silvia Valencia Giraldo, con tu documento de identidad, y firma la carta de retiro.</li>
+                        <li><strong>Por correo:</strong> escribe a <a href="mailto:jaclosprofesionales@gmail.com" class="contact__link">jaclosprofesionales@gmail.com</a> diciendo que quieres retirarte, con tu nombre completo, número de documento y dirección, y <strong>adjunta una foto de tu documento de identidad</strong>. Si quieres, adjunta también la carta firmada. El botón de abajo te deja el correo listo.</li>
+                    </ol>
+                    <div class="retiro__actions">
+                        <a href="mailto:jaclosprofesionales@gmail.com?subject=Retiro%20voluntario%20del%20libro%20de%20afiliados&amp;body=Se%C3%B1ores%0AJunta%20Directiva%0AJunta%20de%20Acci%C3%B3n%20Comunal%20del%20Barrio%20Los%20Profesionales%0A%0ADe%20manera%20libre%20y%20voluntaria%2C%20renuncio%20a%20mi%20calidad%20de%20afiliado%28a%29%20a%20la%20Junta%20de%20Acci%C3%B3n%20Comunal%20del%20Barrio%20Los%20Profesionales%2C%20conforme%20al%20art%C3%ADculo%2028%2C%20literal%20d%2C%20de%20la%20Ley%202166%20de%202021%2C%20y%20solicito%20que%20se%20anote%20mi%20retiro%20en%20el%20Libro%20de%20Registro%20de%20Afiliados.%0A%0ANombre%20completo%3A%20%0AN%C3%BAmero%20de%20documento%20de%20identidad%3A%20%0ADirecci%C3%B3n%20en%20el%20barrio%3A%20%0A%0AAdjunto%20una%20foto%20de%20mi%20documento%20de%20identidad%20para%20verificar%20que%20esta%20solicitud%20es%20m%C3%ADa.%0A%0AAtentamente%2C%0A" class="btn btn--primary">✉️ Pedir mi retiro por correo</a>
+                        <a href="retiro.html" class="btn btn--ghost">🖨️ Carta de retiro para imprimir</a>
+                    </div>
+                    <p class="retiro__note">La copia de tu documento solo se usa para verificar que la solicitud es tuya, se archiva con la carta y no se publica, según la <a href="privacidad.html" class="contact__link">Política de Tratamiento de Datos</a>. La Secretaría anotará tu retiro en el Libro de Registro de Afiliados.</p>
+                </div>
 
                 <h3 class="section__subtitle-small fade-in">Prepárate en 3 pasos</h3>
                 <ol class="steps">
@@ -401,6 +437,13 @@
                 <!-- Agrega avisos nuevos arriba, copiando un <li>. -->
                 <ul class="avisos fade-in">
                     <li class="aviso">
+                        <time class="aviso__date" datetime="2026-11-11">11 nov 2026</time>
+                        <div>
+                            <strong>Depuración del libro de afiliados.</strong> Si ya no puedes participar en la Junta, te pedimos solicitar tu retiro voluntario: así podremos reunir el quórum de la próxima Asamblea.
+                            <a href="#retiro" class="contact__link">Cómo hacerlo</a>
+                        </div>
+                    </li>
+                    <li class="aviso">
                         <time class="aviso__date" datetime="2026-11-10">10 nov 2026</time>
                         <div>
                             <strong>Nuevo tablero «Así vamos».</strong> Lo que ya se hizo, lo solicitado y lo que espera respuesta, con fechas, plazos legales y línea de tiempo. También puedes inscribirte para recibir los avisos por correo.
@@ -419,6 +462,13 @@
                         <div>
                             <strong>Reforma de estatutos, versión 4.0, publicada para opiniones.</strong> Se votará en la próxima Asamblea General.
                             <a href="estatutos.html" class="contact__link">Leer y opinar</a>
+                        </div>
+                    </li>
+                    <li class="aviso">
+                        <time class="aviso__date" datetime="2026-09-18">18 sep 2026</time>
+                        <div>
+                            <strong>La Asamblea General no alcanzó el quórum.</strong> Se convocará de nuevo cuando esté depurado el libro de afiliados.
+                            <a href="#retiro" class="contact__link">Por qué importa</a>
                         </div>
                     </li>
                     <li class="aviso">
@@ -584,7 +634,7 @@
                         <div>
                             <span class="legal-data__badge">Rendición de cuentas</span>
                             <h3 id="informe-title" class="report__title">Informe General de Gestión</h3>
-                            <p class="report__cut">Corte al <time datetime="2026-11-10">10 de noviembre de 2026</time> · Junta Directiva reconocida mediante Resolución N° 282 de 2026</p>
+                            <p class="report__cut">Corte al <time datetime="2026-11-11">11 de noviembre de 2026</time> · Junta Directiva reconocida mediante Resolución N° 282 de 2026</p>
                         </div>
                         <button type="button" class="btn btn--ghost report__print" id="report-print">🖨️ Imprimir informe</button>
                     </header>
@@ -652,7 +702,7 @@
                                 <span class="status-badge status-badge--info">En curso</span>
                                 <h4 class="report__item-title">Gestiones ante las entidades</h4>
                             </div>
-                            <p>Hay <span data-act-count="total">12</span> actuaciones publicadas en <a href="#actuaciones" class="contact__link">Así vamos</a>: <span data-act-count="hecho">4</span> ya hechas, <span data-act-count="tramite">3</span> en trámite y <span data-act-count="espera">5</span> esperando respuesta, de las cuales <span data-act-count="vencidas">5</span> tienen el plazo legal vencido. Entre ellas están las dos peticiones de información del 2 de julio (JAC-003 y JAC-006, sobre presupuesto participativo y una sede comunal).</p>
+                            <p>Hay <span data-act-count="total">13</span> actuaciones publicadas en <a href="#actuaciones" class="contact__link">Así vamos</a>: <span data-act-count="hecho">4</span> ya hechas, <span data-act-count="tramite">4</span> en trámite y <span data-act-count="espera">5</span> esperando respuesta, de las cuales <span data-act-count="vencidas">5</span> tienen el plazo legal vencido. Entre ellas están las dos peticiones de información del 2 de julio (JAC-003 y JAC-006, sobre presupuesto participativo y una sede comunal).</p>
                             <span class="report__source">Compromiso: tablero público con fechas, plazos legales y línea de tiempo</span>
                         </li>
                     </ol>
@@ -660,9 +710,9 @@
                     <div class="report__next">
                         <h4 class="report__next-title">Próximos pasos</h4>
                         <ul>
-                            <li>Terminar la depuración de los libros recibidos en el empalme, incluido el libro de afiliados.</li>
+                            <li>Terminar la depuración de los libros recibidos en el empalme, incluido el libro de afiliados: retiros voluntarios y, con debido proceso ante la Comisión de Convivencia, los casos de cambio de residencia o inasistencia.</li>
                             <li>Recibir la decisión de cada dignatario sobre su continuidad y proveer los cargos vacantes en la Asamblea.</li>
-                            <li>Convocar la Asamblea General ordinaria (prevista para finales de noviembre de 2026) y publicar la convocatoria en este portal.</li>
+                            <li>Convocar de nuevo la Asamblea General (la del 18 de septiembre de 2026 no alcanzó el quórum) y publicar la convocatoria en este portal.</li>
                             <li>Presentar a la Asamblea el informe del empalme, el inventario y los estados financieros con sus soportes.</li>
                             <li>Someter a votación la reforma de estatutos 4.0, con las opiniones recibidas.</li>
                         </ul>
@@ -974,6 +1024,30 @@
 
                     <div class="accordion__item">
                         <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">¿Por qué no se ha hecho la Asamblea?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>La Asamblea convocada para el 18 de septiembre de 2026 no alcanzó el quórum. Para decisiones como la reforma de estatutos, la ley exige que se instale con la mitad más uno de los afiliados inscritos (Ley 2166 de 2021, art. 32). Por eso estamos depurando el libro de afiliados antes de convocarla de nuevo. La fecha se publicará en este portal.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">¿Cómo me retiro de la Junta?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Acércate a la Secretaria de la Junta con tu documento de identidad y firma la carta de retiro, o escríbenos al correo con tu nombre, número de documento y dirección, adjuntando una foto de tu documento. La renuncia es un derecho del afiliado (Ley 2166 de 2021, art. 28, lit. d). Encuentra el correo listo y la carta para imprimir en <a href="#retiro" class="contact__link">Retiro del libro de afiliados</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
                             <span class="accordion__title">¿Cuándo se reúne la Junta?</span>
                             <span class="accordion__arrow">&#9660;</span>
                         </button>
@@ -1177,6 +1251,7 @@
                     <ul class="footer__links">
                         <li><a href="#tramites">Trámites y solicitudes</a></li>
                         <li><a href="#avisos-correo">Recibir los avisos por correo</a></li>
+                        <li><a href="#retiro">Retirarme del libro de afiliados</a></li>
                         <li><a href="#asamblea">Asamblea General</a></li>
                         <li><a href="estatutos.html#opinar">Opinar sobre los estatutos</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -1208,7 +1283,7 @@
                 <p class="footer__legal footer__legal--meta">
                     <span>🔒 Sitio sin cookies de seguimiento · sin publicidad.</span>
                     <span>·</span>
-                    <span>Última actualización: 10 de noviembre de 2026</span>
+                    <span>Última actualización: 11 de noviembre de 2026</span>
                 </p>
             </div>
         </div>

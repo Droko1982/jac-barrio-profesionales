@@ -125,6 +125,7 @@
             font-size: 9.5pt;
         }
         .lista li:last-child { border-bottom: none; }
+        .lista--compacta li { grid-template-columns: 19mm 1fr; gap: 2mm; align-items: baseline; }
         .lista time { font-weight: 800; white-space: nowrap; color: var(--c); }
         .lista .t { font-weight: 700; }
         .lista .m { display: block; color: var(--suave); font-size: 8.8pt; margin-top: 0.4mm; }
@@ -184,12 +185,12 @@
                 <p class="cab__sub">Comuna 10 · Armenia, Quindío</p>
                 <h1 class="cab__titulo">Así vamos</h1>
             </div>
-            <p class="cab__fecha">Actualizado al<strong data-act-updated>10 de noviembre de 2026</strong>Cada punto tiene su oficio o radicado.</p>
+            <p class="cab__fecha">Actualizado al<strong data-act-updated>11 de noviembre de 2026</strong>Cada punto tiene su oficio o radicado.</p>
         </header>
 
         <section class="cuenta" aria-label="Resumen">
             <div class="c-hecho"><b data-act-count="hecho">4</b><span>✅ Ya se hizo</span></div>
-            <div class="c-tramite"><b data-act-count="tramite">3</b><span>🔄 Solicitado, en trámite</span></div>
+            <div class="c-tramite"><b data-act-count="tramite">4</b><span>🔄 En trámite</span></div>
             <div class="c-espera"><b data-act-count="espera">5</b><span>⏳ Esperando respuesta</span><small><span data-act-count="vencidas">5</span> con el plazo legal vencido</small></div>
         </section>
 
@@ -200,12 +201,12 @@
             </section>
             <div class="cuerpo__der">
                 <section class="bloque" style="--c: var(--azul)">
-                    <h2>🔄 Solicitado, en trámite</h2>
+                    <h2>🔄 En trámite</h2>
                     <ol class="lista" id="c-tramite"></ol>
                 </section>
                 <section class="bloque" style="--c: var(--verde)">
                     <h2>✅ Ya se hizo</h2>
-                    <ol class="lista" id="c-hecho"></ol>
+                    <ol class="lista lista--compacta" id="c-hecho"></ol>
                 </section>
             </div>
         </div>
@@ -214,7 +215,7 @@
         <footer class="pie">
             <svg class="qr" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 37 37" role="img" aria-label="Código QR al portal de la Junta" shape-rendering="crispEdges"><rect x="-2" y="-2" width="37" height="37" fill="#fff"/><path fill="#000" d="M0 0h7v1h-7zM8 0h1v1h-1zM10 0h5v1h-5zM18 0h1v1h-1zM21 0h1v1h-1zM24 0h1v1h-1zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h3v1h-3zM12 1h3v1h-3zM17 1h1v1h-1zM19 1h3v1h-3zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM12 2h3v1h-3zM16 2h1v1h-1zM19 2h3v1h-3zM23 2h1v1h-1zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h1v1h-1zM14 3h3v1h-3zM18 3h1v1h-1zM20 3h2v1h-2zM23 3h1v1h-1zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM11 4h1v1h-1zM15 4h2v1h-2zM18 4h4v1h-4zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM15 5h4v1h-4zM20 5h1v1h-1zM22 5h2v1h-2zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM9 7h5v1h-5zM15 7h2v1h-2zM18 7h1v1h-1zM20 7h1v1h-1zM22 7h1v1h-1zM0 8h1v1h-1zM3 8h6v1h-6zM14 8h1v1h-1zM16 8h2v1h-2zM19 8h2v1h-2zM22 8h1v1h-1zM24 8h2v1h-2zM28 8h1v1h-1zM30 8h3v1h-3zM0 9h2v1h-2zM3 9h3v1h-3zM8 9h1v1h-1zM10 9h1v1h-1zM12 9h4v1h-4zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM28 9h3v1h-3zM1 10h3v1h-3zM5 10h2v1h-2zM9 10h5v1h-5zM15 10h2v1h-2zM21 10h1v1h-1zM23 10h1v1h-1zM25 10h1v1h-1zM28 10h5v1h-5zM0 11h3v1h-3zM4 11h1v1h-1zM7 11h3v1h-3zM11 11h3v1h-3zM15 11h1v1h-1zM18 11h1v1h-1zM24 11h2v1h-2zM27 11h1v1h-1zM30 11h1v1h-1zM32 11h1v1h-1zM2 12h1v1h-1zM4 12h6v1h-6zM11 12h1v1h-1zM13 12h1v1h-1zM17 12h1v1h-1zM24 12h1v1h-1zM26 12h2v1h-2zM31 12h2v1h-2zM0 13h1v1h-1zM3 13h3v1h-3zM8 13h1v1h-1zM10 13h3v1h-3zM14 13h1v1h-1zM18 13h1v1h-1zM21 13h1v1h-1zM23 13h1v1h-1zM30 13h1v1h-1zM2 14h1v1h-1zM5 14h3v1h-3zM9 14h1v1h-1zM11 14h1v1h-1zM15 14h1v1h-1zM19 14h4v1h-4zM24 14h1v1h-1zM26 14h1v1h-1zM29 14h2v1h-2zM1 15h5v1h-5zM8 15h1v1h-1zM10 15h2v1h-2zM13 15h2v1h-2zM16 15h1v1h-1zM23 15h1v1h-1zM25 15h1v1h-1zM27 15h1v1h-1zM29 15h2v1h-2zM32 15h1v1h-1zM3 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h2v1h-2zM15 16h1v1h-1zM20 16h1v1h-1zM23 16h6v1h-6zM0 17h1v1h-1zM3 17h3v1h-3zM12 17h2v1h-2zM15 17h7v1h-7zM26 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM32 17h1v1h-1zM0 18h1v1h-1zM3 18h1v1h-1zM6 18h2v1h-2zM11 18h1v1h-1zM14 18h2v1h-2zM17 18h3v1h-3zM23 18h1v1h-1zM25 18h3v1h-3zM29 18h2v1h-2zM32 18h1v1h-1zM0 19h1v1h-1zM2 19h1v1h-1zM7 19h4v1h-4zM13 19h1v1h-1zM15 19h2v1h-2zM22 19h2v1h-2zM25 19h2v1h-2zM28 19h3v1h-3zM32 19h1v1h-1zM0 20h1v1h-1zM3 20h10v1h-10zM14 20h1v1h-1zM16 20h1v1h-1zM18 20h2v1h-2zM23 20h2v1h-2zM27 20h1v1h-1zM29 20h1v1h-1zM32 20h1v1h-1zM0 21h1v1h-1zM3 21h2v1h-2zM9 21h3v1h-3zM13 21h2v1h-2zM19 21h1v1h-1zM21 21h3v1h-3zM25 21h1v1h-1zM27 21h2v1h-2zM30 21h1v1h-1zM0 22h1v1h-1zM2 22h2v1h-2zM6 22h1v1h-1zM14 22h1v1h-1zM18 22h1v1h-1zM20 22h2v1h-2zM23 22h1v1h-1zM25 22h2v1h-2zM29 22h1v1h-1zM31 22h2v1h-2zM0 23h1v1h-1zM2 23h4v1h-4zM7 23h1v1h-1zM9 23h1v1h-1zM13 23h3v1h-3zM17 23h2v1h-2zM20 23h1v1h-1zM22 23h1v1h-1zM30 23h2v1h-2zM0 24h4v1h-4zM6 24h2v1h-2zM12 24h2v1h-2zM16 24h1v1h-1zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h5v1h-5zM32 24h1v1h-1zM8 25h3v1h-3zM15 25h4v1h-4zM21 25h2v1h-2zM24 25h1v1h-1zM28 25h1v1h-1zM30 25h2v1h-2zM0 26h7v1h-7zM8 26h3v1h-3zM12 26h1v1h-1zM15 26h1v1h-1zM17 26h1v1h-1zM19 26h1v1h-1zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM0 27h1v1h-1zM6 27h1v1h-1zM8 27h4v1h-4zM13 27h1v1h-1zM16 27h4v1h-4zM22 27h3v1h-3zM28 27h4v1h-4zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM8 28h1v1h-1zM16 28h2v1h-2zM19 28h2v1h-2zM22 28h7v1h-7zM32 28h1v1h-1zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM8 29h3v1h-3zM12 29h1v1h-1zM16 29h1v1h-1zM18 29h3v1h-3zM22 29h2v1h-2zM25 29h1v1h-1zM27 29h1v1h-1zM29 29h4v1h-4zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM9 30h2v1h-2zM13 30h3v1h-3zM19 30h1v1h-1zM22 30h3v1h-3zM27 30h3v1h-3zM31 30h2v1h-2zM0 31h1v1h-1zM6 31h1v1h-1zM9 31h1v1h-1zM11 31h2v1h-2zM14 31h1v1h-1zM18 31h3v1h-3zM25 31h8v1h-8zM0 32h7v1h-7zM8 32h2v1h-2zM12 32h2v1h-2zM15 32h3v1h-3zM19 32h1v1h-1zM22 32h7v1h-7z"/></svg>
             <div>
-                <p class="asamblea"><b>📅 Próxima Asamblea General:</b> <span id="c-asamblea">finales de noviembre de 2026; fecha, hora y lugar por confirmar.</span> Para votar debes estar afiliado; lleva tu documento.</p>
+                <p class="asamblea"><b>📅 Próxima Asamblea:</b> <span id="c-asamblea">fecha por definir (la del 18 sep no alcanzó el quórum).</span> <b>¿Ya no puedes participar?</b> Pide tu retiro del libro de afiliados.</p>
                 <p class="pie__titulo">Escanea para ver el detalle, hacer solicitudes y recibir los avisos</p>
                 <p>Escríbenos: <strong>jaclosprofesionales@gmail.com</strong></p>
                 <p class="url">droko1982.github.io/jac-barrio-profesionales</p>
@@ -270,7 +271,7 @@
             var lT = document.getElementById('c-tramite');
             tra.forEach(function (it) {
                 var u = ultima(it);
-                lT.appendChild(li(it, [['m', 'Última novedad: ' + F.corta(u[0]) + '.' + (it.pendiente ? ' Falta: ' + it.pendiente : '')]]));
+                lT.appendChild(li(it, [['m', it.pendiente ? 'Falta: ' + it.pendiente : 'Última novedad: ' + F.corta(u[0]) + '.']]));
             });
             var lH = document.getElementById('c-hecho');
             hec.forEach(function (it) {

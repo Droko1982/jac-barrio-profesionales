@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carta para pedir el retiro voluntario del libro de afiliados de la Junta de Acción Comunal del Barrio Los Profesionales.">
+    <meta name="robots" content="noindex, follow">
+    <title>Carta de retiro voluntario · JAC Barrio Los Profesionales</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232E7D32'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='bold' font-size='16' fill='white'%3EJAC%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            color: #1a1a2e;
+            background: #eef1f5;
+            line-height: 1.55;
+        }
+        .barra {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 1rem;
+            text-align: center;
+        }
+        .barra p { color: #555; margin-bottom: 0.75rem; }
+        .barra button, .barra a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            min-height: 44px;
+            margin: 0.25rem;
+            padding: 0.55rem 1.2rem;
+            font: inherit;
+            font-weight: 700;
+            border-radius: 999px;
+            border: 2px solid #2E7D32;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .barra button { background: #2E7D32; color: #fff; }
+        .barra a { background: #fff; color: #2E7D32; }
+        .hoja {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 2rem;
+            padding: 18mm 22mm 14mm;
+            background: #fff;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+            font-size: 11pt;
+        }
+        .linea {
+            display: inline-block;
+            min-width: 60mm;
+            padding: 0 1mm;
+            font: inherit;
+            color: inherit;
+            border: none;
+            border-bottom: 1px solid #1a1a2e;
+            background: transparent;
+        }
+        .linea--corta { min-width: 30mm; width: 30mm; }
+        .linea--larga { width: 100%; }
+        .lugar { margin-bottom: 9mm; }
+        .dest { margin-bottom: 8mm; }
+        .asunto { font-weight: 800; margin-bottom: 8mm; }
+        .hoja p + p { margin-top: 5mm; }
+        .datos { margin-top: 8mm; display: grid; gap: 4mm; }
+        .datos label { display: grid; grid-template-columns: 50mm 1fr; align-items: end; gap: 3mm; white-space: nowrap; }
+        .firma { margin-top: 18mm; width: 80mm; border-top: 1px solid #1a1a2e; padding-top: 2mm; }
+        .recibido {
+            margin-top: 12mm;
+            padding: 5mm 6mm;
+            border: 1.5px dashed #888;
+            border-radius: 3mm;
+            font-size: 10pt;
+        }
+        .recibido h2 { font-size: 10.5pt; margin-bottom: 3mm; }
+        .recibido div { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 8mm; }
+        .recibido span { display: block; border-bottom: 1px solid #888; padding-top: 6mm; }
+        .hoja .recibido p { margin-top: 0; }
+        .nota { margin-top: 8mm; font-size: 8.8pt; color: #555; }
+        @page { size: A4 portrait; margin: 0; }
+        @media print {
+            body { background: #fff; }
+            .barra { display: none; }
+            .hoja { margin: 0; box-shadow: none; min-height: 0; padding-bottom: 10mm; }
+            .linea { border-bottom-color: #1a1a2e; }
+        }
+        @media screen and (max-width: 820px) {
+            .hoja { width: auto; min-height: 0; margin: 0 0.75rem 1.5rem; padding: 1.5rem 1.1rem; }
+            .datos label { grid-template-columns: 1fr; gap: 1mm; }
+            .linea { min-width: 0; width: 100%; }
+            .recibido div { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="barra">
+        <p>Puedes llenarla aquí antes de imprimir, o imprimirla en blanco y llenarla a mano. Fírmala y entrégala a la Secretaria de la Junta, o envíale una foto al correo <strong>jaclosprofesionales@gmail.com</strong> junto con una foto de tu documento de identidad.</p>
+        <button type="button" onclick="window.print()">🖨️ Imprimir carta</button>
+        <a href="index.html#retiro">← Volver al portal</a>
+    </div>
+
+    <main class="hoja" aria-label="Carta de retiro voluntario">
+        <p class="lugar">Armenia, Quindío, <input class="linea" type="text" aria-label="Fecha" placeholder="día, mes y año"></p>
+
+        <p class="dest">Señores<br><strong>Junta Directiva</strong><br>Junta de Acción Comunal del Barrio Los Profesionales<br>Comuna 10, Armenia, Quindío</p>
+
+        <p class="asunto">Asunto: Renuncia voluntaria a la calidad de afiliado(a)</p>
+
+        <p>Respetados señores:</p>
+        <p>De manera libre y voluntaria, presento mi renuncia a la calidad de afiliado(a) a la Junta de Acción Comunal del Barrio Los Profesionales, conforme al artículo 28, literal d, de la Ley 2166 de 2021, y solicito que se anote mi retiro en el Libro de Registro de Afiliados.</p>
+        <p>Entiendo que, si más adelante lo deseo, podré solicitar de nuevo mi afiliación cumpliendo los requisitos de ley.</p>
+
+        <div class="datos">
+            <label>Nombres y apellidos: <input class="linea linea--larga" type="text" autocomplete="name"></label>
+            <label>Documento de identidad: <input class="linea linea--larga" type="text" inputmode="numeric"></label>
+            <label>Dirección en el barrio: <input class="linea linea--larga" type="text" autocomplete="street-address"></label>
+            <label>Correo o teléfono: <input class="linea linea--larga" type="text"></label>
+        </div>
+
+        <p class="firma">Firma del afiliado(a)</p>
+
+        <section class="recibido" aria-label="Espacio para la Junta">
+            <h2>Espacio para la Junta · Recibido</h2>
+            <div>
+                <p>Nombre de quien recibe<span></span></p>
+                <p>Cargo<span></span></p>
+                <p>Fecha y hora<span></span></p>
+                <p>Firma<span></span></p>
+            </div>
+        </section>
+
+        <p class="nota">Los datos de esta carta y la copia del documento de identidad se usan solo para verificar la solicitud y actualizar el Libro de Registro de Afiliados; se archivan y no se publican (Ley 1581 de 2012 y Política de Tratamiento de Datos de la JAC).</p>
+    </main>
+</body>
+</html>
