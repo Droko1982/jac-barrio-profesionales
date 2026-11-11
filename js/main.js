@@ -469,11 +469,17 @@
         }
 
         // Envío a FormSubmit. Responde 200 aunque el correo no esté activado: hay que leer «success».
+        // Se envía como JSON: el modo AJAX de FormSubmit responde «Server Error» a los envíos
+        // multipart (FormData) para este correo, y sí acepta JSON (probado el 11 nov 2026).
         function enviarAJunta(url, formData) {
+            const datos = {};
+            formData.forEach(function (valor, clave) {
+                datos[clave] = clave in datos ? datos[clave] + ', ' + valor : valor;
+            });
             return fetch(url, {
                 method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
+                body: JSON.stringify(datos),
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
             })
                 .then(function (response) {
                     return response.json().catch(function () { return {}; }).then(function (body) {
