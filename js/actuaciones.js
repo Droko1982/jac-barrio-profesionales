@@ -29,7 +29,7 @@
    ========================================================================== */
 
 window.JAC_DATOS = {
-    actualizado: '2026-11-10',
+    actualizado: '2026-11-11',
 
     /* Próxima Asamblea General.
        Al convocarla: estado 'convocada' y completa fecha (AAAA-MM-DD),
@@ -151,6 +151,19 @@ window.JAC_DATOS = {
             ["2026-07-08", "Planeación visitó el sitio y recomendó la tala del árbol (oficio 2026EE-10728)."]
         ],
         "pendiente": "Que se ejecute la intervención."
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-09-18",
+        "numero": "",
+        "titulo": "Asamblea General: volver a convocarla con el libro de afiliados al día",
+        "entidad": "Junta Directiva · Secretaría",
+        "plazo": 0,
+        "novedades": [
+            ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum."],
+            ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados."]
+        ],
+        "pendiente": "Depurar el libro de afiliados y convocar de nuevo la Asamblea (fecha por definir)."
     },
     {
         "estado": "hecho",
