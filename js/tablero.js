@@ -462,7 +462,9 @@
         var estabaHablando = synth.speaking || synth.pending;
         detenerLectura();
         if (mismo) return;  // segundo toque = detener
-        frases = frases.map(function (f) { return String(f).replace(/\s·\s/g, ', ').trim(); }).filter(Boolean);
+        frases = frases.map(function (f) {
+            return String(f).replace(/\s·\s/g, ', ').replace(/N\.\s?°\s?/g, 'número ').trim();
+        }).filter(Boolean);
         if (!frases.length) return;
         botonActivo = btn;
         btn.innerHTML = '<span aria-hidden="true">⏹️</span> Detener';
@@ -509,7 +511,7 @@
             window.speechSynthesis.addEventListener('voiceschanged', function () { window.speechSynthesis.getVoices(); });
         }
         window.addEventListener('pagehide', detenerLectura);
-        $all('[data-listen], #act-listen').forEach(function (b) {
+        $all('[data-listen], #act-listen, #hero-listen').forEach(function (b) {
             b.hidden = false;
             b.setAttribute('data-etiqueta', b.innerHTML);
             b.setAttribute('aria-pressed', 'false');
@@ -557,6 +559,42 @@
             return partes;
         };
         btnEscuchar.addEventListener('click', function () { leer(resumen(), btnEscuchar); });
+    }
+
+    /* Botón de la portada: resumen corto de toda la página, para quien no lee bien la pantalla */
+    var btnPortada = document.getElementById('hero-listen');
+    if (btnPortada && puedeHablar) {
+        btnPortada.parentNode.hidden = false;
+        var resumenPagina = function () {
+            var partes = [
+                'Te damos la bienvenida a la página de la Junta de Acción Comunal del barrio Los Profesionales, en la comuna 10 de Armenia.',
+                'Aquí te contamos, en palabras sencillas, lo que ya se hizo, lo que hemos pedido y lo que sigue esperando respuesta.',
+                'La Junta ha enviado ' + conteo.enviados + ' oficios, peticiones y escritos a las entidades.',
+                'De las ' + conteo.total + ' actuaciones, ya se hicieron ' + conteo.hecho + ', hay ' + conteo.tramite +
+                    ' en trámite y ' + conteo.espera + ' esperando respuesta.'
+            ];
+            var esp = items.filter(function (i) { return i.estado === 'espera'; })
+                .sort(function (a, b) { return a.fecha.localeCompare(b.fecha); });
+            if (esp.length) {
+                partes.push('Esperando respuesta:');
+                esp.forEach(function (it) { partes.push(it.titulo + '.'); });
+            }
+            var tra = items.filter(function (i) { return i.estado === 'tramite'; });
+            if (tra.length) {
+                partes.push('En trámite:');
+                tra.forEach(function (it) { partes.push(it.titulo + '.'); });
+            }
+            var A = D.asamblea;
+            if (A && A.estado === 'convocada' && A.fecha) {
+                partes.push('La próxima Asamblea es el ' + larga(A.fecha) + (A.lugar ? ', en ' + A.lugar : '') + '. Lleva tu documento de identidad.');
+            } else {
+                partes.push('La próxima Asamblea todavía no tiene fecha: primero se termina de depurar el libro de afiliados.');
+            }
+            partes.push('Para pedir algo a la Junta, toca el botón Haz una solicitud, o escribe al correo de la Junta.');
+            partes.push('En cada sección hay un botón Escuchar para oír más detalles. Y si quieres ver la letra más grande, usa el botón Letra grande, arriba.');
+            return partes;
+        };
+        btnPortada.addEventListener('click', function () { leer(resumenPagina(), btnPortada); });
     }
 
     /* ---------- Próxima Asamblea ---------- */

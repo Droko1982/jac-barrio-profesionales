@@ -3885,6 +3885,41 @@ html.text-lg {
     border-radius: 999px;
 }
 
+/* La píldora «Escuchar» de la portada es un botón: se lee la página en voz alta */
+.hero__help li.hero__help-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+.hero__listen {
+    display: inline-block;
+    text-align: center;
+    min-height: 44px;
+    padding: 0.5rem 1.1rem;
+    font: inherit;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.24);
+    border: 2px solid #E3C259;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.hero__listen:hover { background: rgba(255, 255, 255, 0.34); }
+
+.hero__listen:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+.hero__listen[aria-pressed="true"] {
+    color: #1A2945;
+    background: #E3C259;
+}
+
 /* --- WhatsApp --- */
 .act-btn--wa,
 .btn--wa {
