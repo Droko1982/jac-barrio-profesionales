@@ -5001,3 +5001,76 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 /* Sello con cinta (320x300) */
 .hero__logo { width: 192px; height: 180px; }
 @media (max-width: 768px) { .hero__logo { width: 150px; height: 141px; } }
+
+/* ==========================================================
+   WhatsApp de la Junta (Secretaria) — nov 2026
+   ========================================================== */
+.whatsapp-btn {
+    width: auto;
+    height: auto;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem 0.8rem 1rem;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    background-color: #1FAF55;
+    border-radius: 999px;
+}
+
+.whatsapp-btn > span[aria-hidden] { font-size: 1.35rem; }
+
+.whatsapp-btn:hover,
+.whatsapp-btn:focus-visible { color: #fff; background-color: #178A43; transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+    .whatsapp-btn { display: none; }
+}
+
+@media print {
+    .whatsapp-btn { display: none !important; }
+}
+
+.bottom-bar__item--wa { color: #178A43; }
+[data-theme="dark"] .bottom-bar__item--wa { color: #69F0AE; }
+
+.nav__menu .nav__link.nav__link--wa {
+    color: #fff;
+    background: #1FAF55;
+}
+
+.tramites__wa {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: -0.5rem 0 1.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.contact__info-item--wa {
+    padding: 0.9rem;
+    background: rgba(31, 175, 85, 0.08);
+    border: 1px solid rgba(31, 175, 85, 0.35);
+    border-radius: var(--radius-md);
+}
+
+.contact__wa-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+.form__wa { margin-top: 0.75rem; }
+
+.tel__item--wa {
+    color: #fff;
+    background: #1FAF55;
+    border-color: #1FAF55;
+}
+
+.tel__item--wa .tel__num,
+[data-theme="dark"] .tel__item--wa .tel__num { color: #fff; }
