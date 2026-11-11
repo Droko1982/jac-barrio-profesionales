@@ -4056,7 +4056,7 @@ html.text-lg {
         bottom: 0;
         z-index: 998;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, minmax(0, 1fr));
         padding-bottom: env(safe-area-inset-bottom, 0);
         background: var(--color-bg-card);
         border-top: 1px solid var(--color-border);
@@ -4070,8 +4070,12 @@ html.text-lg {
         justify-content: center;
         gap: 0.15rem;
         min-height: 62px;
-        font-size: 0.78rem;
+        padding: 0 2px;
+        font-size: 12px;
+        line-height: 1.15;
         font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
         color: var(--color-text);
     }
 
@@ -4141,3 +4145,454 @@ a[href^="mailto:"],
 .act-tl__body,
 .legal-data__header > div,
 .contact__info-item > div { min-width: 0; }
+
+/* --- Documentos de cada actuación (PDF sin cédulas, teléfonos ni firmas) --- */
+.act-card__docs { margin: 0; }
+
+.act-card__docs summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: var(--color-primary-alpha);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+[data-theme="dark"] .act-card__docs summary { color: #81C784; }
+
+.act-card__docs[open] summary { margin-bottom: 0.45rem; }
+
+.act-docs {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.act-doc {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-text);
+    text-decoration: none;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow-wrap: anywhere;
+}
+
+.act-doc:hover,
+.act-doc:focus-visible {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .act-doc:hover,
+[data-theme="dark"] .act-doc:focus-visible { color: #81C784; border-color: #81C784; }
+
+.act-doc__icon { flex: none; font-size: 1.2rem; }
+
+.act-doc__name { flex: 1; min-width: 0; }
+
+.act-doc__type {
+    flex: none;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #fff;
+    background: #C62828;
+    border-radius: 4px;
+}
+
+@media print {
+    .act-card__docs { display: none !important; }
+}
+
+/* ==========================================================
+   Teléfonos útiles (nov 2026)
+   ========================================================== */
+.tel {
+    margin-top: 2.75rem;
+    padding: 1.5rem;
+    background: var(--color-bg-card);
+    border: 2px solid rgba(198, 40, 40, 0.35);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.tel__title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--color-text);
+}
+
+.tel__intro {
+    margin: 0.35rem 0 1.25rem;
+    color: var(--color-text-secondary);
+}
+
+.tel__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+    gap: 1.25rem;
+}
+
+.tel__grupo-title {
+    margin-bottom: 0.55rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-text);
+}
+
+.tel__lista {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tel__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.15rem;
+    min-height: 56px;
+    padding: 0.55rem 0.8rem;
+    color: var(--color-text);
+    text-decoration: none;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+a.tel__item:hover,
+a.tel__item:focus-visible {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+.tel__num {
+    flex: none;
+    min-width: 3.4rem;
+    font-size: 1.25rem;
+    font-weight: 900;
+    white-space: nowrap;
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+[data-theme="dark"] .tel__num { color: #81C784; }
+
+.tel__desc {
+    flex: 1 1 9rem;
+    min-width: 0;
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.tel__item--urgente {
+    color: #fff;
+    background: #C62828;
+    border-color: #C62828;
+}
+
+.tel__item--urgente .tel__num,
+[data-theme="dark"] .tel__item--urgente .tel__num {
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+a.tel__item--urgente:hover,
+a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.3); }
+
+.tel__item--pendiente { border-style: dashed; }
+
+.tel__item--pendiente .tel__num {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .tel__item--pendiente .tel__num { color: var(--color-text-secondary); }
+
+.tel__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+}
+
+.tel__fuente {
+    margin-top: 0.85rem;
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 480px) {
+    .tel { padding: 1.1rem 0.9rem; }
+    .tel__num { font-size: 1.12rem; }
+}
+
+/* ==========================================================
+   Negocios y emprendimientos del barrio (nov 2026)
+   ========================================================== */
+.neg__filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.neg__filtros[hidden] { display: none; }
+
+.neg__filtro {
+    min-height: 44px;
+    padding: 0.4rem 0.9rem;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.neg__filtro[aria-pressed="true"] {
+    color: #fff;
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.neg__lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr));
+    gap: 1rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+}
+
+.neg__lista:empty { display: none; }
+
+.neg-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-light);
+    border-top: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.neg-card__cat {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+}
+
+.neg-card__icon { font-size: 1.15rem; }
+
+.neg-card__name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+}
+
+.neg-card__desc { font-size: 0.95rem; line-height: 1.45; }
+
+.neg-card__who {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.neg-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.neg-card__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 44px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    background: var(--color-primary-alpha);
+    border-radius: 999px;
+}
+
+[data-theme="dark"] .neg-card__btn { color: #81C784; }
+
+.neg-card__btn--wa,
+[data-theme="dark"] .neg-card__btn--wa {
+    color: #fff;
+    background: #1FAF55;
+}
+
+.neg__vacio {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    background: var(--color-bg-alt);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.neg__vacio[hidden] { display: none; }
+
+.neg__vacio-icon { font-size: 2.4rem; }
+
+.neg__vacio-title {
+    margin: 0.35rem 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.neg__inscribir {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.neg__pasos {
+    display: grid;
+    gap: 0.8rem;
+    margin: 1rem 0 1.25rem;
+    padding: 0;
+    list-style: none;
+}
+
+.neg__pasos li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    line-height: 1.45;
+}
+
+.neg__paso-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    font-weight: 900;
+    color: #fff;
+    background: var(--color-primary);
+    border-radius: 50%;
+}
+
+.neg__nota {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.neg__publicar {
+    margin: 0 0 1.25rem;
+    padding: 1rem 1rem 0.25rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.neg__publicar legend {
+    padding: 0 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.neg__wa { margin: -0.4rem 0 1rem; }
+
+@media (max-width: 768px) {
+    .neg__inscribir { grid-template-columns: 1fr; }
+    .neg__publicar .form__row { grid-template-columns: 1fr; gap: 0; }
+}
+
+@media print {
+    #negocios .neg__inscribir,
+    .tel__acciones { display: none !important; }
+}
+
+.neg__como .block__title { text-align: left; }
+
+@media (max-width: 360px) {
+    .bottom-bar__item { font-size: 11px; }
+    .bottom-bar__item span { font-size: 1.25rem; }
+}
+
+.neg__publicar { min-width: 0; }
+.neg__publicar .form__input { min-width: 0; }
+
+/* Títulos largos («emprendimientos») sin desbordar con letra grande */
+.section__title { overflow-wrap: break-word; hyphens: auto; }
+
+/* ==========================================================
+   Menú con 9 opciones (nov 2026): una sola línea en escritorio;
+   menú de hamburguesa entre 769 y 1239 px (tabletas y portátiles pequeños)
+   ========================================================== */
+@media (min-width: 769px) {
+    .nav__link { white-space: nowrap; }
+}
+
+@media (min-width: 1240px) {
+    .nav__link { padding: 0.45rem 0.55rem; }
+    .nav__menu { gap: 0.05rem; }
+}
+
+@media (min-width: 769px) and (max-width: 1239px) {
+    .nav__toggle { display: flex; }
+
+    .nav__menu {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 300px;
+        height: calc(100vh - var(--header-height));
+        flex-direction: column;
+        align-items: stretch;
+        background-color: var(--color-bg);
+        padding: 2rem 1.5rem;
+        box-shadow: var(--shadow-xl);
+        transition: right var(--transition);
+        gap: 0.25rem;
+        overflow-y: auto;
+        z-index: 1002;
+    }
+
+    .nav__menu.open { right: 0; }
+
+    .nav__link {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    .nav__toggle.active .nav__toggle-line:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .nav__toggle.active .nav__toggle-line:nth-child(2) { opacity: 0; }
+    .nav__toggle.active .nav__toggle-line:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+}

@@ -122,16 +122,17 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 0.3mm;
-            padding: 1.1mm 1mm;
+            padding: 0.8mm 0.8mm;
             border-bottom: 1px solid var(--borde);
-            font-size: 9.5pt;
+            font-size: 8.8pt;
+            line-height: 1.26;
         }
         .lista li:last-child { border-bottom: none; }
         .lista--compacta li { grid-template-columns: 19mm 1fr; gap: 2mm; align-items: baseline; }
         .lista time { font-weight: 800; white-space: nowrap; color: var(--c); }
         .lista .t { font-weight: 700; }
-        .lista .m { display: block; color: var(--suave); font-size: 8.8pt; margin-top: 0.4mm; }
-        .lista .r { display: block; font-size: 8.8pt; font-weight: 700; color: var(--ambar); margin-top: 0.4mm; }
+        .lista .m { display: block; color: var(--suave); font-size: 8.2pt; margin-top: 0.2mm; }
+        .lista .r { display: block; font-size: 8.2pt; font-weight: 700; color: var(--ambar); margin-top: 0.2mm; }
         .lista .r.tarde { color: var(--rojo); }
 
         .pie .asamblea {
@@ -145,13 +146,13 @@
         .pie {
             margin-top: auto;
             display: grid;
-            grid-template-columns: 30mm 1fr;
-            gap: 6mm;
+            grid-template-columns: 26mm 1fr;
+            gap: 5mm;
             align-items: center;
             padding-top: 3mm;
             border-top: 2px solid var(--borde);
         }
-        .qr { width: 30mm; height: 30mm; display: block; }
+        .qr { width: 26mm; height: 26mm; display: block; }
         .pie__titulo { font-size: 13pt; font-weight: 900; color: var(--verde-osc); }
         .pie p { font-size: 9.8pt; margin-top: 1mm; }
         .pie .url { font-size: 9pt; color: var(--suave); word-break: break-all; }
@@ -224,7 +225,7 @@
                 <p class="pie__titulo">Escanea para ver el detalle, hacer solicitudes y recibir los avisos</p>
                 <p>Escríbenos: <strong>jaclosprofesionales@gmail.com</strong></p>
                 <p class="url">droko1982.github.io/jac-barrio-profesionales</p>
-                <p class="nota">Plazo legal: las entidades deben responder en 15 días hábiles, o en 10 si se piden documentos o información (Ley 1755 de 2015). Ante una emergencia, llama al 123.</p>
+                <p class="nota">Plazo legal: 15 días hábiles, o 10 si se piden documentos (Ley 1755 de 2015). Emergencias: 123.</p>
             </div>
         </footer>
     </main>
@@ -236,7 +237,7 @@
             var D = window.JAC_DATOS, F = window.JAC_FECHAS;
             if (!D || !F) return;
 
-            function li(it, extra) {
+            function li(it, extra, sinNumero) {
                 var li = document.createElement('li');
                 var t = document.createElement('time');
                 t.dateTime = it.fecha;
@@ -244,7 +245,7 @@
                 var d = document.createElement('div');
                 var tt = document.createElement('span');
                 tt.className = 't';
-                tt.textContent = it.titulo + (it.numero ? ' (' + it.numero + ')' : '');
+                tt.textContent = it.titulo + (it.numero && !sinNumero ? ' (' + it.numero + ')' : '');
                 d.appendChild(tt);
                 (extra || []).forEach(function (e) {
                     var s = document.createElement('span');
@@ -280,7 +281,7 @@
             });
             var lH = document.getElementById('c-hecho');
             hec.forEach(function (it) {
-                lH.appendChild(li(it, []));
+                lH.appendChild(li(it, [], true));
             });
 
             var A = D.asamblea;

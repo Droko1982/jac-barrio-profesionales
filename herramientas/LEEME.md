@@ -20,6 +20,8 @@ Una fila por actuación. Columnas:
 | `plazo_dias` | 15 en general · 10 si se pidieron documentos o información · 0 si no aplica |
 | `novedades` | Una por línea dentro de la celda (Alt+Enter): `2026-11-20: Respondió Planeación (oficio 2026EE-1234).` |
 | `pendiente` | Lo que falta. Puede quedar vacío |
+| `fotos` | Opcional. Una por línea: `nombre.jpg \| descripción` (ver «Fotos») |
+| `documentos` | Opcional. Uno por línea: `nombre.pdf \| descripción` (ver «Documentos») |
 
 Cuando llegue una respuesta: agregue una línea en `novedades` y cambie el `estado`.
 
@@ -41,7 +43,9 @@ teléfono o una cédula.
 - Solo lo que tenga soporte: oficio, radicado o respuesta escrita.
 - Nada de datos personales: ni cédulas, ni teléfonos, ni direcciones de vecinos, ni
   nombres de particulares (por ejemplo, dueños de predios).
-- Los litigios y trámites personales no van en el portal.
+- Los procesos que adelanta la Junta (impugnaciones, acciones populares) sí van, contados
+  con hechos, fechas y radicados, sin calificar ni acusar a personas. Los trámites
+  personales de los dignatarios no van.
 
 ### Fotos de las actuaciones
 
@@ -52,6 +56,38 @@ Si la hoja no tiene esa columna, el script conserva las fotos ya publicadas.
 
 Antes de publicar una foto: que no se vean caras, placas legibles, números de casa
 ni letreros con teléfonos. Si aparecen, se difuminan o se escoge otra.
+
+### Documentos (cartas y respuestas en PDF)
+
+Van en `documentos/` y **siempre tachados** con `herramientas/publicar_documento.py`
+(requiere `pip install pymupdf`). La herramienta borra de verdad —no solo tapa— los números
+de cédula, celulares, correos personales, la dirección de residencia del presidente, los
+códigos de validación de la Alcaldía y la Personería (con ellos cualquiera descarga el
+original sin tachar) y los metadatos.
+
+1. Ver qué tiene el documento (imágenes numeradas y una cuadrícula en puntos):
+
+   ```
+   python herramientas/publicar_documento.py analizar "carta.pdf" vista
+   ```
+
+2. Publicarlo, retirando las firmas y los códigos QR que muestre el análisis:
+
+   ```
+   python herramientas/publicar_documento.py publicar "carta.pdf" documentos/JAC-014-2026-tema.pdf ^
+       --quitar 3:1 3:2:qr --vista vista
+   ```
+
+   Otras opciones: `--zona PAG:x0,y0,x1,y1` para tachar a mano (firmas en escaneos, placas
+   en fotos), `--texto "Nombre Apellido"` para nombres de particulares (por ejemplo, dueños
+   de predios), `--paginas 1-3` para no publicar hojas de firmas y `--comprimir` solo para
+   escaneos. No use `--comprimir` en carteleras con fondos de color.
+
+3. **Abrir siempre la vista previa** (carpeta `vista`) y revisar página por página antes
+   de publicar. Si el programa escribe «¡QUEDA!», algo no se tachó.
+
+En la hoja, la columna `documentos` lleva uno por línea: `JAC-014-2026-tema.pdf | Oficio
+JAC-014-2026 (15 nov 2026)`. Si la hoja no tiene esa columna, se conservan los publicados.
 
 ## 2. Próxima Asamblea
 
@@ -80,6 +116,8 @@ empiezan por `[Web JAC]`:
   es el que el vecino ve en pantalla; úselo al responder.
 - `[Web JAC] Quiero recibir los avisos — <nombre>`: agregar ese correo a la lista de avisos.
 - `[Web JAC] Opinión estatutos …`: comentarios sobre la reforma.
+- `[Web JAC] Negocio para el directorio — <nombre>`: un vecino quiere publicar su negocio
+  (ver sección 4).
 
 La primera vez, FormSubmit envía un correo de **activación** a la cuenta de la Junta:
 hay que abrirlo y confirmar. Sin eso, los formularios no entregan mensajes.
@@ -91,3 +129,31 @@ esa parte de `js/main.js` ni de `estatutos.html`.
 
 Para enviar avisos a la lista, escriba desde la cuenta de la Junta poniendo a los
 suscriptores en **CCO** (copia oculta), para no exponer los correos de los vecinos.
+
+## 4. Negocios del barrio (directorio)
+
+Los negocios publicados están en `js/negocios.js`. Cuando llegue un correo
+«Negocio para el directorio»:
+
+1. Confirme con la persona por el contacto que dejó (ese contacto **no** se publica).
+2. Copie el bloque de ejemplo de `js/negocios.js`, quítele los `/* */` y complételo solo
+   con los datos que la persona autorizó. Categorías: `comida`, `salud`, `belleza`,
+   `hogar`, `profesional`, `educacion`, `tienda`, `tecnologia`, `mascotas`,
+   `transporte`, `otro`.
+3. Publique (`git add js/negocios.js`, commit y push) o pídaselo a Claude.
+
+Si alguien pide corregir o retirar su negocio, hágalo de inmediato (Ley 1581 de 2012).
+Con 4 o más negocios, el portal muestra botones para filtrar por tipo.
+
+## 5. Teléfonos útiles
+
+Están en `index.html`, bloque `id="telefonos"` (dentro de «¿Qué necesitas?»). Solo números
+verificados en fuentes oficiales; revise la fecha de la nota de fuentes cuando los cambie.
+
+**Pendiente:** el número del **cuadrante de Policía** que cubre el barrio. Cuando la Policía
+lo confirme, reemplace el renglón «Cuadrante … en confirmación» por un enlace como los
+demás, por ejemplo:
+
+```html
+<li><a class="tel__item" href="tel:+57312XXXXXXX"><span class="tel__num">312 XXX XXXX</span><span class="tel__desc">Cuadrante N.° __ de la Policía (CAI ____)</span></a></li>
+```
