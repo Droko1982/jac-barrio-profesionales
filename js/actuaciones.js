@@ -158,7 +158,7 @@ window.JAC_DATOS = {
         "estado": "tramite",
         "fecha": "2026-06-11",
         "numero": "JAC-002-2026 · 2026PQR26154",
-        "titulo": "Tala controlada de un árbol en riesgo de caída y manejo de un guadual en el barrio",
+        "titulo": "Tala controlada de un árbol en riesgo de caída y manejo de un guadual (Carrera 16 # 4N-39)",
         "entidad": "Planeación · Gestión del Riesgo (OMGERD) · Secretaría de Gobierno",
         "plazo": 15,
         "novedades": [
