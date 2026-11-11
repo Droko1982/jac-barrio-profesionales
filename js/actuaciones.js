@@ -63,7 +63,12 @@ window.JAC_DATOS = {
             ["2026-05-22", "Derecho de petición radicado."]
         ],
         "pendiente": "Respuesta y medidas de las autoridades.",
-        "fotos": [],
+        "fotos": [
+            ["basuras-comercio-1.jpg", "Basuras regadas junto a un árbol, sobre la vía pública (22 may 2026)"],
+            ["basuras-comercio-2.jpg", "Bolsas y residuos acumulados al pie de un árbol (22 may 2026)"],
+            ["basuras-comercio-3.jpg", "Empaques, bandejas y bolsas tirados en el andén (22 may 2026)"],
+            ["basuras-comercio-4.jpg", "Basuras junto a un poste del barrio (22 may 2026)"]
+        ],
         "documentos": [
             ["basuras-2026-05-22-derecho-de-peticion.pdf", "Derecho de petición de la Junta (22 may 2026)"]
         ]
@@ -158,7 +163,8 @@ window.JAC_DATOS = {
         ],
         "pendiente": "Confirmar que las empresas dueñas de los cables los retiren o ajusten.",
         "fotos": [
-            ["cables-poste.jpg", "Cables sueltos y enredados en un poste del barrio (22 may 2026)"]
+            ["cables-poste.jpg", "Cables sueltos y enredados en un poste del barrio (22 may 2026)"],
+            ["cables-anden.jpg", "Cable suelto a baja altura sobre un andén (22 may 2026)"]
         ],
         "documentos": [
             ["cables-2026-05-22-derecho-de-peticion.pdf", "Derecho de petición de la Junta (22 may 2026)"],
@@ -185,7 +191,11 @@ window.JAC_DATOS = {
         ],
         "pendiente": "La mesa de trabajo que Desarrollo Social quedó de programar (aún sin fecha).",
         "fotos": [
-            ["cancha-malla.jpg", "Malla dañada del predio de la cancha (enero de 2026)"]
+            ["cancha-malla.jpg", "Malla dañada del predio de la cancha (enero de 2026)"],
+            ["cancha-cerramiento.jpg", "Cerramiento del predio de la cancha visto desde el andén (22 may 2026)"],
+            ["cancha-puesto.jpg", "Puesto comercial dentro del predio de la cancha (22 may 2026)"],
+            ["cancha-maleza-1.jpg", "Maleza y basura dentro del predio (22 may 2026)"],
+            ["cancha-maleza-2.jpg", "Vegetación crecida dentro del predio (22 may 2026)"]
         ],
         "documentos": [
             ["cancha-2026-05-22-derecho-de-peticion.pdf", "Derecho de petición de la Junta (22 may 2026)"],
@@ -231,7 +241,15 @@ window.JAC_DATOS = {
             ["2026-09-18", "La Junta informó al juzgado que la medida cautelar se cumplió solo en parte y pidió fijar la audiencia de pacto de cumplimiento."]
         ],
         "pendiente": "Que el juzgado fije la audiencia de pacto de cumplimiento y se acuerde la reparación completa, con fechas.",
-        "fotos": [],
+        "fotos": [
+            ["calle6-hueco.jpg", "Hueco acordonado en la vía (22 dic 2025)"],
+            ["calle6-tapa-1.jpg", "Pavimento hundido y roto alrededor de una tapa de alcantarillado (22 dic 2025)"],
+            ["calle6-socavon.jpg", "Socavón bajo el pavimento (22 dic 2025)"],
+            ["calle6-tapa-2.jpg", "Tapa de alcantarillado con el pavimento roto (22 dic 2025)"],
+            ["calle6-tapa-3.jpg", "Grietas alrededor de una tapa de alcantarillado (22 dic 2025)"],
+            ["calle6-via.jpg", "Placas de concreto agrietadas en la Calle 6 Norte (22 dic 2025)"],
+            ["calle6-anden.jpg", "Andén levantado y roto en la Calle 6 Norte (2026)"]
+        ],
         "documentos": [
             ["calle6-2026-02-11-fallo-tutela.pdf", "Fallo de tutela de segunda instancia (11 feb 2026)"],
             ["calle6-GRTAR-135-informe-EPA.pdf", "Informe de la visita de EPA, GRTAR-135 (13 feb 2026)"],
@@ -271,7 +289,11 @@ window.JAC_DATOS = {
         "fotos": [
             ["jac010-basuras-1.jpg", "Antes: basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
             ["jac010-basuras-2.jpg", "Antes: basuras y escombros junto a un lote del barrio (21 sep 2026)"],
-            ["jac010-escombros.jpg", "Antes: escombros entre los árboles de un separador (21 sep 2026)"]
+            ["jac010-escombros.jpg", "Antes: escombros entre los árboles de un separador (21 sep 2026)"],
+            ["jac010-esquina.jpg", "Antes: bolsas y cajas abandonadas en una esquina del barrio (21 sep 2026)"],
+            ["jac010-ramas.jpg", "Antes: ramas y escombros sobre el andén (21 sep 2026)"],
+            ["jac010-costales.jpg", "Antes: costales y cajas en una esquina (21 sep 2026)"],
+            ["jac010-anden.jpg", "Antes: costales con escombros sobre un andén (21 sep 2026)"]
         ],
         "documentos": [
             ["JAC-010-2026-escombros-basuras.pdf", "Oficio JAC-010-2026 (21 sep 2026)"]

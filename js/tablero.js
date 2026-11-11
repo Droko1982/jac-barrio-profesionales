@@ -159,7 +159,8 @@
     function galeria(it) {
         var cont = el('div', 'act-card__gallery');
         var fila = el('div', 'act-card__photos act-card__photos--' + Math.min(it.fotos.length, 3));
-        it.fotos.forEach(function (f, i) {
+        var extra = it.fotos.length - 3;  // con más de 3 fotos, la tercera dice «+N» y el visor muestra todas
+        it.fotos.slice(0, 3).forEach(function (f, i) {
             var a = el('a', 'act-photo');
             a.href = RUTA_FOTOS + f[0];
             a.setAttribute('aria-label', 'Ampliar foto: ' + f[1]);
@@ -169,6 +170,12 @@
             img.loading = 'lazy';
             img.decoding = 'async';
             a.appendChild(img);
+            if (i === 2 && extra > 0) {
+                var mas = el('span', 'act-photo__mas', '+' + extra);
+                mas.setAttribute('aria-hidden', 'true');
+                a.appendChild(mas);
+                a.setAttribute('aria-label', 'Ver las ' + it.fotos.length + ' fotos');
+            }
             a.addEventListener('click', function (e) {
                 if (abrirFoto(it.fotos, i)) e.preventDefault();
             });
