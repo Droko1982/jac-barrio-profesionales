@@ -275,31 +275,6 @@ window.JAC_DATOS = {
         ]
     },
     {
-        "estado": "tramite",
-        "fecha": "2026-09-21",
-        "numero": "JAC-010-2026",
-        "titulo": "Retiro de los escombros que dejó el sismo y de las basuras acumuladas en cuatro puntos del barrio",
-        "entidad": "Alcaldía (Despacho, Planeación, Gestión del Riesgo y Gobierno) · EPA",
-        "plazo": 15,
-        "novedades": [
-            ["2026-09-21", "Oficio radicado, con registro fotográfico."],
-            ["2026-11-11", "La Junta verificó que los escombros ya fueron retirados."]
-        ],
-        "pendiente": "Confirmar el retiro de las basuras acumuladas y recibir la respuesta escrita de la Alcaldía.",
-        "fotos": [
-            ["jac010-basuras-1.jpg", "Antes: basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
-            ["jac010-basuras-2.jpg", "Antes: basuras y escombros junto a un lote del barrio (21 sep 2026)"],
-            ["jac010-escombros.jpg", "Antes: escombros entre los árboles de un separador (21 sep 2026)"],
-            ["jac010-esquina.jpg", "Antes: bolsas y cajas abandonadas en una esquina del barrio (21 sep 2026)"],
-            ["jac010-ramas.jpg", "Antes: ramas y escombros sobre el andén (21 sep 2026)"],
-            ["jac010-costales.jpg", "Antes: costales y cajas en una esquina (21 sep 2026)"],
-            ["jac010-anden.jpg", "Antes: costales con escombros sobre un andén (21 sep 2026)"]
-        ],
-        "documentos": [
-            ["JAC-010-2026-escombros-basuras.pdf", "Oficio JAC-010-2026 (21 sep 2026)"]
-        ]
-    },
-    {
         "estado": "hecho",
         "fecha": "2026-04-26",
         "numero": "SO-PSP-1038",
@@ -362,6 +337,31 @@ window.JAC_DATOS = {
         "pendiente": "Votarla en la Asamblea General.",
         "fotos": [],
         "documentos": []
+    },
+    {
+        "estado": "hecho",
+        "fecha": "2026-09-21",
+        "numero": "JAC-010-2026",
+        "titulo": "Retiro de los escombros que dejó el sismo y de las basuras acumuladas en cuatro puntos del barrio",
+        "entidad": "Alcaldía (Despacho, Planeación, Gestión del Riesgo y Gobierno) · EPA",
+        "plazo": 15,
+        "novedades": [
+            ["2026-09-21", "Oficio radicado, con registro fotográfico."],
+            ["2026-11-11", "Los escombros ya fueron retirados (verificado por la Junta)."]
+        ],
+        "pendiente": "",
+        "fotos": [
+            ["jac010-basuras-1.jpg", "Antes: basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
+            ["jac010-basuras-2.jpg", "Antes: basuras y escombros junto a un lote del barrio (21 sep 2026)"],
+            ["jac010-escombros.jpg", "Antes: escombros entre los árboles de un separador (21 sep 2026)"],
+            ["jac010-esquina.jpg", "Antes: bolsas y cajas abandonadas en una esquina del barrio (21 sep 2026)"],
+            ["jac010-ramas.jpg", "Antes: ramas y escombros sobre el andén (21 sep 2026)"],
+            ["jac010-costales.jpg", "Antes: costales y cajas en una esquina (21 sep 2026)"],
+            ["jac010-anden.jpg", "Antes: costales con escombros sobre un andén (21 sep 2026)"]
+        ],
+        "documentos": [
+            ["JAC-010-2026-escombros-basuras.pdf", "Oficio JAC-010-2026 (21 sep 2026)"]
+        ]
     },
     {
         "estado": "hecho",
