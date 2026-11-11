@@ -317,49 +317,174 @@
         propios.forEach(function (it) { lista.appendChild(tarjeta(it)); });
     });
 
-    /* ---------- Línea de tiempo ---------- */
-    var tl = document.getElementById('act-timeline');
-    if (tl) {
-        var eventos = [];
+    /* ---------- La gestión mes a mes (#gestion) ----------
+       Cada novedad es [fecha, texto, tipo, cantidad]: tipo enviado | respuesta | visita | avance | antecedente;
+       cantidad solo en «enviado» cuando en ese paso salieron varios escritos. */
+    var gMeses = document.getElementById('gestion-meses');
+    if (gMeses) {
+        var TIPOS_G = ['enviado', 'respuesta', 'visita', 'avance'];
+        var TIPO_INFO = {
+            enviado: { icono: '📤', texto: 'Enviado por la Junta' },
+            respuesta: { icono: '📨', texto: 'Respuesta o actuación de una entidad' },
+            visita: { icono: '🤝', texto: 'Visita, reunión o asamblea' },
+            avance: { icono: '📌', texto: 'Avance' },
+            antecedente: { icono: '🗂️', texto: 'Antecedente, de antes de esta Junta' }
+        };
+        var nombreMes = function (m) {
+            var d = aFecha(m + '-01');
+            var n = MESES_L[d.getMonth()];
+            return n.charAt(0).toUpperCase() + n.slice(1) + ' de ' + d.getFullYear();
+        };
+        var PALABRA = {
+            enviado: ['enviado', 'enviados'], respuesta: ['respuesta', 'respuestas'], visita: ['visita', 'visitas'],
+            avance: ['avance', 'avances'], antecedente: ['antecedente', 'antecedentes']
+        };
+        var vacio = function () { return { enviado: 0, respuesta: 0, visita: 0, avance: 0, antecedente: 0 }; };
+
+        var porMes = {}, meses = [], tot = vacio();
         items.forEach(function (it) {
-            it.novedades.forEach(function (n) { eventos.push({ fecha: n[0], texto: n[1], it: it }); });
+            it.novedades.forEach(function (n) {
+                var tipo = TIPO_INFO[n[2]] ? n[2] : 'avance';
+                var paso = { fecha: n[0], texto: n[1], tipo: tipo, cantidad: tipo === 'enviado' ? (n[3] || 1) : 1, it: it };
+                var m = paso.fecha.slice(0, 7);
+                if (!porMes[m]) { porMes[m] = { pasos: [], c: vacio() }; meses.push(m); }
+                porMes[m].pasos.push(paso);
+                porMes[m].c[tipo] += paso.cantidad;
+                tot[tipo] += paso.cantidad;
+            });
         });
-        eventos.sort(function (a, b) { return b.fecha.localeCompare(a.fecha); });
+        meses.sort();
+        var totalMes = function (m) { return TIPOS_G.reduce(function (s, t) { return s + porMes[m].c[t]; }, 0); };
 
-        var VISIBLES = 8;
-        var mesActual = '';
-        tl.textContent = '';
-        eventos.forEach(function (ev, i) {
-            var extra = i >= VISIBLES;
-            var mes = ev.fecha.slice(0, 7);
-            if (mes !== mesActual) {
-                mesActual = mes;
-                var d = aFecha(ev.fecha);
-                var cab = el('li', 'act-tl__month' + (extra ? ' is-extra' : ''),
-                    MESES_L[d.getMonth()].charAt(0).toUpperCase() + MESES_L[d.getMonth()].slice(1) + ' de ' + d.getFullYear());
-                tl.appendChild(cab);
-            }
-            var li = el('li', 'act-tl__item act-tl__item--' + ev.it.estado + (extra ? ' is-extra' : ''));
-            var t = el('time', 'act-tl__date', corta(ev.fecha));
-            t.dateTime = ev.fecha;
-            li.appendChild(t);
-            var cuerpo = el('div', 'act-tl__body');
-            cuerpo.appendChild(el('strong', 'act-tl__title', ev.it.titulo));
-            cuerpo.appendChild(el('span', 'act-tl__text', ev.texto));
-            li.appendChild(cuerpo);
-            tl.appendChild(li);
-        });
+        // Cifras grandes
+        $all('[data-gestion-count]').forEach(function (e) { e.textContent = tot[e.getAttribute('data-gestion-count')]; });
 
-        var mas = document.getElementById('act-timeline-more');
-        var ocultos = Math.max(0, eventos.length - VISIBLES);
-        if (mas && ocultos > 0) {
-            mas.hidden = false;
-            mas.textContent = 'Ver toda la línea de tiempo (' + ocultos + ' más)';
-            mas.addEventListener('click', function () {
-                tl.classList.add('is-open');
-                mas.hidden = true;
+        // Resumen en palabras (también lo lee el botón «Escuchar»)
+        var conGestion = meses.filter(function (m) { return totalMes(m) > 0; });
+        var pico = conGestion.slice().sort(function (a, b) { return totalMes(b) - totalMes(a) || b.localeCompare(a); })[0];
+        var resumenG = document.getElementById('gestion-resumen-texto');
+        if (resumenG && conGestion.length) {
+            resumenG.textContent = 'Desde ' + nombreMes(conGestion[0]).toLowerCase() + ', la Junta ha enviado ' + tot.enviado +
+                ' oficios, peticiones y escritos; las entidades han dado ' + tot.respuesta + ' respuestas o actuaciones; hubo ' +
+                tot.visita + ' visitas técnicas, reuniones y asambleas, y ' + tot.avance + ' avances más, en ' + items.length +
+                ' actuaciones. El mes con más movimiento fue ' + nombreMes(pico).toLowerCase() + ', con ' + totalMes(pico) + '.';
+        }
+
+        // Tabla por mes (siempre del más antiguo al más reciente)
+        var cuerpoTabla = document.querySelector('#gestion-tabla tbody');
+        if (cuerpoTabla) {
+            cuerpoTabla.textContent = '';
+            conGestion.forEach(function (m) {
+                var tr = el('tr');
+                var th = el('th');
+                th.scope = 'row';
+                var a = el('a', 'gestion__mes-link');
+                a.href = '#gestion-' + m;
+                a.appendChild(el('span', 'gestion__mes-largo', nombreMes(m)));
+                var dm = aFecha(m + '-01');
+                a.appendChild(el('span', 'gestion__mes-corto', MESES[dm.getMonth()] + ' ' + dm.getFullYear()));
+                th.appendChild(a);
+                tr.appendChild(th);
+                TIPOS_G.forEach(function (t) {
+                    var v = porMes[m].c[t];
+                    tr.appendChild(el('td', v ? 'gestion__n gestion__n--' + t : 'gestion__n gestion__n--cero', String(v)));
+                });
+                tr.appendChild(el('td', 'gestion__n gestion__n--total', String(totalMes(m))));
+                cuerpoTabla.appendChild(tr);
+            });
+            var pie = el('tfoot');
+            var trT = el('tr');
+            var thT = el('th', '', 'Total');
+            thT.scope = 'row';
+            trT.appendChild(thT);
+            TIPOS_G.forEach(function (t) { trT.appendChild(el('td', 'gestion__n', String(tot[t]))); });
+            trT.appendChild(el('td', 'gestion__n gestion__n--total', String(TIPOS_G.reduce(function (s, t) { return s + tot[t]; }, 0))));
+            pie.appendChild(trT);
+            var viejo = document.querySelector('#gestion-tabla tfoot');
+            if (viejo) viejo.remove();
+            document.getElementById('gestion-tabla').appendChild(pie);
+        }
+
+        // Lista paso a paso, un bloque por mes
+        var ordenG = 'antiguo';
+        var dibujarMeses = function () {
+            var abiertos = {};
+            $all('#gestion-meses .gmes').forEach(function (d) { abiertos[d.id] = d.open; });
+            gMeses.textContent = '';
+            var lista = ordenG === 'antiguo' ? meses : meses.slice().reverse();
+            var ultimo = meses[meses.length - 1];
+            lista.forEach(function (m) {
+                var det = el('details', 'gmes');
+                det.id = 'gestion-' + m;
+                det.open = abiertos.hasOwnProperty(det.id) ? abiertos[det.id] : m === ultimo;
+                var sum = el('summary', 'gmes__cab');
+                sum.appendChild(el('span', 'gmes__nombre', nombreMes(m)));
+                var chips = el('span', 'gmes__chips');
+                TIPOS_G.concat('antecedente').forEach(function (t) {
+                    var v = porMes[m].c[t];
+                    if (!v) return;
+                    var c = el('span', 'gmes__chip gmes__chip--' + t, TIPO_INFO[t].icono + ' ' + v + ' ' + PALABRA[t][v === 1 ? 0 : 1]);
+                    c.title = TIPO_INFO[t].texto;
+                    chips.appendChild(c);
+                });
+                sum.appendChild(chips);
+                det.appendChild(sum);
+
+                var ol = el('ol', 'act-tl gmes__lista');
+                var pasos = porMes[m].pasos.slice().sort(function (a, b) {
+                    return ordenG === 'antiguo' ? a.fecha.localeCompare(b.fecha) : b.fecha.localeCompare(a.fecha);
+                });
+                pasos.forEach(function (p) {
+                    var li = el('li', 'act-tl__item gpaso gpaso--' + p.tipo);
+                    var tm = el('time', 'act-tl__date', corta(p.fecha));
+                    tm.dateTime = p.fecha;
+                    li.appendChild(tm);
+                    var cuerpo = el('div', 'act-tl__body');
+                    cuerpo.appendChild(el('span', 'gpaso__tipo', TIPO_INFO[p.tipo].icono + ' ' + TIPO_INFO[p.tipo].texto +
+                        (p.cantidad > 1 ? ' · ' + p.cantidad + ' escritos' : '')));
+                    cuerpo.appendChild(el('strong', 'act-tl__title', p.it.titulo));
+                    cuerpo.appendChild(el('span', 'act-tl__text', p.texto));
+                    li.appendChild(cuerpo);
+                    ol.appendChild(li);
+                });
+                det.appendChild(ol);
+                gMeses.appendChild(det);
+            });
+            actualizarBotonAbrir();
+        };
+
+        var btnAbrir = document.getElementById('gestion-abrir');
+        var actualizarBotonAbrir = function () {
+            if (!btnAbrir) return;
+            var todos = $all('#gestion-meses .gmes').every(function (d) { return d.open; });
+            btnAbrir.textContent = todos ? 'Cerrar todos los meses' : 'Abrir todos los meses';
+        };
+        if (btnAbrir) {
+            btnAbrir.addEventListener('click', function () {
+                var abrir = !$all('#gestion-meses .gmes').every(function (d) { return d.open; });
+                $all('#gestion-meses .gmes').forEach(function (d) { d.open = abrir; });
+                actualizarBotonAbrir();
             });
         }
+        gMeses.addEventListener('toggle', actualizarBotonAbrir, true);
+
+        $all('.gestion__orden-btn').forEach(function (b) {
+            b.addEventListener('click', function () {
+                ordenG = b.getAttribute('data-orden');
+                $all('.gestion__orden-btn').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+                dibujarMeses();
+            });
+        });
+
+        // Desde la tabla: abrir el mes y llevar la vista hasta él
+        document.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a[href^="#gestion-"]');
+            if (!a) return;
+            var det = document.getElementById(a.getAttribute('href').slice(1));
+            if (det && det.tagName === 'DETAILS') { det.open = true; actualizarBotonAbrir(); }
+        });
+
+        dibujarMeses();
     }
 
     /* ---------- Toast (mensajes cortos) ---------- */
@@ -465,6 +590,18 @@
         frases = frases.map(function (f) {
             return String(f).replace(/\s·\s/g, ', ').replace(/N\.\s?°\s?/g, 'número ').trim();
         }).filter(Boolean);
+        // Chrome corta las frases que duran más de unos 15 segundos: las largas se parten en las comas
+        frases = frases.reduce(function (acc, f) {
+            while (f.length > 170) {
+                var corte = Math.max(f.lastIndexOf('; ', 170), f.lastIndexOf(', ', 170), f.lastIndexOf(': ', 170));
+                if (corte < 60) corte = f.lastIndexOf(' ', 170);
+                if (corte < 60) break;
+                acc.push(f.slice(0, corte + 1).trim());
+                f = f.slice(corte + 1).trim();
+            }
+            if (f) acc.push(f);
+            return acc;
+        }, []);
         if (!frases.length) return;
         botonActivo = btn;
         btn.innerHTML = '<span aria-hidden="true">⏹️</span> Detener';
@@ -494,7 +631,19 @@
             if (synth.paused) synth.resume();
         }
         // Si se acababa de cancelar otra lectura, Chrome ignora un speak() inmediato: se espera un instante.
-        if (estabaHablando) setTimeout(empezar, 180); else empezar();
+        // En Android las voces llegan tarde: si todavía no hay ninguna, se esperan (máximo 1,5 s)
+        // para no leer con una voz en otro idioma.
+        var demora = estabaHablando ? 180 : 0;
+        if (!synth.getVoices().length) {
+            var listo = false;
+            var arrancar = function () { if (listo) return; listo = true; empezar(); };
+            if (synth.addEventListener) synth.addEventListener('voiceschanged', function () { setTimeout(arrancar, demora); }, { once: true });
+            setTimeout(arrancar, 1500);
+        } else if (demora) {
+            setTimeout(empezar, demora);
+        } else {
+            empezar();
+        }
     }
 
     function frasesDe(nodo) {
@@ -621,6 +770,23 @@
                 'Lleva tu documento de identidad.';
         });
         var faltan = diasEntre(HOY, dA);
+
+        // La Asamblea convocada, como evento para los buscadores (schema.org Event)
+        try {
+            var ev = document.createElement('script');
+            ev.type = 'application/ld+json';
+            ev.textContent = JSON.stringify({
+                '@context': 'https://schema.org', '@type': 'Event',
+                name: 'Asamblea General de la Junta de Acción Comunal Los Profesionales',
+                startDate: A.fecha + (A.hora ? 'T' + A.hora + ':00-05:00' : ''),
+                eventStatus: 'https://schema.org/EventScheduled',
+                eventAttendanceMode: /virtual/i.test(A.modalidad || '') ? 'https://schema.org/MixedEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode',
+                location: { '@type': 'Place', name: A.lugar || 'Barrio Los Profesionales', address: { '@type': 'PostalAddress', addressLocality: 'Armenia', addressRegion: 'Quindío', addressCountry: 'CO' } },
+                organizer: { '@type': 'Organization', name: 'Junta de Acción Comunal del Barrio Los Profesionales', url: 'https://jaclosprofesionales.com/' },
+                description: 'Asamblea General de afiliados. Lleva tu documento de identidad.'
+            });
+            document.head.appendChild(ev);
+        } catch (e) { /* no afecta a la página */ }
         $all('[data-asamblea-cuenta]').forEach(function (e) {
             e.hidden = false;
             e.textContent = faltan > 1 ? 'Faltan ' + faltan + ' días' : faltan === 1 ? 'Es mañana' :

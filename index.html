@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Junta de Acción Comunal del Barrio Los Profesionales, Comuna 10 de Armenia, Quindío. Próxima Asamblea, reforma de estatutos para opinar, normativa que nos rige, informe de gestión y solicitudes en línea.">
+    <meta name="description" content="Junta de Acción Comunal del barrio Los Profesionales, Comuna 10 Quimbaya de Armenia, Quindío: la gestión mes a mes con sus oficios y respuestas, solicitudes en línea, Asamblea, estatutos y teléfonos útiles.">
+    <meta name="geo.region" content="CO-QUI">
+    <meta name="geo.placename" content="Armenia, Quindío">
+    <meta name="geo.position" content="4.5489;-75.6642">
+    <meta name="ICBM" content="4.5489, -75.6642">
     <meta name="author" content="Dr. M. Rodríguez, presidente de la Junta de Acción Comunal Barrio Los Profesionales">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#2E7D32" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F0F1A" media="(prefers-color-scheme: dark)">
 
-    <meta property="og:title" content="JAC Barrio Los Profesionales · Comuna 10 · Armenia">
-    <meta property="og:description" content="Próxima Asamblea, reforma de estatutos para opinar, normativa, informe de gestión y solicitudes en línea de la Junta de Acción Comunal del Barrio Los Profesionales.">
+    <meta property="og:title" content="Junta de Acción Comunal Los Profesionales · Armenia, Quindío">
+    <meta property="og:description" content="La gestión de la Junta mes a mes, solicitudes en línea, Asamblea, estatutos y teléfonos útiles del barrio Los Profesionales, Comuna 10 de Armenia.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CO">
     <meta property="og:site_name" content="JAC Barrio Los Profesionales">
@@ -21,13 +25,13 @@
     <meta property="og:image:alt" content="Logo de la Junta de Acción Comunal del Barrio Los Profesionales">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="JAC Barrio Los Profesionales · Comuna 10 · Armenia">
+    <meta name="twitter:title" content="Junta de Acción Comunal Los Profesionales · Armenia, Quindío">
     <meta name="twitter:description" content="Portal de la Junta de Acción Comunal del Barrio Los Profesionales. Armenia, Quindío.">
     <meta name="twitter:image" content="https://jaclosprofesionales.com/og-image.png">
 
     <link rel="canonical" href="https://jaclosprofesionales.com/">
 
-    <title>JAC Barrio Los Profesionales · Comuna 10 · Armenia</title>
+    <title>Junta de Acción Comunal Los Profesionales · Armenia, Quindío</title>
 
     <link rel="icon" type="image/svg+xml" href="img/logo-icono.svg">
     <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
@@ -36,7 +40,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" type="image/webp" href="img/portada-barrio.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" type="image/webp" href="img/portada-barrio-sm.webp" media="(max-width: 768px)" fetchpriority="high">
+    <!-- La fuente no bloquea la primera pintura: mientras llega se usa la del sistema -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
     <link rel="stylesheet" href="css/styles.css">
 
     <script>
@@ -47,10 +55,11 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": ["Organization", "NGO"],
+      "@id": "https://jaclosprofesionales.com/#junta",
       "name": "Junta de Acción Comunal del Barrio Los Profesionales",
       "legalName": "Junta de Acción Comunal del Barrio Los Profesionales",
-      "alternateName": ["JAC Barrio Los Profesionales", "JAC Los Profesionales"],
+      "alternateName": ["JAC Barrio Los Profesionales", "JAC Los Profesionales", "Junta de Acción Comunal Los Profesionales Armenia"],
       "url": "https://jaclosprofesionales.com/",
       "logo": "https://jaclosprofesionales.com/og-image.png",
       "description": "Organización cívica, social y comunitaria de gestión social, sin ánimo de lucro, con personería jurídica, constituida conforme a la Ley 2166 de 2021 al servicio del Barrio Los Profesionales, Comuna 10 de Armenia, Quindío.",
@@ -69,7 +78,7 @@
       ],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Barrio Los Profesionales, Comuna 10",
+        "streetAddress": "Barrio Los Profesionales, Comuna 10 Quimbaya",
         "addressLocality": "Armenia",
         "addressRegion": "Quindío",
         "addressCountry": "CO"
@@ -77,12 +86,35 @@
       "email": "jaclosprofesionales@gmail.com",
       "areaServed": {
         "@type": "Place",
-        "name": "Barrio Los Profesionales, Comuna 10, Armenia, Quindío"
+        "name": "Barrio Los Profesionales, Comuna 10 Quimbaya, Armenia, Quindío",
+        "geo": { "@type": "GeoCoordinates", "latitude": 4.5489, "longitude": -75.6642 },
+        "containedInPlace": {
+          "@type": "City",
+          "name": "Armenia",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "Quindío, Colombia" }
+        }
       },
+      "member": {
+        "@type": "OrganizationRole",
+        "roleName": "Presidente",
+        "startDate": "2026-07-01",
+        "member": { "@type": "Person", "name": "Mauricio Rodríguez Herrera" }
+      },
+      "knowsLanguage": "es-CO",
       "memberOf": {
         "@type": "Organization",
         "name": "Sistema Nacional de Acción Comunal"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Junta de Acción Comunal Los Profesionales",
+      "url": "https://jaclosprofesionales.com/",
+      "inLanguage": "es-CO",
+      "publisher": { "@id": "https://jaclosprofesionales.com/#junta" }
     }
     </script>
 </head>
@@ -137,6 +169,7 @@
                 <ul class="nav__menu-list">
                     <li class="nav__item"><a href="#inicio" class="nav__link"><span aria-hidden="true">🏠</span> Inicio</a></li>
                     <li class="nav__item"><a href="#actuaciones" class="nav__link"><span aria-hidden="true">📋</span> Así vamos: lo que hace la Junta</a></li>
+                    <li class="nav__item"><a href="#gestion" class="nav__link"><span aria-hidden="true">📅</span> La gestión mes a mes</a></li>
                     <li class="nav__item"><a href="#tramites" class="nav__link"><span aria-hidden="true">✉️</span> Trámites y solicitudes</a></li>
                     <li class="nav__item"><a href="#telefonos" class="nav__link"><span aria-hidden="true">📞</span> Teléfonos útiles</a></li>
                     <li class="nav__item"><a href="#asamblea" class="nav__link"><span aria-hidden="true">📅</span> Asamblea y avisos</a></li>
@@ -269,7 +302,6 @@
         (fuente: hoja «Registro de actuaciones» en Google Drive; ver herramientas/LEEME.md).
         -->
         <section class="section section--alt" id="actuaciones">
-            <span id="gestion" class="anchor-alias" aria-hidden="true"></span>
             <div class="container">
                 <span class="section__badge fade-in">Así vamos</span>
                 <h2 class="section__title fade-in">Actuaciones de la Junta</h2>
@@ -294,7 +326,7 @@
                     </a>
                 </nav>
 
-                <p class="act-enviados fade-in"><span aria-hidden="true">📤</span> La Junta ha enviado <strong><span data-act-count="enviados">18</span> oficios, peticiones y escritos</strong> a las entidades y a los juzgados.</p>
+                <p class="act-enviados fade-in"><span aria-hidden="true">📤</span> La Junta ha enviado <strong><span data-act-count="enviados">18</span> oficios, peticiones y escritos</strong> a las entidades y a los juzgados. <a href="#gestion" class="contact__link">Ver mes a mes →</a></p>
 
                 <div class="act-toolbar fade-in">
                     <p class="act-toolbar__updated">Actualizado al <time data-act-updated datetime="2026-11-11">11 de noviembre de 2026</time></p>
@@ -349,14 +381,7 @@
                     </dl>
                 </details>
 
-                <div class="act-timeline fade-in">
-                    <h3 class="block__title">Línea de tiempo</h3>
-                    <p class="block__intro">Cada paso de cada gestión, del más reciente al más antiguo.</p>
-                    <ol class="act-tl" id="act-timeline"></ol>
-                    <div class="act-tl__actions">
-                        <button type="button" class="btn btn--ghost" id="act-timeline-more" hidden>Ver toda la línea de tiempo</button>
-                    </div>
-                </div>
+                <p class="act-mesames fade-in"><a href="#gestion" class="btn btn--secondary"><span aria-hidden="true">📅</span> Ver toda la gestión, mes a mes y en orden de fechas</a></p>
 
                 <!-- ===== Avisos por correo (las suscripciones llegan al correo de la Junta) ===== -->
                 <div class="stayup fade-in" id="avisos-correo">
@@ -387,6 +412,75 @@
                         </label>
                         <p class="stayup__msg" role="status" aria-live="polite"></p>
                     </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== LA GESTIÓN MES A MES ==========
+        Se dibuja desde js/actuaciones.js: cada paso (novedad) lleva su tipo
+        (enviado, respuesta, visita, avance, antecedente). Ver herramientas/LEEME.md.
+        -->
+        <section class="section" id="gestion">
+            <div class="container">
+                <span class="section__badge fade-in">Gestión de la Presidencia</span>
+                <h2 class="section__title fade-in">La gestión de la Junta, mes a mes</h2>
+                <p class="section__subtitle fade-in">Todo lo que ha salido de la Presidencia y de la Junta Directiva, y lo que han respondido las entidades de Armenia, en orden de fechas. Cada paso tiene su oficio, radicado o constancia.</p>
+
+                <div class="gestion__cifras fade-in">
+                    <div class="gcifra gcifra--enviado">
+                        <span class="gcifra__icono" aria-hidden="true">📤</span>
+                        <span class="gcifra__num" data-gestion-count="enviado">18</span>
+                        <span class="gcifra__label">Oficios, peticiones y escritos enviados por la Junta</span>
+                    </div>
+                    <div class="gcifra gcifra--respuesta">
+                        <span class="gcifra__icono" aria-hidden="true">📨</span>
+                        <span class="gcifra__num" data-gestion-count="respuesta">13</span>
+                        <span class="gcifra__label">Respuestas y actuaciones de las entidades</span>
+                    </div>
+                    <div class="gcifra gcifra--visita">
+                        <span class="gcifra__icono" aria-hidden="true">🤝</span>
+                        <span class="gcifra__num" data-gestion-count="visita">7</span>
+                        <span class="gcifra__label">Visitas técnicas, reuniones y asambleas</span>
+                    </div>
+                    <div class="gcifra gcifra--avance">
+                        <span class="gcifra__icono" aria-hidden="true">📌</span>
+                        <span class="gcifra__num" data-gestion-count="avance">8</span>
+                        <span class="gcifra__label">Otros avances: publicaciones y resultados</span>
+                    </div>
+                </div>
+
+                <p class="gestion__resumen fade-in" id="gestion-resumen"><span id="gestion-resumen-texto">Desde febrero de 2026, la Junta ha enviado 18 oficios, peticiones y escritos; las entidades han dado 13 respuestas o actuaciones; hubo 7 visitas técnicas, reuniones y asambleas, y 8 avances más.</span> <strong>Presidente de la Junta: Mauricio Rodríguez Herrera</strong>, periodo 2026–2030.</p>
+                <p class="gestion__acciones fade-in">
+                    <button type="button" class="act-btn" data-listen="#gestion-resumen" hidden><span aria-hidden="true">🔊</span> Escuchar el resumen</button>
+                </p>
+
+                <div class="gestion__tabla-wrap fade-in">
+                    <table class="gestion__tabla" id="gestion-tabla">
+                        <caption>Resumen por mes <span>(toca un mes para ver qué se hizo)</span></caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Mes</th>
+                                <th scope="col"><span aria-hidden="true">📤</span><span class="gestion__th">Enviados</span></th>
+                                <th scope="col"><span aria-hidden="true">📨</span><span class="gestion__th">Respuestas</span></th>
+                                <th scope="col"><span aria-hidden="true">🤝</span><span class="gestion__th">Visitas y reuniones</span></th>
+                                <th scope="col"><span aria-hidden="true">📌</span><span class="gestion__th">Avances</span></th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="gestion__barra fade-in">
+                    <h3 class="block__title">Paso a paso</h3>
+                    <div class="gestion__orden" role="group" aria-label="Orden de la lista">
+                        <button type="button" class="gestion__orden-btn" data-orden="antiguo" aria-pressed="true">Desde el inicio</button>
+                        <button type="button" class="gestion__orden-btn" data-orden="reciente" aria-pressed="false">Lo más reciente primero</button>
+                    </div>
+                    <button type="button" class="btn btn--ghost gestion__abrir" id="gestion-abrir">Abrir todos los meses</button>
+                </div>
+                <div class="gestion__meses" id="gestion-meses">
+                    <noscript><p>Para ver la lista paso a paso, activa JavaScript o consulta las tarjetas de «Así vamos».</p></noscript>
                 </div>
             </div>
         </section>
