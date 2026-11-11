@@ -557,37 +557,6 @@
             contactForm.querySelectorAll('.form__message, .constancia').forEach(function (m) { m.remove(); });
         }
 
-        // «Prefiero enviarla por WhatsApp»: abre WhatsApp con la solicitud lista para la Secretaria.
-        // No exige correo: basta con el trámite, el nombre, el mensaje y la autorización de datos.
-        const WHATSAPP_JUNTA = '573136555392';
-        const formWhatsapp = document.getElementById('form-whatsapp');
-        if (formWhatsapp) {
-            formWhatsapp.addEventListener('click', function () {
-                const requeridos = ['asunto', 'nombre', 'mensaje', 'acepta-politica']
-                    .map(function (id) { return document.getElementById(id); })
-                    .filter(Boolean);
-                for (let i = 0; i < requeridos.length; i++) {
-                    const el = requeridos[i];
-                    const vacio = el.type === 'checkbox' ? !el.checked : !String(el.value).trim();
-                    if (vacio) {
-                        if (el.reportValidity) el.reportValidity(); else el.focus();
-                        return;
-                    }
-                }
-                const numero = nuevoNumero();
-                const texto = 'Hola, Dra. Silvia. Envío esta solicitud desde la página de la Junta.\n\n' +
-                    'Trámite: ' + asuntoLabel() + '\n' +
-                    'Número de solicitud: ' + numero + '\n' +
-                    'Nombre: ' + campo('nombre') +
-                    (campo('telefono') ? '\nTeléfono: ' + campo('telefono') : '') +
-                    (campo('email') ? '\nCorreo: ' + campo('email') : '') +
-                    '\n\n' + campo('mensaje');
-                guardarMis(numero, asuntoLabel());
-                window.open('https://wa.me/' + WHATSAPP_JUNTA + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
-                if (window.JAC_AVISO) window.JAC_AVISO('Se abrió WhatsApp. Toca «Enviar» para que llegue a la Secretaria.');
-            });
-        }
-
         function mostrarConstancia(numero, email) {
             quitarMensajes();
             const box = document.createElement('div');
