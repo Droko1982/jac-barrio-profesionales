@@ -13,7 +13,7 @@ Uso:
         Igual que importar, pero desde una lista JSON con los mismos campos.
 
 Columnas de la hoja (fila 1):
-    estado | fecha | numero | titulo | entidad | plazo_dias | novedades | pendiente
+    estado | fecha | numero | titulo | entidad | plazo_dias | novedades | pendiente | fotos
 
     estado      «Ya se hizo», «En trámite» o «Esperando respuesta»
                 (también vale: hecho, tramite, espera)
@@ -21,6 +21,9 @@ Columnas de la hoja (fila 1):
     plazo_dias  15 en general, 10 si se pidieron documentos o información, 0 si no aplica
     novedades   una por línea dentro de la celda:  AAAA-MM-DD: texto
     pendiente   lo que falta (puede quedar vacío)
+    fotos       opcional. Una por línea:  archivo.jpg | descripción
+                (el archivo va en img/actuaciones/, más su versión archivo-sm.jpg).
+                Si la hoja no tiene esta columna, se conservan las fotos ya publicadas.
 
 El script se niega a publicar si encuentra algo que parezca un teléfono o una cédula.
 Solo usa la biblioteca estándar de Python.
@@ -38,8 +41,10 @@ ARCHIVO_JS = RAIZ / "js" / "actuaciones.js"
 INICIO = "/* INICIO-ACTUACIONES */"
 FIN = "/* FIN-ACTUACIONES */"
 
-CAMPOS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo", "novedades", "pendiente"]
+CAMPOS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo", "novedades", "pendiente", "fotos"]
 COLUMNAS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo_dias", "novedades", "pendiente"]
+COLUMNA_FOTOS = "fotos"
+DIR_FOTOS = RAIZ / "img" / "actuaciones"
 
 ESTADOS = {
     "hecho": "hecho", "ya se hizo": "hecho", "cumplido": "hecho", "resuelta": "hecho",
@@ -108,6 +113,24 @@ def normalizar(item, donde):
         novedades = [[leer_fecha(f, donde), str(t).strip()] for f, t in novedades]
     novedades.sort(key=lambda n: n[0])
 
+    fotos = item.get("fotos") or []
+    if isinstance(fotos, str):
+        lista = []
+        for linea in (l for l in fotos.splitlines() if l.strip()):
+            archivo, _, desc = linea.partition("|")
+            lista.append([archivo.strip(), desc.strip()])
+        fotos = lista
+    fotos = [[str(a).strip(), str(d).strip()] for a, d in fotos]
+    for archivo, desc in fotos:
+        if not re.fullmatch(r"[a-z0-9-]+\.jpg", archivo):
+            raise ErrorDatos(f"{donde}: el nombre de foto «{archivo}» debe ser como nombre-de-foto.jpg")
+        for variante in (archivo, archivo[:-4] + "-sm.jpg"):
+            if not (DIR_FOTOS / variante).exists():
+                raise ErrorDatos(f"{donde}: falta el archivo img/actuaciones/{variante}")
+        if not desc:
+            raise ErrorDatos(f"{donde}: la foto «{archivo}» necesita una descripción")
+        revisar_privacidad(desc, f"{donde} (fotos)")
+
     limpio = {
         "estado": estado,
         "fecha": leer_fecha(item.get("fecha"), donde),
@@ -117,6 +140,7 @@ def normalizar(item, donde):
         "plazo": plazo,
         "novedades": novedades or [[leer_fecha(item.get("fecha"), donde), "Radicado."]],
         "pendiente": str(item.get("pendiente", "") or "").strip(),
+        "fotos": fotos,
     }
     for campo in ("numero", "titulo", "entidad", "pendiente"):
         revisar_privacidad(limpio[campo], f"{donde} ({campo})")
@@ -131,9 +155,12 @@ def formatear(items):
     for it in items:
         lineas = []
         for k in CAMPOS:
-            if k == "novedades":
+            if k in ("novedades", "fotos"):
+                if not it.get(k):
+                    lineas.append(f'        "{k}": []')
+                    continue
                 nov = ",\n".join("            " + json.dumps(n, ensure_ascii=False) for n in it[k])
-                lineas.append(f'        "novedades": [\n{nov}\n        ]')
+                lineas.append(f'        "{k}": [\n{nov}\n        ]')
             else:
                 lineas.append(f"        {json.dumps(k)}: {json.dumps(it[k], ensure_ascii=False)}")
         bloques.append("    {\n" + ",\n".join(lineas) + "\n    }")
@@ -175,11 +202,20 @@ def importar_csv(ruta):
     faltan = [c for c in COLUMNAS if c not in filas[0]]
     if faltan:
         raise ErrorDatos(f"Faltan columnas en el CSV: {', '.join(faltan)}")
+    previas = {}
+    if COLUMNA_FOTOS not in filas[0]:
+        try:
+            previas = {(i["fecha"], i["titulo"]): i.get("fotos", []) for i in leer_js()}
+        except ErrorDatos:
+            previas = {}
     items = []
     for n, fila in enumerate(filas, start=2):
         if not any((v or "").strip() for v in fila.values()):
             continue
-        items.append(normalizar(fila, f"Fila {n}"))
+        it = normalizar(fila, f"Fila {n}")
+        if COLUMNA_FOTOS not in filas[0]:
+            it["fotos"] = previas.get((it["fecha"], it["titulo"]), [])
+        items.append(it)
     escribir_js(items)
 
 
@@ -187,11 +223,12 @@ def exportar_csv(ruta):
     items = leer_js()
     with open(ruta, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
-        w.writerow(COLUMNAS)
+        w.writerow(COLUMNAS + [COLUMNA_FOTOS])
         for it in items:
             w.writerow([
                 ESTADO_HOJA[it["estado"]], it["fecha"], it["numero"], it["titulo"], it["entidad"],
                 it["plazo"], "\n".join(f"{fe}: {t}" for fe, t in it["novedades"]), it["pendiente"],
+                "\n".join(f"{a} | {d}" for a, d in it.get("fotos", [])),
             ])
     print(f"OK: {len(items)} actuaciones exportadas a {ruta}")
 

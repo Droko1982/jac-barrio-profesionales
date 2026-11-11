@@ -53,6 +53,8 @@
                 textSizeToggle.setAttribute('aria-pressed', isLarge ? 'true' : 'false');
                 textSizeToggle.setAttribute('aria-label', isLarge ? 'Volver al tamaño de letra normal' : 'Agrandar la letra');
                 textSizeToggle.title = isLarge ? 'Letra normal' : 'Agrandar la letra';
+                const lab = textSizeToggle.querySelector('.text-size-toggle__label');
+                if (lab) lab.textContent = isLarge ? 'Letra normal' : 'Letra grande';
             };
             syncTextSize();
             textSizeToggle.addEventListener('click', function () {
@@ -649,6 +651,23 @@
                 'error',
                 { href: mailtoJunta(numero), label: 'envíalo desde tu correo con un clic' }
             );
+            // Segunda salida: copiar el mensaje para pegarlo en cualquier correo
+            const msg = contactForm.querySelector('.form__message');
+            if (msg) {
+                const texto = 'Para: ' + JUNTA_EMAIL + '\n' + textoCorreo(numero);
+                const ayuda = document.createElement('p');
+                ayuda.className = 'form__copy-help';
+                ayuda.textContent = 'O cópialo y pégalo en un correo para ' + JUNTA_EMAIL + '.';
+                const copia = document.createElement('button');
+                copia.type = 'button';
+                copia.className = 'btn btn--ghost form__copy';
+                copia.textContent = '📋 Copiar mi mensaje';
+                copia.addEventListener('click', function () {
+                    if (window.JAC_COPIAR) window.JAC_COPIAR(texto, 'Mensaje copiado. Pégalo en un correo para la Junta.');
+                });
+                msg.appendChild(ayuda);
+                msg.appendChild(copia);
+            }
         }
 
         function showFormMessage(message, type, link) {

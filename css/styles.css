@@ -34,7 +34,7 @@
     --color-error: #D32F2F;
 
     --font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --font-size-base: 16px;
+    --font-size-base: 17px;
 
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -2578,7 +2578,7 @@ a:focus-visible {
 
 /* --- Letra grande: todo lo que usa rem crece --- */
 html.text-lg {
-    font-size: 19px;
+    font-size: 20px;
 }
 
 .text-size-toggle {
@@ -3829,3 +3829,315 @@ html.text-lg {
     .retiro__head { flex-direction: column; gap: 0.5rem; }
     .retiro__actions .btn { width: 100%; }
 }
+
+/* ==========================================================
+   Facilidad de uso para vecinos mayores (nov 2026)
+   Logo, ayuda rápida, fotos reales, WhatsApp, barra inferior
+   ========================================================== */
+
+/* --- Logo --- */
+.nav__logo-img {
+    display: block;
+    width: 42px;
+    height: 42px;
+    flex: none;
+}
+
+.footer__logo img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    flex: none;
+}
+
+.hero__logo {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 1rem;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+}
+
+/* --- Botón de letra con texto --- */
+.text-size-toggle__label {
+    margin-left: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+/* --- Ayuda rápida en la portada --- */
+.hero__help {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+    list-style: none;
+}
+
+.hero__help li {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+}
+
+/* --- WhatsApp --- */
+.act-btn--wa,
+.btn--wa {
+    color: #fff;
+    background: #1FAF55;
+    border-color: #1FAF55;
+}
+
+.act-btn--wa:hover,
+.act-btn--wa:focus-visible,
+.btn--wa:hover,
+.btn--wa:focus-visible {
+    color: #fff;
+    background: #178A43;
+    border-color: #178A43;
+}
+
+/* --- Íconos de entidad y fotos en las tarjetas --- */
+.act-card__icons {
+    margin-right: 0.35rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.act-card__gallery {
+    display: grid;
+    gap: 0.3rem;
+}
+
+.act-card__photos {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.act-card__photos--2 { grid-template-columns: 1fr 1fr; }
+.act-card__photos--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+.act-photo {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border-light);
+}
+
+.act-card__photos--1 .act-photo { aspect-ratio: 16 / 10; }
+
+.act-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition);
+}
+
+.act-photo:hover img,
+.act-photo:focus-visible img { transform: scale(1.04); }
+
+.act-photo:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.act-card__photos-cap {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+/* --- Visor de fotos --- */
+.visor {
+    width: min(96vw, 1000px);
+    max-height: 94vh;
+    margin: auto;
+    padding: 0;
+    color: #fff;
+    background: #111;
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.visor::backdrop { background: rgba(0, 0, 0, 0.82); }
+
+.visor__fig { margin: 0; }
+
+.visor__img {
+    display: block;
+    width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+    background: #000;
+}
+
+.visor__cap {
+    padding: 0.85rem 1rem 0.4rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.visor__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem 1rem;
+}
+
+.visor__nav[hidden] { display: none; }
+
+.visor__count { font-size: 0.9rem; color: #ccc; }
+
+.visor__btn,
+.visor__close {
+    min-height: 48px;
+    padding: 0.5rem 1rem;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111;
+    background: #fff;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.visor__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Glosario del tablero y escuchar --- */
+.act-glossary {
+    max-width: 860px;
+    margin: 1.25rem auto 0;
+}
+
+.asamblea__listen { margin-top: 0.75rem; }
+
+[data-listen][hidden],
+#act-listen[hidden] { display: none; }
+
+/* --- Contacto: ayuda si no usa correo --- */
+.contact__info-item--help {
+    padding: 0.9rem;
+    background: var(--color-accent-alpha);
+    border-radius: var(--radius-md);
+}
+
+.form__copy-help {
+    margin-top: 0.6rem;
+    font-weight: 500;
+}
+
+.form__copy { margin-top: 0.5rem; }
+
+/* --- Barra inferior en celulares --- */
+.bottom-bar { display: none; }
+
+@media (max-width: 768px) {
+    .bottom-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 998;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding-bottom: env(safe-area-inset-bottom, 0);
+        background: var(--color-bg-card);
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .bottom-bar__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.15rem;
+        min-height: 62px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--color-text);
+    }
+
+    .bottom-bar__item span { font-size: 1.35rem; line-height: 1; }
+
+    .bottom-bar__item:active,
+    .bottom-bar__item:focus-visible { background: var(--color-primary-alpha); }
+
+    body { padding-bottom: 66px; }
+
+    .back-to-top { display: none; }
+
+    .toast { bottom: 5.5rem; }
+
+    .text-size-toggle__label { display: none; }
+
+    .hero__logo { width: 88px; height: 88px; }
+
+    .hero__help li { font-size: 0.85rem; }
+
+    .retiro__actions .act-btn { width: 100%; justify-content: center; }
+}
+
+@media print {
+    .bottom-bar,
+    .hero__help { display: none !important; }
+}
+
+/* Portada: los tres botones en una fila en computador */
+.hero__content { max-width: 900px; }
+.hero__description { max-width: 660px; margin-left: auto; margin-right: auto; }
+
+/* Correos largos: que se partan en pantallas pequeñas */
+a[href^="mailto:"],
+.retiro__steps,
+.act-card,
+.aviso { overflow-wrap: anywhere; }
+
+/* Cabecera compacta en celulares pequeños: no crece con «Letra grande» */
+@media (max-width: 480px) {
+    .nav { padding-left: 12px; padding-right: 12px; }
+    .nav__logo { gap: 6px; font-size: 16px; }
+    .nav__logo-img { width: 34px; height: 34px; }
+    .nav__right { gap: 6px; }
+    .text-size-toggle { min-width: 40px; height: 40px; padding: 0 8px; font-size: 15px; }
+    .theme-toggle { width: 38px; height: 38px; }
+    .nav__toggle { padding: 6px; }
+}
+@media (max-width: 360px) {
+    .nav__logo-accent { display: none; }
+}
+
+/* Correcciones de desborde en celulares (la regla móvil de datos legales quedaba anulada) */
+.accordion__title { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.accordion__arrow,
+.accordion__count { flex: none; }
+.legal-data__item { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+    .legal-data__grid { grid-template-columns: 1fr; }
+    .accordion__header { padding: 1rem 1.1rem; }
+}
+
+.section__subtitle,
+.act-tl__body,
+.legal-data__header,
+.contact__info-item p { overflow-wrap: anywhere; }
+.act-tl__body,
+.legal-data__header > div,
+.contact__info-item > div { min-width: 0; }

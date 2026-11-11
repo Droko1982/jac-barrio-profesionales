@@ -88,6 +88,96 @@
         if (e.tagName === 'TIME') e.dateTime = D.actualizado;
     });
 
+    /* ---------- Íconos de entidades (ayudan a reconocer a quién se dirigió) ---------- */
+    var ICONOS = [
+        [/EDEQ/, '⚡'],
+        [/\bEPA\b/, '🗑️'],
+        [/Personer/, '⚖️'],
+        [/Polic[ií]a/, '👮'],
+        [/EDUA/, '🏢'],
+        [/Alcald|Planeaci|Hacienda|Catastro|Bienes|Participaci|Riesgo|Infraestructura|Desarrollo Social|Secretar[ií]a de/, '🏛️'],
+        [/Junta Directiva|saliente/, '🏡']
+    ];
+    function iconosEntidad(texto) {
+        // En el orden en que aparecen las entidades en el texto (la principal primero)
+        var hallados = [];
+        ICONOS.forEach(function (par) {
+            var m = texto.match(par[0]);
+            if (m) hallados.push({ pos: m.index, icono: par[1] });
+        });
+        hallados.sort(function (a, b) { return a.pos - b.pos; });
+        var vistos = [];
+        hallados.forEach(function (h) { if (vistos.indexOf(h.icono) < 0) vistos.push(h.icono); });
+        return vistos.slice(0, 3).join(' ');
+    }
+
+    /* ---------- Fotos: miniaturas y visor ampliado ---------- */
+    var RUTA_FOTOS = 'img/actuaciones/';
+    var visor = null, visorFotos = [], visorI = 0;
+
+    function mostrarFoto(i) {
+        var n = visorFotos.length;
+        visorI = (i + n) % n;
+        var f = visorFotos[visorI];
+        var img = visor.querySelector('.visor__img');
+        img.src = RUTA_FOTOS + f[0];
+        img.alt = f[1];
+        visor.querySelector('.visor__cap').textContent = f[1];
+        visor.querySelector('.visor__nav').hidden = n < 2;
+        visor.querySelector('.visor__count').textContent = 'Foto ' + (visorI + 1) + ' de ' + n;
+    }
+
+    function abrirFoto(fotos, i) {
+        if (!window.HTMLDialogElement) return false;  // navegador viejo: abre la foto sola
+        if (!visor) {
+            visor = el('dialog', 'visor');
+            visor.setAttribute('aria-label', 'Foto ampliada');
+            visor.innerHTML =
+                '<button type="button" class="visor__close">✕ Cerrar</button>' +
+                '<figure class="visor__fig"><img class="visor__img" alt=""><figcaption class="visor__cap"></figcaption></figure>' +
+                '<div class="visor__nav"><button type="button" class="visor__btn" data-v="-1">← Anterior</button>' +
+                '<span class="visor__count"></span><button type="button" class="visor__btn" data-v="1">Siguiente →</button></div>';
+            document.body.appendChild(visor);
+            visor.querySelector('.visor__close').addEventListener('click', function () { visor.close(); });
+            visor.addEventListener('click', function (e) { if (e.target === visor) visor.close(); });
+            Array.prototype.forEach.call(visor.querySelectorAll('[data-v]'), function (b) {
+                b.addEventListener('click', function () { mostrarFoto(visorI + Number(b.getAttribute('data-v'))); });
+            });
+            visor.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') mostrarFoto(visorI + 1);
+                if (e.key === 'ArrowLeft') mostrarFoto(visorI - 1);
+            });
+        }
+        visorFotos = fotos;
+        mostrarFoto(i);
+        visor.showModal();
+        return true;
+    }
+
+    function galeria(it) {
+        var cont = el('div', 'act-card__gallery');
+        var fila = el('div', 'act-card__photos act-card__photos--' + Math.min(it.fotos.length, 3));
+        it.fotos.forEach(function (f, i) {
+            var a = el('a', 'act-photo');
+            a.href = RUTA_FOTOS + f[0];
+            a.setAttribute('aria-label', 'Ampliar foto: ' + f[1]);
+            var img = el('img');
+            img.src = RUTA_FOTOS + f[0].replace(/\.jpg$/, '-sm.jpg');
+            img.alt = f[1];
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            a.appendChild(img);
+            a.addEventListener('click', function (e) {
+                if (abrirFoto(it.fotos, i)) e.preventDefault();
+            });
+            fila.appendChild(a);
+        });
+        cont.appendChild(fila);
+        cont.appendChild(el('p', 'act-card__photos-cap',
+            it.fotos.length > 1 ? '📷 ' + it.fotos.length + ' fotos reales · toca una para ampliarla' : '📷 Foto real · tócala para ampliarla'));
+        return cont;
+    }
+
     /* ---------- Tarjetas ---------- */
     function tarjeta(it) {
         var li = el('li', 'act-card act-card--' + it.estado);
@@ -103,10 +193,17 @@
 
         if (it.entidad) {
             var ent = el('p', 'act-card__entity');
-            if (it.estado !== 'hecho') ent.appendChild(el('span', 'act-card__label', 'Ante: '));
+            var ics = iconosEntidad(it.entidad);
+            if (ics) {
+                var spanIc = el('span', 'act-card__icons', ics);
+                spanIc.setAttribute('aria-hidden', 'true');
+                ent.appendChild(spanIc);
+            }
+            if (it.estado !== 'hecho') ent.appendChild(el('span', 'act-card__label', 'Dirigido a: '));
             ent.appendChild(document.createTextNode(it.entidad));
             li.appendChild(ent);
         }
+        if (it.fotos && it.fotos.length) li.appendChild(galeria(it));
 
         if (it.estado === 'espera') {
             var dias = diasEntre(aFecha(it.fecha), HOY);
@@ -280,16 +377,69 @@
         });
     });
 
-    /* ---------- Escuchar el resumen (lectura en voz alta) ---------- */
-    var btnEscuchar = document.getElementById('act-listen');
-    if (btnEscuchar && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
-        btnEscuchar.hidden = false;
-        var etiqueta = btnEscuchar.innerHTML;
+    /* ---------- Lectura en voz alta (resumen del tablero y secciones con data-listen) ---------- */
+    var puedeHablar = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+    var botonActivo = null;
 
+    function detenerLectura() {
+        if (puedeHablar) window.speechSynthesis.cancel();
+        if (botonActivo) {
+            botonActivo.innerHTML = botonActivo.getAttribute('data-etiqueta');
+            botonActivo.setAttribute('aria-pressed', 'false');
+            botonActivo = null;
+        }
+    }
+
+    function leer(frases, btn) {
+        var synth = window.speechSynthesis;
+        var mismo = botonActivo === btn;
+        detenerLectura();
+        if (mismo) return;  // segundo toque = detener
+        var voces = synth.getVoices();
+        var voz = voces.filter(function (v) { return /^es[-_]CO/i.test(v.lang); })[0] ||
+            voces.filter(function (v) { return /^es/i.test(v.lang); })[0] || null;
+        frases = frases.map(function (f) { return f.replace(/\s·\s/g, ', ').trim(); }).filter(Boolean);
+        frases.forEach(function (f, i) {
+            var u = new SpeechSynthesisUtterance(f);
+            u.lang = voz ? voz.lang : 'es-CO';
+            if (voz) u.voice = voz;
+            u.rate = 0.92;
+            if (i === frases.length - 1) u.onend = function () { if (botonActivo === btn) detenerLectura(); };
+            synth.speak(u);
+        });
+        botonActivo = btn;
+        btn.innerHTML = '<span aria-hidden="true">⏹️</span> Detener';
+        btn.setAttribute('aria-pressed', 'true');
+    }
+
+    function frasesDe(nodo) {
+        var copia = nodo.cloneNode(true);
+        Array.prototype.forEach.call(copia.querySelectorAll('button, .no-leer, script, style'), function (n) { n.remove(); });
+        var texto = (copia.innerText || copia.textContent || '').replace(/\s+/g, ' ');
+        return texto.match(/[^.!?]+[.!?]*/g) || [];
+    }
+
+    if (puedeHablar) {
+        window.addEventListener('pagehide', detenerLectura);
+        $all('[data-listen], #act-listen').forEach(function (b) {
+            b.hidden = false;
+            b.setAttribute('data-etiqueta', b.innerHTML);
+            b.setAttribute('aria-pressed', 'false');
+        });
+        $all('[data-listen]').forEach(function (b) {
+            b.addEventListener('click', function () {
+                var destino = document.querySelector(b.getAttribute('data-listen'));
+                if (destino) leer(frasesDe(destino), b);
+            });
+        });
+    }
+
+    var btnEscuchar = document.getElementById('act-listen');
+    if (btnEscuchar && puedeHablar) {
         var resumen = function () {
             var partes = [
                 'Actuaciones de la Junta de Acción Comunal del barrio Los Profesionales, actualizadas al ' + larga(D.actualizado) + '.',
-                'Ya se hicieron ' + conteo.hecho + '. Hay ' + conteo.tramite + ' solicitudes en trámite y ' +
+                'Ya se hicieron ' + conteo.hecho + '. Hay ' + conteo.tramite + ' en trámite y ' +
                     conteo.espera + ' esperando respuesta.'
             ];
             var esp = items.filter(function (i) { return i.estado === 'espera'; })
@@ -317,33 +467,7 @@
             partes.push('Para hacer una solicitud, escriba al correo de la Junta o use el formulario del portal.');
             return partes;
         };
-
-        var detener = function () {
-            window.speechSynthesis.cancel();
-            btnEscuchar.innerHTML = etiqueta;
-            btnEscuchar.setAttribute('aria-pressed', 'false');
-        };
-
-        btnEscuchar.addEventListener('click', function () {
-            var synth = window.speechSynthesis;
-            if (synth.speaking || synth.pending) { detener(); return; }
-            var voces = synth.getVoices();
-            var voz = voces.filter(function (v) { return /^es[-_]CO/i.test(v.lang); })[0] ||
-                voces.filter(function (v) { return /^es/i.test(v.lang); })[0] || null;
-            var frases = resumen();
-            // Frases cortas: algunos navegadores cortan los textos largos
-            frases.forEach(function (f, i) {
-                var u = new SpeechSynthesisUtterance(f.replace(/\s·\s/g, ', '));
-                u.lang = voz ? voz.lang : 'es-CO';
-                if (voz) u.voice = voz;
-                u.rate = 0.95;
-                if (i === frases.length - 1) u.onend = detener;
-                synth.speak(u);
-            });
-            btnEscuchar.innerHTML = '<span aria-hidden="true">⏹️</span> Detener lectura';
-            btnEscuchar.setAttribute('aria-pressed', 'true');
-        });
-        window.addEventListener('pagehide', function () { window.speechSynthesis.cancel(); });
+        btnEscuchar.addEventListener('click', function () { leer(resumen(), btnEscuchar); });
     }
 
     /* ---------- Próxima Asamblea ---------- */
