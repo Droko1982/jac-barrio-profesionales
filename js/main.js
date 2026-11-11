@@ -9,6 +9,13 @@
     const prefersReducedMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // localStorage puede fallar (modo privado o datos bloqueados): nunca debe romper la página
+    const store = {
+        get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+        set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } },
+        remove: function (k) { try { localStorage.removeItem(k); } catch (e) { /* ignore */ } }
+    };
+
     function ready(fn) {
         if (document.readyState !== 'loading') {
             fn();
@@ -22,10 +29,12 @@
         // === Announcement Banner ===
         const announcement = document.getElementById('announcement');
         const announcementClose = document.getElementById('announcement-close');
-        const ANNOUNCEMENT_KEY = 'jac-announcement-asamblea-2026-11';
+        const ANNOUNCEMENT_KEY = 'jac-announcement-asi-vamos-2026-11';
 
         if (announcement) {
-            if (!localStorage.getItem(ANNOUNCEMENT_KEY)) {
+            let dismissed = false;
+            try { dismissed = !!localStorage.getItem(ANNOUNCEMENT_KEY); } catch (e) { /* ignore */ }
+            if (!dismissed) {
                 announcement.hidden = false;
             }
             if (announcementClose) {
@@ -55,7 +64,7 @@
 
         // === Dark Mode Toggle ===
         const themeToggle = document.getElementById('theme-toggle');
-        const savedTheme = localStorage.getItem('jac-theme');
+        const savedTheme = store.get('jac-theme');
         const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
         if (savedTheme) {
@@ -69,14 +78,14 @@
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('jac-theme', newTheme);
+                store.set('jac-theme', newTheme);
             });
         }
 
         // Follow system theme changes when user has not chosen one
         if (systemDark && systemDark.addEventListener) {
             systemDark.addEventListener('change', function (e) {
-                if (!localStorage.getItem('jac-theme')) {
+                if (!store.get('jac-theme')) {
                     document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
                 }
             });
@@ -350,86 +359,6 @@
             });
         }
 
-        // === Gestion / Seguimiento de Solicitudes ===
-        const gestionSearch = document.getElementById('gestion-search');
-        const gestionTable = document.getElementById('gestion-table');
-        const gestionCount = document.getElementById('gestion-count');
-        const gestionFilters = document.querySelectorAll('.seguimiento__filter');
-
-        if (gestionTable) {
-            const gRows = Array.prototype.slice.call(gestionTable.querySelectorAll('tbody tr[data-estado]'));
-            const gTotal = gRows.length;
-            let currentEstado = 'todas';
-
-            // Live status counters in the intro block
-            const elTotal = document.getElementById('gestion-total');
-            const elTramite = document.getElementById('gestion-tramite');
-            const elResueltas = document.getElementById('gestion-resueltas');
-
-            function countBy(estado) {
-                return gRows.filter(function (r) {
-                    return r.getAttribute('data-estado') === estado;
-                }).length;
-            }
-            if (elTotal) elTotal.textContent = gTotal;
-            if (elTramite) elTramite.textContent = countBy('tramite');
-            if (elResueltas) elResueltas.textContent = countBy('resuelta');
-
-            if (gestionCount) {
-                gestionCount.setAttribute('aria-live', 'polite');
-                gestionCount.setAttribute('role', 'status');
-            }
-
-            function applyGestionFilter() {
-                const text = gestionSearch ? gestionSearch.value.toLowerCase().trim() : '';
-                let visible = 0;
-
-                gRows.forEach(function (row) {
-                    const matchesEstado = currentEstado === 'todas' ||
-                        row.getAttribute('data-estado') === currentEstado;
-                    const matchesText = row.textContent.toLowerCase().indexOf(text) !== -1;
-
-                    if (matchesEstado && matchesText) {
-                        row.classList.remove('hidden');
-                        visible++;
-                    } else {
-                        row.classList.add('hidden');
-                    }
-                });
-
-                if (gestionCount) {
-                    if (gTotal === 0) {
-                        gestionCount.textContent = 'Sin gestiones publicadas todavía';
-                    } else if (visible === gTotal) {
-                        gestionCount.textContent = 'Mostrando las ' + gTotal + ' gestiones';
-                    } else if (visible === 0) {
-                        gestionCount.textContent = 'No hay gestiones que coincidan con la búsqueda';
-                    } else {
-                        gestionCount.textContent = 'Mostrando ' + visible + ' de ' + gTotal + ' gestiones';
-                    }
-                }
-            }
-
-            if (gestionSearch) {
-                gestionSearch.addEventListener('input', applyGestionFilter);
-            }
-
-            gestionFilters.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    gestionFilters.forEach(function (b) {
-                        b.classList.remove('is-active');
-                        b.setAttribute('aria-pressed', 'false');
-                    });
-                    this.classList.add('is-active');
-                    this.setAttribute('aria-pressed', 'true');
-                    currentEstado = this.getAttribute('data-filter') || 'todas';
-                    applyGestionFilter();
-                });
-            });
-
-            applyGestionFilter();
-        }
-
         // === Imprimir solo el Informe General ===
         const reportPrint = document.getElementById('report-print');
         if (reportPrint) {
@@ -442,13 +371,16 @@
             });
         }
 
-        // === Contact Form Handling ===
+        // === Formulario de solicitudes (llega al correo de la Junta vía FormSubmit) ===
         const contactForm = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
-        const FALLBACK_EMAIL = 'jaclosprofesionales@gmail.com';
+        const JUNTA_EMAIL = 'jaclosprofesionales@gmail.com';
         const asuntoSelect = document.getElementById('asunto');
         const mensajeInput = document.getElementById('mensaje');
         const subjectInput = document.getElementById('form-subject');
+        const radicadoInput = document.getElementById('form-radicado');
+        const MIS_KEY = 'jac-mis-solicitudes';
+        const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Texto de ayuda del mensaje según lo que necesita el vecino
         const MENSAJE_AYUDA = {
@@ -458,6 +390,11 @@
             sismo: 'Describe los daños de tu vivienda, la dirección y si ya los reportaste a la Alcaldía.',
             documentos: 'Indica qué documento o libro quieres consultar y de qué periodo.'
         };
+
+        function campo(id) {
+            const e = document.getElementById(id);
+            return e ? e.value.trim() : '';
+        }
 
         function asuntoLabel() {
             if (!asuntoSelect || asuntoSelect.selectedIndex < 1) return 'Nueva solicitud';
@@ -489,32 +426,195 @@
             });
         });
 
+        // Número de solicitud: WEB-AAAAMMDD-XXXX (sin letras que se confundan: I, L, O, 0, 1)
+        function nuevoNumero() {
+            const abc = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+            const azar = new Uint8Array(4);
+            if (window.crypto && window.crypto.getRandomValues) {
+                window.crypto.getRandomValues(azar);
+            } else {
+                for (let i = 0; i < 4; i++) azar[i] = Math.floor(Math.random() * 256);
+            }
+            let sufijo = '';
+            for (let i = 0; i < 4; i++) sufijo += abc[azar[i] % abc.length];
+            const d = new Date();
+            return 'WEB-' + d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') +
+                String(d.getDate()).padStart(2, '0') + '-' + sufijo;
+        }
+
+        function textoCorreo(numero) {
+            return 'Nombre: ' + campo('nombre') + '\n' +
+                'Correo: ' + campo('email') + '\n' +
+                'Teléfono: ' + (campo('telefono') || 'No indicado') + '\n' +
+                'Trámite: ' + asuntoLabel() + '\n' +
+                (numero ? 'Número de solicitud: ' + numero + '\n' : '') +
+                '\nMensaje:\n' + campo('mensaje');
+        }
+
+        function mailtoJunta(numero) {
+            const asunto = '[Web JAC] ' + asuntoLabel() + (numero ? ' · ' + numero : '') +
+                (campo('nombre') ? ' — ' + campo('nombre') : '');
+            return 'mailto:' + JUNTA_EMAIL + '?subject=' + encodeURIComponent(asunto) +
+                '&body=' + encodeURIComponent(textoCorreo(numero));
+        }
+
+        // «Abrir el mensaje listo en mi correo»: se arma con lo que el vecino ya escribió
+        const formMailto = document.getElementById('form-mailto');
+        if (formMailto) {
+            formMailto.addEventListener('click', function () {
+                this.href = mailtoJunta('');
+            });
+        }
+
+        // Envío a FormSubmit. Responde 200 aunque el correo no esté activado: hay que leer «success».
+        function enviarAJunta(url, formData) {
+            return fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(function (response) {
+                    return response.json().catch(function () { return {}; }).then(function (body) {
+                        return response.ok && String(body.success) === 'true';
+                    });
+                })
+                .catch(function (err) {
+                    if (window.console && console.error) console.error('[formulario] Error de red:', err);
+                    return false;
+                });
+        }
+
+        // --- «Tus solicitudes enviadas desde este equipo» (solo en este navegador) ---
+        const misBox = document.getElementById('mis-solicitudes');
+        const misList = document.getElementById('mis-solicitudes-list');
+        const misBorrar = document.getElementById('mis-solicitudes-borrar');
+
+        function leerMis() {
+            try {
+                const v = JSON.parse(store.get(MIS_KEY) || '[]');
+                return Array.isArray(v) ? v : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function pintarMis() {
+            if (!misBox || !misList) return;
+            const mis = leerMis();
+            misList.textContent = '';
+            mis.slice(0, 10).forEach(function (s) {
+                const li = document.createElement('li');
+                const num = document.createElement('strong');
+                num.textContent = s.numero;
+                const meta = document.createElement('span');
+                const d = new Date(s.fecha);
+                meta.textContent = ' · ' + d.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }) +
+                    ' · ' + s.asunto;
+                li.appendChild(num);
+                li.appendChild(meta);
+                misList.appendChild(li);
+            });
+            misBox.hidden = mis.length === 0;
+        }
+
+        function guardarMis(numero, asunto) {
+            const mis = leerMis();
+            mis.unshift({ numero: numero, asunto: asunto, fecha: new Date().toISOString() });
+            store.set(MIS_KEY, JSON.stringify(mis.slice(0, 20)));
+            pintarMis();
+        }
+
+        if (misBorrar) {
+            misBorrar.addEventListener('click', function () {
+                if (window.confirm('¿Borrar la lista guardada en este equipo? Las solicitudes ya enviadas siguen en el correo de la Junta.')) {
+                    store.remove(MIS_KEY);
+                    pintarMis();
+                }
+            });
+        }
+        pintarMis();
+
+        // --- Constancia con el número de solicitud (no se cierra sola) ---
+        function quitarMensajes() {
+            if (!contactForm) return;
+            contactForm.querySelectorAll('.form__message, .constancia').forEach(function (m) { m.remove(); });
+        }
+
+        function mostrarConstancia(numero, email) {
+            quitarMensajes();
+            const box = document.createElement('div');
+            box.className = 'constancia';
+            box.setAttribute('role', 'status');
+            box.setAttribute('tabindex', '-1');
+
+            const ok = document.createElement('p');
+            ok.className = 'constancia__ok';
+            ok.textContent = '✅ ¡Listo! Tu solicitud llegó al correo de la Junta.';
+            const lab = document.createElement('p');
+            lab.className = 'constancia__label';
+            lab.textContent = 'Tu número de solicitud';
+            const num = document.createElement('p');
+            num.className = 'constancia__num';
+            num.textContent = numero;
+            const txt = document.createElement('p');
+            txt.className = 'constancia__text';
+            txt.textContent = 'Guárdalo y menciónalo si nos escribes por esta solicitud. Te responderemos a ' + email + '.';
+
+            const acciones = document.createElement('div');
+            acciones.className = 'constancia__actions';
+            const copiar = document.createElement('button');
+            copiar.type = 'button';
+            copiar.className = 'btn btn--ghost';
+            copiar.textContent = '📋 Copiar número';
+            copiar.addEventListener('click', function () {
+                if (window.JAC_COPIAR) window.JAC_COPIAR(numero, 'Número de solicitud copiado');
+            });
+            const otra = document.createElement('button');
+            otra.type = 'button';
+            otra.className = 'link-btn';
+            otra.textContent = 'Enviar otra solicitud';
+            otra.addEventListener('click', function () {
+                box.remove();
+                if (asuntoSelect) asuntoSelect.focus();
+            });
+            acciones.appendChild(copiar);
+            acciones.appendChild(otra);
+
+            [ok, lab, num, txt, acciones].forEach(function (n) { box.appendChild(n); });
+            const formTitle = contactForm.querySelector('.contact__form-title');
+            if (formTitle) formTitle.insertAdjacentElement('afterend', box);
+            else contactForm.insertBefore(box, contactForm.firstChild);
+            box.focus({ preventScroll: true });
+            box.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+        }
+
         if (contactForm) {
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                const nombre = (document.getElementById('nombre') || {}).value || '';
-                const email = (document.getElementById('email') || {}).value || '';
-                const asunto = (document.getElementById('asunto') || {}).value || '';
-                const mensaje = (document.getElementById('mensaje') || {}).value || '';
-                const telefono = (document.getElementById('telefono') || {}).value || '';
+                const nombre = campo('nombre');
+                const email = campo('email');
+                const asunto = asuntoSelect ? asuntoSelect.value : '';
+                const mensaje = campo('mensaje');
 
-                if (!nombre.trim() || !email.trim() || !asunto || !mensaje.trim()) {
+                if (!nombre || !email || !asunto || !mensaje) {
                     showFormMessage('Por favor complete todos los campos obligatorios.', 'error');
                     return;
                 }
-
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email.trim())) {
+                if (!EMAIL_RE.test(email)) {
                     showFormMessage('Por favor ingrese un correo electrónico válido.', 'error');
                     return;
                 }
-
                 const aceptaCheckbox = document.getElementById('acepta-politica');
                 if (aceptaCheckbox && !aceptaCheckbox.checked) {
                     showFormMessage('Debe aceptar la Política de Tratamiento de Datos para continuar.', 'error');
                     return;
                 }
+
+                const numero = nuevoNumero();
+                const etiqueta = asuntoLabel();
+                if (radicadoInput) radicadoInput.value = numero;
+                if (subjectInput) subjectInput.value = '[Web JAC] ' + etiqueta + ' · ' + numero + ' — ' + nombre;
 
                 if (submitBtn) {
                     submitBtn.disabled = true;
@@ -522,91 +622,49 @@
                 }
                 contactForm.setAttribute('aria-busy', 'true');
 
-                if (subjectInput) {
-                    subjectInput.value = '[Web JAC] ' + asuntoLabel() + ' — ' + nombre.trim();
-                }
-                const formData = new FormData(contactForm);
-
-                fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                })
-                .then(function (response) {
-                    // FormSubmit responde 200 aunque el correo aún no esté activado: hay que leer "success"
-                    return response.json().catch(function () { return {}; }).then(function (body) {
-                        return { ok: response.ok && String(body.success) === 'true' };
+                enviarAJunta(contactForm.action, new FormData(contactForm))
+                    .then(function (ok) {
+                        if (ok) {
+                            mostrarConstancia(numero, email);
+                            guardarMis(numero, etiqueta);
+                            contactForm.reset();
+                            applyAsunto('');
+                        } else {
+                            showFormFallback('No pudimos enviarla desde la página.', numero);
+                        }
+                    })
+                    .finally(function () {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Enviar solicitud';
+                        }
+                        contactForm.removeAttribute('aria-busy');
                     });
-                })
-                .then(function (result) {
-                    if (result.ok) {
-                        showFormMessage('¡Listo! Tu solicitud llegó al correo de la Junta. Te responderemos a ' + email.trim() + '.', 'success');
-                        contactForm.reset();
-                        applyAsunto('');
-                    } else {
-                        showFormFallback('Hubo un error al enviar el mensaje.', { nombre: nombre, email: email, asunto: asunto, mensaje: mensaje, telefono: telefono });
-                    }
-                })
-                .catch(function (err) {
-                    if (window.console && console.error) {
-                        console.error('[contact-form] Error de red:', err);
-                    }
-                    showFormFallback('Error de conexión.', { nombre: nombre, email: email, asunto: asunto, mensaje: mensaje, telefono: telefono });
-                })
-                .finally(function () {
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Enviar solicitud';
-                    }
-                    contactForm.removeAttribute('aria-busy');
-                });
             });
         }
 
-        function showFormFallback(prefix, data) {
-            const subject = encodeURIComponent('[Web JAC] ' + asuntoLabel() + ' — ' + data.nombre);
-            const body = encodeURIComponent(
-                'Nombre: ' + data.nombre + '\n' +
-                'Email: ' + data.email + '\n' +
-                'Teléfono: ' + (data.telefono || 'No indicado') + '\n' +
-                'Asunto: ' + asuntoLabel() + '\n\n' +
-                'Mensaje:\n' + data.mensaje
-            );
-            const mailtoUrl = 'mailto:' + FALLBACK_EMAIL + '?subject=' + subject + '&body=' + body;
+        function showFormFallback(prefix, numero) {
             showFormMessage(
-                prefix + ' Por favor escríbanos directamente: ',
+                prefix + ' Tu mensaje no se ha perdido: ',
                 'error',
-                { href: mailtoUrl, label: FALLBACK_EMAIL }
+                { href: mailtoJunta(numero), label: 'envíalo desde tu correo con un clic' }
             );
         }
 
         function showFormMessage(message, type, link) {
-            const existing = document.querySelector('.form__message');
-            if (existing) existing.remove();
+            quitarMensajes();
 
             const msgEl = document.createElement('div');
-            msgEl.className = 'form__message';
+            msgEl.className = 'form__message form__message--' + (type === 'success' ? 'ok' : 'error');
             msgEl.setAttribute('role', 'alert');
-            msgEl.style.cssText = 'padding:0.85rem 1rem;margin-bottom:1.25rem;border-radius:10px;font-size:0.9rem;font-weight:500;text-align:center;';
-
-            if (type === 'success') {
-                msgEl.style.backgroundColor = 'var(--color-primary-alpha)';
-                msgEl.style.color = 'var(--color-success)';
-                msgEl.style.border = '1px solid var(--color-primary)';
-            } else {
-                msgEl.style.backgroundColor = 'rgba(211, 47, 47, 0.08)';
-                msgEl.style.color = 'var(--color-error)';
-                msgEl.style.border = '1px solid rgba(211, 47, 47, 0.3)';
-            }
-
             msgEl.textContent = message;
 
             if (link && link.href) {
                 const a = document.createElement('a');
                 a.href = link.href;
                 a.textContent = link.label;
-                a.style.cssText = 'color:inherit;text-decoration:underline;font-weight:600;';
                 msgEl.appendChild(a);
+                msgEl.appendChild(document.createTextNode('.'));
             }
 
             const formTitle = contactForm.querySelector('.contact__form-title');
@@ -615,17 +673,70 @@
             } else {
                 contactForm.insertBefore(msgEl, contactForm.firstChild);
             }
+            // Los errores con enlace de respaldo no se cierran solos
+            if (!link) {
+                setTimeout(function () {
+                    if (msgEl.parentNode) msgEl.remove();
+                }, 12000);
+            }
+        }
 
-            const dismissDelay = type === 'success' ? 10000 : 15000;
-            setTimeout(function () {
-                if (msgEl.parentNode) {
-                    msgEl.style.transition = 'opacity 0.3s ease';
-                    msgEl.style.opacity = '0';
-                    setTimeout(function () {
-                        if (msgEl.parentNode) msgEl.remove();
-                    }, 300);
+        // === Inscripción a los avisos por correo ===
+        const susForm = document.getElementById('suscribe-form');
+        if (susForm) {
+            const susMsg = susForm.querySelector('.stayup__msg');
+            const susBtn = susForm.querySelector('button[type="submit"]');
+            const susSubject = susForm.querySelector('input[name="_subject"]');
+
+            const decir = function (txt, tipo, link) {
+                susMsg.textContent = txt;
+                susMsg.className = 'stayup__msg' + (tipo ? ' is-' + tipo : '');
+                if (link) {
+                    const a = document.createElement('a');
+                    a.href = link.href;
+                    a.textContent = link.label;
+                    a.className = 'contact__link';
+                    susMsg.appendChild(a);
+                    susMsg.appendChild(document.createTextNode('.'));
                 }
-            }, dismissDelay);
+            };
+
+            susForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const nombre = susForm.querySelector('#sus-nombre').value.trim();
+                const email = susForm.querySelector('#sus-email').value.trim();
+                const acepta = susForm.querySelector('input[name="acepta_politica"]');
+
+                if (!nombre || !EMAIL_RE.test(email)) {
+                    decir('Escribe tu nombre y un correo válido.', 'error');
+                    return;
+                }
+                if (acepta && !acepta.checked) {
+                    decir('Para inscribirte debes aceptar la Política de Tratamiento de Datos.', 'error');
+                    return;
+                }
+                if (susSubject) susSubject.value = '[Web JAC] Quiero recibir los avisos — ' + nombre;
+
+                const etiqueta = susBtn.textContent;
+                susBtn.disabled = true;
+                susBtn.textContent = 'Enviando...';
+                enviarAJunta(susForm.action, new FormData(susForm))
+                    .then(function (ok) {
+                        if (ok) {
+                            decir('¡Listo, ' + nombre + '! La Junta agregará ' + email + ' a la lista de avisos.', 'ok');
+                            susForm.reset();
+                        } else {
+                            const href = 'mailto:' + JUNTA_EMAIL +
+                                '?subject=' + encodeURIComponent('[Web JAC] Quiero recibir los avisos — ' + nombre) +
+                                '&body=' + encodeURIComponent('Por favor agreguen este correo a la lista de avisos de la Junta.\n\nNombre: ' + nombre + '\nCorreo: ' + email);
+                            decir('No pudimos inscribirte desde la página. ', 'error', { href: href, label: 'Pídelo por correo con un clic' });
+                        }
+                    })
+                    .finally(function () {
+                        susBtn.disabled = false;
+                        susBtn.textContent = etiqueta;
+                    });
+            });
         }
 
         // Initial state

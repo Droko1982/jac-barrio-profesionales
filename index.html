@@ -89,9 +89,9 @@
     <!-- ========== AVISO SUPERIOR ========== -->
     <div class="announcement" id="announcement" hidden>
         <div class="container announcement__inner">
-            <span class="announcement__icon" aria-hidden="true">📅</span>
-            <span class="announcement__text"><strong>Asamblea General a finales de noviembre</strong> · Lee la reforma de estatutos y envía tu opinión antes de la votación.</span>
-            <a href="#asamblea" class="announcement__link">Ver detalles →</a>
+            <span class="announcement__icon" aria-hidden="true">📋</span>
+            <span class="announcement__text"><strong>Nuevo: «Así vamos».</strong> Lo que ya se hizo, lo solicitado y lo que espera respuesta, con fechas · Asamblea General a finales de noviembre.</span>
+            <a href="#actuaciones" class="announcement__link">Ver →</a>
             <button type="button" class="announcement__close" id="announcement-close" aria-label="Cerrar aviso">&times;</button>
         </div>
     </div>
@@ -119,9 +119,9 @@
 
             <ul class="nav__menu" id="nav-menu">
                 <li class="nav__item"><a href="#tramites" class="nav__link">Trámites</a></li>
+                <li class="nav__item"><a href="#actuaciones" class="nav__link">Así vamos</a></li>
                 <li class="nav__item"><a href="#asamblea" class="nav__link">Asamblea</a></li>
                 <li class="nav__item"><a href="#estatutos" class="nav__link">Estatutos</a></li>
-                <li class="nav__item"><a href="#normativa" class="nav__link">Normativa</a></li>
                 <li class="nav__item"><a href="#transparencia" class="nav__link">Transparencia</a></li>
                 <li class="nav__item"><a href="#junta" class="nav__link">La Junta</a></li>
                 <li class="nav__item"><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
@@ -143,11 +143,11 @@
                 <span class="hero__badge">Portal oficial · Comuna 10 · Armenia, Quindío</span>
                 <h1 class="hero__title">Junta de Acción Comunal</h1>
                 <p class="hero__subtitle">Barrio Los Profesionales</p>
-                <p class="hero__description">Todo lo que necesitas saber de tu Junta, en un solo lugar y en palabras sencillas: la próxima Asamblea, los estatutos para opinar, las normas que nos rigen y cómo va nuestra gestión.</p>
+                <p class="hero__description">Todo lo que necesitas saber de tu Junta, en un solo lugar y en palabras sencillas: lo que ya se hizo, lo que hemos pedido y lo que sigue esperando respuesta; la próxima Asamblea y los estatutos para opinar.</p>
                 <div class="hero__buttons">
-                    <a href="#asamblea" class="btn btn--primary btn--lg">📅 Asamblea de noviembre</a>
-                    <a href="#estatutos" class="btn btn--secondary btn--lg">📖 Opina los estatutos</a>
+                    <a href="#actuaciones" class="btn btn--primary btn--lg">📋 Así vamos</a>
                     <a href="#tramites" class="btn btn--secondary btn--lg">✉️ Haz una solicitud</a>
+                    <a href="#asamblea" class="btn btn--secondary btn--lg">📅 Asamblea de noviembre</a>
                 </div>
             </div>
             <div class="hero__stats">
@@ -156,8 +156,8 @@
                     <span class="hero__stat-label">Años con personería (desde 1998)</span>
                 </div>
                 <div class="hero__stat">
-                    <span class="hero__stat-number" data-count="5">0</span>
-                    <span class="hero__stat-label">Dignatarios electos</span>
+                    <span class="hero__stat-number" data-count="12" data-act-count-attr="total">0</span>
+                    <span class="hero__stat-label">Actuaciones publicadas, con soporte</span>
                 </div>
                 <div class="hero__stat">
                     <span class="hero__stat-number" id="hero-dias" data-count="106">0</span>
@@ -213,29 +213,142 @@
                         <span class="tramite__title">Otra consulta</span>
                         <span class="tramite__desc">Preguntas, sugerencias o felicitaciones.</span>
                     </a>
+                    <a href="#avisos-correo" class="tramite fade-in">
+                        <span class="tramite__icon" aria-hidden="true">📬</span>
+                        <span class="tramite__title">Recibir los avisos</span>
+                        <span class="tramite__desc">Te escribimos cuando haya asamblea, informe o novedades.</span>
+                    </a>
                 </div>
 
                 <p class="tramites__note fade-in">🚨 Ante una emergencia, llama a la <strong>línea 123</strong>.</p>
             </div>
         </section>
 
+        <!-- ========== ASÍ VAMOS: ACTUACIONES DE LA JUNTA ==========
+        Las tarjetas, contadores y la línea de tiempo se dibujan desde js/actuaciones.js
+        (fuente: hoja «Registro de actuaciones» en Google Drive; ver herramientas/LEEME.md).
+        -->
+        <section class="section section--alt" id="actuaciones">
+            <span id="gestion" class="anchor-alias" aria-hidden="true"></span>
+            <div class="container">
+                <span class="section__badge fade-in">Así vamos</span>
+                <h2 class="section__title fade-in">Actuaciones de la Junta</h2>
+                <p class="section__subtitle fade-in">Lo que ya se hizo, lo que hemos solicitado y lo que sigue esperando respuesta, con sus fechas. Cada punto tiene su oficio o radicado de soporte.</p>
+
+                <nav class="act-summary fade-in" aria-label="Resumen de actuaciones">
+                    <a href="#act-col-hecho" class="act-chip act-chip--hecho">
+                        <span class="act-chip__icon" aria-hidden="true">✅</span>
+                        <span class="act-chip__num" data-act-count="hecho">4</span>
+                        <span class="act-chip__label">Ya se hizo</span>
+                    </a>
+                    <a href="#act-col-tramite" class="act-chip act-chip--tramite">
+                        <span class="act-chip__icon" aria-hidden="true">🔄</span>
+                        <span class="act-chip__num" data-act-count="tramite">3</span>
+                        <span class="act-chip__label">Solicitado, en trámite</span>
+                    </a>
+                    <a href="#act-col-espera" class="act-chip act-chip--espera">
+                        <span class="act-chip__icon" aria-hidden="true">⏳</span>
+                        <span class="act-chip__num" data-act-count="espera">5</span>
+                        <span class="act-chip__label">Esperando respuesta</span>
+                        <span class="act-chip__note"><span data-act-count="vencidas">5</span> con el plazo legal vencido</span>
+                    </a>
+                </nav>
+
+                <div class="act-toolbar fade-in">
+                    <p class="act-toolbar__updated">Actualizado al <time data-act-updated datetime="2026-11-10">10 de noviembre de 2026</time></p>
+                    <div class="act-toolbar__actions">
+                        <button type="button" class="act-btn" id="act-listen" aria-pressed="false" hidden><span aria-hidden="true">🔊</span> Escuchar resumen</button>
+                        <button type="button" class="act-btn" data-share="#actuaciones" data-share-title="Así vamos · JAC Barrio Los Profesionales" data-share-text="Lo que ya hizo la Junta, lo solicitado y lo que espera respuesta, con fechas."><span aria-hidden="true">📤</span> Compartir</button>
+                        <a class="act-btn" href="cartelera.html"><span aria-hidden="true">🖨️</span> Cartelera para imprimir</a>
+                    </div>
+                </div>
+
+                <div class="act-board">
+                    <div class="act-col act-col--hecho" id="act-col-hecho">
+                        <h3 class="act-col__title"><span aria-hidden="true">✅</span> Ya se hizo</h3>
+                        <p class="act-col__hint">Cumplido o con respuesta de fondo.</p>
+                        <ol class="act-list" data-act-list="hecho"></ol>
+                    </div>
+                    <div class="act-col act-col--tramite" id="act-col-tramite">
+                        <h3 class="act-col__title"><span aria-hidden="true">🔄</span> Solicitado, en trámite</h3>
+                        <p class="act-col__hint">La entidad respondió en parte o el caso avanza.</p>
+                        <ol class="act-list" data-act-list="tramite"></ol>
+                    </div>
+                    <div class="act-col act-col--espera" id="act-col-espera">
+                        <h3 class="act-col__title"><span aria-hidden="true">⏳</span> Esperando respuesta</h3>
+                        <p class="act-col__hint">Radicado y aún sin respuesta. Primero lo que más lleva esperando.</p>
+                        <ol class="act-list" data-act-list="espera"></ol>
+                    </div>
+                </div>
+
+                <noscript>
+                    <p class="seguimiento__note">Para ver el tablero de actuaciones, activa JavaScript en tu navegador o pide el informe al correo <a href="mailto:jaclosprofesionales@gmail.com" class="contact__link">jaclosprofesionales@gmail.com</a>.</p>
+                </noscript>
+
+                <p class="act-legal fade-in"><strong>¿Qué es el plazo legal?</strong> Según la Ley 1755 de 2015, las entidades deben responder un derecho de petición en <strong>15 días hábiles</strong>, o en <strong>10</strong> si se piden documentos o información. Aquí se cuentan solo días hábiles: sin sábados, domingos ni festivos. Cuando el plazo vence, la Junta puede insistir o pedir el apoyo de la Personería.</p>
+
+                <div class="act-timeline fade-in">
+                    <h3 class="block__title">Línea de tiempo</h3>
+                    <p class="block__intro">Cada paso de cada gestión, del más reciente al más antiguo.</p>
+                    <ol class="act-tl" id="act-timeline"></ol>
+                    <div class="act-tl__actions">
+                        <button type="button" class="btn btn--ghost" id="act-timeline-more" hidden>Ver toda la línea de tiempo</button>
+                    </div>
+                </div>
+
+                <!-- ===== Avisos por correo (las suscripciones llegan al correo de la Junta) ===== -->
+                <div class="stayup fade-in" id="avisos-correo">
+                    <div class="stayup__text">
+                        <h3 class="stayup__title"><span aria-hidden="true">📬</span> Recibe los avisos de la Junta en tu correo</h3>
+                        <p>Te escribimos cuando haya convocatoria a la Asamblea, un informe nuevo o una respuesta importante a nuestras gestiones. Puedes salir de la lista cuando quieras.</p>
+                    </div>
+                    <form class="stayup__form" id="suscribe-form" action="https://formsubmit.co/ajax/jaclosprofesionales@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="[Web JAC] Quiero recibir los avisos">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="solicitud" value="Agregar este correo a la lista de avisos de la Junta">
+                        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form__honeypot">
+                        <div class="stayup__fields">
+                            <div class="stayup__field">
+                                <label for="sus-nombre" class="form__label">Tu nombre</label>
+                                <input type="text" id="sus-nombre" name="nombre" class="form__input" autocomplete="name" required>
+                            </div>
+                            <div class="stayup__field">
+                                <label for="sus-email" class="form__label">Tu correo</label>
+                                <input type="email" id="sus-email" name="email" class="form__input" autocomplete="email" placeholder="tu@correo.com" required>
+                            </div>
+                            <button type="submit" class="btn btn--primary stayup__btn">Quiero recibirlos</button>
+                        </div>
+                        <label class="form__checkbox-label stayup__check">
+                            <input type="checkbox" name="acepta_politica" class="form__checkbox" required>
+                            <span>Acepto la <a href="privacidad.html" target="_blank" rel="noopener" class="contact__link">Política de Tratamiento de Datos</a>. Mi correo solo se usará para enviarme los avisos de la Junta.</span>
+                        </label>
+                        <p class="stayup__msg" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- ========== ASAMBLEA GENERAL ========== -->
-        <section class="section section--alt" id="asamblea">
+        <section class="section" id="asamblea">
             <div class="container">
                 <span class="section__badge fade-in">Tu voz y tu voto</span>
                 <h2 class="section__title fade-in">Asamblea General</h2>
                 <p class="section__subtitle fade-in">La Asamblea es la reunión de todos los afiliados. Es la máxima autoridad de la Junta: allí se rinden cuentas y se toman las decisiones más importantes.</p>
 
                 <!--
-                AL CONVOCAR LA ASAMBLEA: cambia la fecha (asamblea__date), el estado
-                (status-badge) y completa lugar, hora y orden del día oficial.
+                AL CONVOCAR LA ASAMBLEA: completa el bloque «asamblea» en js/actuaciones.js
+                (estado 'convocada', fecha, hora, lugar). La fecha, la cuenta regresiva y el
+                botón de calendario se actualizan solos. Revisa aquí el orden del día oficial.
                 -->
                 <article class="asamblea fade-in" aria-labelledby="asamblea-title">
                     <div class="asamblea__when">
-                        <span class="status-badge status-badge--regular">Por convocar</span>
+                        <span class="status-badge status-badge--regular" data-asamblea-badge>Por convocar</span>
                         <h3 id="asamblea-title" class="asamblea__heading">Próxima Asamblea General</h3>
-                        <p class="asamblea__date">Finales de noviembre de 2026</p>
-                        <p class="asamblea__detail">Fecha exacta, hora y lugar por confirmar. La convocaremos en cuanto terminemos de depurar los libros de la Junta, y la publicaremos aquí y en cartelera con anticipación.</p>
+                        <p class="asamblea__date" data-asamblea-fecha>Finales de noviembre de 2026</p>
+                        <p class="asamblea__countdown" data-asamblea-cuenta hidden></p>
+                        <p class="asamblea__detail" data-asamblea-detalle>Fecha exacta, hora y lugar por confirmar. La convocaremos en cuanto terminemos de depurar los libros de la Junta, y la publicaremos aquí y en cartelera con anticipación. Si quieres que te avisemos por correo, <a href="#avisos-correo" class="contact__link">inscríbete aquí</a>.</p>
+                        <button type="button" class="btn btn--ghost asamblea__ics" data-asamblea-ics hidden>📅 Agregar a mi calendario</button>
                     </div>
                     <div class="asamblea__topics">
                         <h4 class="asamblea__subheading">Temas previstos</h4>
@@ -288,6 +401,13 @@
                 <!-- Agrega avisos nuevos arriba, copiando un <li>. -->
                 <ul class="avisos fade-in">
                     <li class="aviso">
+                        <time class="aviso__date" datetime="2026-11-10">10 nov 2026</time>
+                        <div>
+                            <strong>Nuevo tablero «Así vamos».</strong> Lo que ya se hizo, lo solicitado y lo que espera respuesta, con fechas, plazos legales y línea de tiempo. También puedes inscribirte para recibir los avisos por correo.
+                            <a href="#actuaciones" class="contact__link">Ver el tablero</a>
+                        </div>
+                    </li>
+                    <li class="aviso">
                         <time class="aviso__date" datetime="2026-10-07">7 oct 2026</time>
                         <div>
                             <strong>Informe General de Gestión publicado.</strong> Lo que está cumplido, lo que sigue en curso y los próximos pasos hacia la Asamblea.
@@ -313,7 +433,7 @@
         </section>
 
         <!-- ========== ESTATUTOS ========== -->
-        <section class="section" id="estatutos">
+        <section class="section section--alt" id="estatutos">
             <div class="container">
                 <span class="section__badge fade-in">Nuestras reglas</span>
                 <h2 class="section__title fade-in">Reforma de Estatutos</h2>
@@ -346,7 +466,7 @@
         </section>
 
         <!-- ========== NORMATIVA ========== -->
-        <section class="section section--alt" id="normativa">
+        <section class="section" id="normativa">
             <div class="container">
                 <span class="section__badge fade-in">Lo que dice la ley</span>
                 <h2 class="section__title fade-in">Normativa que nos rige</h2>
@@ -429,11 +549,11 @@
         </section>
 
         <!-- ========== TRANSPARENCIA ========== -->
-        <section class="section" id="transparencia">
+        <section class="section section--alt" id="transparencia">
             <div class="container">
                 <span class="section__badge fade-in">Cuentas claras</span>
                 <h2 class="section__title fade-in">Transparencia</h2>
-                <p class="section__subtitle fade-in">Rendición de cuentas, gestiones ante las entidades e inventario de la Junta. Solo publicamos lo que podemos soportar con documentos.</p>
+                <p class="section__subtitle fade-in">Rendición de cuentas, inventario y documentos de la Junta. Solo publicamos lo que podemos soportar con documentos. Las gestiones ante las entidades están en <a href="#actuaciones" class="contact__link">Así vamos</a>.</p>
 
                 <div class="transparency__intro fade-in">
                     <div class="transparency__stat">
@@ -441,8 +561,8 @@
                         <span class="transparency__stat-label">Días de gestión (desde el 23 jun 2026)</span>
                     </div>
                     <div class="transparency__stat">
-                        <span class="transparency__stat-number" id="gestion-total">0</span>
-                        <span class="transparency__stat-label">Gestiones publicadas</span>
+                        <span class="transparency__stat-number" data-act-count="total">12</span>
+                        <span class="transparency__stat-label">Actuaciones publicadas en «Así vamos»</span>
                     </div>
                     <div class="transparency__stat">
                         <span class="transparency__stat-number">3</span>
@@ -464,7 +584,7 @@
                         <div>
                             <span class="legal-data__badge">Rendición de cuentas</span>
                             <h3 id="informe-title" class="report__title">Informe General de Gestión</h3>
-                            <p class="report__cut">Corte al <time datetime="2026-10-07">7 de octubre de 2026</time> · Junta Directiva reconocida mediante Resolución N° 282 de 2026</p>
+                            <p class="report__cut">Corte al <time datetime="2026-11-10">10 de noviembre de 2026</time> · Junta Directiva reconocida mediante Resolución N° 282 de 2026</p>
                         </div>
                         <button type="button" class="btn btn--ghost report__print" id="report-print">🖨️ Imprimir informe</button>
                     </header>
@@ -532,8 +652,8 @@
                                 <span class="status-badge status-badge--info">En curso</span>
                                 <h4 class="report__item-title">Gestiones ante las entidades</h4>
                             </div>
-                            <p>Hay 9 gestiones publicadas en <a href="#gestion" class="contact__link">Gestiones y seguimiento</a>: 2 respondidas, 1 en trámite, 1 resuelta y 5 a la espera de respuesta. Las dos peticiones de información del 2 de julio (JAC-003 y JAC-006, sobre presupuesto participativo y una sede comunal) tienen el plazo legal vencido sin respuesta.</p>
-                            <span class="report__source">Compromiso: tablero público del estado de las gestiones</span>
+                            <p>Hay <span data-act-count="total">12</span> actuaciones publicadas en <a href="#actuaciones" class="contact__link">Así vamos</a>: <span data-act-count="hecho">4</span> ya hechas, <span data-act-count="tramite">3</span> en trámite y <span data-act-count="espera">5</span> esperando respuesta, de las cuales <span data-act-count="vencidas">5</span> tienen el plazo legal vencido. Entre ellas están las dos peticiones de información del 2 de julio (JAC-003 y JAC-006, sobre presupuesto participativo y una sede comunal).</p>
+                            <span class="report__source">Compromiso: tablero público con fechas, plazos legales y línea de tiempo</span>
                         </li>
                     </ol>
 
@@ -548,130 +668,6 @@
                         </ul>
                     </div>
                 </article>
-
-                <!-- ===== GESTIONES Y SEGUIMIENTO ===== -->
-                <div class="block" id="gestion">
-                    <h3 class="block__title fade-in">Gestiones y seguimiento</h3>
-                    <p class="block__intro fade-in">Solicitudes, oficios y derechos de petición que la Junta ha radicado ante las entidades, y en qué van. La tabla se actualiza cuando recibimos respuestas.</p>
-
-                    <div class="seguimiento__toolbar fade-in">
-                        <div class="seguimiento__search-wrap">
-                            <span class="inventory__search-icon" aria-hidden="true">🔍</span>
-                            <input type="text" id="gestion-search" class="inventory__search" placeholder="Buscar por asunto, entidad o número..." aria-label="Buscar gestiones">
-                        </div>
-                        <div class="seguimiento__filters" role="group" aria-label="Filtrar por estado">
-                            <button type="button" class="seguimiento__filter is-active" data-filter="todas">Todas</button>
-                            <button type="button" class="seguimiento__filter" data-filter="radicada">Radicadas</button>
-                            <button type="button" class="seguimiento__filter" data-filter="tramite">En trámite</button>
-                            <button type="button" class="seguimiento__filter" data-filter="respondida">Respondidas</button>
-                            <button type="button" class="seguimiento__filter" data-filter="resuelta">Resueltas</button>
-                        </div>
-                    </div>
-                    <span class="inventory__count" id="gestion-count">Mostrando todas las gestiones</span>
-
-                    <div class="table-responsive fade-in">
-                        <table class="inventory__table seguimiento__table" id="gestion-table">
-                            <thead>
-                                <tr>
-                                    <th>N° / Radicado</th>
-                                    <th>Fecha</th>
-                                    <th>Solicitud</th>
-                                    <th>Dirigida a</th>
-                                    <th>Estado</th>
-                                    <th>Última actualización</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!--
-                                CÓMO AGREGAR UNA GESTIÓN: copia este bloque (sin los signos de comentario) y cambia los datos.
-                                data-estado debe ser UNO de: radicada | tramite | respondida | resuelta | negada
-                                Color del estado: --neutral (radicada) --regular (trámite) --info (respondida) --good (resuelta) --bad (negada)
-                                <tr data-estado="radicada">
-                                    <td data-label="N° / Radicado">JAC-000-2026</td>
-                                    <td data-label="Fecha">10 Oct 2026</td>
-                                    <td data-label="Solicitud">Asunto de la solicitud</td>
-                                    <td data-label="Dirigida a">Entidad</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--neutral">Radicada</span></td>
-                                    <td data-label="Última actualización">Radicado, en espera de respuesta</td>
-                                </tr>
-                                -->
-                                <tr data-estado="radicada">
-                                    <td data-label="N° / Radicado">JAC-011-2026</td>
-                                    <td data-label="Fecha">2 Oct 2026</td>
-                                    <td data-label="Solicitud">Designación del correo jaclosprofesionales@gmail.com como canal oficial de comunicaciones y notificaciones de la Junta</td>
-                                    <td data-label="Dirigida a">Unidad de Participación Ciudadana · Secretaría de Desarrollo Social</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--neutral">Radicada</span></td>
-                                    <td data-label="Última actualización">Radicado, en espera de confirmación</td>
-                                </tr>
-                                <tr data-estado="radicada">
-                                    <td data-label="N° / Radicado">JAC-010-2026</td>
-                                    <td data-label="Fecha">21 Sep 2026</td>
-                                    <td data-label="Solicitud">Retiro de los escombros dejados por el sismo y de las basuras acumuladas en cuatro puntos del barrio</td>
-                                    <td data-label="Dirigida a">Alcaldía (Despacho, Planeación, Gestión del Riesgo, Gobierno) · EPA</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--neutral">Radicada</span></td>
-                                    <td data-label="Última actualización">Radicado, en espera de respuesta</td>
-                                </tr>
-                                <tr data-estado="radicada">
-                                    <td data-label="N° / Radicado">JAC-003-2026</td>
-                                    <td data-label="Fecha">2 Jul 2026</td>
-                                    <td data-label="Solicitud">Información sobre presupuesto participativo y postulación de dos proyectos: cámaras de seguridad y caseta comunal</td>
-                                    <td data-label="Dirigida a">Unidad de Participación Ciudadana · Planeación Municipal</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--neutral">Radicada</span></td>
-                                    <td data-label="Última actualización">Sin respuesta · plazo legal de 10 días hábiles vencido</td>
-                                </tr>
-                                <tr data-estado="radicada">
-                                    <td data-label="N° / Radicado">JAC-006-2026</td>
-                                    <td data-label="Fecha">2 Jul 2026</td>
-                                    <td data-label="Solicitud">Información sobre la titularidad de dos predios del barrio y solicitud de comodato para una sede comunal</td>
-                                    <td data-label="Dirigida a">Planeación · Hacienda (Bienes) · Secretaría de Gobierno</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--neutral">Radicada</span></td>
-                                    <td data-label="Última actualización">Sin respuesta · plazo legal de 10 días hábiles vencido</td>
-                                </tr>
-                                <tr data-estado="resuelta">
-                                    <td data-label="N° / Radicado">JAC-LP-2026-001</td>
-                                    <td data-label="Fecha">30 Jun 2026</td>
-                                    <td data-label="Solicitud">Requerimiento formal de empalme: entrega de libros, bienes, recursos y documentos de la Junta</td>
-                                    <td data-label="Dirigida a">Administración saliente</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--good">Resuelta</span></td>
-                                    <td data-label="Última actualización">Empalme realizado</td>
-                                </tr>
-                                <tr data-estado="tramite">
-                                    <td data-label="N° / Radicado">JAC-002-2026</td>
-                                    <td data-label="Fecha">11 Jun 2026</td>
-                                    <td data-label="Solicitud">Tala controlada de un árbol en riesgo de caída y manejo del guadual en la Carrera 16 N° 4N-39</td>
-                                    <td data-label="Dirigida a">Planeación · Gestión del Riesgo (OMGERD) · Secretaría de Gobierno</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--regular">En trámite</span></td>
-                                    <td data-label="Última actualización">8 Jul 2026 · Planeación recomendó la tala (oficio 2026EE-10728); pendiente la intervención</td>
-                                </tr>
-                                <tr data-estado="respondida">
-                                    <td data-label="N° / Radicado">2026PQR22891</td>
-                                    <td data-label="Fecha">22 May 2026</td>
-                                    <td data-label="Solicitud">Cables aéreos sueltos y a baja altura en la Calle 5 Norte (entre carreras 14 y 15) y en la Calle 7 con Carrera 12</td>
-                                    <td data-label="Dirigida a">Alcaldía · EDEQ</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--info">Respondida</span></td>
-                                    <td data-label="Última actualización">9 Jun 2026 · EDEQ: los cables son de empresas de telecomunicaciones; la Alcaldía trasladó el caso</td>
-                                </tr>
-                                <tr data-estado="respondida">
-                                    <td data-label="N° / Radicado">—</td>
-                                    <td data-label="Fecha">22 May 2026</td>
-                                    <td data-label="Solicitud">Predio de la cancha deportiva (Calle 5 Norte con Carrera 16): certificación, mantenimiento y comodato</td>
-                                    <td data-label="Dirigida a">Planeación · Hacienda · Catastro · Infraestructura · Bienes</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--info">Respondida</span></td>
-                                    <td data-label="Última actualización">19 Jun 2026 · Planeación: el predio no es de propiedad del Municipio (oficio 2026EE-9573)</td>
-                                </tr>
-                                <tr data-estado="radicada">
-                                    <td data-label="N° / Radicado">—</td>
-                                    <td data-label="Fecha">22 May 2026</td>
-                                    <td data-label="Solicitud">Disposición inadecuada de basuras en la vía pública por parte de establecimientos comerciales</td>
-                                    <td data-label="Dirigida a">Secretaría de Gobierno · Inspección de Policía Comuna 10</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--neutral">Radicada</span></td>
-                                    <td data-label="Última actualización">Sin respuesta registrada</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="seguimiento__note fade-in">¿Quieres que la Junta gestione algo? Usa <a href="#tramites" class="contact__link">«Reportar un problema»</a> y quedará registrado.</p>
-                </div>
 
                 <!-- ===== INVENTARIO ===== -->
                 <div class="block" id="inventario">
@@ -852,7 +848,7 @@
         </section>
 
         <!-- ========== LA JUNTA ========== -->
-        <section class="section section--alt" id="junta">
+        <section class="section" id="junta">
             <span id="quienes-somos" class="anchor-alias" aria-hidden="true"></span>
             <div class="container">
                 <span class="section__badge fade-in">Quiénes somos</span>
@@ -958,7 +954,7 @@
         </section>
 
         <!-- ========== PREGUNTAS FRECUENTES ========== -->
-        <section class="section" id="faq">
+        <section class="section section--alt" id="faq">
             <div class="container">
                 <span class="section__badge fade-in">Resolvemos tus dudas</span>
                 <h2 class="section__title fade-in">Preguntas frecuentes</h2>
@@ -995,7 +991,43 @@
                         </button>
                         <div class="accordion__body">
                             <div class="accordion__body-content">
-                                <p>Todavía no. La Junta no tiene sede propia. El 2 de julio de 2026 pedimos a la Alcaldía un espacio para construirla: información sobre presupuesto participativo para una caseta comunal (oficio JAC-003) y el comodato de un predio del barrio (oficio JAC-006). Aún no hay respuesta. Puedes seguir el trámite en <a href="#gestion" class="contact__link">Gestiones y seguimiento</a>.</p>
+                                <p>Todavía no. La Junta no tiene sede propia. El 2 de julio de 2026 pedimos a la Alcaldía un espacio para construirla: información sobre presupuesto participativo para una caseta comunal (oficio JAC-003) y el comodato de un predio del barrio (oficio JAC-006). Aún no hay respuesta. Puedes seguir el trámite en <a href="#actuaciones" class="contact__link">Así vamos</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">¿Cómo sé en qué van las gestiones de la Junta?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>En <a href="#actuaciones" class="contact__link">Así vamos</a> está cada gestión con su fecha, el número de oficio o radicado, la entidad a la que se dirigió, en qué va y cuántos días lleva esperando respuesta. Si el plazo legal ya venció, lo marcamos en rojo. También puedes escuchar el resumen en voz alta con el botón «Escuchar resumen».</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">¿Cómo me entero de las asambleas y las novedades?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Inscríbete en <a href="#avisos-correo" class="contact__link">«Recibe los avisos de la Junta»</a> con tu nombre y tu correo, y te escribiremos cuando haya convocatoria, informe o una respuesta importante. Si conoces a alguien sin internet, puedes imprimirle la <a href="cartelera.html" class="contact__link">cartelera</a> con el resumen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <button class="accordion__header" aria-expanded="false">
+                            <span class="accordion__title">¿Para qué sirve el número de solicitud que me da el formulario?</span>
+                            <span class="accordion__arrow">&#9660;</span>
+                        </button>
+                        <div class="accordion__body">
+                            <div class="accordion__body-content">
+                                <p>Al enviar una solicitud por este portal verás un número como <strong>WEB-20261110-AB12</strong>. Guárdalo y menciónalo si nos escribes para preguntar por ella. Las solicitudes que envíes quedan anotadas en tu propio equipo, en la sección de Contacto; nadie más puede verlas.</p>
                             </div>
                         </div>
                     </div>
@@ -1028,7 +1060,7 @@
         </section>
 
         <!-- ========== CONTACTO ========== -->
-        <section class="section section--alt" id="contacto">
+        <section class="section" id="contacto">
             <div class="container">
                 <span class="section__badge fade-in">Estamos para ti</span>
                 <h2 class="section__title fade-in">Contacto y solicitudes</h2>
@@ -1047,7 +1079,8 @@
                             <span class="contact__info-icon">📧</span>
                             <div>
                                 <h4>Correo electrónico</h4>
-                                <p><a href="mailto:jaclosprofesionales@gmail.com" class="contact__link">jaclosprofesionales@gmail.com</a></p>
+                                <p><a href="mailto:jaclosprofesionales@gmail.com" class="contact__link">jaclosprofesionales@gmail.com</a>
+                                    <button type="button" class="copy-btn" data-copy="jaclosprofesionales@gmail.com" data-copy-msg="Correo de la Junta copiado">Copiar</button></p>
                             </div>
                         </div>
                         <div class="contact__info-item">
@@ -1056,6 +1089,12 @@
                                 <h4>Horario de atención</h4>
                                 <p>Lunes a viernes: 8:00 a. m. – 12:00 m.<br>Sábados: 9:00 a. m. – 11:00 a. m.</p>
                             </div>
+                        </div>
+
+                        <div class="mis-solicitudes" id="mis-solicitudes" hidden>
+                            <h4 class="mis-solicitudes__title">📁 Tus solicitudes enviadas desde este equipo</h4>
+                            <ul class="mis-solicitudes__list" id="mis-solicitudes-list"></ul>
+                            <p class="mis-solicitudes__note">Solo se guardan en este navegador. <button type="button" class="link-btn" id="mis-solicitudes-borrar">Borrar la lista</button></p>
                         </div>
 
                         <div class="contact__map">
@@ -1067,6 +1106,7 @@
                         <h3 class="contact__form-title">Envíanos tu solicitud</h3>
 
                         <input type="hidden" name="_subject" id="form-subject" value="[Web JAC] Nueva solicitud">
+                        <input type="hidden" name="numero_solicitud" id="form-radicado" value="">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form__honeypot">
@@ -1112,7 +1152,8 @@
                             </label>
                         </div>
                         <button type="submit" class="btn btn--primary btn--full btn--lg" id="submit-btn">Enviar solicitud</button>
-                        <p class="form__note">* Campos obligatorios. Tus datos solo se usan para responder tu solicitud.</p>
+                        <p class="form__note">* Campos obligatorios. Tus datos solo se usan para responder tu solicitud. Al enviarla recibirás un <strong>número de solicitud</strong> para hacerle seguimiento.</p>
+                        <p class="form__alt">¿Prefieres usar tu propio correo? <a href="mailto:jaclosprofesionales@gmail.com" class="contact__link" id="form-mailto">Abrir el mensaje listo en mi correo</a>. Así te queda una copia en tus enviados.</p>
                     </form>
                 </div>
             </div>
@@ -1135,6 +1176,7 @@
                     <h4 class="footer__title">Participa</h4>
                     <ul class="footer__links">
                         <li><a href="#tramites">Trámites y solicitudes</a></li>
+                        <li><a href="#avisos-correo">Recibir los avisos por correo</a></li>
                         <li><a href="#asamblea">Asamblea General</a></li>
                         <li><a href="estatutos.html#opinar">Opinar sobre los estatutos</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -1143,8 +1185,9 @@
                 <div class="footer__col">
                     <h4 class="footer__title">Infórmate</h4>
                     <ul class="footer__links">
+                        <li><a href="#actuaciones">Así vamos: actuaciones</a></li>
                         <li><a href="#informe">Informe de gestión</a></li>
-                        <li><a href="#gestion">Gestiones y seguimiento</a></li>
+                        <li><a href="cartelera.html">Cartelera para imprimir</a></li>
                         <li><a href="#normativa">Normativa</a></li>
                         <li><a href="#junta">La Junta</a></li>
                     </ul>
@@ -1165,7 +1208,7 @@
                 <p class="footer__legal footer__legal--meta">
                     <span>🔒 Sitio sin cookies de seguimiento · sin publicidad.</span>
                     <span>·</span>
-                    <span>Última actualización: 7 de octubre de 2026</span>
+                    <span>Última actualización: 10 de noviembre de 2026</span>
                 </p>
             </div>
         </div>
@@ -1177,6 +1220,8 @@
     <!-- Volver arriba -->
     <button class="back-to-top" id="back-to-top" aria-label="Volver arriba">&#9650;</button>
 
+    <script src="js/actuaciones.js" defer></script>
+    <script src="js/tablero.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 </html>
