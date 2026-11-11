@@ -225,7 +225,7 @@ window.JAC_DATOS = {
         "novedades": [
             ["2026-03-09", "Planeación visitó el sitio y su informe técnico recomendó la tala controlada. La comunidad lo venía pidiendo desde 2022."],
             ["2026-06-11", "La Junta pidió ejecutar la tala y el manejo del guadual (oficio JAC-002-2026)."],
-            ["2026-07-08", "Planeación visitó el sitio y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728)."]
+            ["2026-07-08", "Planeación respondió y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728)."]
         ],
         "pendiente": "Que se ejecute la intervención.",
         "fotos": [],
