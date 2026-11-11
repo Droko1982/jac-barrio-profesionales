@@ -95,8 +95,10 @@
         [/Personer/, '⚖️'],
         [/Polic[ií]a/, '👮'],
         [/EDUA/, '🏢'],
+        [/Juzgado/, '⚖️'],
+        [/Federaci|ASOCOMUNAL/, '🤝'],
         [/Alcald|Planeaci|Hacienda|Catastro|Bienes|Participaci|Riesgo|Infraestructura|Desarrollo Social|Secretar[ií]a de/, '🏛️'],
-        [/Junta Directiva|saliente/, '🏡']
+        [/Junta Directiva|saliente|Vecinos/, '🏡']
     ];
     function iconosEntidad(texto) {
         // En el orden en que aparecen las entidades en el texto (la principal primero)
@@ -178,6 +180,40 @@
         return cont;
     }
 
+    /* ---------- Documentos (PDF ya tachados: sin cédulas, teléfonos ni firmas) ---------- */
+    var RUTA_DOCS = 'documentos/';
+
+    function enlaceDoc(d) {
+        var a = el('a', 'act-doc');
+        a.href = RUTA_DOCS + d[0];
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.appendChild(el('span', 'act-doc__icon', '📄'));
+        a.firstChild.setAttribute('aria-hidden', 'true');
+        a.appendChild(el('span', 'act-doc__name', d[1]));
+        a.appendChild(el('span', 'act-doc__type', 'PDF'));
+        return a;
+    }
+
+    function documentos(it) {
+        var docs = it.documentos;
+        if (docs.length === 1) {
+            var uno = el('div', 'act-card__docs');
+            uno.appendChild(enlaceDoc(docs[0]));
+            return uno;
+        }
+        var det = el('details', 'act-card__docs');
+        det.appendChild(el('summary', null, '📄 Ver los ' + docs.length + ' documentos'));
+        var ul = el('ul', 'act-docs');
+        docs.forEach(function (d) {
+            var item = el('li');
+            item.appendChild(enlaceDoc(d));
+            ul.appendChild(item);
+        });
+        det.appendChild(ul);
+        return det;
+    }
+
     /* ---------- Tarjetas ---------- */
     function tarjeta(it) {
         var li = el('li', 'act-card act-card--' + it.estado);
@@ -234,6 +270,8 @@
             pen.appendChild(document.createTextNode(it.pendiente));
             li.appendChild(pen);
         }
+
+        if (it.documentos && it.documentos.length) li.appendChild(documentos(it));
 
         if (it.novedades.length > 1) {
             var det = el('details', 'act-card__history');
