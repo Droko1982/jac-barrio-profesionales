@@ -129,6 +129,10 @@
             </div>
 
             <div class="nav__menu" id="nav-menu">
+                <button class="nav__theme" id="theme-toggle" type="button">
+                    <span class="nav__theme-oscura"><span aria-hidden="true">🌙</span> Pasar a pantalla oscura</span>
+                    <span class="nav__theme-clara"><span aria-hidden="true">☀️</span> Pasar a pantalla clara</span>
+                </button>
                 <p class="nav__menu-title">¿A dónde quieres ir?</p>
                 <ul class="nav__menu-list">
                     <li class="nav__item"><a href="#inicio" class="nav__link"><span aria-hidden="true">🏠</span> Inicio</a></li>
@@ -145,7 +149,6 @@
                     <li class="nav__item"><a href="#faq" class="nav__link"><span aria-hidden="true">❓</span> Preguntas frecuentes</a></li>
                     <li class="nav__item"><a href="#contacto" class="nav__link nav__link--cta"><span aria-hidden="true">💬</span> Escribirle a la Junta</a></li>
                 </ul>
-                <button class="nav__theme" id="theme-toggle" type="button"><span aria-hidden="true">🌗</span> Cambiar a pantalla clara u oscura</button>
             </div>
         </nav>
     </header>
@@ -161,7 +164,7 @@
             </svg>
             <div class="hero__flag-stripe" aria-hidden="true"></div>
             <div class="hero__content container">
-                <img src="img/logo.svg" alt="Sello de la Junta de Acción Comunal Barrio Los Profesionales" class="hero__logo" width="150" height="150">
+                <img src="img/logo.svg" alt="Sello de la Junta de Acción Comunal Barrio Los Profesionales" class="hero__logo" width="192" height="180">
                 <span class="hero__badge">Portal oficial · Comuna 10 · Armenia, Quindío</span>
                 <h1 class="hero__title">Junta de Acción Comunal</h1>
                 <p class="hero__subtitle">Barrio Los Profesionales</p>
@@ -185,6 +188,10 @@
                 <div class="hero__stat">
                     <span class="hero__stat-number" data-count="12" data-act-count-attr="total">0</span>
                     <span class="hero__stat-label">Actuaciones publicadas, con soporte</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-count="18" data-act-count-attr="enviados">0</span>
+                    <span class="hero__stat-label">Oficios y peticiones enviados</span>
                 </div>
                 <div class="hero__stat">
                     <span class="hero__stat-number" id="hero-dias" data-count="106">0</span>
@@ -338,6 +345,8 @@
                         <span class="act-chip__note"><span data-act-count="vencidas">5</span> con el plazo legal vencido</span>
                     </a>
                 </nav>
+
+                <p class="act-enviados fade-in"><span aria-hidden="true">📤</span> La Junta ha enviado <strong><span data-act-count="enviados">18</span> oficios, peticiones y escritos</strong> a las entidades y a los juzgados.</p>
 
                 <div class="act-toolbar fade-in">
                     <p class="act-toolbar__updated">Actualizado al <time data-act-updated datetime="2026-11-11">11 de noviembre de 2026</time></p>
@@ -812,7 +821,7 @@
                                 <span class="status-badge status-badge--info">En curso</span>
                                 <h4 class="report__item-title">Gestiones ante las entidades</h4>
                             </div>
-                            <p>Hay <span data-act-count="total">13</span> actuaciones publicadas en <a href="#actuaciones" class="contact__link">Así vamos</a>: <span data-act-count="hecho">4</span> ya hechas, <span data-act-count="tramite">4</span> en trámite y <span data-act-count="espera">5</span> esperando respuesta, de las cuales <span data-act-count="vencidas">5</span> tienen el plazo legal vencido. Entre ellas están las dos peticiones de información del 2 de julio (JAC-003 y JAC-006, sobre presupuesto participativo y una sede comunal).</p>
+                            <p>La Junta ha enviado <span data-act-count="enviados">18</span> oficios, peticiones y escritos. Hay <span data-act-count="total">13</span> actuaciones publicadas en <a href="#actuaciones" class="contact__link">Así vamos</a>: <span data-act-count="hecho">4</span> ya hechas, <span data-act-count="tramite">4</span> en trámite y <span data-act-count="espera">5</span> esperando respuesta, de las cuales <span data-act-count="vencidas">5</span> tienen el plazo legal vencido. Entre ellas están las dos peticiones de información del 2 de julio (JAC-003 y JAC-006, sobre presupuesto participativo y una sede comunal).</p>
                             <span class="report__source">Compromiso: tablero público con fechas, plazos legales y línea de tiempo</span>
                         </li>
                     </ol>

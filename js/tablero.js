@@ -67,9 +67,10 @@
     }
 
     var items = D.actuaciones.slice();
-    var conteo = { hecho: 0, tramite: 0, espera: 0, total: items.length, vencidas: 0 };
+    var conteo = { hecho: 0, tramite: 0, espera: 0, total: items.length, vencidas: 0, enviados: 0 };
     items.forEach(function (it) {
         conteo[it.estado] = (conteo[it.estado] || 0) + 1;
+        conteo.enviados += Number(it.enviados || 0);  // oficios, peticiones y escritos enviados por la Junta
         var p = plazoDe(it);
         if (p && p.vencido) conteo.vencidas++;
     });
@@ -425,9 +426,20 @@
     /* ---------- Lectura en voz alta (resumen del tablero y secciones con data-listen) ---------- */
     var puedeHablar = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
     var botonActivo = null;
+    var colaLectura = [];  // Chrome deja de hablar si las frases pierden su referencia: se guardan aquí
 
-    function detenerLectura() {
-        if (puedeHablar) window.speechSynthesis.cancel();
+    function elegirVoz() {
+        var voces = puedeHablar ? window.speechSynthesis.getVoices() : [];
+        var es = voces.filter(function (v) { return /^es([-_]|$)/i.test(v.lang); });
+        var pref = ['es-CO', 'es-419', 'es-MX', 'es-US', 'es-ES'];
+        for (var k = 0; k < pref.length; k++) {
+            var v = es.filter(function (x) { return x.lang.replace('_', '-').toLowerCase() === pref[k].toLowerCase(); })[0];
+            if (v) return v;
+        }
+        return es[0] || null;
+    }
+
+    function restaurarBoton() {
         if (botonActivo) {
             botonActivo.innerHTML = botonActivo.getAttribute('data-etiqueta');
             botonActivo.setAttribute('aria-pressed', 'false');
@@ -435,26 +447,52 @@
         }
     }
 
+    function detenerLectura() {
+        if (puedeHablar) {
+            var s = window.speechSynthesis;
+            if (s.speaking || s.pending) s.cancel();
+        }
+        colaLectura = [];
+        restaurarBoton();
+    }
+
     function leer(frases, btn) {
         var synth = window.speechSynthesis;
         var mismo = botonActivo === btn;
+        var estabaHablando = synth.speaking || synth.pending;
         detenerLectura();
         if (mismo) return;  // segundo toque = detener
-        var voces = synth.getVoices();
-        var voz = voces.filter(function (v) { return /^es[-_]CO/i.test(v.lang); })[0] ||
-            voces.filter(function (v) { return /^es/i.test(v.lang); })[0] || null;
-        frases = frases.map(function (f) { return f.replace(/\s·\s/g, ', ').trim(); }).filter(Boolean);
-        frases.forEach(function (f, i) {
-            var u = new SpeechSynthesisUtterance(f);
-            u.lang = voz ? voz.lang : 'es-CO';
-            if (voz) u.voice = voz;
-            u.rate = 0.92;
-            if (i === frases.length - 1) u.onend = function () { if (botonActivo === btn) detenerLectura(); };
-            synth.speak(u);
-        });
+        frases = frases.map(function (f) { return String(f).replace(/\s·\s/g, ', ').trim(); }).filter(Boolean);
+        if (!frases.length) return;
         botonActivo = btn;
         btn.innerHTML = '<span aria-hidden="true">⏹️</span> Detener';
         btn.setAttribute('aria-pressed', 'true');
+
+        function empezar() {
+            if (botonActivo !== btn) return;
+            var voz = elegirVoz();
+            frases.forEach(function (f, i) {
+                var u = new SpeechSynthesisUtterance(f);
+                u.lang = voz ? voz.lang : 'es-CO';
+                if (voz) u.voice = voz;
+                u.rate = 0.92;
+                if (i === frases.length - 1) {
+                    u.onend = function () { if (botonActivo === btn) { colaLectura = []; restaurarBoton(); } };
+                }
+                u.onerror = function (e) {
+                    if (e && (e.error === 'interrupted' || e.error === 'canceled')) return;
+                    if (botonActivo === btn) {
+                        detenerLectura();
+                        aviso('Este equipo no pudo leer en voz alta. Revisa que el volumen esté activo.');
+                    }
+                };
+                colaLectura.push(u);
+                synth.speak(u);
+            });
+            if (synth.paused) synth.resume();
+        }
+        // Si se acababa de cancelar otra lectura, Chrome ignora un speak() inmediato: se espera un instante.
+        if (estabaHablando) setTimeout(empezar, 180); else empezar();
     }
 
     function frasesDe(nodo) {
@@ -465,6 +503,11 @@
     }
 
     if (puedeHablar) {
+        // Cargar las voces desde el inicio (en Chrome llegan después de abrir la página).
+        window.speechSynthesis.getVoices();
+        if (window.speechSynthesis.addEventListener) {
+            window.speechSynthesis.addEventListener('voiceschanged', function () { window.speechSynthesis.getVoices(); });
+        }
         window.addEventListener('pagehide', detenerLectura);
         $all('[data-listen], #act-listen').forEach(function (b) {
             b.hidden = false;
@@ -484,8 +527,9 @@
         var resumen = function () {
             var partes = [
                 'Actuaciones de la Junta de Acción Comunal del barrio Los Profesionales, actualizadas al ' + larga(D.actualizado) + '.',
-                'Ya se hicieron ' + conteo.hecho + '. Hay ' + conteo.tramite + ' en trámite y ' +
-                    conteo.espera + ' esperando respuesta.'
+                'La Junta ha enviado ' + conteo.enviados + ' oficios, peticiones y escritos a las entidades.',
+                'De las ' + conteo.total + ' actuaciones, ya se hicieron ' + conteo.hecho + '. Hay ' + conteo.tramite +
+                    ' en trámite y ' + conteo.espera + ' esperando respuesta.'
             ];
             var esp = items.filter(function (i) { return i.estado === 'espera'; })
                 .sort(function (a, b) { return a.fecha.localeCompare(b.fecha); });

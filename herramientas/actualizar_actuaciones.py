@@ -13,7 +13,7 @@ Uso:
         Igual que importar, pero desde una lista JSON con los mismos campos.
 
 Columnas de la hoja (fila 1):
-    estado | fecha | numero | titulo | entidad | plazo_dias | novedades | pendiente | fotos | documentos
+    estado | fecha | numero | titulo | entidad | plazo_dias | novedades | pendiente | enviados | fotos | documentos
 
     estado      «Ya se hizo», «En trámite» o «Esperando respuesta»
                 (también vale: hecho, tramite, espera)
@@ -21,6 +21,8 @@ Columnas de la hoja (fila 1):
     plazo_dias  15 en general, 10 si se pidieron documentos o información, 0 si no aplica
     novedades   una por línea dentro de la celda:  AAAA-MM-DD: texto
     pendiente   lo que falta (puede quedar vacío)
+    enviados    opcional. Cuántos oficios, peticiones o escritos envió la Junta en esta
+                actuación (el portal los suma). Si la hoja no tiene la columna, se conservan.
     fotos       opcional. Una por línea:  archivo.jpg | descripción
                 (el archivo va en img/actuaciones/, más su versión archivo-sm.jpg).
                 Si la hoja no tiene esta columna, se conservan las fotos ya publicadas.
@@ -44,11 +46,13 @@ ARCHIVO_JS = RAIZ / "js" / "actuaciones.js"
 INICIO = "/* INICIO-ACTUACIONES */"
 FIN = "/* FIN-ACTUACIONES */"
 
-CAMPOS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo", "novedades", "pendiente", "fotos", "documentos"]
+CAMPOS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo", "enviados", "novedades", "pendiente", "fotos", "documentos"]
 COLUMNAS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo_dias", "novedades", "pendiente"]
 COLUMNA_FOTOS = "fotos"
 COLUMNA_DOCS = "documentos"
 LISTAS = (COLUMNA_FOTOS, COLUMNA_DOCS)  # columnas opcionales con «archivo | descripción»
+COLUMNA_ENVIADOS = "enviados"
+OPCIONALES = (COLUMNA_ENVIADOS,) + LISTAS  # si faltan en la hoja, se conservan los valores publicados
 DIR_FOTOS = RAIZ / "img" / "actuaciones"
 DIR_DOCS = RAIZ / "documentos"
 
@@ -117,6 +121,10 @@ def normalizar(item, donde):
         plazo = int(str(item.get("plazo", item.get("plazo_dias", 0)) or 0).strip())
     except ValueError:
         raise ErrorDatos(f"{donde}: plazo_dias debe ser un número")
+    try:
+        enviados = int(str(item.get("enviados", 0) or 0).strip())
+    except ValueError:
+        raise ErrorDatos(f"{donde}: enviados debe ser un número")
 
     novedades = item.get("novedades") or []
     if isinstance(novedades, str):
@@ -159,6 +167,7 @@ def normalizar(item, donde):
         "titulo": titulo,
         "entidad": str(item.get("entidad", "") or "").strip(),
         "plazo": plazo,
+        "enviados": enviados,
         "novedades": novedades or [[leer_fecha(item.get("fecha"), donde), "Radicado."]],
         "pendiente": str(item.get("pendiente", "") or "").strip(),
         "fotos": fotos,
@@ -225,7 +234,7 @@ def importar_csv(ruta):
     if faltan:
         raise ErrorDatos(f"Faltan columnas en el CSV: {', '.join(faltan)}")
     # Si la hoja no trae «fotos» o «documentos», se conservan los ya publicados (misma fecha y título).
-    sin_columna = [c for c in LISTAS if c not in filas[0]]
+    sin_columna = [c for c in OPCIONALES if c not in filas[0]]
     previas = {}
     if sin_columna:
         try:
@@ -238,7 +247,7 @@ def importar_csv(ruta):
             continue
         it = normalizar(fila, f"Fila {n}")
         for c in sin_columna:
-            it[c] = previas.get((it["fecha"], it["titulo"]), {}).get(c, [])
+            it[c] = previas.get((it["fecha"], it["titulo"]), {}).get(c, 0 if c == COLUMNA_ENVIADOS else [])
         items.append(it)
     escribir_js(items)
 
@@ -247,11 +256,12 @@ def exportar_csv(ruta):
     items = leer_js()
     with open(ruta, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
-        w.writerow(COLUMNAS + list(LISTAS))
+        w.writerow(COLUMNAS + list(OPCIONALES))
         for it in items:
             w.writerow([
                 ESTADO_HOJA[it["estado"]], it["fecha"], it["numero"], it["titulo"], it["entidad"],
                 it["plazo"], "\n".join(f"{fe}: {t}" for fe, t in it["novedades"]), it["pendiente"],
+                it.get(COLUMNA_ENVIADOS, 0),
             ] + ["\n".join(f"{a} | {d}" for a, d in it.get(c, [])) for c in LISTAS])
     print(f"OK: {len(items)} actuaciones exportadas a {ruta}")
 

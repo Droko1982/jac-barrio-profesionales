@@ -4974,3 +4974,30 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 .inv__nota { display: block; margin-top: 0.3rem; font-size: 0.8rem; line-height: 1.35; color: var(--color-text-secondary); }
 
 .cuentas__dato { align-content: start; }
+
+/* Pantalla clara u oscura: arriba del menú, con el texto de lo que hace */
+.nav__menu .nav__theme { margin: 0 0 1rem; }
+.nav__theme > span { display: flex; align-items: center; gap: 0.75rem; width: auto; font-size: 1rem; }
+.nav__theme > span > span { width: 1.7rem; font-size: 1.3rem; text-align: center; }
+.nav__theme-clara { display: none !important; }
+[data-theme="dark"] .nav__theme-clara { display: flex !important; }
+[data-theme="dark"] .nav__theme-oscura { display: none !important; }
+
+/* Total de oficios enviados, bajo el resumen de «Así vamos» */
+.act-enviados {
+    max-width: 960px;
+    margin: 0 auto 1.25rem;
+    padding: 0.8rem 1.1rem;
+    font-size: 1.05rem;
+    text-align: center;
+    color: var(--color-text);
+    background: var(--color-primary-alpha);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+}
+.act-enviados strong { color: var(--color-primary); }
+[data-theme="dark"] .act-enviados strong { color: #81C784; }
+
+/* Sello con cinta (320x300) */
+.hero__logo { width: 192px; height: 180px; }
+@media (max-width: 768px) { .hero__logo { width: 150px; height: 141px; } }
