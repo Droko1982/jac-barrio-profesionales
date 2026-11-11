@@ -59,6 +59,7 @@ window.JAC_DATOS = {
         "titulo": "Basuras dejadas en la vía pública por establecimientos comerciales del sector",
         "entidad": "Secretaría de Gobierno · Inspección de Policía Comuna 10",
         "plazo": 15,
+        "enviados": 1,
         "novedades": [
             ["2026-05-22", "Derecho de petición radicado."]
         ],
@@ -80,6 +81,7 @@ window.JAC_DATOS = {
         "titulo": "Información sobre presupuesto participativo y postulación de dos proyectos: cámaras de seguridad y caseta comunal",
         "entidad": "Unidad de Participación Ciudadana · Planeación Municipal",
         "plazo": 10,
+        "enviados": 1,
         "novedades": [
             ["2026-07-02", "Petición radicada."]
         ],
@@ -96,6 +98,7 @@ window.JAC_DATOS = {
         "titulo": "Titularidad de dos predios del barrio y comodato de uno de ellos para una sede comunal",
         "entidad": "Planeación · Hacienda (Bienes) · Secretaría de Gobierno",
         "plazo": 10,
+        "enviados": 1,
         "novedades": [
             ["2026-07-02", "Petición radicada."]
         ],
@@ -112,6 +115,7 @@ window.JAC_DATOS = {
         "titulo": "Registrar el correo jaclosprofesionales@gmail.com como canal oficial de la Junta para comunicaciones y notificaciones",
         "entidad": "Unidad de Participación Ciudadana · Secretaría de Desarrollo Social",
         "plazo": 15,
+        "enviados": 1,
         "novedades": [
             ["2026-10-02", "Oficio radicado."]
         ],
@@ -128,6 +132,7 @@ window.JAC_DATOS = {
         "titulo": "Elección de dignatarios de ASOCOMUNAL Comuna 10: la Junta la impugnó y pide que se decida",
         "entidad": "Federación Comunal del Quindío · Unidad de Participación Ciudadana",
         "plazo": 15,
+        "enviados": 6,
         "novedades": [
             ["2026-07-22", "La Junta pidió a la Unidad de Participación Ciudadana intervenir en el proceso electoral de ASOCOMUNAL Comuna 10 antes de la elección, por posibles irregularidades."],
             ["2026-07-25", "La Junta pidió información y copias a ASOCOMUNAL y a su Tribunal de Garantías (JAC-007-2026) y acompañamiento urgente a la Unidad (JAC-008-2026)."],
@@ -154,6 +159,7 @@ window.JAC_DATOS = {
         "titulo": "Cables aéreos sueltos y a baja altura en la Calle 5 Norte (entre carreras 14 y 15) y en la Calle 7 con Carrera 12",
         "entidad": "Alcaldía (Planeación) · EDEQ · Personería",
         "plazo": 15,
+        "enviados": 1,
         "novedades": [
             ["2026-05-22", "Petición radicada ante la Alcaldía y EDEQ."],
             ["2026-06-09", "EDEQ inspeccionó: los cables son de empresas de telecomunicaciones, no de EDEQ."],
@@ -181,6 +187,7 @@ window.JAC_DATOS = {
         "titulo": "Predio de la cancha (Calle 5 Norte con Carrera 16): limpieza, mantenimiento y comodato para la comunidad",
         "entidad": "Desarrollo Social · Planeación · Catastro · Hacienda · Bienes · EDUA · EPA · Personería",
         "plazo": 15,
+        "enviados": 1,
         "novedades": [
             ["2026-05-22", "Petición radicada."],
             ["2026-06-09", "Desarrollo Social repartió la petición entre las dependencias competentes (oficio SO-PSP-2491)."],
@@ -212,6 +219,7 @@ window.JAC_DATOS = {
         "titulo": "Tala controlada de un árbol en riesgo de caída y manejo de un guadual en la Carrera 16 N.° 4N-39, frente al Restaurante Omedeto",
         "entidad": "Planeación · Gestión del Riesgo (OMGERD) · Secretaría de Gobierno",
         "plazo": 15,
+        "enviados": 1,
         "novedades": [
             ["2026-03-09", "Planeación visitó el sitio y su informe técnico recomendó la tala controlada. La comunidad lo venía pidiendo desde 2022."],
             ["2026-06-11", "La Junta pidió ejecutar la tala y el manejo del guadual (oficio JAC-002-2026)."],
@@ -231,6 +239,7 @@ window.JAC_DATOS = {
         "titulo": "Calle 6 Norte entre carreras 16 y 17: reparación completa de la vía, el andén y el alcantarillado",
         "entidad": "Juzgado 3.º Administrativo de Armenia · Secretaría de Infraestructura · EPA",
         "plazo": 0,
+        "enviados": 2,
         "novedades": [
             ["2025-11-13", "Antecedente: un residente del sector, hoy presidente de la Junta, pidió a Infraestructura y a EPA visita técnica y reparación de la vía."],
             ["2026-02-11", "Un juez de tutela (Juzgado 3.º Penal del Circuito) ordenó a Infraestructura y a EPA responder de fondo esa solicitud."],
@@ -264,6 +273,7 @@ window.JAC_DATOS = {
         "titulo": "Asamblea General: volver a convocarla con el libro de afiliados al día",
         "entidad": "Junta Directiva · Secretaría",
         "plazo": 0,
+        "enviados": 0,
         "novedades": [
             ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum. Se adelantó la depuración del libro de afiliados."],
             ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados."]
@@ -281,6 +291,7 @@ window.JAC_DATOS = {
         "titulo": "Reorganización de la Junta: petición de los vecinos, asamblea y elección de la directiva 2026–2030",
         "entidad": "Vecinos del barrio · Unidad de Participación Ciudadana",
         "plazo": 0,
+        "enviados": 1,
         "novedades": [
             ["2026-02-13", "La Unidad de Participación Ciudadana certificó la renuncia de los dignatarios anteriores y la vacancia de la Junta (oficio SO-PSP-741)."],
             ["2026-02-20", "Vecinos del barrio radicaron un derecho de petición colectivo para reorganizar la Junta (radicado SO-PSP-1038)."],
@@ -300,6 +311,7 @@ window.JAC_DATOS = {
         "titulo": "Junta Directiva reconocida e inscrita por la Alcaldía",
         "entidad": "Secretaría de Desarrollo Social de Armenia",
         "plazo": 0,
+        "enviados": 0,
         "novedades": [
             ["2026-06-23", "La Secretaría reconoció e inscribió a los dignatarios elegidos."],
             ["2026-07-01", "Empezó el periodo 2026–2030."]
@@ -315,6 +327,7 @@ window.JAC_DATOS = {
         "titulo": "Empalme con la administración saliente",
         "entidad": "Administración saliente",
         "plazo": 0,
+        "enviados": 1,
         "novedades": [
             ["2026-06-30", "Se pidió por escrito la entrega de libros, bienes, recursos y documentos de la Junta."],
             ["2026-10-07", "El Informe de Gestión reportó el empalme como realizado; la Junta depura los libros recibidos."]
@@ -330,6 +343,7 @@ window.JAC_DATOS = {
         "titulo": "Reforma de estatutos consolidada y publicada para que todos opinen",
         "entidad": "Junta Directiva",
         "plazo": 0,
+        "enviados": 0,
         "novedades": [
             ["2026-09-20", "Se consolidó la versión 4.0: 93 artículos en 23 capítulos."],
             ["2026-10-07", "Publicada en este portal, con un botón para opinar en cada artículo."]
@@ -345,6 +359,7 @@ window.JAC_DATOS = {
         "titulo": "Retiro de los escombros que dejó el sismo y de las basuras acumuladas en cuatro puntos del barrio",
         "entidad": "Alcaldía (Despacho, Planeación, Gestión del Riesgo y Gobierno) · EPA",
         "plazo": 15,
+        "enviados": 1,
         "novedades": [
             ["2026-09-21", "Oficio radicado, con registro fotográfico."],
             ["2026-11-11", "Los escombros ya fueron retirados (verificado por la Junta)."]
@@ -370,6 +385,7 @@ window.JAC_DATOS = {
         "titulo": "Informe General de Gestión publicado en este portal",
         "entidad": "Junta Directiva",
         "plazo": 0,
+        "enviados": 0,
         "novedades": [
             ["2026-10-07", "Publicado: lo cumplido, lo que sigue en curso y los próximos pasos."]
         ],
