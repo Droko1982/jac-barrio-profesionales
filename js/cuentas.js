@@ -17,7 +17,7 @@ window.JAC_CUENTAS = {
     actualizado: '2026-11-11',
 
     movimientos: [
-        { fecha: '', tipo: 'prestamo', valor: 200000, concepto: 'Préstamo de Humberto Carvajal a la Junta. Se le devolverá cuando entren fondos.' },
+        { fecha: '2026-10-23', tipo: 'prestamo', valor: 200000, concepto: 'Préstamo de Humberto Carvajal Cortés, fiscal de la Junta, para los libros y la página web. Se le devolverá cuando entren fondos.' },
         { fecha: '', tipo: 'gasto', valor: 50000, concepto: 'Libros de la Junta' },
         { fecha: '', tipo: 'gasto', valor: 150000, concepto: 'Desarrollo de la página web y dominio por un año' }
     ]
