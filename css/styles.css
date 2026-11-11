@@ -5118,3 +5118,9 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 
 .hero__title, .hero__subtitle, .hero__description, .hero__stat-number, .hero__stat-label { text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55); }
 .hero__overlay { opacity: 0.3; }
+
+/* Emblema de la Junta (circular) */
+.hero__logo { width: 150px; height: 150px; }
+@media (max-width: 768px) { .hero__logo { width: 120px; height: 120px; } }
+
+#telefonos-seccion .tel { margin-top: 0; }
