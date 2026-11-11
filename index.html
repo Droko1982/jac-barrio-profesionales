@@ -139,6 +139,7 @@
                     <li class="nav__item"><a href="#retiro" class="nav__link"><span aria-hidden="true">📒</span> Retirarme del libro de afiliados</a></li>
                     <li class="nav__item"><a href="#estatutos" class="nav__link"><span aria-hidden="true">📖</span> Estatutos</a></li>
                     <li class="nav__item"><a href="#transparencia" class="nav__link"><span aria-hidden="true">📊</span> Transparencia</a></li>
+                    <li class="nav__item"><a href="#cuentas" class="nav__link"><span aria-hidden="true">📒</span> Cuentas de la Junta</a></li>
                     <li class="nav__item"><a href="#junta" class="nav__link"><span aria-hidden="true">👥</span> La Junta</a></li>
                     <li class="nav__item"><a href="#negocios" class="nav__link"><span aria-hidden="true">🛍️</span> Negocios del barrio</a></li>
                     <li class="nav__item"><a href="#faq" class="nav__link"><span aria-hidden="true">❓</span> Preguntas frecuentes</a></li>
@@ -772,11 +773,11 @@
 
                         <li class="report__item">
                             <div class="report__item-head">
-                                <span class="status-badge status-badge--neutral">Por presentar</span>
-                                <h4 class="report__item-title">Estado financiero</h4>
+                                <span class="status-badge status-badge--info">Cuentas claras</span>
+                                <h4 class="report__item-title">Cuentas de la Junta</h4>
                             </div>
-                            <p>No publicamos cifras que no podamos soportar con libros de tesorería y extractos bancarios. Los estados financieros se presentarán primero a la Asamblea General y luego se publicarán aquí.</p>
-                            <span class="report__source">Norma: Ley 2166 de 2021, art. 46, lit. f (rendición de cuentas)</span>
+                            <p>La Junta <strong>no tiene ingresos propios</strong>. Los gastos han sido <strong>$200.000</strong>: $50.000 en libros y $150.000 en el desarrollo de esta página web y su dominio por un año. Se pagaron con un <strong>préstamo de $200.000 de Humberto Carvajal</strong>, que se le devolverá cuando entren fondos. <a href="#cuentas" class="contact__link">Ver el libro de cuentas</a></p>
+                            <span class="report__source">Norma: Ley 2166 de 2021, art. 46, lit. f (rendición de cuentas). Se presentarán con sus soportes a la Asamblea General.</span>
                         </li>
 
                         <li class="report__item">
@@ -828,17 +829,35 @@
                     </div>
                 </article>
 
+                <!-- ===== LIBRO DE CUENTAS =====
+                Los movimientos están en js/cuentas.js (la página suma sola). Ver herramientas/LEEME.md.
+                -->
+                <div class="cuentas fade-in" id="cuentas">
+                    <h3 class="cuentas__title">📒 Libro de cuentas de la Junta</h3>
+                    <p class="cuentas__intro">Cada peso que entra y que sale, a la vista de todos. Actualizado al <time data-cuentas-fecha datetime="2026-11-11">11 de noviembre de 2026</time>.</p>
+                    <div class="cuentas__resumen" id="cuentas-resumen"></div>
+                    <div class="cuentas__tabla-wrap">
+                        <table class="cuentas__tabla">
+                            <caption class="sr-only">Movimientos del libro de cuentas</caption>
+                            <thead><tr><th scope="col">Fecha</th><th scope="col">Concepto</th><th scope="col" class="num">Entra</th><th scope="col" class="num">Sale</th><th scope="col" class="num">Queda en caja</th></tr></thead>
+                            <tbody id="cuentas-filas"></tbody>
+                        </table>
+                    </div>
+                    <p class="cuentas__nota">Valores en pesos colombianos. Los reporta la Junta Directiva; los soportes (recibos y facturas) se presentarán a la Asamblea General y cualquier afiliado puede pedir verlos a la Secretaría.</p>
+                    <noscript><p class="cuentas__nota">La Junta no tiene ingresos propios. Gastos: $50.000 en libros y $150.000 en la página web y su dominio por un año, pagados con un préstamo de $200.000 de Humberto Carvajal, que se le devolverá cuando entren fondos.</p></noscript>
+                </div>
+
                 <!-- ===== INVENTARIO ===== -->
                 <div class="block" id="inventario">
                     <h3 class="block__title fade-in">Inventario de la Junta</h3>
-                    <p class="block__intro fade-in">Bienes que pertenecen a la comunidad. Están disponibles para uso comunitario, previa solicitud.</p>
+                    <p class="block__intro fade-in">Bienes que pertenecen a la comunidad, recibidos en el empalme. Los que están en buen estado se prestan para uso comunitario, previa solicitud.</p>
 
                     <div class="inventory__controls fade-in">
                         <div class="inventory__search-wrap">
                             <span class="inventory__search-icon" aria-hidden="true">🔍</span>
                             <input type="text" id="inventory-search" class="inventory__search" placeholder="Buscar por nombre, ubicación o responsable..." aria-label="Buscar en el inventario">
                         </div>
-                        <span class="inventory__count" id="inventory-count">Mostrando 8 de 8 items</span>
+                        <span class="inventory__count" id="inventory-count">Mostrando 9 de 9 items</span>
                     </div>
 
                     <div class="table-responsive fade-in">
@@ -877,14 +896,21 @@
                                 <tr>
                                     <td data-label="Item">Computador portátil</td>
                                     <td data-label="Cantidad">1</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span></td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleto</span><small class="inv__nota">Ya estaba obsoleto desde la administración anterior; no tiene arreglo.</small></td>
                                     <td data-label="Ubicación">En custodia del responsable</td>
                                     <td data-label="Responsable">Secretario(a)</td>
                                 </tr>
                                 <tr>
+                                    <td data-label="Item">Computador de escritorio</td>
+                                    <td data-label="Cantidad">1</td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleto</span><small class="inv__nota">Ya estaba obsoleto desde la administración anterior; no tiene arreglo.</small></td>
+                                    <td data-label="Ubicación">En custodia del responsable</td>
+                                    <td data-label="Responsable">Por confirmar</td>
+                                </tr>
+                                <tr>
                                     <td data-label="Item">Impresora multifuncional</td>
                                     <td data-label="Cantidad">1</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleta</span><small class="inv__nota">Ya estaba obsoleta desde la administración anterior; no tiene arreglo.</small></td>
                                     <td data-label="Ubicación">En custodia del responsable</td>
                                     <td data-label="Responsable">Secretario(a)</td>
                                 </tr>
@@ -898,14 +924,14 @@
                                 <tr>
                                     <td data-label="Item">Carpa para eventos (3x3 m)</td>
                                     <td data-label="Cantidad">2</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span></td>
                                     <td data-label="Ubicación">Bodega</td>
                                     <td data-label="Responsable">Tesorero(a)</td>
                                 </tr>
                                 <tr>
                                     <td data-label="Item">Botiquín de primeros auxilios</td>
                                     <td data-label="Cantidad">2</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span><small class="inv__nota">Cerca del 70 % de los insumos está vencido; hay que reponerlos.</small></td>
                                     <td data-label="Ubicación">En custodia del responsable</td>
                                     <td data-label="Responsable">Fiscal</td>
                                 </tr>
@@ -1523,6 +1549,7 @@
     <script src="js/actuaciones.js" defer></script>
     <script src="js/tablero.js" defer></script>
     <script src="js/negocios.js" defer></script>
+    <script src="js/cuentas.js" defer></script>
     <script src="js/directorio.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>

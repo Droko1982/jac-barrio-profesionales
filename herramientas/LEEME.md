@@ -157,3 +157,18 @@ demás, por ejemplo:
 ```html
 <li><a class="tel__item" href="tel:+57312XXXXXXX"><span class="tel__num">312 XXX XXXX</span><span class="tel__desc">Cuadrante N.° __ de la Policía (CAI ____)</span></a></li>
 ```
+
+## 6. Libro de cuentas
+
+Está en `js/cuentas.js` y se ve en la sección Transparencia (`#cuentas`). Para registrar un
+movimiento, agregue una línea en `movimientos`, en orden de fecha:
+
+```js
+{ fecha: '2026-12-01', tipo: 'gasto', valor: 30000, concepto: 'Fotocopias de la convocatoria' },
+```
+
+Tipos: `ingreso` (dinero propio que entra), `prestamo` (dinero prestado a la Junta),
+`gasto` (dinero que sale) y `abono` (pago de un préstamo). La página suma sola lo que entra,
+lo que sale, lo que queda en caja y lo que se debe. Guarde los recibos: se presentan a la
+Asamblea y cualquier afiliado puede pedir verlos. Revise también el resumen «Cuentas de la
+Junta» del Informe General en `index.html` si cambian las cifras.
