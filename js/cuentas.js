@@ -19,7 +19,7 @@ window.JAC_CUENTAS = {
     movimientos: [
         { fecha: '2026-10-23', tipo: 'prestamo', valor: 200000, concepto: 'De Humberto Carvajal Cortés, fiscal de la Junta, para pagar los libros y la página web. Se le devolverá cuando entren fondos.' },
         { fecha: '', tipo: 'gasto', valor: 50000, concepto: 'Libros de la Junta' },
-        { fecha: '', tipo: 'gasto', valor: 150000, concepto: 'Desarrollo de la página web y dominio por un año' }
+        { fecha: '', tipo: 'gasto', valor: 150000, concepto: 'Desarrollo de la página web y dominio jaclosprofesionales.com por un año' }
     ]
 };
 
