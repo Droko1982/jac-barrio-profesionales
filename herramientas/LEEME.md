@@ -150,13 +150,15 @@ Con 4 o más negocios, el portal muestra botones para filtrar por tipo.
 Están en `index.html`, bloque `id="telefonos"` (dentro de «¿Qué necesitas?»). Solo números
 verificados en fuentes oficiales; revise la fecha de la nota de fuentes cuando los cambie.
 
-**Pendiente:** el número del **cuadrante de Policía** que cubre el barrio. Cuando la Policía
-lo confirme, reemplace el renglón «Cuadrante … en confirmación» por un enlace como los
-demás, por ejemplo:
+El **cuadrante 17** de la Policía (el del barrio) es el 312 822 1634, confirmado por la Junta
+Directiva en noviembre de 2026. Si cambia, actualícelo en `index.html` y en `cartelera.html`.
 
-```html
-<li><a class="tel__item" href="tel:+57312XXXXXXX"><span class="tel__num">312 XXX XXXX</span><span class="tel__desc">Cuadrante N.° __ de la Policía (CAI ____)</span></a></li>
-```
+## 6b. WhatsApp de la Secretaria
+
+Solo se publica como enlace para **afiliarse** (inscribirse en el libro de afiliados): la
+tarjeta «Afiliarme a la Junta», el paso «Afiliarme o verificar» de la Asamblea y la pregunta
+«¿Cómo me afilio?». El número no aparece escrito en la página. Las solicitudes siguen
+llegando al correo de la Junta.
 
 ## 6. Libro de cuentas
 

@@ -5074,3 +5074,6 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
 
 .tel__item--wa .tel__num,
 [data-theme="dark"] .tel__item--wa .tel__num { color: #fff; }
+
+/* «Afiliarme a la Junta» abre WhatsApp con la Secretaria */
+.tramite.tramite--wa { border-color: #1FAF55; box-shadow: inset 0 -4px 0 #1FAF55; }
