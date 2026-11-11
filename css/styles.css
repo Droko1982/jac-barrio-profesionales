@@ -4596,3 +4596,223 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
     .nav__toggle.active .nav__toggle-line:nth-child(2) { opacity: 0; }
     .nav__toggle.active .nav__toggle-line:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 }
+
+/* ==========================================================
+   Encabezado sencillo (nov 2026)
+   4 accesos visibles en computador + botón «Menú» con todo lo demás.
+   Tamaños en px dentro del encabezado: «Letra grande» no lo desborda.
+   ========================================================== */
+.nav { gap: 0.75rem; }
+
+.nav__logo {
+    flex: none;
+    gap: 0.6rem;
+}
+
+.nav__logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.nav__logo-top {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.nav__logo-name {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] .nav__logo-name { color: #81C784; }
+
+.nav__primary {
+    display: none;
+    order: 2;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 0.3rem;
+}
+
+.nav__primary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.45rem 0.85rem;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--color-text);
+    border-radius: 999px;
+}
+
+.nav__primary-link:hover,
+.nav__primary-link.active {
+    color: var(--color-primary);
+    background-color: var(--color-primary-alpha);
+}
+
+[data-theme="dark"] .nav__primary-link:hover,
+[data-theme="dark"] .nav__primary-link.active { color: #81C784; }
+
+@media (min-width: 1100px) {
+    .nav__primary { display: flex; align-items: center; margin-left: auto; }
+}
+
+/* Botón «Menú», visible siempre */
+.nav__toggle,
+.nav__toggle:hover {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.4rem 1rem 0.4rem 0.85rem;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--color-text);
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.nav__toggle:hover,
+.nav__toggle:focus-visible,
+.nav__toggle.active { border-color: var(--color-primary); }
+
+.nav__toggle-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav__toggle-line { width: 20px; height: 2.5px; }
+
+.nav__toggle.active .nav__toggle-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav__toggle.active .nav__toggle-line:nth-child(2) { opacity: 0; }
+.nav__toggle.active .nav__toggle-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Panel del menú, en todos los tamaños de pantalla */
+.nav__menu {
+    position: fixed;
+    top: var(--header-height);
+    right: -100%;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    width: min(360px, 92vw);
+    height: calc(100vh - var(--header-height));
+    padding: 1.25rem 1rem 2.5rem;
+    overflow-y: auto;
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-xl);
+    transition: right var(--transition);
+}
+
+.nav__menu.open { right: 0; }
+
+.nav__menu-title {
+    margin: 0 0 0.5rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.nav__menu-list {
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav__menu .nav__link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 52px;
+    padding: 0.6rem 0.9rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    white-space: normal;
+    color: var(--color-text);
+    border-radius: var(--radius-md);
+}
+
+.nav__menu .nav__link > span[aria-hidden] {
+    flex: none;
+    width: 1.7rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.nav__menu .nav__link.nav__link--cta {
+    margin-top: 0.4rem;
+    color: #fff;
+    background: var(--color-primary);
+}
+
+.nav__theme {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 52px;
+    margin-top: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    color: var(--color-text);
+    background: var(--color-bg-alt);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+.nav__theme > span { width: 1.7rem; font-size: 1.3rem; text-align: center; }
+
+/* Celulares */
+@media (max-width: 480px) {
+    .nav__logo-top { display: none; }
+    .nav__logo-name { font-size: 16px; }
+    .nav__logo-img { width: 36px; height: 36px; }
+    .nav__toggle,
+    .nav__toggle:hover { padding: 0.35rem 0.75rem 0.35rem 0.65rem; font-size: 15px; }
+}
+
+@media (max-width: 350px) {
+    .nav__logo-text { display: none; }
+}
+
+.footer__credito {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+}
+
+/* El panel del menú vive dentro del encabezado: el encabezado va por encima del fondo oscuro */
+.header { z-index: 1003; }
+
+@media (max-width: 400px) {
+    .nav { gap: 0.4rem; }
+    .nav__right { gap: 0.35rem; }
+    .nav__logo { gap: 0.45rem; }
+    .nav__logo-name { font-size: 14px; }
+    .nav__toggle,
+    .nav__toggle:hover { gap: 0.4rem; padding: 0.35rem 0.7rem 0.35rem 0.6rem; }
+}

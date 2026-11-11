@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Junta de Acción Comunal del Barrio Los Profesionales, Comuna 10 de Armenia, Quindío. Próxima Asamblea, reforma de estatutos para opinar, normativa que nos rige, informe de gestión y solicitudes en línea.">
-    <meta name="author" content="Junta de Acción Comunal Barrio Los Profesionales">
+    <meta name="author" content="Dr. M. Rodríguez, presidente de la Junta de Acción Comunal Barrio Los Profesionales">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#2E7D32" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0F0F1A" media="(prefers-color-scheme: dark)">
@@ -103,35 +103,49 @@
     <!-- ========== ENCABEZADO ========== -->
     <header class="header" id="header">
         <nav class="nav container" aria-label="Principal">
-            <a href="#inicio" class="nav__logo">
+            <a href="#inicio" class="nav__logo" aria-label="Inicio: Junta de Acción Comunal Barrio Los Profesionales">
                 <img src="img/logo.svg" alt="" class="nav__logo-img" width="42" height="42">
-                <span class="nav__logo-text">JAC <span class="nav__logo-accent">Profesionales</span></span>
+                <span class="nav__logo-text"><span class="nav__logo-top">Junta de Acción Comunal</span><span class="nav__logo-name">Los Profesionales</span></span>
             </a>
+
+            <!-- Lo más consultado (en computador). Todo lo demás está en «Menú». -->
+            <ul class="nav__primary">
+                <li><a href="#actuaciones" class="nav__link nav__primary-link"><span aria-hidden="true">📋</span> Así vamos</a></li>
+                <li><a href="#tramites" class="nav__link nav__primary-link"><span aria-hidden="true">✉️</span> Trámites</a></li>
+                <li><a href="#telefonos" class="nav__link nav__primary-link"><span aria-hidden="true">📞</span> Teléfonos</a></li>
+                <li><a href="#negocios" class="nav__link nav__primary-link"><span aria-hidden="true">🛍️</span> Negocios</a></li>
+            </ul>
 
             <div class="nav__right">
                 <button class="text-size-toggle" id="text-size-toggle" type="button" aria-pressed="false" aria-label="Agrandar la letra" title="Agrandar la letra"><span aria-hidden="true">A+</span><span class="text-size-toggle__label">Letra grande</span></button>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema claro u oscuro">
-                    <span class="theme-toggle__icon theme-toggle__icon--light">&#9788;</span>
-                    <span class="theme-toggle__icon theme-toggle__icon--dark">&#9790;</span>
-                </button>
-                <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú">
-                    <span class="nav__toggle-line"></span>
-                    <span class="nav__toggle-line"></span>
-                    <span class="nav__toggle-line"></span>
+                <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Abrir el menú">
+                    <span class="nav__toggle-icon" aria-hidden="true">
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                        <span class="nav__toggle-line"></span>
+                    </span>
+                    <span class="nav__toggle-label">Menú</span>
                 </button>
             </div>
 
-            <ul class="nav__menu" id="nav-menu">
-                <li class="nav__item"><a href="#tramites" class="nav__link">Trámites</a></li>
-                <li class="nav__item"><a href="#actuaciones" class="nav__link">Así vamos</a></li>
-                <li class="nav__item"><a href="#telefonos" class="nav__link">Teléfonos</a></li>
-                <li class="nav__item"><a href="#asamblea" class="nav__link">Asamblea</a></li>
-                <li class="nav__item"><a href="#estatutos" class="nav__link">Estatutos</a></li>
-                <li class="nav__item"><a href="#transparencia" class="nav__link">Transparencia</a></li>
-                <li class="nav__item"><a href="#junta" class="nav__link">La Junta</a></li>
-                <li class="nav__item"><a href="#negocios" class="nav__link">Negocios</a></li>
-                <li class="nav__item"><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
-            </ul>
+            <div class="nav__menu" id="nav-menu">
+                <p class="nav__menu-title">¿A dónde quieres ir?</p>
+                <ul class="nav__menu-list">
+                    <li class="nav__item"><a href="#inicio" class="nav__link"><span aria-hidden="true">🏠</span> Inicio</a></li>
+                    <li class="nav__item"><a href="#actuaciones" class="nav__link"><span aria-hidden="true">📋</span> Así vamos: lo que hace la Junta</a></li>
+                    <li class="nav__item"><a href="#tramites" class="nav__link"><span aria-hidden="true">✉️</span> Trámites y solicitudes</a></li>
+                    <li class="nav__item"><a href="#telefonos" class="nav__link"><span aria-hidden="true">📞</span> Teléfonos útiles</a></li>
+                    <li class="nav__item"><a href="#asamblea" class="nav__link"><span aria-hidden="true">📅</span> Asamblea y avisos</a></li>
+                    <li class="nav__item"><a href="#retiro" class="nav__link"><span aria-hidden="true">📒</span> Retirarme del libro de afiliados</a></li>
+                    <li class="nav__item"><a href="#estatutos" class="nav__link"><span aria-hidden="true">📖</span> Estatutos</a></li>
+                    <li class="nav__item"><a href="#transparencia" class="nav__link"><span aria-hidden="true">📊</span> Transparencia</a></li>
+                    <li class="nav__item"><a href="#junta" class="nav__link"><span aria-hidden="true">👥</span> La Junta</a></li>
+                    <li class="nav__item"><a href="#negocios" class="nav__link"><span aria-hidden="true">🛍️</span> Negocios del barrio</a></li>
+                    <li class="nav__item"><a href="#faq" class="nav__link"><span aria-hidden="true">❓</span> Preguntas frecuentes</a></li>
+                    <li class="nav__item"><a href="#contacto" class="nav__link nav__link--cta"><span aria-hidden="true">💬</span> Escribirle a la Junta</a></li>
+                </ul>
+                <button class="nav__theme" id="theme-toggle" type="button"><span aria-hidden="true">🌗</span> Cambiar a pantalla clara u oscura</button>
+            </div>
         </nav>
     </header>
 
@@ -1479,6 +1493,7 @@
 
             <div class="footer__bottom">
                 <p>&copy; 2026 Junta de Acción Comunal del Barrio Los Profesionales.</p>
+                <p class="footer__credito">Página hecha y desarrollada por el <strong>Dr. M. Rodríguez</strong>, presidente de la Junta de Acción Comunal Barrio Los Profesionales.</p>
                 <p class="footer__legal">Personería Jurídica — Certificado N° 1.280, Cámara de Comercio de Armenia · Inscrita el 28 de abril de 1998 · Bloques: Resolución N° 466 del 7 de junio de 2022.</p>
                 <p class="footer__legal">Organización comunal de primer grado, regida por la Ley 2166 de 2021.</p>
                 <p class="footer__legal footer__legal--meta">

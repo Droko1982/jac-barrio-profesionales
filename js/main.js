@@ -98,11 +98,19 @@
         const navMenu = document.getElementById('nav-menu');
         const navOverlay = document.getElementById('nav-overlay');
 
+        // El botón dice «Menú» o «Cerrar», para que sea claro qué pasa al tocarlo.
+        function etiquetaMenu(texto, aria) {
+            const label = navToggle && navToggle.querySelector('.nav__toggle-label');
+            if (label) label.textContent = texto;
+            if (navToggle) navToggle.setAttribute('aria-label', aria);
+        }
+
         function closeMenu() {
             if (!navToggle || !navMenu) return;
             navToggle.classList.remove('active');
             navToggle.setAttribute('aria-expanded', 'false');
             navMenu.classList.remove('open');
+            etiquetaMenu('Menú', 'Abrir el menú');
             if (navOverlay) navOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
@@ -112,6 +120,7 @@
             navToggle.classList.add('active');
             navToggle.setAttribute('aria-expanded', 'true');
             navMenu.classList.add('open');
+            etiquetaMenu('Cerrar', 'Cerrar el menú');
             if (navOverlay) navOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
