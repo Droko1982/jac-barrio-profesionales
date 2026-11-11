@@ -1,26 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="logo-t">
-  <title id="logo-t">Junta de Acción Comunal Barrio Los Profesionales</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="sello-t">
+  <title id="sello-t">Sello de la Junta de Acción Comunal Barrio Los Profesionales, Armenia, Quindío</title>
   <defs>
-    <clipPath id="logo-c"><circle cx="60" cy="60" r="50"/></clipPath>
+    <clipPath id="sello-disco"><circle cx="120" cy="120" r="80"/></clipPath>
+    <linearGradient id="sello-cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#90CAF9"/>
+      <stop offset="1" stop-color="#E3F2FD"/>
+    </linearGradient>
+    <!-- arco superior (texto hacia afuera) y arco inferior (texto derecho, de izquierda a derecha) -->
+    <path id="sello-arriba" d="M 27 120 A 93 93 0 0 1 213 120"/>
+    <path id="sello-abajo" d="M 14 120 A 106 106 0 0 0 226 120"/>
   </defs>
-  <!-- aro -->
-  <circle cx="60" cy="60" r="58" fill="#1B5E20"/>
-  <circle cx="60" cy="60" r="52" fill="#F9A825"/>
-  <g clip-path="url(#logo-c)">
-    <!-- cielo -->
-    <rect width="120" height="120" fill="#E3F2FD"/>
-    <!-- sol -->
-    <circle cx="84" cy="36" r="10" fill="#F9A825"/>
-    <!-- cordillera del Quindío -->
-    <path d="M0 74 L26 46 L42 62 L62 38 L86 60 L100 48 L120 70 V120 H0 Z" fill="#81C784"/>
-    <path d="M0 84 L30 64 L52 78 L76 60 L120 84 V120 H0 Z" fill="#4CAF50"/>
-    <!-- suelo -->
-    <rect y="92" width="120" height="28" fill="#2E7D32"/>
+
+  <!-- aro del sello -->
+  <circle cx="120" cy="120" r="119" fill="#1B5E20"/>
+  <circle cx="120" cy="120" r="114" fill="none" stroke="#F9A825" stroke-width="2.5"/>
+  <circle cx="120" cy="120" r="83" fill="#F9A825"/>
+
+  <!-- nombre del barrio y de la Junta -->
+  <text font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="19.5" letter-spacing="1.1" fill="#FFFFFF">
+    <textPath href="#sello-arriba" startOffset="50%" text-anchor="middle">LOS PROFESIONALES</textPath>
+  </text>
+  <text font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.4" fill="#FFF8E1">
+    <textPath href="#sello-abajo" startOffset="50%" text-anchor="middle">JUNTA DE ACCIÓN COMUNAL · ARMENIA</textPath>
+  </text>
+  <text x="19" y="125" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#F9A825" text-anchor="middle">★</text>
+  <text x="221" y="125" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#F9A825" text-anchor="middle">★</text>
+
+  <!-- paisaje del Quindío -->
+  <g clip-path="url(#sello-disco)">
+    <rect x="30" y="30" width="180" height="180" fill="url(#sello-cielo)"/>
+    <circle cx="152" cy="76" r="13" fill="#FBC02D"/>
+    <path d="M30 150 L72 100 L96 124 L126 88 L160 120 L180 106 L210 138 V210 H30 Z" fill="#81C784"/>
+    <path d="M30 164 L82 132 L116 152 L152 126 L210 160 V210 H30 Z" fill="#43A047"/>
+    <rect x="30" y="170" width="180" height="40" fill="#2E7D32"/>
+
+    <!-- palma de cera, árbol nacional y símbolo del Quindío -->
+    <g stroke="#1B5E20" stroke-linecap="round" fill="none">
+      <path d="M170 171 C169 150 168 120 167 92" stroke-width="3.5"/>
+      <path d="M167 92 C156 88 146 92 140 102" stroke-width="3"/>
+      <path d="M167 92 C158 80 147 77 138 82" stroke-width="3"/>
+      <path d="M167 92 C166 80 160 72 152 68" stroke-width="3"/>
+      <path d="M167 92 C172 80 180 74 189 74" stroke-width="3"/>
+      <path d="M167 92 C178 88 188 92 193 102" stroke-width="3"/>
+      <path d="M167 92 C176 96 181 104 182 112" stroke-width="2.6"/>
+      <path d="M71 171 C70 156 70 138 69 122" stroke-width="2.8"/>
+      <path d="M69 122 C61 119 55 122 51 129" stroke-width="2.3"/>
+      <path d="M69 122 C63 113 56 111 50 114" stroke-width="2.3"/>
+      <path d="M69 122 C74 113 81 110 88 112" stroke-width="2.3"/>
+      <path d="M69 122 C77 121 82 126 85 132" stroke-width="2.3"/>
+    </g>
+
     <!-- casa comunal -->
-    <path d="M38 94 V68 L60 52 L82 68 V94 Z" fill="#FFFFFF" stroke="#1B5E20" stroke-width="3.5" stroke-linejoin="round"/>
-    <path d="M33 70 L60 50 L87 70" fill="none" stroke="#C62828" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="54" y="76" width="12" height="18" rx="1.5" fill="#1B5E20"/>
-    <rect x="43" y="73" width="8" height="8" rx="1" fill="#1565C0"/>
-    <rect x="69" y="73" width="8" height="8" rx="1" fill="#1565C0"/>
+    <path d="M97 174 V142 L120 124 L143 142 V174 Z" fill="#FFFFFF" stroke="#1B5E20" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M90 145 L120 121 L150 145" fill="none" stroke="#C62828" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="114" y="152" width="12" height="22" rx="1.5" fill="#1B5E20"/>
+    <rect x="102" y="148" width="9" height="9" rx="1" fill="#1565C0"/>
+    <rect x="129" y="148" width="9" height="9" rx="1" fill="#1565C0"/>
   </g>
 </svg>

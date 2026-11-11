@@ -102,26 +102,6 @@ window.JAC_DATOS = {
     },
     {
         "estado": "espera",
-        "fecha": "2026-09-21",
-        "numero": "JAC-010-2026",
-        "titulo": "Retiro de los escombros que dejó el sismo y de las basuras acumuladas en cuatro puntos del barrio",
-        "entidad": "Alcaldía (Despacho, Planeación, Gestión del Riesgo y Gobierno) · EPA",
-        "plazo": 15,
-        "novedades": [
-            ["2026-09-21", "Oficio radicado, con registro fotográfico."]
-        ],
-        "pendiente": "Respuesta y retiro de los escombros y basuras.",
-        "fotos": [
-            ["jac010-basuras-1.jpg", "Basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
-            ["jac010-basuras-2.jpg", "Basuras y escombros junto a un lote del barrio (21 sep 2026)"],
-            ["jac010-escombros.jpg", "Escombros entre los árboles de un separador (21 sep 2026)"]
-        ],
-        "documentos": [
-            ["JAC-010-2026-escombros-basuras.pdf", "Oficio JAC-010-2026 (21 sep 2026)"]
-        ]
-    },
-    {
-        "estado": "espera",
         "fecha": "2026-10-02",
         "numero": "JAC-011-2026",
         "titulo": "Registrar el correo jaclosprofesionales@gmail.com como canal oficial de la Junta para comunicaciones y notificaciones",
@@ -267,13 +247,34 @@ window.JAC_DATOS = {
         "entidad": "Junta Directiva · Secretaría",
         "plazo": 0,
         "novedades": [
-            ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum."],
+            ["2026-09-18", "Asamblea General convocada, presencial y virtual: no se alcanzó el quórum. Se adelantó la depuración del libro de afiliados."],
             ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados."]
         ],
-        "pendiente": "Depurar el libro de afiliados y convocar de nuevo la Asamblea (fecha por definir).",
+        "pendiente": "Terminar la depuración del libro de afiliados (en espera) y convocar de nuevo la Asamblea (fecha por definir).",
         "fotos": [],
         "documentos": [
             ["asamblea-2026-09-18-convocatoria.pdf", "Convocatoria a la Asamblea del 18 de septiembre de 2026"]
+        ]
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-09-21",
+        "numero": "JAC-010-2026",
+        "titulo": "Retiro de los escombros que dejó el sismo y de las basuras acumuladas en cuatro puntos del barrio",
+        "entidad": "Alcaldía (Despacho, Planeación, Gestión del Riesgo y Gobierno) · EPA",
+        "plazo": 15,
+        "novedades": [
+            ["2026-09-21", "Oficio radicado, con registro fotográfico."],
+            ["2026-11-11", "La Junta verificó que los escombros ya fueron retirados."]
+        ],
+        "pendiente": "Confirmar el retiro de las basuras acumuladas y recibir la respuesta escrita de la Alcaldía.",
+        "fotos": [
+            ["jac010-basuras-1.jpg", "Antes: basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
+            ["jac010-basuras-2.jpg", "Antes: basuras y escombros junto a un lote del barrio (21 sep 2026)"],
+            ["jac010-escombros.jpg", "Antes: escombros entre los árboles de un separador (21 sep 2026)"]
+        ],
+        "documentos": [
+            ["JAC-010-2026-escombros-basuras.pdf", "Oficio JAC-010-2026 (21 sep 2026)"]
         ]
     },
     {

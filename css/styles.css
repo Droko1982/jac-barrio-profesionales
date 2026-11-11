@@ -4816,3 +4816,7 @@ a.tel__item--urgente:focus-visible { border-color: #8E0000; box-shadow: 0 0 0 3p
     .nav__toggle,
     .nav__toggle:hover { gap: 0.4rem; padding: 0.35rem 0.7rem 0.35rem 0.6rem; }
 }
+
+/* Sello con el nombre «Los Profesionales»: más grande para que se lea */
+.hero__logo { width: 150px; height: 150px; }
+@media (max-width: 768px) { .hero__logo { width: 124px; height: 124px; } }
