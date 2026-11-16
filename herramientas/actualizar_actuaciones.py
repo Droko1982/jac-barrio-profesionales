@@ -13,7 +13,7 @@ Uso:
         Igual que importar, pero desde una lista JSON con los mismos campos.
 
 Columnas de la hoja (fila 1):
-    estado | fecha | numero | titulo | entidad | plazo_dias | novedades | pendiente | enviados | fotos | documentos
+    estado | fecha | numero | titulo | entidad | plazo_dias | novedades | pendiente | enviados | fotos | documentos | siguiente
 
     estado      «Ya se hizo», «En trámite» o «Esperando respuesta»
                 (también vale: hecho, tramite, espera)
@@ -37,6 +37,10 @@ Columnas de la hoja (fila 1):
     documentos  opcional. Uno por línea:  archivo.pdf | descripción
                 (el PDF va en documentos/, ya tachado con herramientas/publicar_documento.py).
                 Si la hoja no tiene esta columna, se conservan los documentos ya publicados.
+    siguiente   opcional. El próximo paso anunciado, en una línea:  AAAA-MM-DD [tipo]: texto
+                tipo: tutela, accion-popular, audiencia o revision. La fecha es la prevista
+                (puede faltar:  [tutela]: texto). Alimenta «Acciones ante los jueces».
+                Si la hoja no tiene esta columna, se conserva el que ya estaba publicado.
 
 El script se niega a publicar si encuentra algo que parezca un teléfono o una cédula.
 Solo usa la biblioteca estándar de Python.
@@ -54,13 +58,17 @@ ARCHIVO_JS = RAIZ / "js" / "actuaciones.js"
 INICIO = "/* INICIO-ACTUACIONES */"
 FIN = "/* FIN-ACTUACIONES */"
 
-CAMPOS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo", "enviados", "novedades", "pendiente", "fotos", "documentos"]
+CAMPOS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo", "enviados", "novedades", "pendiente", "siguiente", "fotos", "documentos"]
 COLUMNAS = ["estado", "fecha", "numero", "titulo", "entidad", "plazo_dias", "novedades", "pendiente"]
 COLUMNA_FOTOS = "fotos"
 COLUMNA_DOCS = "documentos"
 LISTAS = (COLUMNA_FOTOS, COLUMNA_DOCS)  # columnas opcionales con «archivo | descripción»
 COLUMNA_ENVIADOS = "enviados"
-OPCIONALES = (COLUMNA_ENVIADOS,) + LISTAS  # si faltan en la hoja, se conservan los valores publicados
+COLUMNA_SIGUIENTE = "siguiente"
+OPCIONALES = (COLUMNA_ENVIADOS,) + LISTAS + (COLUMNA_SIGUIENTE,)  # si faltan en la hoja, se conservan los valores publicados
+TIPOS_SIGUIENTE = {"tutela": "tutela", "accion-popular": "accion-popular", "acción popular": "accion-popular",
+                   "accion popular": "accion-popular", "audiencia": "audiencia", "revision": "revision", "revisión": "revision"}
+RE_SIGUIENTE = re.compile(r"^\s*([\d/-]+)?\s*\[\s*([^\]]+?)\s*\]\s*:\s*(.+)$")
 DIR_FOTOS = RAIZ / "img" / "actuaciones"
 DIR_DOCS = RAIZ / "documentos"
 
@@ -189,6 +197,23 @@ def normalizar(item, donde):
             raise ErrorDatos(f"{donde}: el documento «{archivo}» necesita una descripción")
         revisar_privacidad(desc, f"{donde} (documentos)")
 
+    sig = item.get("siguiente") or []
+    if isinstance(sig, str):
+        sig = sig.strip()
+        if sig:
+            m = RE_SIGUIENTE.match(sig)
+            if not m:
+                raise ErrorDatos(f"{donde}: «siguiente» debe ir como AAAA-MM-DD [tutela]: texto")
+            sig = [leer_fecha(m.group(1), donde) if m.group(1) else "", m.group(2).lower(), m.group(3).strip()]
+        else:
+            sig = []
+    if sig:
+        tipo = TIPOS_SIGUIENTE.get(str(sig[1]).lower())
+        if not tipo:
+            raise ErrorDatos(f"{donde}: tipo de «siguiente» «{sig[1]}» no válido (tutela, accion-popular, audiencia, revision)")
+        sig = [sig[0], tipo, str(sig[2]).strip()]
+        revisar_privacidad(sig[2], f"{donde} (siguiente)")
+
     limpio = {
         "estado": estado,
         "fecha": leer_fecha(item.get("fecha"), donde),
@@ -199,6 +224,7 @@ def normalizar(item, donde):
         "enviados": enviados,
         "novedades": novedades or [[leer_fecha(item.get("fecha"), donde), "Radicado."]],
         "pendiente": str(item.get("pendiente", "") or "").strip(),
+        "siguiente": sig,
         "fotos": fotos,
         "documentos": documentos,
     }
@@ -307,6 +333,13 @@ def linea_novedad(n):
     return f"{n[0]}{tipo}: {n[1]}"
 
 
+def linea_siguiente(s):
+    """[fecha, tipo, texto] → «AAAA-MM-DD [tipo]: texto»."""
+    if not s:
+        return ""
+    return (f"{s[0]} " if s[0] else "") + f"[{s[1]}]: {s[2]}"
+
+
 def exportar_csv(ruta):
     items = leer_js()
     with open(ruta, "w", encoding="utf-8-sig", newline="") as f:
@@ -317,7 +350,8 @@ def exportar_csv(ruta):
                 ESTADO_HOJA[it["estado"]], it["fecha"], it["numero"], it["titulo"], it["entidad"],
                 it["plazo"], "\n".join(linea_novedad(n) for n in it["novedades"]), it["pendiente"],
                 it.get(COLUMNA_ENVIADOS, 0),
-            ] + ["\n".join(f"{a} | {d}" for a, d in it.get(c, [])) for c in LISTAS])
+            ] + ["\n".join(f"{a} | {d}" for a, d in it.get(c, [])) for c in LISTAS]
+              + [linea_siguiente(it.get(COLUMNA_SIGUIENTE))])
     print(f"OK: {len(items)} actuaciones exportadas a {ruta}")
 
 

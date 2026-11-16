@@ -70,11 +70,13 @@
     /* Próximo paso cuando una petición no tiene respuesta y el plazo legal ya venció.
        Una actuación puede traer su propio texto en el campo «siguiente». */
     function siguientePaso(it) {
-        if (it.siguiente) return it.siguiente;
+        var s = it.siguiente;
+        if (s && s.length === 3 && s[2]) return { fecha: s[0] || '', tipo: s[1], texto: s[2] };
         var p = plazoDe(it);
-        if (!p || !p.vencido) return '';
-        return 'Si no llega respuesta, la Junta presentará una acción de tutela ante un juez para proteger el derecho de petición (artículo 23 de la Constitución).';
+        if (it.estado !== 'espera' || !p || !p.vencido) return null;
+        return { fecha: '', tipo: 'tutela', texto: 'Si no llega respuesta, la Junta presentará una acción de tutela ante un juez para proteger el derecho de petición (artículo 23 de la Constitución).' };
     }
+    var TIPO_SIG = { tutela: 'Tutela', 'accion-popular': 'Acción popular', audiencia: 'Audiencia', revision: 'Revisión' };
 
     var conteo = { hecho: 0, tramite: 0, espera: 0, total: items.length, vencidas: 0, enviados: 0 };
     items.forEach(function (it) {
@@ -271,14 +273,14 @@
             reloj.appendChild(el('span', 'act-card__clock-icon', p && p.vencido ? '⚠️' : '⏱️'));
             reloj.appendChild(document.createTextNode(' ' + txt));
             li.appendChild(reloj);
-            var sig = siguientePaso(it);
-            if (sig) {
-                var nx = el('p', 'act-card__next');
-                nx.appendChild(el('span', 'act-card__next-icon', '⚖️'));
-                nx.appendChild(el('strong', null, ' Próximo paso: '));
-                nx.appendChild(document.createTextNode(sig));
-                li.appendChild(nx);
-            }
+        }
+        var sig = siguientePaso(it);
+        if (sig) {
+            var nx = el('p', 'act-card__next');
+            nx.appendChild(el('span', 'act-card__next-icon', sig.tipo === 'revision' ? '📅' : '⚖️'));
+            nx.appendChild(el('strong', null, ' Próximo paso' + (sig.fecha ? ' (' + corta(sig.fecha) + ')' : '') + ': '));
+            nx.appendChild(document.createTextNode(sig.texto));
+            li.appendChild(nx);
         }
 
         var u = ultima(it);
@@ -354,36 +356,41 @@
                 li.appendChild(el('span', 'act-tl__body', n[1]));
                 ol.appendChild(li);
             });
-            if (it.pendiente) {
+            var sgC = siguientePaso(it);
+            if (sgC || it.pendiente) {
                 var liS = el('li', 'act-tl__item act-tl__item--espera');
-                liS.appendChild(el('span', 'act-tl__date', 'Sigue'));
-                liS.appendChild(el('span', 'act-tl__body', it.pendiente));
+                liS.appendChild(el('span', 'act-tl__date', sgC && sgC.fecha ? corta(sgC.fecha) : 'Sigue'));
+                liS.appendChild(el('span', 'act-tl__body', sgC ? sgC.texto : it.pendiente));
                 ol.appendChild(liS);
             }
             caja.appendChild(ol);
             jud.appendChild(caja);
         });
 
-        var proximas = items.filter(function (it) { return it.estado === 'espera' && siguientePaso(it); })
-            .sort(function (a, b) { return a.fecha.localeCompare(b.fecha); });
+        var proximas = items.filter(function (it) {
+            var s = siguientePaso(it);
+            return s && (s.tipo === 'tutela' || s.tipo === 'accion-popular') && enCurso.indexOf(it) < 0;
+        }).sort(function (a, b) {
+            var fa = siguientePaso(a).fecha || '9999', fb = siguientePaso(b).fecha || '9999';
+            return fa.localeCompare(fb) || a.fecha.localeCompare(b.fecha);
+        });
         if (proximas.length) {
             var cajaT = el('article', 'jud__caso jud__caso--proxima');
-            cajaT.appendChild(el('p', 'jud__tag', '⏳ Próximas a presentarse · ' + plural(proximas.length, 'tutela', 'tutelas')));
-            cajaT.appendChild(el('h4', 'jud__titulo', 'Peticiones sin respuesta y con el plazo legal vencido'));
-            cajaT.appendChild(el('p', 'jud__intro', 'Si estas entidades no responden, la Junta acudirá a un juez con una acción de tutela para que les ordene contestar. Se avisará aquí cuando se presente cada una.'));
+            cajaT.appendChild(el('p', 'jud__tag', '⏳ Próximas a presentarse · ' + plural(proximas.length, 'caso', 'casos')));
+            cajaT.appendChild(el('h4', 'jud__titulo', 'Tutelas y acciones populares que vienen, con su fecha'));
+            cajaT.appendChild(el('p', 'jud__intro', 'Cuando una entidad no responde de fondo o no cumple, la Junta acude a un juez. Si antes de la fecha llega una respuesta suficiente, la acción ya no se presenta. Se avisará aquí cuando se radique cada una.'));
             var olT = el('ol', 'act-tl jud__tl');
             proximas.forEach(function (it) {
-                var p = plazoDe(it);
+                var sg = siguientePaso(it);
                 var li = el('li', 'act-tl__item act-tl__item--espera');
-                var tt = el('time', 'act-tl__date', corta(it.fecha));
-                tt.dateTime = it.fecha;
+                var tt = el('time', 'act-tl__date', sg.fecha ? corta(sg.fecha) : 'Por fijar');
+                if (sg.fecha) tt.dateTime = sg.fecha;
                 li.appendChild(tt);
                 var cuerpo = el('span', 'act-tl__body');
-                cuerpo.appendChild(el('strong', null, it.titulo + '. '));
+                cuerpo.appendChild(el('strong', null, (TIPO_SIG[sg.tipo] || 'Acción') + ': ' + it.titulo + '. '));
                 cuerpo.appendChild(document.createTextNode(
-                    (it.numero ? it.numero + ' · ' : '') + 'Dirigida a: ' + it.entidad + '. ' +
-                    (p ? 'El plazo legal venció el ' + corta(aIso(p.vence)) + '; ' : '') +
-                    'lleva ' + plural(diasEntre(aFecha(it.fecha), HOY), 'día', 'días') + ' sin respuesta.'));
+                    (it.numero ? it.numero + '. ' : '') + 'Primera solicitud: ' + corta(it.fecha) + ' (' +
+                    plural(diasEntre(aFecha(it.fecha), HOY), 'día', 'días') + '). ' + sg.texto));
                 li.appendChild(cuerpo);
                 olT.appendChild(li);
             });
@@ -765,7 +772,7 @@
                 esp.forEach(function (it) {
                     var p = plazoDe(it);
                     partes.push(it.titulo + '. Radicado el ' + larga(it.fecha) +
-                        (p && p.vencido ? '; el plazo legal ya venció. Si no llega respuesta, la Junta presentará una acción de tutela.' : '.'));
+                        (p && p.vencido ? '; el plazo legal ya venció.' : '.') + (siguientePaso(it) ? ' ' + siguientePaso(it).texto : ''));
                 });
             }
             var tra = items.filter(function (i) { return i.estado === 'tramite'; });
@@ -904,6 +911,6 @@
     }
 
     // Para otras páginas (cartelera) y pruebas
-    window.JAC_FECHAS = { corta: corta, larga: larga, plazoDe: plazoDe, diasEntre: diasEntre, aFecha: aFecha, aIso: aIso, HOY: HOY };
+    window.JAC_FECHAS = { corta: corta, larga: larga, plazoDe: plazoDe, siguientePaso: siguientePaso, TIPO_SIG: TIPO_SIG, diasEntre: diasEntre, aFecha: aFecha, aIso: aIso, HOY: HOY };
     window.JAC_CONTEO = conteo;
 })();

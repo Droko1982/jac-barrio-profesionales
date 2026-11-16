@@ -34,7 +34,7 @@
    ========================================================================== */
 
 window.JAC_DATOS = {
-    actualizado: '2026-11-15',
+    actualizado: '2026-11-16',
 
     /* Próxima Asamblea General.
        Al convocarla: estado 'convocada' y completa fecha (AAAA-MM-DD),
@@ -64,6 +64,7 @@ window.JAC_DATOS = {
             ["2026-05-22", "Derecho de petición radicado.", "enviado"]
         ],
         "pendiente": "Respuesta y medidas de las autoridades.",
+        "siguiente": [],
         "fotos": [
             ["basuras-comercio-1.jpg", "Basuras regadas junto a un árbol, sobre la vía pública (22 may 2026)"],
             ["basuras-comercio-2.jpg", "Bolsas y residuos acumulados al pie de un árbol (22 may 2026)"],
@@ -76,98 +77,59 @@ window.JAC_DATOS = {
     },
     {
         "estado": "espera",
-        "fecha": "2026-07-02",
-        "numero": "JAC-003-2026",
-        "titulo": "Información sobre presupuesto participativo y postulación de dos proyectos: cámaras de seguridad y caseta comunal",
-        "entidad": "Unidad de Participación Ciudadana · Planeación Municipal",
-        "plazo": 10,
-        "enviados": 1,
-        "novedades": [
-            ["2026-07-02", "Petición radicada.", "enviado"]
-        ],
-        "pendiente": "Respuesta de la Alcaldía.",
-        "fotos": [],
-        "documentos": [
-            ["JAC-003-2026-presupuesto-participativo.pdf", "Petición JAC-003-2026 (2 jul 2026)"]
-        ]
-    },
-    {
-        "estado": "espera",
-        "fecha": "2026-07-02",
-        "numero": "JAC-006-2026",
-        "titulo": "Titularidad de dos predios del barrio y comodato de uno de ellos para una sede comunal",
-        "entidad": "Planeación · Hacienda (Bienes) · Secretaría de Gobierno",
-        "plazo": 10,
-        "enviados": 1,
-        "novedades": [
-            ["2026-07-02", "Petición radicada.", "enviado"]
-        ],
-        "pendiente": "Respuesta de la Alcaldía.",
-        "fotos": [],
-        "documentos": [
-            ["JAC-006-2026-predios-comodato.pdf", "Petición JAC-006-2026 (2 jul 2026)"]
-        ]
-    },
-    {
-        "estado": "espera",
-        "fecha": "2026-10-02",
-        "numero": "JAC-011-2026",
-        "titulo": "Registrar el correo jaclosprofesionales@gmail.com como canal oficial de la Junta para comunicaciones y notificaciones",
-        "entidad": "Unidad de Participación Ciudadana · Secretaría de Desarrollo Social",
+        "fecha": "2026-10-23",
+        "numero": "JAC-018-2026 · 2026RE55734",
+        "titulo": "Alumbrado público de la Carrera 18A: visita técnica nocturna y revisión, reposición o nuevos puntos de luz",
+        "entidad": "Secretaría de Infraestructura · operador del alumbrado público",
         "plazo": 15,
         "enviados": 1,
         "novedades": [
-            ["2026-10-02", "Oficio radicado.", "enviado"]
+            ["2026-10-23", "Petición enviada el 22 de octubre y radicada por la Alcaldía el 23 de octubre.", "enviado"]
         ],
-        "pendiente": "Confirmación de la Unidad de Participación Ciudadana.",
+        "pendiente": "Visita técnica nocturna y respuesta de fondo.",
+        "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
         "fotos": [],
         "documentos": [
-            ["JAC-011-2026-canal-oficial.pdf", "Oficio JAC-011-2026 (2 oct 2026)"]
+            ["JAC-018-2026-alumbrado-carrera-18a.pdf", "Petición JAC-018-2026 (22 oct 2026)"]
         ]
     },
     {
         "estado": "espera",
-        "fecha": "2026-10-02",
-        "numero": "JAC-012-2026 · JAC-013-2026",
-        "titulo": "Elección de dignatarios de ASOCOMUNAL Comuna 10: la Junta la impugnó y pide que se decida",
-        "entidad": "Federación Comunal del Quindío · Unidad de Participación Ciudadana",
+        "fecha": "2026-10-23",
+        "numero": "JAC-019-2026",
+        "titulo": "Calle 5 Norte: seguridad vial por los desvíos y el paso de buses junto al parque, y estado del pavimento",
+        "entidad": "Secretaría de Tránsito y Transporte · Secretaría de Infraestructura",
         "plazo": 15,
-        "enviados": 6,
+        "enviados": 1,
         "novedades": [
-            ["2026-07-22", "La Junta pidió a la Unidad de Participación Ciudadana intervenir en el proceso electoral de ASOCOMUNAL Comuna 10 antes de la elección, por posibles irregularidades.", "enviado"],
-            ["2026-07-25", "La Junta pidió información y copias a ASOCOMUNAL y a su Tribunal de Garantías (JAC-007-2026) y acompañamiento urgente a la Unidad (JAC-008-2026).", "enviado", 2],
-            ["2026-07-26", "ASOCOMUNAL Comuna 10 realizó la elección de sus dignatarios 2026–2030.", "avance"],
-            ["2026-08-10", "La Junta presentó una demanda de impugnación contra esa elección.", "enviado"],
-            ["2026-08-26", "La Unidad respondió que aún no encontraba elementos suficientes para declarar viciado el proceso y que seguía verificando ocho puntos (oficio SO-PSP-3919).", "respuesta"],
-            ["2026-09-07", "La Unidad envió la demanda a la Federación Comunal del Quindío y anunció que no inscribirá a los dignatarios mientras haya vicios sin subsanar (oficio SO-PSP-4029).", "respuesta"],
-            ["2026-10-02", "La Junta pidió a las federaciones el estado de la demanda (JAC-012-2026) y a la Unidad, el resultado de su verificación (JAC-013-2026).", "enviado", 2]
+            ["2026-10-23", "Derecho de petición enviado a la Alcaldía.", "enviado"]
         ],
-        "pendiente": "Que la federación competente decida la demanda (la ley le da hasta 4 meses) y que la Unidad entregue el resultado de su verificación.",
+        "pendiente": "Respuesta de fondo de la Alcaldía.",
+        "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
         "fotos": [],
-        "documentos": [
-            ["asocomunal-2026-07-22-solicitud-intervencion.pdf", "Solicitud de intervención (22 jul 2026)"],
-            ["JAC-007-2026-asocomunal-informacion.pdf", "Oficio JAC-007-2026 a ASOCOMUNAL (25 jul 2026)"],
-            ["JAC-008-2026-asocomunal-acompanamiento.pdf", "Oficio JAC-008-2026 a la Unidad (25 jul 2026)"],
-            ["JAC-012-2026-asocomunal-federacion.pdf", "Oficio JAC-012-2026 a las federaciones (2 oct 2026)"],
-            ["JAC-013-2026-asocomunal-seguimiento.pdf", "Oficio JAC-013-2026 a la Unidad (2 oct 2026)"]
-        ]
+        "documentos": []
     },
     {
         "estado": "tramite",
         "fecha": "2026-05-22",
-        "numero": "2026PQR22891",
+        "numero": "2026PQR22891 · JAC-017-2026",
         "titulo": "Cables aéreos sueltos y a baja altura en la Calle 5 Norte (entre carreras 14 y 15) y en la Calle 7 con Carrera 12",
-        "entidad": "Alcaldía (Planeación) · EDEQ · Personería",
+        "entidad": "Alcaldía (Planeación) · EDEQ · Personería · Claro · Tigo-UNE · Movistar",
         "plazo": 15,
-        "enviados": 1,
+        "enviados": 2,
         "novedades": [
             ["2026-05-22", "Petición radicada ante la Alcaldía y EDEQ.", "enviado"],
             ["2026-06-09", "EDEQ inspeccionó: los cables son de empresas de telecomunicaciones, no de EDEQ.", "visita"],
             ["2026-06-11", "La Personería le pidió a EDEQ una respuesta de fondo (oficio 2026EE-2526).", "respuesta"],
             ["2026-06-12", "Planeación visitó los dos puntos y trasladó el caso a EDEQ (oficio 2026EE-9290).", "visita"],
-            ["2026-06-16", "Planeación informó el traslado a la Junta (oficio 2026EE-9360).", "respuesta"]
+            ["2026-06-16", "Planeación informó el traslado a la Junta (oficio 2026EE-9360).", "respuesta"],
+            ["2026-10-22", "La Junta pidió a Claro, Tigo-UNE y Movistar inspeccionar y corregir el cableado a baja altura, con copia a la Alcaldía y a EDEQ (oficio JAC-017-2026).", "enviado"],
+            ["2026-11-02", "Claro confirmó el radicado de la petición.", "respuesta"],
+            ["2026-11-06", "Tigo-UNE anunció una visita técnica a los dos puntos, todavía sin fecha.", "respuesta"],
+            ["2026-11-13", "La Alcaldía trasladó la petición a Bienes y Suministros y a la Secretaría TIC.", "respuesta"]
         ],
-        "pendiente": "Confirmar que las empresas dueñas de los cables los retiren o ajusten.",
+        "pendiente": "Que las empresas de telecomunicaciones hagan la visita y retiren o suban los cables.",
+        "siguiente": ["2026-12-07", "revision", "El 7 de diciembre la Junta revisará las respuestas; si el riesgo sigue, preparará una acción de tutela."],
         "fotos": [
             ["cables-poste.jpg", "Cables sueltos y enredados en un poste del barrio (22 may 2026)"],
             ["cables-anden.jpg", "Cable suelto a baja altura sobre un andén (22 may 2026)"]
@@ -177,7 +139,8 @@ window.JAC_DATOS = {
             ["cables-EDEQ-respuesta-2026-06-09.pdf", "Respuesta de EDEQ (9 jun 2026)"],
             ["cables-Personeria-2026EE-2526.pdf", "Seguimiento de la Personería, 2026EE-2526 (11 jun 2026)"],
             ["cables-2026EE-9290-traslado-EDEQ.pdf", "Traslado de Planeación a EDEQ, 2026EE-9290 (12 jun 2026)"],
-            ["cables-2026EE-9360-respuesta-planeacion.pdf", "Respuesta de Planeación a la Junta, 2026EE-9360 (16 jun 2026)"]
+            ["cables-2026EE-9360-respuesta-planeacion.pdf", "Respuesta de Planeación a la Junta, 2026EE-9360 (16 jun 2026)"],
+            ["JAC-017-2026-cableado-telecomunicaciones.pdf", "Oficio JAC-017-2026 a las empresas de telecomunicaciones (22 oct 2026)"]
         ]
     },
     {
@@ -194,9 +157,11 @@ window.JAC_DATOS = {
             ["2026-06-12", "La Personería hizo seguimiento a la petición (oficio 2026EE-2535).", "respuesta"],
             ["2026-06-16", "EPA: la limpieza no procede porque el predio está cerrado; trasladó el caso a Planeación e Infraestructura (oficio GA-939).", "respuesta"],
             ["2026-06-17", "La Personería informó a la Junta el seguimiento que hizo (oficio 2026EE-2600).", "respuesta"],
-            ["2026-06-19", "Planeación: el predio no es del Municipio; es de propiedad privada (oficio 2026EE-9573).", "respuesta"]
+            ["2026-06-19", "Planeación: el predio no es del Municipio; es de propiedad privada (oficio 2026EE-9573).", "respuesta"],
+            ["2026-07-02", "Bienes y Suministros: no encontró documento que formalice el cerramiento y, sin matrícula inmobiliaria, no puede determinar con certeza la titularidad del lote; queda atento a la mesa de trabajo (oficio DB-PGA-1849).", "respuesta"]
         ],
         "pendiente": "La mesa de trabajo que Desarrollo Social quedó de programar (aún sin fecha).",
+        "siguiente": [],
         "fotos": [
             ["cancha-malla.jpg", "Malla dañada del predio de la cancha (enero de 2026)"],
             ["cancha-cerramiento.jpg", "Cerramiento del predio de la cancha visto desde el andén (22 may 2026)"],
@@ -215,17 +180,22 @@ window.JAC_DATOS = {
     {
         "estado": "tramite",
         "fecha": "2026-06-11",
-        "numero": "JAC-002-2026 · 2026PQR26154",
+        "numero": "JAC-002-2026 · JAC-016-2026",
         "titulo": "Tala controlada de un árbol en riesgo de caída y manejo de un guadual en la Carrera 16 N.° 4N-39, frente al Restaurante Omedeto",
-        "entidad": "Planeación · Gestión del Riesgo (OMGERD) · Secretaría de Gobierno",
+        "entidad": "Planeación · Gestión del Riesgo (OMGERD) · Secretaría de Gobierno · Procuraduría Provincial",
         "plazo": 15,
-        "enviados": 1,
+        "enviados": 2,
         "novedades": [
             ["2026-03-09", "Planeación visitó el sitio y su informe técnico recomendó la tala controlada. La comunidad lo venía pidiendo desde 2022.", "visita"],
             ["2026-06-11", "La Junta pidió ejecutar la tala y el manejo del guadual (oficio JAC-002-2026).", "enviado"],
-            ["2026-07-08", "Planeación respondió y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728).", "respuesta"]
+            ["2026-07-08", "Planeación respondió y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728).", "respuesta"],
+            ["2026-10-22", "La Junta reiteró la solicitud a Gestión del Riesgo, Planeación y Gobierno, con copia a la Procuraduría Provincial (oficio JAC-016-2026).", "enviado"],
+            ["2026-10-28", "Gestión del Riesgo (OMGERD) respondió que desde marzo envió a Planeación las actas de intervención del sitio (oficio SG-PGO-GR-9849).", "respuesta"],
+            ["2026-10-30", "La Procuraduría Provincial le pidió a Planeación informar en cinco días hábiles el estado y la fecha de la intervención.", "respuesta"],
+            ["2026-11-06", "Planeación respondió (oficio 2026EE-16645): el manejo del guadual está programado para la semana del 23 al 27 de noviembre; la tala del árbol aún no tiene fecha.", "respuesta"]
         ],
-        "pendiente": "Que se ejecute la intervención.",
+        "pendiente": "Que se haga el manejo del guadual (semana del 23 al 27 de noviembre) y se fije fecha para la tala del árbol.",
+        "siguiente": ["2026-11-23", "accion-popular", "El 23 de noviembre la Junta presentará una acción popular para que se ejecute la tala del árbol en riesgo."],
         "fotos": [
             ["arbol-casa.jpg", "El árbol inclinado sobre una vivienda y el cableado de la calle (23 jul 2026)"],
             ["arbol-guadual.jpg", "El árbol y el guadual junto a las casas y el alumbrado público (23 jul 2026)"],
@@ -233,7 +203,51 @@ window.JAC_DATOS = {
         ],
         "documentos": [
             ["arbol-JAC-002-2026-solicitud.pdf", "Solicitud de la Junta, JAC-002-2026 (11 jun 2026)"],
-            ["arbol-2026EE-10728-respuesta-planeacion.pdf", "Respuesta de Planeación, 2026EE-10728 (8 jul 2026)"]
+            ["arbol-2026EE-10728-respuesta-planeacion.pdf", "Respuesta de Planeación, 2026EE-10728 (8 jul 2026)"],
+            ["JAC-016-2026-arbol-reiteracion.pdf", "Oficio JAC-016-2026 (22 oct 2026)"]
+        ]
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-07-02",
+        "numero": "JAC-003-2026 · JAC-014-2026",
+        "titulo": "Información sobre presupuesto participativo y postulación de dos proyectos: cámaras de seguridad y caseta comunal",
+        "entidad": "Unidad de Participación Ciudadana · Planeación Municipal · Secretaría TIC",
+        "plazo": 0,
+        "enviados": 2,
+        "novedades": [
+            ["2026-07-02", "Petición radicada.", "enviado"],
+            ["2026-07-16", "La Unidad de Participación Ciudadana respondió (oficio SO-PSP-2979): las iniciativas de cámaras y caseta deben llevarse a las asambleas deliberativas del presupuesto participativo.", "respuesta"],
+            ["2026-10-22", "La Junta pidió aclarar el estado real del presupuesto participativo 2026 de la Comuna 10 y la ruta para las cámaras y la sede comunal (oficio JAC-014-2026).", "enviado"],
+            ["2026-11-12", "Participación Ciudadana respondió punto por punto (oficio SO-PSP-4889): para 2026 la Comuna 10 ya tiene priorizados el Salón Comunal Fundadores Bajo y la placa huella de la vereda Mesopotamia; las iniciativas del barrio deben inscribirse en las próximas jornadas deliberativas.", "respuesta"]
+        ],
+        "pendiente": "Inscribir las iniciativas de cámaras y sede comunal en la próxima jornada de presupuesto participativo de la Comuna 10.",
+        "siguiente": [],
+        "fotos": [],
+        "documentos": [
+            ["JAC-003-2026-presupuesto-participativo.pdf", "Petición JAC-003-2026 (2 jul 2026)"],
+            ["JAC-014-2026-presupuesto-seguimiento.pdf", "Oficio JAC-014-2026 (22 oct 2026)"]
+        ]
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-07-02",
+        "numero": "JAC-006-2026 · JAC-015-2026",
+        "titulo": "Titularidad de dos predios del barrio y comodato de uno de ellos para una sede comunal",
+        "entidad": "Bienes y Suministros · Planeación · Secretaría de Gobierno (Espacio Público) · Participación Ciudadana",
+        "plazo": 0,
+        "enviados": 2,
+        "novedades": [
+            ["2026-07-02", "Petición radicada.", "enviado"],
+            ["2026-10-02", "Bienes y Suministros visitó los predios (oficio DB-PGA-2962): ninguno tiene matrícula inmobiliaria registrada y, con los registros disponibles, no se puede establecer si son del Municipio.", "respuesta"],
+            ["2026-10-22", "La Junta pidió definir qué autoridad atiende el uso del sector de la Carrera 18 y cuál es la ruta para un comodato o una sede comunal (oficio JAC-015-2026; radicado por la Alcaldía el 23 de octubre).", "enviado"]
+        ],
+        "pendiente": "Respuesta de fondo al oficio JAC-015-2026 (el plazo legal vence el 17 de noviembre de 2026).",
+        "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
+        "fotos": [],
+        "documentos": [
+            ["JAC-006-2026-predios-comodato.pdf", "Petición JAC-006-2026 (2 jul 2026)"],
+            ["JAC-015-2026-predios-seguimiento.pdf", "Oficio JAC-015-2026 (22 oct 2026)"]
         ]
     },
     {
@@ -243,17 +257,21 @@ window.JAC_DATOS = {
         "titulo": "Calle 6 Norte entre carreras 16 y 17: reparación completa de la vía, el andén y el alcantarillado",
         "entidad": "Juzgado 3.º Administrativo de Armenia · Secretaría de Infraestructura · EPA",
         "plazo": 0,
-        "enviados": 2,
+        "enviados": 3,
         "novedades": [
             ["2025-11-13", "Antecedente: un residente del sector, hoy presidente de la Junta, pidió a Infraestructura y a EPA visita técnica y reparación de la vía.", "antecedente"],
             ["2026-02-11", "Un juez de tutela (Juzgado 3.º Penal del Circuito) ordenó a Infraestructura y a EPA responder de fondo esa solicitud.", "antecedente"],
             ["2026-02-13", "EPA e Infraestructura visitaron el tramo y reportaron deterioro significativo del pavimento (informe GRTAR-135).", "antecedente"],
             ["2026-07-03", "Infraestructura y EPA hicieron una nueva visita técnica conjunta al tramo.", "visita"],
             ["2026-07-07", "La Junta y el residente presentaron una acción popular ante el Juzgado 3.º Administrativo de Armenia.", "enviado"],
-            ["2026-07-31", "El juzgado decretó una medida cautelar sobre el tramo mientras decide el caso.", "respuesta"],
-            ["2026-09-18", "La Junta informó al juzgado que la medida cautelar se cumplió solo en parte y pidió fijar la audiencia de pacto de cumplimiento.", "enviado"]
+            ["2026-07-30", "El juzgado decretó una medida cautelar sobre el tramo mientras decide el caso.", "respuesta"],
+            ["2026-09-18", "La Junta informó al juzgado que la medida cautelar se cumplió solo en parte y pidió fijar la audiencia de pacto de cumplimiento.", "enviado"],
+            ["2026-10-23", "La Junta envió al juzgado un memorial complementario sobre el estado del tramo.", "enviado"],
+            ["2026-11-05", "EPA respondió al juzgado sobre el cumplimiento de la medida cautelar.", "respuesta"],
+            ["2026-11-05", "El juzgado fijó la audiencia de pacto de cumplimiento para el 4 de marzo de 2027, a las 8:30 a. m., por Microsoft Teams.", "respuesta"]
         ],
-        "pendiente": "Que el juzgado fije la audiencia de pacto de cumplimiento y se acuerde la reparación completa, con fechas.",
+        "pendiente": "Audiencia de pacto de cumplimiento el 4 de marzo de 2027 para acordar la reparación completa, con fechas.",
+        "siguiente": ["2027-03-04", "audiencia", "Audiencia de pacto de cumplimiento en el Juzgado 3.º Administrativo de Armenia, a las 8:30 a. m., por videollamada."],
         "fotos": [
             ["calle6-hueco.jpg", "Hueco acordonado en la vía (22 dic 2025)"],
             ["calle6-tapa-1.jpg", "Pavimento hundido y roto alrededor de una tapa de alcantarillado (22 dic 2025)"],
@@ -267,7 +285,8 @@ window.JAC_DATOS = {
             ["calle6-2026-02-11-fallo-tutela.pdf", "Fallo de tutela de segunda instancia (11 feb 2026)"],
             ["calle6-GRTAR-135-informe-EPA.pdf", "Informe de la visita de EPA, GRTAR-135 (13 feb 2026)"],
             ["calle6-2026-07-07-accion-popular.pdf", "Demanda de acción popular (7 jul 2026)"],
-            ["calle6-2026-09-18-pronunciamiento.pdf", "Escrito de la Junta al juzgado (18 sep 2026)"]
+            ["calle6-2026-09-18-pronunciamiento.pdf", "Escrito de la Junta al juzgado (18 sep 2026)"],
+            ["calle6-2026-11-05-auto-audiencia-pacto.pdf", "Auto que fija la audiencia de pacto de cumplimiento (5 nov 2026)"]
         ]
     },
     {
@@ -283,9 +302,40 @@ window.JAC_DATOS = {
             ["2026-11-11", "La Junta invita a quienes ya no puedan participar a pedir su retiro voluntario del libro de afiliados.", "avance"]
         ],
         "pendiente": "Terminar la depuración del libro de afiliados (en espera) y convocar de nuevo la Asamblea (fecha por definir).",
+        "siguiente": [],
         "fotos": [],
         "documentos": [
             ["asamblea-2026-09-18-convocatoria.pdf", "Convocatoria a la Asamblea del 18 de septiembre de 2026"]
+        ]
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-10-02",
+        "numero": "JAC-012-2026 · JAC-013-2026",
+        "titulo": "Elección de dignatarios de ASOCOMUNAL Comuna 10: la Junta la impugnó y pide que se decida",
+        "entidad": "Unidad de Participación Ciudadana · Federación Comunal · Gobernación del Quindío",
+        "plazo": 0,
+        "enviados": 7,
+        "novedades": [
+            ["2026-07-22", "La Junta pidió a la Unidad de Participación Ciudadana intervenir en el proceso electoral de ASOCOMUNAL Comuna 10 antes de la elección, por posibles irregularidades.", "enviado"],
+            ["2026-07-25", "La Junta pidió información y copias a ASOCOMUNAL y a su Tribunal de Garantías (JAC-007-2026) y acompañamiento urgente a la Unidad (JAC-008-2026).", "enviado", 2],
+            ["2026-07-26", "ASOCOMUNAL Comuna 10 realizó la elección de sus dignatarios 2026–2030.", "avance"],
+            ["2026-08-10", "La Junta presentó una demanda de impugnación contra esa elección.", "enviado"],
+            ["2026-08-26", "La Unidad respondió que aún no encontraba elementos suficientes para declarar viciado el proceso y que seguía verificando ocho puntos (oficio SO-PSP-3919).", "respuesta"],
+            ["2026-09-07", "La Unidad envió la demanda a la Federación Comunal del Quindío y anunció que no inscribirá a los dignatarios mientras haya vicios sin subsanar (oficio SO-PSP-4029).", "respuesta"],
+            ["2026-10-02", "La Junta pidió a las federaciones el estado de la demanda (JAC-012-2026) y a la Unidad, el resultado de su verificación (JAC-013-2026).", "enviado", 2],
+            ["2026-10-27", "La Unidad de Participación Ciudadana respondió trasladando la demanda a la federación comunal, sin decidir de fondo (oficio SO-PSP-4673).", "respuesta"],
+            ["2026-11-04", "La Junta pidió a la Unidad la constancia del traslado y el estado de la impugnación (radicado 2026RE57947).", "enviado"]
+        ],
+        "pendiente": "Que la federación competente decida la impugnación y que la Unidad entregue el resultado de su verificación.",
+        "siguiente": ["2026-11-20", "tutela", "El 20 de noviembre la Junta presentará una acción de tutela porque la Unidad de Participación Ciudadana, la federación comunal y la Gobernación del Quindío no han respondido de fondo (fecha límite: 1 de diciembre)."],
+        "fotos": [],
+        "documentos": [
+            ["asocomunal-2026-07-22-solicitud-intervencion.pdf", "Solicitud de intervención (22 jul 2026)"],
+            ["JAC-007-2026-asocomunal-informacion.pdf", "Oficio JAC-007-2026 a ASOCOMUNAL (25 jul 2026)"],
+            ["JAC-008-2026-asocomunal-acompanamiento.pdf", "Oficio JAC-008-2026 a la Unidad (25 jul 2026)"],
+            ["JAC-012-2026-asocomunal-federacion.pdf", "Oficio JAC-012-2026 a las federaciones (2 oct 2026)"],
+            ["JAC-013-2026-asocomunal-seguimiento.pdf", "Oficio JAC-013-2026 a la Unidad (2 oct 2026)"]
         ]
     },
     {
@@ -303,6 +353,7 @@ window.JAC_DATOS = {
             ["2026-04-26", "Jornada de elección de los dignatarios para el periodo 2026–2030.", "visita"]
         ],
         "pendiente": "",
+        "siguiente": [],
         "fotos": [],
         "documentos": [
             ["reorganizacion-2026-02-20-peticion-colectiva.pdf", "Texto de la petición colectiva (20 feb 2026), sin las firmas de los vecinos"]
@@ -321,6 +372,7 @@ window.JAC_DATOS = {
             ["2026-07-01", "Empezó el periodo 2026–2030.", "avance"]
         ],
         "pendiente": "",
+        "siguiente": [],
         "fotos": [],
         "documentos": []
     },
@@ -337,6 +389,7 @@ window.JAC_DATOS = {
             ["2026-10-07", "El Informe de Gestión reportó el empalme como realizado; la Junta depura los libros recibidos.", "avance"]
         ],
         "pendiente": "Presentar a la Asamblea el detalle de lo recibido.",
+        "siguiente": [],
         "fotos": [],
         "documentos": []
     },
@@ -353,6 +406,7 @@ window.JAC_DATOS = {
             ["2026-10-07", "Publicada en este portal, con un botón para opinar en cada artículo.", "avance"]
         ],
         "pendiente": "Votarla en la Asamblea General.",
+        "siguiente": [],
         "fotos": [],
         "documentos": []
     },
@@ -366,9 +420,11 @@ window.JAC_DATOS = {
         "enviados": 1,
         "novedades": [
             ["2026-09-21", "Oficio radicado, con registro fotográfico.", "enviado"],
+            ["2026-10-15", "La Secretaría de Infraestructura respondió sobre el retiro de los escombros (oficio SIPOI 3115).", "respuesta"],
             ["2026-11-11", "Los escombros ya fueron retirados (verificado por la Junta).", "avance"]
         ],
         "pendiente": "",
+        "siguiente": [],
         "fotos": [
             ["jac010-basuras-1.jpg", "Antes: basuras acumuladas sobre un andén del barrio (21 sep 2026)"],
             ["jac010-basuras-2.jpg", "Antes: basuras y escombros junto a un lote del barrio (21 sep 2026)"],
@@ -384,6 +440,25 @@ window.JAC_DATOS = {
     },
     {
         "estado": "hecho",
+        "fecha": "2026-10-02",
+        "numero": "JAC-011-2026",
+        "titulo": "Registrar el correo jaclosprofesionales@gmail.com como canal oficial de la Junta para comunicaciones y notificaciones",
+        "entidad": "Unidad de Participación Ciudadana · Secretaría de Desarrollo Social",
+        "plazo": 15,
+        "enviados": 1,
+        "novedades": [
+            ["2026-10-02", "Oficio radicado.", "enviado"],
+            ["2026-10-27", "Participación Ciudadana confirmó que registró jaclosprofesionales@gmail.com como medio formal de notificaciones y respuestas (oficio SO-PSP-4707).", "respuesta"]
+        ],
+        "pendiente": "",
+        "siguiente": [],
+        "fotos": [],
+        "documentos": [
+            ["JAC-011-2026-canal-oficial.pdf", "Oficio JAC-011-2026 (2 oct 2026)"]
+        ]
+    },
+    {
+        "estado": "hecho",
         "fecha": "2026-10-07",
         "numero": "",
         "titulo": "Informe General de Gestión publicado en este portal",
@@ -394,6 +469,7 @@ window.JAC_DATOS = {
             ["2026-10-07", "Publicado: lo cumplido, lo que sigue en curso y los próximos pasos.", "avance"]
         ],
         "pendiente": "",
+        "siguiente": [],
         "fotos": [],
         "documentos": []
     }

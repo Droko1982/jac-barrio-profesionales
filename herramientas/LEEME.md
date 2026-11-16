@@ -22,6 +22,7 @@ Una fila por actuación. Columnas:
 | `pendiente` | Lo que falta. Puede quedar vacío |
 | `fotos` | Opcional. Una por línea: `nombre.jpg \| descripción` (ver «Fotos») |
 | `documentos` | Opcional. Uno por línea: `nombre.pdf \| descripción` (ver «Documentos») |
+| `siguiente` | Opcional. El próximo paso anunciado, en una línea: `2026-11-18 [tutela]: Si no responden, la Junta presentará una tutela…`. Tipos: `tutela`, `accion-popular`, `audiencia`, `revision`. Sale en la tarjeta, en la cartelera y en «Acciones ante los jueces». Si una petición en espera tiene el plazo vencido y no trae `siguiente`, el portal anuncia una tutela sin fecha |
 
 Cuando llegue una respuesta: agregue una línea en `novedades` y cambie el `estado`.
 

@@ -204,20 +204,21 @@
         </section>
 
         <div class="cuerpo">
-            <section class="bloque" style="--c: var(--ambar)">
-                <h2>⏳ Esperando respuesta</h2>
-                <ol class="lista" id="c-espera"></ol>
-            </section>
+            <div class="cuerpo__der">
+                <section class="bloque" style="--c: var(--ambar)">
+                    <h2>⏳ Esperando respuesta</h2>
+                    <ol class="lista" id="c-espera"></ol>
+                </section>
+                <section class="bloque bloque--hecho" style="--c: var(--verde)">
+                    <h2>✅ Ya se hizo</h2>
+                    <ol class="lista lista--compacta" id="c-hecho"></ol>
+                </section>
+            </div>
             <section class="bloque" style="--c: var(--azul)">
                 <h2>🔄 En trámite</h2>
                 <ol class="lista" id="c-tramite"></ol>
             </section>
         </div>
-
-        <section class="bloque bloque--hecho" style="--c: var(--verde)">
-            <h2>✅ Ya se hizo</h2>
-            <ol class="lista lista--compacta lista--2col" id="c-hecho"></ol>
-        </section>
 
 
         <footer class="pie">
@@ -274,12 +275,18 @@
                 var dias = F.diasEntre(F.aFecha(it.fecha), F.HOY);
                 var p = F.plazoDe(it);
                 var r = dias + ' días esperando' + (p ? (p.vencido ? ' · plazo vencido el ' : ' · plazo hasta el ') + F.corta(F.aIso(p.vence)) : '');
+                var sgE = F.siguientePaso && F.siguientePaso(it);
+                if (sgE && sgE.fecha) r += ' · ' + (F.TIPO_SIG[sgE.tipo] || 'Acción').toLowerCase() + ' el ' + F.corta(sgE.fecha) + ' si no responden';
                 lE.appendChild(li(it, [['m', 'Ante: ' + it.entidad], ['r' + (p && p.vencido ? ' tarde' : ''), r]]));
             });
             var lT = document.getElementById('c-tramite');
             tra.forEach(function (it) {
                 var u = ultima(it);
-                lT.appendChild(li(it, [['m', it.pendiente ? 'Falta: ' + it.pendiente : 'Última novedad: ' + F.corta(u[0]) + '.']]));
+                var sg = F.siguientePaso && F.siguientePaso(it);
+                var nota = sg && sg.fecha
+                    ? 'Próximo paso, ' + F.corta(sg.fecha) + ': ' + (F.TIPO_SIG[sg.tipo] || 'acción').toLowerCase() + (sg.tipo === 'tutela' || sg.tipo === 'accion-popular' ? ' ante un juez si no hay respuesta.' : '.')
+                    : (it.pendiente ? 'Falta: ' + it.pendiente : 'Última novedad: ' + F.corta(u[0]) + '.');
+                lT.appendChild(li(it, [['m', nota]]));
             });
             var lH = document.getElementById('c-hecho');
             hec.forEach(function (it) {
