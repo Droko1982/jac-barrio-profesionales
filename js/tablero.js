@@ -67,6 +67,15 @@
     }
 
     var items = D.actuaciones.slice();
+    /* Próximo paso cuando una petición no tiene respuesta y el plazo legal ya venció.
+       Una actuación puede traer su propio texto en el campo «siguiente». */
+    function siguientePaso(it) {
+        if (it.siguiente) return it.siguiente;
+        var p = plazoDe(it);
+        if (!p || !p.vencido) return '';
+        return 'Si no llega respuesta, la Junta presentará una acción de tutela ante un juez para proteger el derecho de petición (artículo 23 de la Constitución).';
+    }
+
     var conteo = { hecho: 0, tramite: 0, espera: 0, total: items.length, vencidas: 0, enviados: 0 };
     items.forEach(function (it) {
         conteo[it.estado] = (conteo[it.estado] || 0) + 1;
@@ -262,6 +271,14 @@
             reloj.appendChild(el('span', 'act-card__clock-icon', p && p.vencido ? '⚠️' : '⏱️'));
             reloj.appendChild(document.createTextNode(' ' + txt));
             li.appendChild(reloj);
+            var sig = siguientePaso(it);
+            if (sig) {
+                var nx = el('p', 'act-card__next');
+                nx.appendChild(el('span', 'act-card__next-icon', '⚖️'));
+                nx.appendChild(el('strong', null, ' Próximo paso: '));
+                nx.appendChild(document.createTextNode(sig));
+                li.appendChild(nx);
+            }
         }
 
         var u = ultima(it);
@@ -316,6 +333,65 @@
         }
         propios.forEach(function (it) { lista.appendChild(tarjeta(it)); });
     });
+
+    /* ---------- Acciones ante los jueces (#acciones-judiciales) ----------
+       En curso: actuaciones cuyo número empieza por «Acción popular» o «Tutela».
+       Próximas: peticiones sin respuesta con el plazo legal vencido. */
+    var jud = document.querySelector('[data-judicial]');
+    if (jud) {
+        jud.textContent = '';
+        var enCurso = items.filter(function (it) { return /^(acci[oó]n popular|tutela)/i.test(it.numero || ''); });
+        enCurso.forEach(function (it) {
+            var caja = el('article', 'jud__caso jud__caso--curso');
+            caja.appendChild(el('p', 'jud__tag', '⚖️ En curso · ' + it.numero));
+            caja.appendChild(el('h4', 'jud__titulo', it.titulo));
+            var ol = el('ol', 'act-tl jud__tl');
+            it.novedades.forEach(function (n) {
+                var li = el('li', 'act-tl__item act-tl__item--' + (n[2] === 'antecedente' ? 'hecho' : 'tramite'));
+                var tt = el('time', 'act-tl__date', corta(n[0]));
+                tt.dateTime = n[0];
+                li.appendChild(tt);
+                li.appendChild(el('span', 'act-tl__body', n[1]));
+                ol.appendChild(li);
+            });
+            if (it.pendiente) {
+                var liS = el('li', 'act-tl__item act-tl__item--espera');
+                liS.appendChild(el('span', 'act-tl__date', 'Sigue'));
+                liS.appendChild(el('span', 'act-tl__body', it.pendiente));
+                ol.appendChild(liS);
+            }
+            caja.appendChild(ol);
+            jud.appendChild(caja);
+        });
+
+        var proximas = items.filter(function (it) { return it.estado === 'espera' && siguientePaso(it); })
+            .sort(function (a, b) { return a.fecha.localeCompare(b.fecha); });
+        if (proximas.length) {
+            var cajaT = el('article', 'jud__caso jud__caso--proxima');
+            cajaT.appendChild(el('p', 'jud__tag', '⏳ Próximas a presentarse · ' + plural(proximas.length, 'tutela', 'tutelas')));
+            cajaT.appendChild(el('h4', 'jud__titulo', 'Peticiones sin respuesta y con el plazo legal vencido'));
+            cajaT.appendChild(el('p', 'jud__intro', 'Si estas entidades no responden, la Junta acudirá a un juez con una acción de tutela para que les ordene contestar. Se avisará aquí cuando se presente cada una.'));
+            var olT = el('ol', 'act-tl jud__tl');
+            proximas.forEach(function (it) {
+                var p = plazoDe(it);
+                var li = el('li', 'act-tl__item act-tl__item--espera');
+                var tt = el('time', 'act-tl__date', corta(it.fecha));
+                tt.dateTime = it.fecha;
+                li.appendChild(tt);
+                var cuerpo = el('span', 'act-tl__body');
+                cuerpo.appendChild(el('strong', null, it.titulo + '. '));
+                cuerpo.appendChild(document.createTextNode(
+                    (it.numero ? it.numero + ' · ' : '') + 'Dirigida a: ' + it.entidad + '. ' +
+                    (p ? 'El plazo legal venció el ' + corta(aIso(p.vence)) + '; ' : '') +
+                    'lleva ' + plural(diasEntre(aFecha(it.fecha), HOY), 'día', 'días') + ' sin respuesta.'));
+                li.appendChild(cuerpo);
+                olT.appendChild(li);
+            });
+            cajaT.appendChild(olT);
+            jud.appendChild(cajaT);
+        }
+        $all('[data-jud-count]').forEach(function (e) { e.textContent = proximas.length; });
+    }
 
     /* ---------- La gestión mes a mes (#gestion) ----------
        Cada novedad es [fecha, texto, tipo, cantidad]: tipo enviado | respuesta | visita | avance | antecedente;
@@ -689,7 +765,7 @@
                 esp.forEach(function (it) {
                     var p = plazoDe(it);
                     partes.push(it.titulo + '. Radicado el ' + larga(it.fecha) +
-                        (p && p.vencido ? '; el plazo legal ya venció.' : '.'));
+                        (p && p.vencido ? '; el plazo legal ya venció. Si no llega respuesta, la Junta presentará una acción de tutela.' : '.'));
                 });
             }
             var tra = items.filter(function (i) { return i.estado === 'tramite'; });

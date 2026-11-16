@@ -2190,6 +2190,9 @@ img {
         border-bottom: 1px solid var(--color-border-light);
     }
 
+    .inventory__table td { flex-wrap: wrap; column-gap: 0.75rem; }
+    .inventory__table td .inv__nota { flex-basis: 100%; text-align: right; }
+
     .inventory__table td::before {
         content: attr(data-label);
         font-weight: 600;
@@ -3336,6 +3339,39 @@ html.text-lg {
 }
 
 .act-legal strong { color: var(--color-text); }
+
+/* --- Próximo paso (tutela) --- */
+.act-card__next {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: var(--color-text);
+    background: rgba(35, 54, 87, 0.07);
+    border-left: 3px solid #233657;
+    border-radius: var(--radius-sm);
+}
+[data-theme="dark"] .act-card__next { background: rgba(144, 202, 249, 0.1); border-left-color: #90CAF9; }
+
+/* --- Acciones ante los jueces --- */
+.jud { max-width: 860px; margin: 3rem auto 0; }
+.jud__lead { color: var(--color-text-secondary); margin-bottom: 1.25rem; }
+.jud__lista { display: grid; gap: 1.25rem; }
+.jud__caso {
+    padding: 1.1rem 1.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-light);
+    border-top: 4px solid var(--color-secondary);
+    border-radius: var(--radius-md);
+}
+.jud__caso--proxima { border-top-color: var(--color-error); }
+.jud__tag { margin: 0 0 0.35rem; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-text-secondary); }
+.jud__titulo { margin: 0 0 0.75rem; font-size: 1.05rem; line-height: 1.35; }
+.jud__intro { margin: 0 0 0.9rem; font-size: 0.9rem; color: var(--color-text-secondary); }
+.jud__tl { margin-left: 0.4rem; }
+.jud__tl .act-tl__item::before { box-shadow: 0 0 0 3px var(--color-bg-card); }
+@media (max-width: 520px) {
+    .jud__caso { padding: 0.9rem; }
+}
 
 /* --- Línea de tiempo --- */
 .act-timeline {

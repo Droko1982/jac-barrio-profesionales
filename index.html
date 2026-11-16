@@ -360,7 +360,16 @@
                     <p class="seguimiento__note">Para ver el tablero de actuaciones, activa JavaScript en tu navegador o pide el informe al correo <a href="mailto:jaclosprofesionales@gmail.com" class="contact__link">jaclosprofesionales@gmail.com</a>.</p>
                 </noscript>
 
-                <p class="act-legal fade-in"><strong>¿Qué es el plazo legal?</strong> Según la Ley 1755 de 2015, las entidades deben responder un derecho de petición en <strong>15 días hábiles</strong>, o en <strong>10</strong> si se piden documentos o información. Aquí se cuentan solo días hábiles: sin sábados, domingos ni festivos. Cuando el plazo vence, la Junta puede insistir o pedir el apoyo de la Personería.</p>
+                <div class="jud" id="acciones-judiciales">
+                    <h3 class="block__title fade-in">⚖️ Acciones ante los jueces</h3>
+                    <p class="jud__lead fade-in">Cuando las entidades no responden o no cumplen, la Junta acude a los jueces. Aquí están, con sus fechas, la acción popular que ya está en curso y las tutelas que se presentarán si no llega respuesta (<span data-jud-count>5</span> por ahora).</p>
+                    <div class="jud__lista" data-judicial>
+                        <p>Acción popular 2026-00180 (Calle 6 Norte) en curso ante el Juzgado 3.º Administrativo de Armenia. Tutelas próximas a presentarse por las peticiones sin respuesta.</p>
+                    </div>
+                    <p class="act-mesames"><button type="button" class="act-btn" data-listen="#acciones-judiciales" hidden><span aria-hidden="true">🔊</span> Escuchar</button></p>
+                </div>
+
+                <p class="act-legal fade-in"><strong>¿Qué es el plazo legal?</strong> Según la Ley 1755 de 2015, las entidades deben responder un derecho de petición en <strong>15 días hábiles</strong>, o en <strong>10</strong> si se piden documentos o información. Aquí se cuentan solo días hábiles: sin sábados, domingos ni festivos. Cuando el plazo vence, la Junta puede insistir, pedir el apoyo de la Personería o presentar una <strong>acción de tutela</strong> ante un juez (ver <a href="#acciones-judiciales" class="contact__link">Acciones ante los jueces</a>).</p>
 
                 <p class="act-legal fade-in"><strong>📄 ¿Puedo ver los documentos?</strong> Sí. En cada tarjeta están las cartas que envió la Junta y las respuestas de las entidades, en PDF. Se publican <strong>sin cédulas, teléfonos, correos personales, direcciones particulares ni firmas</strong>: eso es lo que aparece tapado en gris. Si necesitas una copia completa de un documento de la Junta, pídela por escrito a la Secretaría.</p>
 
@@ -901,14 +910,14 @@
                 <!-- ===== INVENTARIO ===== -->
                 <div class="block" id="inventario">
                     <h3 class="block__title fade-in">Inventario de la Junta</h3>
-                    <p class="block__intro fade-in">Bienes que pertenecen a la comunidad, recibidos en el empalme. Los que están en buen estado se prestan para uso comunitario, previa solicitud.</p>
+                    <p class="block__intro fade-in">Bienes que pertenecen a la comunidad, recibidos en el empalme (actualizado el 15 de noviembre de 2026). Como la Junta aún no tiene sede, los muebles y equipos se guardan temporalmente en el garaje de una dignataria, a la espera de la caseta comunal. Los que están en buen estado se prestan para uso comunitario, previa solicitud.</p>
 
                     <div class="inventory__controls fade-in">
                         <div class="inventory__search-wrap">
                             <span class="inventory__search-icon" aria-hidden="true">🔍</span>
                             <input type="text" id="inventory-search" class="inventory__search" placeholder="Buscar por nombre, ubicación o responsable..." aria-label="Buscar en el inventario">
                         </div>
-                        <span class="inventory__count" id="inventory-count">Mostrando 8 de 8 items</span>
+                        <span class="inventory__count" id="inventory-count">Mostrando 9 de 9 items</span>
                     </div>
 
                     <div class="table-responsive fade-in">
@@ -924,60 +933,67 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td data-label="Item">Libros de la Junta<small class="inv__nota">Afiliados, actas, tesorería e inventario: los recibidos en el empalme y los nuevos.</small></td>
+                                    <td data-label="Cantidad">Juego completo</td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--good">En uso</span></td>
+                                    <td data-label="Ubicación">En custodia de la Secretaría</td>
+                                    <td data-label="Responsable">Secretaria</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Item">Computador portátil</td>
+                                    <td data-label="Cantidad">1</td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleto</span><small class="inv__nota">Obsoleto desde la administración anterior; no tiene arreglo. La Junta define cómo darlo de baja (donación o reciclaje).</small></td>
+                                    <td data-label="Ubicación">En custodia del Presidente</td>
+                                    <td data-label="Responsable">Presidente</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Item">Computador de escritorio</td>
+                                    <td data-label="Cantidad">1</td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleto</span><small class="inv__nota">Obsoleto desde la administración anterior; no tiene arreglo. La Junta define cómo darlo de baja (donación o reciclaje).</small></td>
+                                    <td data-label="Ubicación">En custodia del Presidente</td>
+                                    <td data-label="Responsable">Presidente</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Item">Impresora multifuncional</td>
+                                    <td data-label="Cantidad">1</td>
+                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleta</span><small class="inv__nota">Obsoleta desde la administración anterior; no tiene arreglo. La Junta define cómo darla de baja (donación o reciclaje).</small></td>
+                                    <td data-label="Ubicación">En custodia del Presidente</td>
+                                    <td data-label="Responsable">Presidente</td>
+                                </tr>
+                                <tr>
                                     <td data-label="Item">Sillas plásticas</td>
                                     <td data-label="Cantidad">10<small class="inv__nota">Cantidad por confirmar.</small></td>
                                     <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Presidente</td>
+                                    <td data-label="Ubicación">Garaje de una dignataria (guarda temporal)<small class="inv__nota">Pasará a la caseta comunal cuando exista.</small></td>
+                                    <td data-label="Responsable">Marina Rodríguez Giraldo<small class="inv__nota">Comité de Seguridad e Infraestructura.</small></td>
                                 </tr>
                                 <tr>
                                     <td data-label="Item">Mesas plegables</td>
                                     <td data-label="Cantidad">10</td>
                                     <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Presidente</td>
+                                    <td data-label="Ubicación">Garaje de una dignataria (guarda temporal)<small class="inv__nota">Pasará a la caseta comunal cuando exista.</small></td>
+                                    <td data-label="Responsable">Marina Rodríguez Giraldo<small class="inv__nota">Comité de Seguridad e Infraestructura.</small></td>
                                 </tr>
                                 <tr>
                                     <td data-label="Item">Equipo de sonido</td>
                                     <td data-label="Cantidad">1</td>
                                     <td data-label="Estado"><span class="status-badge status-badge--good">Buen estado</span></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Secretario(a)</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Item">Computador portátil</td>
-                                    <td data-label="Cantidad">1</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleto</span><small class="inv__nota">Ya estaba obsoleto desde la administración anterior; no tiene arreglo.</small></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Secretario(a)</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Item">Computador de escritorio</td>
-                                    <td data-label="Cantidad">1</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleto</span><small class="inv__nota">Ya estaba obsoleto desde la administración anterior; no tiene arreglo.</small></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Por confirmar</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Item">Impresora multifuncional</td>
-                                    <td data-label="Cantidad">1</td>
-                                    <td data-label="Estado"><span class="status-badge status-badge--bad">Obsoleta</span><small class="inv__nota">Ya estaba obsoleta desde la administración anterior; no tiene arreglo.</small></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Secretario(a)</td>
+                                    <td data-label="Ubicación">Garaje de una dignataria (guarda temporal)<small class="inv__nota">Pasará a la caseta comunal cuando exista.</small></td>
+                                    <td data-label="Responsable">Marina Rodríguez Giraldo<small class="inv__nota">Comité de Seguridad e Infraestructura.</small></td>
                                 </tr>
                                 <tr>
                                     <td data-label="Item">Carpa para eventos (3x3 m)</td>
                                     <td data-label="Cantidad">2</td>
                                     <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span></td>
-                                    <td data-label="Ubicación">Bodega</td>
-                                    <td data-label="Responsable">Tesorero(a)</td>
+                                    <td data-label="Ubicación">Garaje de una dignataria (guarda temporal)<small class="inv__nota">Pasará a la caseta comunal cuando exista.</small></td>
+                                    <td data-label="Responsable">Marina Rodríguez Giraldo<small class="inv__nota">Comité de Seguridad e Infraestructura.</small></td>
                                 </tr>
                                 <tr>
                                     <td data-label="Item">Botiquín de primeros auxilios</td>
                                     <td data-label="Cantidad">2</td>
                                     <td data-label="Estado"><span class="status-badge status-badge--regular">Regular</span><small class="inv__nota">Cerca del 70 % de los insumos está vencido; hay que reponerlos.</small></td>
-                                    <td data-label="Ubicación">En custodia del responsable</td>
-                                    <td data-label="Responsable">Fiscal</td>
+                                    <td data-label="Ubicación">Garaje de una dignataria (guarda temporal)<small class="inv__nota">Pasará a la caseta comunal cuando exista.</small></td>
+                                    <td data-label="Responsable">Marina Rodríguez Giraldo<small class="inv__nota">Comité de Seguridad e Infraestructura.</small></td>
                                 </tr>
                             </tbody>
                         </table>

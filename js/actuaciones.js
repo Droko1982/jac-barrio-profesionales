@@ -34,7 +34,7 @@
    ========================================================================== */
 
 window.JAC_DATOS = {
-    actualizado: '2026-11-11',
+    actualizado: '2026-11-15',
 
     /* Próxima Asamblea General.
        Al convocarla: estado 'convocada' y completa fecha (AAAA-MM-DD),
@@ -226,7 +226,11 @@ window.JAC_DATOS = {
             ["2026-07-08", "Planeación respondió y recomendó la tala del árbol y el manejo del guadual (oficio 2026EE-10728).", "respuesta"]
         ],
         "pendiente": "Que se ejecute la intervención.",
-        "fotos": [],
+        "fotos": [
+            ["arbol-casa.jpg", "El árbol inclinado sobre una vivienda y el cableado de la calle (23 jul 2026)"],
+            ["arbol-guadual.jpg", "El árbol y el guadual junto a las casas y el alumbrado público (23 jul 2026)"],
+            ["arbol-calle.jpg", "Vista desde la calle: la copa del árbol cubre la vía y los cables (23 jul 2026)"]
+        ],
         "documentos": [
             ["arbol-JAC-002-2026-solicitud.pdf", "Solicitud de la Junta, JAC-002-2026 (11 jun 2026)"],
             ["arbol-2026EE-10728-respuesta-planeacion.pdf", "Respuesta de Planeación, 2026EE-10728 (8 jul 2026)"]
