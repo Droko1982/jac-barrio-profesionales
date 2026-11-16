@@ -6,7 +6,12 @@ de este repositorio en GitHub Pages.
 ## 1. Actuaciones (tablero «Así vamos»)
 
 La fuente es la hoja de Google Drive **«Registro de actuaciones — JAC Los Profesionales»**,
-en la carpeta *Comunidad y trámites › JAC Los Profesionales — Portal web*.
+en el Drive de la Junta (jaclosprofesionales@gmail.com): *JAC - Gestión › Portal web — jaclosprofesionales.com*.
+Ahí mismo están las hojas **Inventario** y **Libro de cuentas** y los respaldos de documentos y fotos.
+
+**Regla:** todo vive en el Drive de la Junta, con una copia en el Drive de Mauricio Rodríguez
+(*JAC Los Profesionales - Gestión 2026 › Portal web — jaclosprofesionales.com (copia)*). No se guarda en
+ningún otro lugar. Se edita siempre la hoja de la Junta; después de cada cambio se reemplaza la copia.
 
 Una fila por actuación. Columnas:
 
