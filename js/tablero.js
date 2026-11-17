@@ -374,9 +374,14 @@
             var fa = siguientePaso(a).fecha || '9999', fb = siguientePaso(b).fecha || '9999';
             return fa.localeCompare(fb) || a.fecha.localeCompare(b.fecha);
         });
+        // Varias peticiones pueden ir en una misma acción (mismo tipo, fecha y texto): se cuentan una vez.
+        var acciones = {};
+        proximas.forEach(function (it) { var s = siguientePaso(it); acciones[s.tipo + '|' + s.fecha + '|' + s.texto] = 1; });
+        var nAcciones = Object.keys(acciones).length;
         if (proximas.length) {
             var cajaT = el('article', 'jud__caso jud__caso--proxima');
-            cajaT.appendChild(el('p', 'jud__tag', '⏳ Próximas a presentarse · ' + plural(proximas.length, 'caso', 'casos')));
+            cajaT.appendChild(el('p', 'jud__tag', '⏳ Próximas a presentarse · ' + plural(nAcciones, 'acción', 'acciones') +
+                (proximas.length > nAcciones ? ' (' + plural(proximas.length, 'petición', 'peticiones') + ')' : '')));
             cajaT.appendChild(el('h4', 'jud__titulo', 'Tutelas y acciones populares que vienen, con su fecha'));
             cajaT.appendChild(el('p', 'jud__intro', 'Cuando una entidad no responde de fondo o no cumple, la Junta acude a un juez. Si antes de la fecha llega una respuesta suficiente, la acción ya no se presenta. Se avisará aquí cuando se radique cada una.'));
             var olT = el('ol', 'act-tl jud__tl');
@@ -397,7 +402,7 @@
             cajaT.appendChild(olT);
             jud.appendChild(cajaT);
         }
-        $all('[data-jud-count]').forEach(function (e) { e.textContent = proximas.length; });
+        $all('[data-jud-count]').forEach(function (e) { e.textContent = nAcciones; });
     }
 
     /* ---------- La gestión mes a mes (#gestion) ----------
