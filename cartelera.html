@@ -276,14 +276,17 @@
                 var p = F.plazoDe(it);
                 var r = dias + ' días esperando' + (p ? (p.vencido ? ' · plazo vencido el ' : ' · plazo hasta el ') + F.corta(F.aIso(p.vence)) : '');
                 var sgE = F.siguientePaso && F.siguientePaso(it);
-                if (sgE && sgE.fecha) r += ' · ' + (F.TIPO_SIG[sgE.tipo] || 'Acción').toLowerCase() + ' el ' + F.corta(sgE.fecha) + ' si no responden';
+                if (sgE && sgE.pasada) r += ' · ' + (F.TIPO_SIG[sgE.tipo] || 'Acción').toLowerCase() + ' prevista el ' + F.corta(sgE.fecha) + ': por confirmar';
+                else if (sgE && sgE.fecha) r += ' · ' + (F.TIPO_SIG[sgE.tipo] || 'Acción').toLowerCase() + ' el ' + F.corta(sgE.fecha) + ' si no responden';
                 lE.appendChild(li(it, [['m', 'Ante: ' + it.entidad], ['r' + (p && p.vencido ? ' tarde' : ''), r]]));
             });
             var lT = document.getElementById('c-tramite');
             tra.forEach(function (it) {
                 var u = ultima(it);
                 var sg = F.siguientePaso && F.siguientePaso(it);
-                var nota = sg && sg.fecha
+                var nota = sg && sg.pasada
+                    ? 'Prevista el ' + F.corta(sg.fecha) + ': ' + (F.TIPO_SIG[sg.tipo] || 'acción').toLowerCase() + ', por confirmar.'
+                    : sg && sg.fecha
                     ? 'Próximo paso, ' + F.corta(sg.fecha) + ': ' + (F.TIPO_SIG[sg.tipo] || 'acción').toLowerCase() + (sg.tipo === 'tutela' || sg.tipo === 'accion-popular' ? ' ante un juez si no hay respuesta.' : '.')
                     : (it.pendiente ? 'Falta: ' + it.pendiente : 'Última novedad: ' + F.corta(u[0]) + '.');
                 lT.appendChild(li(it, [['m', nota]]));

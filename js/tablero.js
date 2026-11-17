@@ -71,7 +71,15 @@
        Una actuación puede traer su propio texto en el campo «siguiente». */
     function siguientePaso(it) {
         var s = it.siguiente;
-        if (s && s.length === 3 && s[2]) return { fecha: s[0] || '', tipo: s[1], texto: s[2] };
+        if (s && s.length === 3 && s[2]) {
+            // Si la fecha anunciada ya pasó y nadie actualizó el dato, no se sigue diciendo «presentará».
+            if (s[0] && s[0] < aIso(HOY)) {
+                var que = { tutela: 'la acción de tutela', 'accion-popular': 'la acción popular', audiencia: 'la audiencia', revision: 'la revisión' }[s[1]] || 'este paso';
+                return { fecha: s[0], tipo: s[1], pasada: true,
+                    texto: 'Fecha cumplida para ' + que + ' (prevista para el ' + corta(s[0]) + '). Aquí se publicará el resultado o el número de radicado en cuanto la Junta lo confirme.' };
+            }
+            return { fecha: s[0] || '', tipo: s[1], texto: s[2] };
+        }
         var p = plazoDe(it);
         if (it.estado !== 'espera' || !p || !p.vencido) return null;
         return { fecha: '', tipo: 'tutela', texto: 'Si no llega respuesta, la Junta presentará una acción de tutela ante un juez para proteger el derecho de petición (artículo 23 de la Constitución).' };
