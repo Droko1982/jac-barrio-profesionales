@@ -3369,6 +3369,8 @@ html.text-lg {
 .jud__intro { margin: 0 0 0.9rem; font-size: 0.9rem; color: var(--color-text-secondary); }
 .jud__tl { margin-left: 0.4rem; }
 .jud__tl .act-tl__item::before { box-shadow: 0 0 0 3px var(--color-bg-card); }
+.jud__peticiones { margin: 0.5rem 0 0; padding-left: 1.1rem; font-size: 0.88rem; }
+.jud__peticiones li { margin: 0.35rem 0; }
 @media (max-width: 520px) {
     .jud__caso { padding: 0.9rem; }
 }

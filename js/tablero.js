@@ -375,9 +375,17 @@
             return fa.localeCompare(fb) || a.fecha.localeCompare(b.fecha);
         });
         // Varias peticiones pueden ir en una misma acción (mismo tipo, fecha y texto): se cuentan una vez.
-        var acciones = {};
-        proximas.forEach(function (it) { var s = siguientePaso(it); acciones[s.tipo + '|' + s.fecha + '|' + s.texto] = 1; });
-        var nAcciones = Object.keys(acciones).length;
+        var acciones = {}, grupos = [];
+        proximas.forEach(function (it) {
+            var s = siguientePaso(it), k = s.tipo + '|' + s.fecha + '|' + s.texto;
+            if (!acciones[k]) { acciones[k] = { sg: s, items: [] }; grupos.push(acciones[k]); }
+            acciones[k].items.push(it);
+        });
+        var nAcciones = grupos.length;
+        function lineaPeticion(it) {
+            return (it.numero ? it.numero + '. ' : '') + 'Primera solicitud: ' + corta(it.fecha) + ' (' +
+                plural(diasEntre(aFecha(it.fecha), HOY), 'día', 'días') + ').';
+        }
         if (proximas.length) {
             var cajaT = el('article', 'jud__caso jud__caso--proxima');
             cajaT.appendChild(el('p', 'jud__tag', '⏳ Próximas a presentarse · ' + plural(nAcciones, 'acción', 'acciones') +
@@ -385,17 +393,29 @@
             cajaT.appendChild(el('h4', 'jud__titulo', 'Tutelas y acciones populares que vienen, con su fecha'));
             cajaT.appendChild(el('p', 'jud__intro', 'Cuando una entidad no responde de fondo o no cumple, la Junta acude a un juez. Si antes de la fecha llega una respuesta suficiente, la acción ya no se presenta. Se avisará aquí cuando se radique cada una.'));
             var olT = el('ol', 'act-tl jud__tl');
-            proximas.forEach(function (it) {
-                var sg = siguientePaso(it);
+            grupos.forEach(function (g) {
+                var sg = g.sg, it = g.items[0];
                 var li = el('li', 'act-tl__item act-tl__item--espera');
                 var tt = el('time', 'act-tl__date', sg.fecha ? corta(sg.fecha) : 'Por fijar');
                 if (sg.fecha) tt.dateTime = sg.fecha;
                 li.appendChild(tt);
                 var cuerpo = el('span', 'act-tl__body');
-                cuerpo.appendChild(el('strong', null, (TIPO_SIG[sg.tipo] || 'Acción') + ': ' + it.titulo + '. '));
-                cuerpo.appendChild(document.createTextNode(
-                    (it.numero ? it.numero + '. ' : '') + 'Primera solicitud: ' + corta(it.fecha) + ' (' +
-                    plural(diasEntre(aFecha(it.fecha), HOY), 'día', 'días') + '). ' + sg.texto));
+                if (g.items.length === 1) {
+                    cuerpo.appendChild(el('strong', null, (TIPO_SIG[sg.tipo] || 'Acción') + ': ' + it.titulo + '. '));
+                    cuerpo.appendChild(document.createTextNode(lineaPeticion(it) + ' ' + sg.texto));
+                } else {
+                    cuerpo.appendChild(el('strong', null, (TIPO_SIG[sg.tipo] || 'Acción') + ': una sola acción por ' +
+                        plural(g.items.length, 'petición', 'peticiones') + '. '));
+                    cuerpo.appendChild(document.createTextNode(sg.texto));
+                    var ul = el('ul', 'jud__peticiones');
+                    g.items.forEach(function (x) {
+                        var lp = el('li');
+                        lp.appendChild(el('strong', null, x.titulo + '. '));
+                        lp.appendChild(document.createTextNode(lineaPeticion(x)));
+                        ul.appendChild(lp);
+                    });
+                    cuerpo.appendChild(ul);
+                }
                 li.appendChild(cuerpo);
                 olT.appendChild(li);
             });

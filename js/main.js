@@ -364,8 +364,8 @@
 
                 if (inventoryCount) {
                     inventoryCount.textContent = filter
-                        ? 'Mostrando ' + visibleCount + ' de ' + totalRows + ' items'
-                        : 'Mostrando ' + totalRows + ' de ' + totalRows + ' items';
+                        ? 'Mostrando ' + visibleCount + ' de ' + totalRows + ' ítems'
+                        : 'Mostrando ' + totalRows + ' de ' + totalRows + ' ítems';
                 }
             });
         }
