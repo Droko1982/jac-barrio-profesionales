@@ -307,6 +307,9 @@ img {
     text-decoration: underline;
     text-underline-offset: 3px;
     flex-shrink: 0;
+    display: inline-block;
+    padding: 0.7rem 0.5rem; /* zona de toque de 44 px sin cambiar el tamaño de la franja */
+    margin: -0.7rem -0.5rem;
     transition: opacity var(--transition);
 }
 
@@ -1736,17 +1739,18 @@ img {
     display: flex;
     gap: 0.65rem;
     align-items: flex-start;
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     color: var(--color-text-secondary);
     line-height: 1.5;
     cursor: pointer;
+    padding: 0.35rem 0; /* zona de toque más amplia */
 }
 
 .form__checkbox {
     flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    margin-top: 2px;
+    width: 24px;
+    height: 24px;
+    margin-top: 0;
     accent-color: var(--color-primary);
     cursor: pointer;
 }

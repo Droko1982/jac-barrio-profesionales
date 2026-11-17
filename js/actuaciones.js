@@ -34,7 +34,7 @@
    ========================================================================== */
 
 window.JAC_DATOS = {
-    actualizado: '2026-11-16',
+    actualizado: '2026-11-17',
 
     /* Próxima Asamblea General.
        Al convocarla: estado 'convocada' y completa fecha (AAAA-MM-DD),
@@ -107,7 +107,9 @@ window.JAC_DATOS = {
         "pendiente": "Respuesta de fondo de la Alcaldía.",
         "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
         "fotos": [],
-        "documentos": []
+        "documentos": [
+            ["JAC-019-2026-calle-5-norte-seguridad-vial.pdf", "Derecho de petición JAC-019-2026 (23 oct 2026)"]
+        ]
     },
     {
         "estado": "tramite",
