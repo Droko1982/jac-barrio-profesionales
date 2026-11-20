@@ -172,6 +172,9 @@
             .cab { flex-direction: column; align-items: flex-start; }
             .cab__fecha { text-align: left; }
             .cuenta, .cuerpo, .lista--2col { grid-template-columns: 1fr; }
+            .cuerpo__der { display: contents; }
+            #c-tramite2-bloque { order: 2; }
+            .cuerpo > .bloque { order: 1; }
             .lista li { grid-template-columns: 1fr; gap: 0.5mm; }
             .pie { grid-template-columns: 1fr; justify-items: start; }
         }
@@ -212,6 +215,10 @@
                 <section class="bloque bloque--hecho" style="--c: var(--verde)">
                     <h2>✅ Ya se hizo</h2>
                     <ol class="lista lista--compacta" id="c-hecho"></ol>
+                </section>
+                <section class="bloque" id="c-tramite2-bloque" style="--c: var(--azul)" hidden>
+                    <h2>🔄 En trámite (continúa)</h2>
+                    <ol class="lista" id="c-tramite2"></ol>
                 </section>
             </div>
             <section class="bloque" style="--c: var(--azul)">
@@ -287,7 +294,7 @@
                 var nota = sg && sg.pasada
                     ? 'Prevista el ' + F.corta(sg.fecha) + ': ' + (F.TIPO_SIG[sg.tipo] || 'acción').toLowerCase() + ', por confirmar.'
                     : sg && sg.fecha
-                    ? 'Próximo paso, ' + F.corta(sg.fecha) + ': ' + (F.TIPO_SIG[sg.tipo] || 'acción').toLowerCase() + (sg.tipo === 'tutela' || sg.tipo === 'accion-popular' ? ' ante un juez si no hay respuesta.' : '.')
+                    ? 'Próximo paso, ' + F.corta(sg.fecha) + ': ' + (F.TIPO_SIG[sg.tipo] || 'acción').toLowerCase() + (sg.tipo === 'tutela' || sg.tipo === 'accion-popular' ? ' ante un juez si no hay respuesta.' : sg.tipo === 'fallo' ? ' de la tutela.' : '.')
                     : (it.pendiente ? 'Falta: ' + it.pendiente : 'Última novedad: ' + F.corta(u[0]) + '.');
                 lT.appendChild(li(it, [['m', nota]]));
             });
@@ -295,6 +302,27 @@
             hec.forEach(function (it) {
                 lH.appendChild(li(it, [], true));
             });
+
+            // Reparte «En trámite» entre las dos columnas para que la cartelera quepa en una hoja.
+            // Se calcula por cantidad de texto (no por medidas en pantalla), así da igual en celular,
+            // computador o impresión: los últimos asuntos pasan a la columna izquierda mientras
+            // la derecha pese más.
+            function peso(ol) {
+                var s = 0;
+                [].forEach.call(ol.children, function (x) {
+                    var compacta = ol.classList.contains('lista--compacta');
+                    s += compacta ? 0.6 + Math.ceil(x.textContent.length / 48) * 0.9 : 1 + Math.ceil(x.textContent.length / 62);
+                });
+                return s;
+            }
+            var lT2 = document.getElementById('c-tramite2'), b2 = document.getElementById('c-tramite2-bloque');
+            while (lT.children.length > 1) {
+                var izq = peso(lE) + peso(lH) + 3 + (lT2.children.length ? peso(lT2) + 1.5 : 0);
+                var ult = lT.lastElementChild, pu = 1 + Math.ceil(ult.textContent.length / 62);
+                if (peso(lT) - izq <= pu + (lT2.children.length ? 0 : 1.5)) break;
+                b2.hidden = false;
+                lT2.insertBefore(ult, lT2.firstChild);
+            }
 
             var A = D.asamblea;
             if (A && A.estado === 'convocada' && A.fecha) {

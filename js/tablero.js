@@ -74,7 +74,7 @@
         if (s && s.length === 3 && s[2]) {
             // Si la fecha anunciada ya pasó y nadie actualizó el dato, no se sigue diciendo «presentará».
             if (s[0] && s[0] < aIso(HOY)) {
-                var que = { tutela: 'la acción de tutela', 'accion-popular': 'la acción popular', audiencia: 'la audiencia', revision: 'la revisión' }[s[1]] || 'este paso';
+                var que = { tutela: 'la acción de tutela', 'accion-popular': 'la acción popular', audiencia: 'la audiencia', revision: 'la revisión', fallo: 'el fallo' }[s[1]] || 'este paso';
                 return { fecha: s[0], tipo: s[1], pasada: true,
                     texto: 'Fecha cumplida para ' + que + ' (prevista para el ' + corta(s[0]) + '). Aquí se publicará el resultado o el número de radicado en cuanto la Junta lo confirme.' };
             }
@@ -84,7 +84,7 @@
         if (it.estado !== 'espera' || !p || !p.vencido) return null;
         return { fecha: '', tipo: 'tutela', texto: 'Si no llega respuesta, la Junta presentará una acción de tutela ante un juez para proteger el derecho de petición (artículo 23 de la Constitución).' };
     }
-    var TIPO_SIG = { tutela: 'Tutela', 'accion-popular': 'Acción popular', audiencia: 'Audiencia', revision: 'Revisión' };
+    var TIPO_SIG = { tutela: 'Tutela', 'accion-popular': 'Acción popular', audiencia: 'Audiencia', revision: 'Revisión', fallo: 'Fallo' };
 
     var conteo = { hecho: 0, tramite: 0, espera: 0, total: items.length, vencidas: 0, enviados: 0 };
     items.forEach(function (it) {
@@ -350,10 +350,12 @@
     var jud = document.querySelector('[data-judicial]');
     if (jud) {
         jud.textContent = '';
-        var enCurso = items.filter(function (it) { return /^(acci[oó]n popular|tutela)/i.test(it.numero || ''); });
+        // En curso: las que ya están ante un juez (por su número, o porque su próximo paso es el fallo).
+        function esperaFallo(it) { return it.siguiente && it.siguiente[1] === 'fallo'; }
+        var enCurso = items.filter(function (it) { return /^(acci[oó]n popular|tutela)/i.test(it.numero || '') || esperaFallo(it); });
         enCurso.forEach(function (it) {
             var caja = el('article', 'jud__caso jud__caso--curso');
-            caja.appendChild(el('p', 'jud__tag', '⚖️ En curso · ' + it.numero));
+            caja.appendChild(el('p', 'jud__tag', '⚖️ En curso · ' + (esperaFallo(it) ? 'Tutela presentada' + (it.numero ? ' · ' + it.numero : '') : it.numero)));
             caja.appendChild(el('h4', 'jud__titulo', it.titulo));
             var ol = el('ol', 'act-tl jud__tl');
             it.novedades.forEach(function (n) {

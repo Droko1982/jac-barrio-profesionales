@@ -34,7 +34,7 @@
    ========================================================================== */
 
 window.JAC_DATOS = {
-    actualizado: '2026-11-17',
+    actualizado: '2026-11-20',
 
     /* Próxima Asamblea General.
        Al convocarla: estado 'convocada' y completa fecha (AAAA-MM-DD),
@@ -76,42 +76,6 @@ window.JAC_DATOS = {
         ]
     },
     {
-        "estado": "espera",
-        "fecha": "2026-10-23",
-        "numero": "JAC-018-2026 · 2026RE55734",
-        "titulo": "Alumbrado público de la Carrera 18A: visita técnica nocturna y revisión, reposición o nuevos puntos de luz",
-        "entidad": "Secretaría de Infraestructura · operador del alumbrado público",
-        "plazo": 15,
-        "enviados": 1,
-        "novedades": [
-            ["2026-10-23", "Petición enviada el 22 de octubre y radicada por la Alcaldía el 23 de octubre.", "enviado"]
-        ],
-        "pendiente": "Visita técnica nocturna y respuesta de fondo.",
-        "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
-        "fotos": [],
-        "documentos": [
-            ["JAC-018-2026-alumbrado-carrera-18a.pdf", "Petición JAC-018-2026 (22 oct 2026)"]
-        ]
-    },
-    {
-        "estado": "espera",
-        "fecha": "2026-10-23",
-        "numero": "JAC-019-2026",
-        "titulo": "Calle 5 Norte: seguridad vial por los desvíos y el paso de buses junto al parque, y estado del pavimento",
-        "entidad": "Secretaría de Tránsito y Transporte · Secretaría de Infraestructura",
-        "plazo": 15,
-        "enviados": 1,
-        "novedades": [
-            ["2026-10-23", "Derecho de petición enviado a la Alcaldía.", "enviado"]
-        ],
-        "pendiente": "Respuesta de fondo de la Alcaldía.",
-        "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
-        "fotos": [],
-        "documentos": [
-            ["JAC-019-2026-calle-5-norte-seguridad-vial.pdf", "Derecho de petición JAC-019-2026 (23 oct 2026)"]
-        ]
-    },
-    {
         "estado": "tramite",
         "fecha": "2026-05-22",
         "numero": "2026PQR22891 · JAC-017-2026",
@@ -128,7 +92,8 @@ window.JAC_DATOS = {
             ["2026-10-22", "La Junta pidió a Claro, Tigo-UNE y Movistar inspeccionar y corregir el cableado a baja altura, con copia a la Alcaldía y a EDEQ (oficio JAC-017-2026).", "enviado"],
             ["2026-11-02", "Claro confirmó el radicado de la petición.", "respuesta"],
             ["2026-11-06", "Tigo-UNE anunció una visita técnica a los dos puntos, todavía sin fecha.", "respuesta"],
-            ["2026-11-13", "La Alcaldía trasladó la petición a Bienes y Suministros y a la Secretaría TIC.", "respuesta"]
+            ["2026-11-13", "La Alcaldía trasladó la petición a Bienes y Suministros y a la Secretaría TIC.", "respuesta"],
+            ["2026-11-17", "Claro respondió que reportó el caso a su área encargada, sin informar el resultado de una inspección ni la fecha de la visita.", "respuesta"]
         ],
         "pendiente": "Que las empresas de telecomunicaciones hagan la visita y retiren o suban los cables.",
         "siguiente": ["2026-12-07", "revision", "El 7 de diciembre la Junta revisará las respuestas; si el riesgo sigue, preparará una acción de tutela."],
@@ -238,18 +203,22 @@ window.JAC_DATOS = {
         "titulo": "Titularidad de dos predios del barrio y comodato de uno de ellos para una sede comunal",
         "entidad": "Bienes y Suministros · Planeación · Secretaría de Gobierno (Espacio Público) · Participación Ciudadana",
         "plazo": 0,
-        "enviados": 2,
+        "enviados": 3,
         "novedades": [
             ["2026-07-02", "Petición radicada.", "enviado"],
             ["2026-10-02", "Bienes y Suministros visitó los predios (oficio DB-PGA-2962): ninguno tiene matrícula inmobiliaria registrada y, con los registros disponibles, no se puede establecer si son del Municipio.", "respuesta"],
-            ["2026-10-22", "La Junta pidió definir qué autoridad atiende el uso del sector de la Carrera 18 y cuál es la ruta para un comodato o una sede comunal (oficio JAC-015-2026; radicado por la Alcaldía el 23 de octubre).", "enviado"]
+            ["2026-10-22", "La Junta pidió definir qué autoridad atiende el uso del sector de la Carrera 18 y cuál es la ruta para un comodato o una sede comunal (oficio JAC-015-2026; radicado por la Alcaldía el 23 de octubre).", "enviado"],
+            ["2026-11-17", "Bienes y Suministros informó (oficio DB-PGA-3531, del 11 de noviembre) que visitó los predios el 30 de octubre, que no tienen matrícula inmobiliaria y que no pudo identificar al propietario; pidió a Catastro el certificado catastral y responderá cuando lo reciba.", "respuesta"],
+            ["2026-11-17", "Participación Ciudadana trasladó la petición a Bienes y Suministros y a la Secretaría de Gobierno (oficio SO-PSP-4958 y traslado 2026-OF-11047), sin responder de fondo.", "respuesta"],
+            ["2026-11-20", "La Junta presentó una acción de tutela contra el Municipio de Armenia por el derecho de petición (Tutela en Línea, recibo 4499947).", "enviado"]
         ],
-        "pendiente": "Respuesta de fondo al oficio JAC-015-2026 (el plazo legal vence el 17 de noviembre de 2026).",
-        "siguiente": ["2026-11-18", "tutela", "Si no llega respuesta de fondo, el 18 de noviembre la Junta presentará contra el Municipio de Armenia una sola acción de tutela por el derecho de petición, que reúne los oficios JAC-015, JAC-018 y JAC-019."],
+        "pendiente": "Fallo del juez de tutela y respuesta de fondo de la Alcaldía a las diez solicitudes del oficio JAC-015-2026.",
+        "siguiente": ["2026-12-04", "fallo", "El juez debe decidir la tutela dentro de los diez días hábiles siguientes a su presentación: alrededor del 4 de diciembre de 2026."],
         "fotos": [],
         "documentos": [
             ["JAC-006-2026-predios-comodato.pdf", "Petición JAC-006-2026 (2 jul 2026)"],
-            ["JAC-015-2026-predios-seguimiento.pdf", "Oficio JAC-015-2026 (22 oct 2026)"]
+            ["JAC-015-2026-predios-seguimiento.pdf", "Oficio JAC-015-2026 (22 oct 2026)"],
+            ["tutela-JAC-015-2026-11-20-derecho-de-peticion.pdf", "Acción de tutela por el derecho de petición (20 nov 2026)"]
         ]
     },
     {
@@ -317,7 +286,7 @@ window.JAC_DATOS = {
         "titulo": "Elección de dignatarios de ASOCOMUNAL Comuna 10: la Junta la impugnó y pide que se decida",
         "entidad": "Unidad de Participación Ciudadana · Federación Comunal · Gobernación del Quindío",
         "plazo": 0,
-        "enviados": 7,
+        "enviados": 8,
         "novedades": [
             ["2026-07-22", "La Junta pidió a la Unidad de Participación Ciudadana intervenir en el proceso electoral de ASOCOMUNAL Comuna 10 antes de la elección, por posibles irregularidades.", "enviado"],
             ["2026-07-25", "La Junta pidió información y copias a ASOCOMUNAL y a su Tribunal de Garantías (JAC-007-2026) y acompañamiento urgente a la Unidad (JAC-008-2026).", "enviado", 2],
@@ -327,10 +296,11 @@ window.JAC_DATOS = {
             ["2026-09-07", "La Unidad envió la demanda a la Federación Comunal del Quindío y anunció que no inscribirá a los dignatarios mientras haya vicios sin subsanar (oficio SO-PSP-4029).", "respuesta"],
             ["2026-10-02", "La Junta pidió a las federaciones el estado de la demanda (JAC-012-2026) y a la Unidad, el resultado de su verificación (JAC-013-2026).", "enviado", 2],
             ["2026-10-27", "La Unidad de Participación Ciudadana respondió trasladando la demanda a la federación comunal, sin decidir de fondo (oficio SO-PSP-4673).", "respuesta"],
-            ["2026-11-04", "La Junta pidió a la Unidad la constancia del traslado y el estado de la impugnación (radicado 2026RE57947).", "enviado"]
+            ["2026-11-04", "La Junta pidió a la Unidad la constancia del traslado y el estado de la impugnación (radicado 2026RE57947).", "enviado"],
+            ["2026-11-20", "La Junta presentó una acción de tutela contra el Municipio de Armenia (Unidad de Participación Ciudadana), la Gobernación del Quindío y la federación comunal, por los derechos de petición y al debido proceso (Tutela en Línea, recibo 4500549).", "enviado"]
         ],
-        "pendiente": "Que la federación competente decida la impugnación y que la Unidad entregue el resultado de su verificación.",
-        "siguiente": ["2026-11-20", "tutela", "El 20 de noviembre la Junta presentará una acción de tutela porque la Unidad de Participación Ciudadana, la federación comunal y la Gobernación del Quindío no han respondido de fondo (fecha límite: 1 de diciembre)."],
+        "pendiente": "Fallo del juez de tutela; que la federación competente decida la impugnación y que la Unidad entregue el resultado de su verificación.",
+        "siguiente": ["2026-12-04", "fallo", "El juez debe decidir la tutela dentro de los diez días hábiles siguientes a su presentación: alrededor del 4 de diciembre de 2026."],
         "fotos": [],
         "documentos": [
             ["asocomunal-2026-07-22-solicitud-intervencion.pdf", "Solicitud de intervención (22 jul 2026)"],
@@ -338,6 +308,44 @@ window.JAC_DATOS = {
             ["JAC-008-2026-asocomunal-acompanamiento.pdf", "Oficio JAC-008-2026 a la Unidad (25 jul 2026)"],
             ["JAC-012-2026-asocomunal-federacion.pdf", "Oficio JAC-012-2026 a las federaciones (2 oct 2026)"],
             ["JAC-013-2026-asocomunal-seguimiento.pdf", "Oficio JAC-013-2026 a la Unidad (2 oct 2026)"]
+        ]
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-10-23",
+        "numero": "JAC-018-2026 · 2026RE55734",
+        "titulo": "Alumbrado público de la Carrera 18A: visita técnica nocturna y revisión, reposición o nuevos puntos de luz",
+        "entidad": "Secretaría de Infraestructura · I.S.M. S.A.S. (operador del alumbrado público)",
+        "plazo": 0,
+        "enviados": 1,
+        "novedades": [
+            ["2026-10-23", "Petición enviada el 22 de octubre y radicada por la Alcaldía el 23 de octubre.", "enviado"],
+            ["2026-11-17", "La Secretaría de Infraestructura respondió (oficio SI-POI-3621, del 9 de noviembre) que trasladó la petición al operador del alumbrado público, I.S.M. S.A.S. (oficio SI-POI-3620).", "respuesta"]
+        ],
+        "pendiente": "Respuesta del operador del alumbrado público y visita técnica nocturna.",
+        "siguiente": ["2026-12-01", "revision", "El 1 de diciembre la Junta revisará la respuesta del operador del alumbrado; si no responde, presentará una acción de tutela."],
+        "fotos": [],
+        "documentos": [
+            ["JAC-018-2026-alumbrado-carrera-18a.pdf", "Petición JAC-018-2026 (22 oct 2026)"]
+        ]
+    },
+    {
+        "estado": "tramite",
+        "fecha": "2026-10-23",
+        "numero": "JAC-019-2026 · INT-7781",
+        "titulo": "Calle 5 Norte: seguridad vial por los desvíos y el paso de buses junto al parque, y estado del pavimento",
+        "entidad": "Secretaría de Tránsito y Transporte · Secretaría de Infraestructura",
+        "plazo": 0,
+        "enviados": 1,
+        "novedades": [
+            ["2026-10-23", "Derecho de petición enviado a la Alcaldía.", "enviado"],
+            ["2026-11-17", "La Secretaría de Infraestructura informó (oficio SI-POI-3748, del 13 de noviembre) que, por la extensión de las nueve peticiones, usa la prórroga de la Ley 1755 de 2015: la respuesta de fondo vence alrededor del 9 de diciembre.", "respuesta"]
+        ],
+        "pendiente": "Respuesta de fondo de la Secretaría de Infraestructura a las nueve peticiones.",
+        "siguiente": ["2026-12-09", "revision", "El 9 de diciembre vence la prórroga que tomó la Secretaría de Infraestructura; ese día la Junta revisará si hay respuesta de fondo."],
+        "fotos": [],
+        "documentos": [
+            ["JAC-019-2026-calle-5-norte-seguridad-vial.pdf", "Derecho de petición JAC-019-2026 (23 oct 2026)"]
         ]
     },
     {

@@ -38,7 +38,7 @@ Columnas de la hoja (fila 1):
                 (el PDF va en documentos/, ya tachado con herramientas/publicar_documento.py).
                 Si la hoja no tiene esta columna, se conservan los documentos ya publicados.
     siguiente   opcional. El próximo paso anunciado, en una línea:  AAAA-MM-DD [tipo]: texto
-                tipo: tutela, accion-popular, audiencia o revision. La fecha es la prevista
+                tipo: tutela, accion-popular, audiencia, revision o fallo (acción ya presentada). La fecha es la prevista
                 (puede faltar:  [tutela]: texto). Alimenta «Acciones ante los jueces».
                 Si la hoja no tiene esta columna, se conserva el que ya estaba publicado.
 
@@ -67,7 +67,7 @@ COLUMNA_ENVIADOS = "enviados"
 COLUMNA_SIGUIENTE = "siguiente"
 OPCIONALES = (COLUMNA_ENVIADOS,) + LISTAS + (COLUMNA_SIGUIENTE,)  # si faltan en la hoja, se conservan los valores publicados
 TIPOS_SIGUIENTE = {"tutela": "tutela", "accion-popular": "accion-popular", "acción popular": "accion-popular",
-                   "accion popular": "accion-popular", "audiencia": "audiencia", "revision": "revision", "revisión": "revision"}
+                   "accion popular": "accion-popular", "audiencia": "audiencia", "revision": "revision", "revisión": "revision", "fallo": "fallo"}
 RE_SIGUIENTE = re.compile(r"^\s*([\d/-]+)?\s*\[\s*([^\]]+?)\s*\]\s*:\s*(.+)$")
 DIR_FOTOS = RAIZ / "img" / "actuaciones"
 DIR_DOCS = RAIZ / "documentos"
@@ -210,7 +210,7 @@ def normalizar(item, donde):
     if sig:
         tipo = TIPOS_SIGUIENTE.get(str(sig[1]).lower())
         if not tipo:
-            raise ErrorDatos(f"{donde}: tipo de «siguiente» «{sig[1]}» no válido (tutela, accion-popular, audiencia, revision)")
+            raise ErrorDatos(f"{donde}: tipo de «siguiente» «{sig[1]}» no válido (tutela, accion-popular, audiencia, revision, fallo)")
         sig = [sig[0], tipo, str(sig[2]).strip()]
         revisar_privacidad(sig[2], f"{donde} (siguiente)")
 
